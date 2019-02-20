@@ -43,7 +43,7 @@ class UserInfoVC: UIViewController {
                     
                     self.nameLabel.text = xml["GoodreadsResponse"]["user"]["name"].element?.text
                     self.locationLabel.text = xml["GoodreadsResponse"]["user"]["location"].element?.text
-                    print(xml["GoodreadsResponse"]["user"]["location"].element?.text)
+                    //print(xml["GoodreadsResponse"]["user"]["location"].element?.text as Any)
                 case .failure(let error):
                     statusCode = error._code // statusCode private
                     print("status code is: \(String(describing: statusCode))")
