@@ -9,21 +9,36 @@
 import UIKit
 import Firebase
 import UserNotifications
+import FirebaseMessaging
 import OneSignal
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Firebase Messagin Config
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+
+        } else {
+            let settings: UIUserNotificationSettings = UIUserNotificationSettings(types: [.alert, .sound, .badge], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
         
-        // [START register_for_notifications]
+        application.registerForRemoteNotifications()
         
-        //registerForPushNotification()
-        // [END register_for_notifications]
+        
+        
+        Messaging.messaging().delegate = self
         
         //Register OneSignal
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
@@ -44,6 +59,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         return true
     }
+    
+    // The callback to handle data message received via FCM for devices running iOS 10 or above.
     
     func registerForPushNotification() {
         UNUserNotificationCenter.current()
