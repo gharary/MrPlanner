@@ -7,26 +7,62 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3972B3E0D7884376B242916B /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905BC6073AA8B982E8B243B3 /* Pods_OneSignalNotificationServiceExtension.framework */; };
 		3F07507BF9FFC1CF85C84F42 /* Pods_MrPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0936315C369E5F4213EA8B18 /* Pods_MrPlanner.framework */; };
 		5F76AA752219993E003BE931 /* SearchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F76AA742219993E003BE931 /* SearchTVC.swift */; };
 		5F76AA772219A035003BE931 /* GoodReadsJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F76AA762219A035003BE931 /* GoodReadsJSON.swift */; };
 		5F76AA792219A373003BE931 /* BookTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F76AA782219A373003BE931 /* BookTVCell.swift */; };
 		5F76AA7C221B0739003BE931 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F76AA7B221B0739003BE931 /* UserInfoVC.swift */; };
 		5F76AA7E221C01C0003BE931 /* googleSearchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F76AA7D221C01C0003BE931 /* googleSearchTVC.swift */; };
+		5F77761B2226ED2C00D1A7A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F77761A2226ED2C00D1A7A7 /* GoogleService-Info.plist */; };
+		5F7776242227C69800D1A7A7 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7776232227C69800D1A7A7 /* NotificationService.swift */; };
+		5F7776282227C69800D1A7A7 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5F7776212227C69800D1A7A7 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5F7C214C22195CB5002FAEBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7C214B22195CB5002FAEBF /* AppDelegate.swift */; };
 		5F7C215122195CB5002FAEBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F7C214F22195CB5002FAEBF /* Main.storyboard */; };
 		5F7C215322195CB7002FAEBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F7C215222195CB7002FAEBF /* Assets.xcassets */; };
 		5F7C215622195CB7002FAEBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F7C215422195CB7002FAEBF /* LaunchScreen.storyboard */; };
 		5F7C215E22195E45002FAEBF /* BookDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7C215D22195E45002FAEBF /* BookDetail.swift */; };
+		5FD15E0D2225969900DB5BFE /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD15E0C2225969900DB5BFE /* MainVC.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5F7776262227C69800D1A7A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F7C214022195CB5002FAEBF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F7776202227C69800D1A7A7;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5F77762C2227C69800D1A7A7 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5F7776282227C69800D1A7A7 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0936315C369E5F4213EA8B18 /* Pods_MrPlanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MrPlanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B5A74FE9DA9096DBF0FF302 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		5F76AA742219993E003BE931 /* SearchTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTVC.swift; sourceTree = "<group>"; };
 		5F76AA762219A035003BE931 /* GoodReadsJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodReadsJSON.swift; sourceTree = "<group>"; };
 		5F76AA782219A373003BE931 /* BookTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTVCell.swift; sourceTree = "<group>"; };
 		5F76AA7B221B0739003BE931 /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		5F76AA7D221C01C0003BE931 /* googleSearchTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = googleSearchTVC.swift; sourceTree = "<group>"; };
+		5F77761A2226ED2C00D1A7A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5F77761C2226F11700D1A7A7 /* MrPlanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MrPlanner.entitlements; sourceTree = "<group>"; };
+		5F7776212227C69800D1A7A7 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F7776232227C69800D1A7A7 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		5F7776252227C69800D1A7A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F77762D2227C7E300D1A7A7 /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		5F7C214822195CB5002FAEBF /* MrPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MrPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F7C214B22195CB5002FAEBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F7C215022195CB5002FAEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -34,11 +70,22 @@
 		5F7C215522195CB7002FAEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5F7C215722195CB7002FAEBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F7C215D22195E45002FAEBF /* BookDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetail.swift; sourceTree = "<group>"; };
+		5FD15E0C2225969900DB5BFE /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		905BC6073AA8B982E8B243B3 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57A700E957A881C32B8D3E7 /* Pods-MrPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MrPlanner.release.xcconfig"; path = "Target Support Files/Pods-MrPlanner/Pods-MrPlanner.release.xcconfig"; sourceTree = "<group>"; };
 		D17642E08F23420967DA7F7F /* Pods-MrPlanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MrPlanner.debug.xcconfig"; path = "Target Support Files/Pods-MrPlanner/Pods-MrPlanner.debug.xcconfig"; sourceTree = "<group>"; };
+		E44BDCD0AFAC4A5DFF60663F /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5F77761E2227C69800D1A7A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3972B3E0D7884376B242916B /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F7C214522195CB5002FAEBF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -53,6 +100,7 @@
 		5F76AA7A221B0371003BE931 /* BookSearch */ = {
 			isa = PBXGroup;
 			children = (
+				5F76AA7D221C01C0003BE931 /* googleSearchTVC.swift */,
 				5F76AA742219993E003BE931 /* SearchTVC.swift */,
 				5F76AA782219A373003BE931 /* BookTVCell.swift */,
 				5F7C215D22195E45002FAEBF /* BookDetail.swift */,
@@ -60,10 +108,21 @@
 			path = BookSearch;
 			sourceTree = "<group>";
 		};
+		5F7776222227C69800D1A7A7 /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				5F77762D2227C7E300D1A7A7 /* OneSignalNotificationServiceExtension.entitlements */,
+				5F7776232227C69800D1A7A7 /* NotificationService.swift */,
+				5F7776252227C69800D1A7A7 /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
 		5F7C213F22195CB5002FAEBF = {
 			isa = PBXGroup;
 			children = (
 				5F7C214A22195CB5002FAEBF /* MrPlanner */,
+				5F7776222227C69800D1A7A7 /* OneSignalNotificationServiceExtension */,
 				5F7C214922195CB5002FAEBF /* Products */,
 				74A6A8B1BC4E0EE1E5512F8F /* Pods */,
 				E28E5D840498D224115214BF /* Frameworks */,
@@ -74,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				5F7C214822195CB5002FAEBF /* MrPlanner.app */,
+				5F7776212227C69800D1A7A7 /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,15 +141,17 @@
 		5F7C214A22195CB5002FAEBF /* MrPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				5F77761C2226F11700D1A7A7 /* MrPlanner.entitlements */,
 				5F7C214B22195CB5002FAEBF /* AppDelegate.swift */,
 				5F76AA762219A035003BE931 /* GoodReadsJSON.swift */,
 				5F7C214F22195CB5002FAEBF /* Main.storyboard */,
-				5F76AA7D221C01C0003BE931 /* googleSearchTVC.swift */,
+				5FD15E0C2225969900DB5BFE /* MainVC.swift */,
 				5F76AA7B221B0739003BE931 /* UserInfoVC.swift */,
 				5F76AA7A221B0371003BE931 /* BookSearch */,
 				5F7C215222195CB7002FAEBF /* Assets.xcassets */,
 				5F7C215422195CB7002FAEBF /* LaunchScreen.storyboard */,
 				5F7C215722195CB7002FAEBF /* Info.plist */,
+				5F77761A2226ED2C00D1A7A7 /* GoogleService-Info.plist */,
 			);
 			path = MrPlanner;
 			sourceTree = "<group>";
@@ -99,6 +161,8 @@
 			children = (
 				D17642E08F23420967DA7F7F /* Pods-MrPlanner.debug.xcconfig */,
 				A57A700E957A881C32B8D3E7 /* Pods-MrPlanner.release.xcconfig */,
+				E44BDCD0AFAC4A5DFF60663F /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */,
+				0B5A74FE9DA9096DBF0FF302 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -107,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				0936315C369E5F4213EA8B18 /* Pods_MrPlanner.framework */,
+				905BC6073AA8B982E8B243B3 /* Pods_OneSignalNotificationServiceExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -114,6 +179,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5F7776202227C69800D1A7A7 /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F77762B2227C69800D1A7A7 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				EB7C6FE38B76A868C407981F /* [CP] Check Pods Manifest.lock */,
+				5F77761D2227C69800D1A7A7 /* Sources */,
+				5F77761E2227C69800D1A7A7 /* Frameworks */,
+				5F77761F2227C69800D1A7A7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = 5F7776212227C69800D1A7A7 /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		5F7C214722195CB5002FAEBF /* MrPlanner */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5F7C215A22195CB7002FAEBF /* Build configuration list for PBXNativeTarget "MrPlanner" */;
@@ -123,10 +206,12 @@
 				5F7C214522195CB5002FAEBF /* Frameworks */,
 				5F7C214622195CB5002FAEBF /* Resources */,
 				CB052848153E6AE69B6423FA /* [CP] Embed Pods Frameworks */,
+				5F77762C2227C69800D1A7A7 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5F7776272227C69800D1A7A7 /* PBXTargetDependency */,
 			);
 			name = MrPlanner;
 			productName = MrPlanner;
@@ -143,8 +228,24 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Mohammad Gharari";
 				TargetAttributes = {
+					5F7776202227C69800D1A7A7 = {
+						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
+					};
 					5F7C214722195CB5002FAEBF = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -162,16 +263,25 @@
 			projectRoot = "";
 			targets = (
 				5F7C214722195CB5002FAEBF /* MrPlanner */,
+				5F7776202227C69800D1A7A7 /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5F77761F2227C69800D1A7A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F7C214622195CB5002FAEBF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5F7C215622195CB7002FAEBF /* LaunchScreen.storyboard in Resources */,
+				5F77761B2226ED2C00D1A7A7 /* GoogleService-Info.plist in Resources */,
 				5F7C215322195CB7002FAEBF /* Assets.xcassets in Resources */,
 				5F7C215122195CB5002FAEBF /* Main.storyboard in Resources */,
 			);
@@ -191,6 +301,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-MrPlanner/Pods-MrPlanner-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -198,6 +309,7 @@
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -205,6 +317,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -212,10 +325,33 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXMLParser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MrPlanner/Pods-MrPlanner-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB7C6FE38B76A868C407981F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OneSignalNotificationServiceExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FE3642E94DC750C5320389E4 /* [CP] Check Pods Manifest.lock */ = {
@@ -243,6 +379,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5F77761D2227C69800D1A7A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F7776242227C69800D1A7A7 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F7C214422195CB5002FAEBF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -252,12 +396,21 @@
 				5F76AA7E221C01C0003BE931 /* googleSearchTVC.swift in Sources */,
 				5F76AA752219993E003BE931 /* SearchTVC.swift in Sources */,
 				5F76AA792219A373003BE931 /* BookTVCell.swift in Sources */,
+				5FD15E0D2225969900DB5BFE /* MainVC.swift in Sources */,
 				5F7C214C22195CB5002FAEBF /* AppDelegate.swift in Sources */,
 				5F76AA7C221B0739003BE931 /* UserInfoVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5F7776272227C69800D1A7A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F7776202227C69800D1A7A7 /* OneSignalNotificationServiceExtension */;
+			targetProxy = 5F7776262227C69800D1A7A7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5F7C214F22195CB5002FAEBF /* Main.storyboard */ = {
@@ -279,6 +432,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5F7776292227C69800D1A7A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E44BDCD0AFAC4A5DFF60663F /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TTH7P953CP;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gharari.MrPlanner.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5F77762A2227C69800D1A7A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B5A74FE9DA9096DBF0FF302 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TTH7P953CP;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gharari.MrPlanner.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		5F7C215822195CB7002FAEBF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -399,7 +594,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D17642E08F23420967DA7F7F /* Pods-MrPlanner.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MrPlanner/MrPlanner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TTH7P953CP;
 				INFOPLIST_FILE = MrPlanner/Info.plist;
@@ -418,7 +615,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A57A700E957A881C32B8D3E7 /* Pods-MrPlanner.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MrPlanner/MrPlanner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TTH7P953CP;
 				INFOPLIST_FILE = MrPlanner/Info.plist;
@@ -436,6 +635,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5F77762B2227C69800D1A7A7 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F7776292227C69800D1A7A7 /* Debug */,
+				5F77762A2227C69800D1A7A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5F7C214322195CB5002FAEBF /* Build configuration list for PBXProject "MrPlanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
