@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		3972B3E0D7884376B242916B /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905BC6073AA8B982E8B243B3 /* Pods_OneSignalNotificationServiceExtension.framework */; };
 		3F07507BF9FFC1CF85C84F42 /* Pods_MrPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0936315C369E5F4213EA8B18 /* Pods_MrPlanner.framework */; };
+		5F467BB4223564BF00D3F41F /* GoogleSearchTableResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F467BB3223564BF00D3F41F /* GoogleSearchTableResult.storyboard */; };
+		5F467BB62235652400D3F41F /* GoogleSearchCollectionResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F467BB52235652400D3F41F /* GoogleSearchCollectionResult.storyboard */; };
+		5F467BB8223565C000D3F41F /* SearchResultCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F467BB7223565C000D3F41F /* SearchResultCVC.swift */; };
+		5F467BBA223565E700D3F41F /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F467BB9223565E700D3F41F /* SearchResultCell.swift */; };
+		5F5A734A2236979D0003F66E /* SF Compact Rounded in Resources */ = {isa = PBXBuildFile; fileRef = 5F5A73492236979D0003F66E /* SF Compact Rounded */; };
+		5F5A734D223697AC0003F66E /* SF Compact in Resources */ = {isa = PBXBuildFile; fileRef = 5F5A734B223697AC0003F66E /* SF Compact */; };
+		5F5A734E223697AC0003F66E /* SF Pro in Resources */ = {isa = PBXBuildFile; fileRef = 5F5A734C223697AC0003F66E /* SF Pro */; };
 		5F76AA752219993E003BE931 /* SearchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F76AA742219993E003BE931 /* SearchTVC.swift */; };
 		5F76AA772219A035003BE931 /* GoodReadsJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F76AA762219A035003BE931 /* GoodReadsJSON.swift */; };
 		5F76AA792219A373003BE931 /* BookTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F76AA782219A373003BE931 /* BookTVCell.swift */; };
@@ -22,6 +29,12 @@
 		5F7C215322195CB7002FAEBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F7C215222195CB7002FAEBF /* Assets.xcassets */; };
 		5F7C215622195CB7002FAEBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F7C215422195CB7002FAEBF /* LaunchScreen.storyboard */; };
 		5F7C215E22195E45002FAEBF /* BookDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7C215D22195E45002FAEBF /* BookDetail.swift */; };
+		5FB412A9222A7B5200B4A3E7 /* PopularReadersCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB412A8222A7B5200B4A3E7 /* PopularReadersCVC.swift */; };
+		5FB412AB222A7B6900B4A3E7 /* PopularReadersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB412AA222A7B6900B4A3E7 /* PopularReadersCell.swift */; };
+		5FB412AE222A8DC100B4A3E7 /* PopularBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB412AD222A8DC100B4A3E7 /* PopularBookCell.swift */; };
+		5FB412B0222A8DD500B4A3E7 /* PopularBookCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB412AF222A8DD500B4A3E7 /* PopularBookCVC.swift */; };
+		5FB412B2222AB6B100B4A3E7 /* Hiragino Sans GB.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 5FB412B1222AB6B100B4A3E7 /* Hiragino Sans GB.ttc */; };
+		5FB412B4222AC8B800B4A3E7 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB412B3222AC8B800B4A3E7 /* TabBar.swift */; };
 		5FD15E0D2225969900DB5BFE /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD15E0C2225969900DB5BFE /* MainVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +65,13 @@
 /* Begin PBXFileReference section */
 		0936315C369E5F4213EA8B18 /* Pods_MrPlanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MrPlanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B5A74FE9DA9096DBF0FF302 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
+		5F467BB3223564BF00D3F41F /* GoogleSearchTableResult.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GoogleSearchTableResult.storyboard; sourceTree = "<group>"; };
+		5F467BB52235652400D3F41F /* GoogleSearchCollectionResult.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoogleSearchCollectionResult.storyboard; sourceTree = "<group>"; };
+		5F467BB7223565C000D3F41F /* SearchResultCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCVC.swift; sourceTree = "<group>"; };
+		5F467BB9223565E700D3F41F /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		5F5A73492236979D0003F66E /* SF Compact Rounded */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "SF Compact Rounded"; sourceTree = "<group>"; };
+		5F5A734B223697AC0003F66E /* SF Compact */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "SF Compact"; sourceTree = "<group>"; };
+		5F5A734C223697AC0003F66E /* SF Pro */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "SF Pro"; sourceTree = "<group>"; };
 		5F76AA742219993E003BE931 /* SearchTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTVC.swift; sourceTree = "<group>"; };
 		5F76AA762219A035003BE931 /* GoodReadsJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodReadsJSON.swift; sourceTree = "<group>"; };
 		5F76AA782219A373003BE931 /* BookTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTVCell.swift; sourceTree = "<group>"; };
@@ -70,6 +90,12 @@
 		5F7C215522195CB7002FAEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5F7C215722195CB7002FAEBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F7C215D22195E45002FAEBF /* BookDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetail.swift; sourceTree = "<group>"; };
+		5FB412A8222A7B5200B4A3E7 /* PopularReadersCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularReadersCVC.swift; sourceTree = "<group>"; };
+		5FB412AA222A7B6900B4A3E7 /* PopularReadersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularReadersCell.swift; sourceTree = "<group>"; };
+		5FB412AD222A8DC100B4A3E7 /* PopularBookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularBookCell.swift; sourceTree = "<group>"; };
+		5FB412AF222A8DD500B4A3E7 /* PopularBookCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularBookCVC.swift; sourceTree = "<group>"; };
+		5FB412B1222AB6B100B4A3E7 /* Hiragino Sans GB.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hiragino Sans GB.ttc"; sourceTree = "<group>"; };
+		5FB412B3222AC8B800B4A3E7 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		5FD15E0C2225969900DB5BFE /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		905BC6073AA8B982E8B243B3 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57A700E957A881C32B8D3E7 /* Pods-MrPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MrPlanner.release.xcconfig"; path = "Target Support Files/Pods-MrPlanner/Pods-MrPlanner.release.xcconfig"; sourceTree = "<group>"; };
@@ -97,9 +123,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F5A734722363D9F0003F66E /* SearchGoogleCVC */ = {
+			isa = PBXGroup;
+			children = (
+				5F467BB7223565C000D3F41F /* SearchResultCVC.swift */,
+				5F467BB9223565E700D3F41F /* SearchResultCell.swift */,
+				5F467BB52235652400D3F41F /* GoogleSearchCollectionResult.storyboard */,
+			);
+			path = SearchGoogleCVC;
+			sourceTree = "<group>";
+		};
+		5F5A7348223697860003F66E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5F5A734B223697AC0003F66E /* SF Compact */,
+				5F5A734C223697AC0003F66E /* SF Pro */,
+				5F5A73492236979D0003F66E /* SF Compact Rounded */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		5F76AA7A221B0371003BE931 /* BookSearch */ = {
 			isa = PBXGroup;
 			children = (
+				5F467BB3223564BF00D3F41F /* GoogleSearchTableResult.storyboard */,
 				5F76AA7D221C01C0003BE931 /* googleSearchTVC.swift */,
 				5F76AA742219993E003BE931 /* SearchTVC.swift */,
 				5F76AA782219A373003BE931 /* BookTVCell.swift */,
@@ -141,19 +188,51 @@
 		5F7C214A22195CB5002FAEBF /* MrPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				5F5A7348223697860003F66E /* Fonts */,
 				5F77761C2226F11700D1A7A7 /* MrPlanner.entitlements */,
+				5FB412B3222AC8B800B4A3E7 /* TabBar.swift */,
 				5F7C214B22195CB5002FAEBF /* AppDelegate.swift */,
+				5FB412A6222A7AF300B4A3E7 /* MainVC */,
+				5F76AA7B221B0739003BE931 /* UserInfoVC.swift */,
 				5F76AA762219A035003BE931 /* GoodReadsJSON.swift */,
 				5F7C214F22195CB5002FAEBF /* Main.storyboard */,
-				5FD15E0C2225969900DB5BFE /* MainVC.swift */,
-				5F76AA7B221B0739003BE931 /* UserInfoVC.swift */,
+				5F5A734722363D9F0003F66E /* SearchGoogleCVC */,
 				5F76AA7A221B0371003BE931 /* BookSearch */,
 				5F7C215222195CB7002FAEBF /* Assets.xcassets */,
 				5F7C215422195CB7002FAEBF /* LaunchScreen.storyboard */,
 				5F7C215722195CB7002FAEBF /* Info.plist */,
 				5F77761A2226ED2C00D1A7A7 /* GoogleService-Info.plist */,
+				5FB412B1222AB6B100B4A3E7 /* Hiragino Sans GB.ttc */,
 			);
 			path = MrPlanner;
+			sourceTree = "<group>";
+		};
+		5FB412A6222A7AF300B4A3E7 /* MainVC */ = {
+			isa = PBXGroup;
+			children = (
+				5FB412AC222A8DA900B4A3E7 /* PopularBooks */,
+				5FB412A7222A7B0800B4A3E7 /* PopularReadersCVC */,
+				5FD15E0C2225969900DB5BFE /* MainVC.swift */,
+			);
+			path = MainVC;
+			sourceTree = "<group>";
+		};
+		5FB412A7222A7B0800B4A3E7 /* PopularReadersCVC */ = {
+			isa = PBXGroup;
+			children = (
+				5FB412A8222A7B5200B4A3E7 /* PopularReadersCVC.swift */,
+				5FB412AA222A7B6900B4A3E7 /* PopularReadersCell.swift */,
+			);
+			path = PopularReadersCVC;
+			sourceTree = "<group>";
+		};
+		5FB412AC222A8DA900B4A3E7 /* PopularBooks */ = {
+			isa = PBXGroup;
+			children = (
+				5FB412AD222A8DC100B4A3E7 /* PopularBookCell.swift */,
+				5FB412AF222A8DD500B4A3E7 /* PopularBookCVC.swift */,
+			);
+			path = PopularBooks;
 			sourceTree = "<group>";
 		};
 		74A6A8B1BC4E0EE1E5512F8F /* Pods */ = {
@@ -280,7 +359,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F5A734E223697AC0003F66E /* SF Pro in Resources */,
 				5F7C215622195CB7002FAEBF /* LaunchScreen.storyboard in Resources */,
+				5F5A734D223697AC0003F66E /* SF Compact in Resources */,
+				5F467BB62235652400D3F41F /* GoogleSearchCollectionResult.storyboard in Resources */,
+				5F467BB4223564BF00D3F41F /* GoogleSearchTableResult.storyboard in Resources */,
+				5F5A734A2236979D0003F66E /* SF Compact Rounded in Resources */,
+				5FB412B2222AB6B100B4A3E7 /* Hiragino Sans GB.ttc in Resources */,
 				5F77761B2226ED2C00D1A7A7 /* GoogleService-Info.plist in Resources */,
 				5F7C215322195CB7002FAEBF /* Assets.xcassets in Resources */,
 				5F7C215122195CB5002FAEBF /* Main.storyboard in Resources */,
@@ -301,8 +386,10 @@
 				"${PODS_ROOT}/Target Support Files/Pods-MrPlanner/Pods-MrPlanner-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/CircleMenu/CircleMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/JonContextMenu/JonContextMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -318,8 +405,10 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CircleMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JonContextMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -394,11 +483,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F76AA772219A035003BE931 /* GoodReadsJSON.swift in Sources */,
+				5F467BB8223565C000D3F41F /* SearchResultCVC.swift in Sources */,
 				5F7C215E22195E45002FAEBF /* BookDetail.swift in Sources */,
 				5F76AA7E221C01C0003BE931 /* googleSearchTVC.swift in Sources */,
+				5F467BBA223565E700D3F41F /* SearchResultCell.swift in Sources */,
+				5FB412A9222A7B5200B4A3E7 /* PopularReadersCVC.swift in Sources */,
 				5F76AA752219993E003BE931 /* SearchTVC.swift in Sources */,
+				5FB412B0222A8DD500B4A3E7 /* PopularBookCVC.swift in Sources */,
 				5F76AA792219A373003BE931 /* BookTVCell.swift in Sources */,
+				5FB412AB222A7B6900B4A3E7 /* PopularReadersCell.swift in Sources */,
 				5FD15E0D2225969900DB5BFE /* MainVC.swift in Sources */,
+				5FB412B4222AC8B800B4A3E7 /* TabBar.swift in Sources */,
+				5FB412AE222A8DC100B4A3E7 /* PopularBookCell.swift in Sources */,
 				5F7C214C22195CB5002FAEBF /* AppDelegate.swift in Sources */,
 				5F76AA7C221B0739003BE931 /* UserInfoVC.swift in Sources */,
 			);
