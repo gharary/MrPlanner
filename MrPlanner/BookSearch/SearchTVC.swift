@@ -170,8 +170,8 @@ class SearchTVC: UITableViewController , XMLParserDelegate {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == "showDetail" {
-            let vc = segue.destination as! BookDetail
-            let indexPath = tableView.indexPathForSelectedRow
+            //let vc = segue.destination as! BookDetail
+            //let indexPath = tableView.indexPathForSelectedRow
             //vc.title = searchData?[indexPath?.row]
         }
     }

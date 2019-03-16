@@ -102,11 +102,13 @@
             </objects>
             <point key="canvasLocation" x="951.20000000000005" y="119.1904047976012"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Discover-->
         <scene sceneID="5UM-WJ-Peu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bw4-wH-blh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Discover" image="Discover" id="2RX-Ft-CVx"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Muu-FU-rIf">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -121,4 +123,7 @@
             <point key="canvasLocation" x="12" y="119.1904047976012"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Discover" width="24" height="24"/>
+    </resources>
 </document>

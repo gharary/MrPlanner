@@ -10,14 +10,15 @@ import UIKit
 import Alamofire
 import Kingfisher
 import SwiftyJSON
-import CircleMenu
 import JonContextMenu
 
 private let reuseIdentifier = "bookCell"
 
-class SearchResultCVC: UICollectionViewController, CircleMenuDelegate, UIGestureRecognizerDelegate,JonContextMenuDelegate {
+class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,JonContextMenuDelegate {
     func menuOpened() {
-        
+        //UIDevice.vibrate()
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
     }
     
     func menuClosed() {
@@ -56,7 +57,6 @@ class SearchResultCVC: UICollectionViewController, CircleMenuDelegate, UIGesture
     let searchController = UISearchController(searchResultsController: nil)
     let baseURL = URL(string: "https://www.googleapis.com/books/v1/volumes")
     
-    var button: CircleMenu? = nil
     
     var scopeString: String = ""
     var currentParsingElement: String = ""
@@ -102,7 +102,6 @@ class SearchResultCVC: UICollectionViewController, CircleMenuDelegate, UIGesture
     }
     @objc func handleTap(sender: UITapGestureRecognizer) {
         //CircleMenu.hideButtons(CircleMenu.self)
-        button?.removeFromSuperview()
     }
     /*
     @objc func handleLongPress(sender: UILongPressGestureRecognizer) {

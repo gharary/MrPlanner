@@ -14,7 +14,7 @@ class PopularBookCVC: UICollectionViewController {
 
     let columns: CGFloat = 3.5
     let inset: CGFloat = 8.0
-    let spacing: CGFloat = 8.0
+    let spacing: CGFloat = 20.0
     let lineSpacing:CGFloat = 8.0
     
     

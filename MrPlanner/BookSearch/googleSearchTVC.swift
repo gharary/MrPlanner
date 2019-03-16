@@ -8,10 +8,8 @@
 
 import UIKit
 import Alamofire
-import SWXMLHash
 import Kingfisher
 import SwiftyJSON
-import SDWebImage
 
 class googleSearchTVC: UITableViewController {
 
@@ -21,7 +19,6 @@ class googleSearchTVC: UITableViewController {
     var scopeString: String = ""
     var currentParsingElement:String = ""
     var searchTerm: String = ""
-    var xml :XMLIndexer!
     var searchData:[Books]!
     {
         didSet{

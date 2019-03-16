@@ -12,9 +12,9 @@ private let reuseIdentifier = "PopularCell"
 
 class PopularReadersCVC: UICollectionViewController {
 
-    let columns: CGFloat = 4.5
+    let columns: CGFloat = 3.5
     let inset: CGFloat = 8.0
-    let spacing: CGFloat = 8.0
+    let spacing: CGFloat = 10.0
     let lineSpacing:CGFloat = 8.0
     
     
