@@ -10,6 +10,11 @@ import UIKit
 
 class PopularReadersCell: UICollectionViewCell {
     @IBOutlet weak var popularImage: UIImageView!
-    
+    /*
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        self.layer.cornerRadius = self.frame.size.width / 2
+    }
+    */
     
 }

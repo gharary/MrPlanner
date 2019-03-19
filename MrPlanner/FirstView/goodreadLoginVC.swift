@@ -10,14 +10,15 @@ import UIKit
 import Alamofire
 import SWXMLHash
 
-class goodreadLoginVC: UIViewController, SBCardPopupContent {
+class goodreadLoginVC: UIViewController {
 
+    /*
     var popupViewController: SBCardPopupViewController?
     
     var allowsTapToDismissPopupCard: Bool = true
     
     var allowsSwipeToDismissPopupCard: Bool = true
-    
+    */
     //let create initiate for popup
     static func create() -> UIViewController {
         /*
@@ -49,7 +50,7 @@ class goodreadLoginVC: UIViewController, SBCardPopupContent {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        initBorders()
         // Do any additional setup after loading the view.
     }
     
@@ -81,10 +82,11 @@ class goodreadLoginVC: UIViewController, SBCardPopupContent {
         
     }
 
+    /*
     @IBAction func saveBtnTapped(_ sender: UIButton) {
         self.popupViewController?.close()
     }
-    
+    */
     
     @IBAction func usernameTFEdit(_ sender: UITextField) {
         notFoundLbl.alpha = 0

@@ -14,7 +14,7 @@ class PopularReadersCVC: UICollectionViewController {
 
     let columns: CGFloat = 3.5
     let inset: CGFloat = 8.0
-    let spacing: CGFloat = 10.0
+    let spacing: CGFloat = 8.0
     let lineSpacing:CGFloat = 8.0
     
     
@@ -26,6 +26,7 @@ class PopularReadersCVC: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Do any additional setup after loading the view.
+        //self.collectionView.backgroundColor = .green
     }
 
     /*
@@ -92,11 +93,14 @@ class PopularReadersCVC: UICollectionViewController {
     */
 
 }
+
 extension PopularReadersCVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.size.width / columns, height: collectionView.frame.size.height)
+        //let width = Int((collectionView.frame.width / columns) - (inset + spacing))
+        let width = collectionView.bounds.width / columns
+        return CGSize(width: width , height: width)
         
     }
     
@@ -112,3 +116,4 @@ extension PopularReadersCVC: UICollectionViewDelegateFlowLayout {
         return 0
     }
 }
+

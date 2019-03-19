@@ -6,11 +6,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="SF-Compact-Rounded-Regular.otf">
             <string>SFCompactRounded-Regular</string>
+        </array>
+        <array key="SF-Compact-Rounded-Semibold.otf">
+            <string>SFCompactRounded-Semibold</string>
         </array>
         <array key="SF-Pro-Display-Regular.otf">
             <string>SFProDisplay-Regular</string>
@@ -76,6 +80,7 @@
                                     <outlet property="bookImage" destination="Q6C-S4-V4t" id="XCy-4h-c4D"/>
                                     <outlet property="titleLbl" destination="Qpy-JL-Fsc" id="wJ2-Pv-Cyo"/>
                                     <outletCollection property="gestureRecognizers" destination="Yvq-WV-tqH" appends="YES" id="DdF-Ts-wfb"/>
+                                    <segue destination="rYU-4A-fTi" kind="show" identifier="bookDetail" id="ck7-oe-8g3"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -90,7 +95,6 @@
                                 <action selector="returnBack:" destination="1FP-MD-wPv" id="Mn8-mi-OTs"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="rewind" id="TdY-he-pOz"/>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="khk-BN-P7m" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -100,7 +104,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="951.20000000000005" y="119.1904047976012"/>
+            <point key="canvasLocation" x="823" y="119"/>
         </scene>
         <!--Discover-->
         <scene sceneID="5UM-WJ-Peu">
@@ -121,6 +125,110 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OmR-5v-aqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="12" y="119.1904047976012"/>
+        </scene>
+        <!--Book Detail-->
+        <scene sceneID="2Vk-09-nCR">
+            <objects>
+                <viewController title="Book Detail" id="rYU-4A-fTi" customClass="BookDetailVC" customModule="MrPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XyZ-E7-m3v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4yo-51-Vv5">
+                                <rect key="frame" x="16" y="80" width="112" height="169"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="112" id="2We-HX-RHu"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Eab-xl-Jcp">
+                                <rect key="frame" x="146" y="80" width="211" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAw-9N-3We">
+                                        <rect key="frame" x="0.0" y="0.0" width="211" height="21"/>
+                                        <fontDescription key="fontDescription" name="SFCompactRounded-Semibold" family="SF Compact Rounded" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sv4-as-S34">
+                                        <rect key="frame" x="0.0" y="29" width="211" height="21"/>
+                                        <fontDescription key="fontDescription" name="SFCompactRounded-Regular" family="SF Compact Rounded" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="fxA-vQ-grl"/>
+                                </constraints>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yt5-LQ-rNq" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="146" y="146" width="211" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Dm7-7Z-7nk"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="8vb-Sb-C0T">
+                                <rect key="frame" x="146" y="199" width="211" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added to shelf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="114-63-Vv1">
+                                        <rect key="frame" x="0.0" y="0.0" width="81" height="50"/>
+                                        <fontDescription key="fontDescription" name="SFCompactRounded-Regular" family="SF Compact Rounded" pointSize="13"/>
+                                        <color key="textColor" red="0.37647058820000001" green="0.43137254899999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EHp-yb-OHw">
+                                        <rect key="frame" x="71" y="0.0" width="140" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="140" id="Xr2-pT-5UC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFCompactRounded-Regular" family="SF Compact Rounded" pointSize="17"/>
+                                        <state key="normal" title="Add to shelf"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="epe-W9-iTd"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4yo-51-Vv5" firstAttribute="top" secondItem="FUx-2i-pMY" secondAttribute="top" constant="16" id="6WI-Gh-EOi"/>
+                            <constraint firstItem="yt5-LQ-rNq" firstAttribute="top" secondItem="Eab-xl-Jcp" secondAttribute="bottom" constant="16" id="AYa-kz-4Ec"/>
+                            <constraint firstItem="8vb-Sb-C0T" firstAttribute="trailing" secondItem="yt5-LQ-rNq" secondAttribute="trailing" id="F3f-Sr-NVf"/>
+                            <constraint firstItem="8vb-Sb-C0T" firstAttribute="leading" secondItem="yt5-LQ-rNq" secondAttribute="leading" id="H6M-L3-rjj"/>
+                            <constraint firstItem="Eab-xl-Jcp" firstAttribute="top" secondItem="4yo-51-Vv5" secondAttribute="top" id="HB3-Op-9HA"/>
+                            <constraint firstItem="FUx-2i-pMY" firstAttribute="trailing" secondItem="Eab-xl-Jcp" secondAttribute="trailing" constant="18" id="WaG-Hi-lmK"/>
+                            <constraint firstItem="8vb-Sb-C0T" firstAttribute="bottom" secondItem="4yo-51-Vv5" secondAttribute="bottom" id="epB-rM-thM"/>
+                            <constraint firstItem="Eab-xl-Jcp" firstAttribute="leading" secondItem="4yo-51-Vv5" secondAttribute="trailing" constant="18" id="n60-Sq-ECP"/>
+                            <constraint firstItem="4yo-51-Vv5" firstAttribute="leading" secondItem="FUx-2i-pMY" secondAttribute="leading" constant="16" id="tbu-Gv-1FV"/>
+                            <constraint firstItem="8vb-Sb-C0T" firstAttribute="top" secondItem="yt5-LQ-rNq" secondAttribute="bottom" constant="8" id="uNi-oo-udf"/>
+                            <constraint firstItem="yt5-LQ-rNq" firstAttribute="trailing" secondItem="Eab-xl-Jcp" secondAttribute="trailing" id="vt5-iA-Cpd"/>
+                            <constraint firstItem="yt5-LQ-rNq" firstAttribute="leading" secondItem="Eab-xl-Jcp" secondAttribute="leading" id="xOt-Er-Ij9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FUx-2i-pMY"/>
+                    </view>
+                    <connections>
+                        <outlet property="addToShelfBtn" destination="EHp-yb-OHw" id="77R-Fk-Mwg"/>
+                        <outlet property="addedToShelfTimeLbl" destination="114-63-Vv1" id="lfL-hh-ogD"/>
+                        <outlet property="bookAuthorLbl" destination="Sv4-as-S34" id="wGe-QF-iGm"/>
+                        <outlet property="bookImg" destination="4yo-51-Vv5" id="hW4-FI-UeR"/>
+                        <outlet property="bookTitleLbl" destination="bAw-9N-3We" id="l8r-t3-hMV"/>
+                        <outlet property="starsCosmos" destination="yt5-LQ-rNq" id="6kV-aV-qtW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lRq-nf-2vk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1710" y="106"/>
         </scene>
     </scenes>
     <resources>

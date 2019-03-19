@@ -75,6 +75,8 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        //self.collectionView.addGestureRecognizer(tap)
         self.searchData = []
         receivedData = Data()
         setupSearchController()
@@ -101,7 +103,7 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
         self.dismiss(animated: true, completion: nil)
     }
     @objc func handleTap(sender: UITapGestureRecognizer) {
-        //CircleMenu.hideButtons(CircleMenu.self)
+        performSegue(withIdentifier: "bookDetail", sender: self)
     }
     /*
     @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
@@ -202,6 +204,7 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
         if dictionary[indexPath.row].image != nil {
             let str = dictionary[indexPath.row].image
             let replace = str?.replacingOccurrences(of: "http", with: "https")
+            //dictionary[indexPath.row].image = replace
             let url:URL! = URL(string: replace!)
             cell.bookImage.kf.indicatorType = .activity
             cell.bookImage.kf.setImage(with: url!)
@@ -267,6 +270,23 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
     }
     */
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "bookDetail" {
+            let vc = segue.destination as! BookDetailVC
+            let cell = sender as! UICollectionViewCell
+            
+            if let indexPath = self.collectionView.indexPath(for: cell) {
+            
+            
+            
+                vc.bookImage = searchData?[indexPath.row].image ?? ""
+                vc.booktitle = searchData?[indexPath.row].title ?? "No title"
+                vc.bookAuthor = searchData?[indexPath.row].author ?? "No Author"
+            
+            }
+            
+        }
+    }
 }
 
 extension SearchResultCVC : UICollectionViewDelegateFlowLayout {
