@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		3972B3E0D7884376B242916B /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905BC6073AA8B982E8B243B3 /* Pods_OneSignalNotificationServiceExtension.framework */; };
 		3F07507BF9FFC1CF85C84F42 /* Pods_MrPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0936315C369E5F4213EA8B18 /* Pods_MrPlanner.framework */; };
+		5F14A6CA224238AE008384D3 /* TabbarMultipleChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F14A6C9224238AE008384D3 /* TabbarMultipleChild.swift */; };
+		5F14A6CD2242AC72008384D3 /* IntroductionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F14A6CC2242AC72008384D3 /* IntroductionVC.swift */; };
+		5F14A6CF2242AC87008384D3 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F14A6CE2242AC87008384D3 /* DetailVC.swift */; };
+		5F14A6D12242AC94008384D3 /* ReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F14A6D02242AC94008384D3 /* ReviewVC.swift */; };
 		5F467BB4223564BF00D3F41F /* GoogleSearchTableResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F467BB3223564BF00D3F41F /* GoogleSearchTableResult.storyboard */; };
 		5F467BB62235652400D3F41F /* GoogleSearchCollectionResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F467BB52235652400D3F41F /* GoogleSearchCollectionResult.storyboard */; };
 		5F467BB8223565C000D3F41F /* SearchResultCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F467BB7223565C000D3F41F /* SearchResultCVC.swift */; };
@@ -127,6 +131,10 @@
 /* Begin PBXFileReference section */
 		0936315C369E5F4213EA8B18 /* Pods_MrPlanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MrPlanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B5A74FE9DA9096DBF0FF302 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
+		5F14A6C9224238AE008384D3 /* TabbarMultipleChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarMultipleChild.swift; sourceTree = "<group>"; };
+		5F14A6CC2242AC72008384D3 /* IntroductionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionVC.swift; sourceTree = "<group>"; };
+		5F14A6CE2242AC87008384D3 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		5F14A6D02242AC94008384D3 /* ReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewVC.swift; sourceTree = "<group>"; };
 		5F467BB3223564BF00D3F41F /* GoogleSearchTableResult.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GoogleSearchTableResult.storyboard; sourceTree = "<group>"; };
 		5F467BB52235652400D3F41F /* GoogleSearchCollectionResult.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoogleSearchCollectionResult.storyboard; sourceTree = "<group>"; };
 		5F467BB7223565C000D3F41F /* SearchResultCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCVC.swift; sourceTree = "<group>"; };
@@ -247,13 +255,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F14A6CB2242AC49008384D3 /* Book Detail */ = {
+			isa = PBXGroup;
+			children = (
+				5F14A6C9224238AE008384D3 /* TabbarMultipleChild.swift */,
+				5FB7E628223E3B1B00A7B9CB /* BookDetailVC.swift */,
+				5F14A6CC2242AC72008384D3 /* IntroductionVC.swift */,
+				5F14A6CE2242AC87008384D3 /* DetailVC.swift */,
+				5F14A6D02242AC94008384D3 /* ReviewVC.swift */,
+			);
+			path = "Book Detail";
+			sourceTree = "<group>";
+		};
 		5F5A734722363D9F0003F66E /* SearchGoogleCVC */ = {
 			isa = PBXGroup;
 			children = (
+				5F14A6CB2242AC49008384D3 /* Book Detail */,
 				5F467BB7223565C000D3F41F /* SearchResultCVC.swift */,
 				5F467BB9223565E700D3F41F /* SearchResultCell.swift */,
 				5F467BB52235652400D3F41F /* GoogleSearchCollectionResult.storyboard */,
-				5FB7E628223E3B1B00A7B9CB /* BookDetailVC.swift */,
 			);
 			path = SearchGoogleCVC;
 			sourceTree = "<group>";
@@ -670,7 +690,9 @@
 				"${PODS_ROOT}/Target Support Files/Pods-MrPlanner/Pods-MrPlanner-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
+				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
@@ -690,7 +712,9 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BetterSegmentedControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
@@ -768,6 +792,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F14A6CA224238AE008384D3 /* TabbarMultipleChild.swift in Sources */,
 				5F467BB8223565C000D3F41F /* SearchResultCVC.swift in Sources */,
 				5F7C215E22195E45002FAEBF /* BookDetail.swift in Sources */,
 				5F76AA7E221C01C0003BE931 /* googleSearchTVC.swift in Sources */,
@@ -780,12 +805,15 @@
 				5FADA483223D4C2200F1B2A8 /* SplashViewController.swift in Sources */,
 				5FB412AB222A7B6900B4A3E7 /* PopularReadersCell.swift in Sources */,
 				5FD15E0D2225969900DB5BFE /* MainVC.swift in Sources */,
+				5F14A6CF2242AC87008384D3 /* DetailVC.swift in Sources */,
 				5FB412B4222AC8B800B4A3E7 /* TabBar.swift in Sources */,
 				5FB7E626223E2F8200A7B9CB /* Books.swift in Sources */,
 				5FB412AE222A8DC100B4A3E7 /* PopularBookCell.swift in Sources */,
 				5FB7E629223E3B1B00A7B9CB /* BookDetailVC.swift in Sources */,
 				5FADA47F223CD5EA00F1B2A8 /* goodreadLoginVC.swift in Sources */,
+				5F14A6CD2242AC72008384D3 /* IntroductionVC.swift in Sources */,
 				5F7C214C22195CB5002FAEBF /* AppDelegate.swift in Sources */,
+				5F14A6D12242AC94008384D3 /* ReviewVC.swift in Sources */,
 				5F76AA7C221B0739003BE931 /* UserInfoVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

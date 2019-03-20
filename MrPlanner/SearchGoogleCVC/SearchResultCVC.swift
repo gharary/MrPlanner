@@ -282,6 +282,7 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
                 vc.bookImage = searchData?[indexPath.row].image ?? ""
                 vc.booktitle = searchData?[indexPath.row].title ?? "No title"
                 vc.bookAuthor = searchData?[indexPath.row].author ?? "No Author"
+                vc.bookID = searchData[indexPath.row].id ?? ""
             
             }
             
@@ -354,7 +355,7 @@ extension SearchResultCVC: UISearchResultsUpdating {
                             book.desc = subJson["volumeInfo"]["description"].string
                             book.image = subJson["volumeInfo"]["imageLinks"]["thumbnail"].string
                             book.title = subJson["volumeInfo"]["title"].string
-                            
+                            book.id = subJson["id"].string
                             self.searchData.append(book)
                             
                         }

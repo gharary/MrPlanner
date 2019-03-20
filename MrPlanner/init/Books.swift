@@ -13,6 +13,11 @@ struct Books {
     var author:String?
     var image:String?
     var desc: String?
+    var publisher: String?
+    var pageCount:String?
+    var mainCategory:String?
+    var categories:[String]?
+    var avgRating:String?
     
     
 }
