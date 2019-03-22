@@ -66,6 +66,11 @@ class PopularBookCVC: UICollectionViewController {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "BookDetailVC", sender: nil)
+        
+    }
+    
     // MARK: UICollectionViewDelegate
 
     /*
@@ -81,21 +86,26 @@ class PopularBookCVC: UICollectionViewController {
         return true
     }
     */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "BookDetailVC" {
+            let vc = segue.destination as! BookDetailVC
+            let cell = sender as! UICollectionViewCell
+            
+            if let indexPath = self.collectionView.indexPath(for: cell) {
+                
+                
+                /*
+                vc.bookImage = searchData?[indexPath.row].image ?? ""
+                vc.booktitle = searchData?[indexPath.row].title ?? "No title"
+                vc.bookAuthor = searchData?[indexPath.row].author ?? "No Author"
+                vc.bookID = searchData[indexPath.row].id ?? ""
+                vc.averageRating = searchData[indexPath.row].avgRating ?? ""
+                 */
+            }
+ 
+        }
     }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
-    }
-    */
 
 }
 extension PopularBookCVC: UICollectionViewDelegateFlowLayout {

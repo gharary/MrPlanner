@@ -31,7 +31,7 @@ class BookDetailVC: UIViewController {
     var bookDesc : String = ""
     var bookImage: String = ""
     var bookID:String = ""
-    
+    var averageRating:String = ""
     
     lazy var IntroductionVC: IntroductionVC = {
         let storyboard = UIStoryboard(name: "GoogleSearchCollectionResult", bundle: Bundle.main)
@@ -131,7 +131,7 @@ class BookDetailVC: UIViewController {
         starsCosmos.settings.emptyImage = UIImage(named: "star-regular")
         starsCosmos.settings.fillMode = .precise
         starsCosmos.settings.updateOnTouch = false
-        starsCosmos.rating = 3.65
+        starsCosmos.rating = Double(averageRating) ?? 0
         
         //button init
         addToShelfBtn.clipsToBounds = true

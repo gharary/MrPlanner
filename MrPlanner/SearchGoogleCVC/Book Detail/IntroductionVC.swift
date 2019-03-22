@@ -9,7 +9,8 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-
+import SVProgressHUD
+import PKHUD
 
 class IntroductionVC: UIViewController {
     
@@ -31,7 +32,7 @@ class IntroductionVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         //print("Introduction View Loaded Nicely!")
         //print(bookID)
-        
+        SVProgressHUD.showProgress(0.1)
         guard bookID != "" else { return }
         
             getDataFromGoogle()
@@ -41,16 +42,17 @@ class IntroductionVC: UIViewController {
     private func updateView(_ book:Books) {
         //print(baseURL!)
         print(book)
-        
+        SVProgressHUD.showProgress(1)
         publisherLbl.text = "Publisher: \(book.publisher ?? "")"
         descTV.text = book.desc
         mainCategory.text = "Category: \(book.categories?[0] ?? "")"
+        SVProgressHUD.dismiss(withDelay: 0.5)
     }
     
     private func getDataFromGoogle() {
         baseURL = URL(string: "https://www.googleapis.com/books/v1/volumes/\(bookID)")
         //let parameters: Parameters = ["\(bookID)"]//,"key":"AIzaSyCIXIPXJQwCYE9hHdTghuH-jNRIm2tvx8Y"]
-        
+        SVProgressHUD.showProgress(0.3)
         Alamofire.request(baseURL!, method: .get)
             .responseJSON { response in
                 var statusCode = response.response?.statusCode
@@ -60,7 +62,7 @@ class IntroductionVC: UIViewController {
                     
                     //print("Success!")
                     if response.data != nil  && statusCode == 200 {
-                        
+                        SVProgressHUD.showProgress(0.6)
                         let json = try! JSON(data: response.data!)
                         var book:Books = Books()
                         book.author = json["volumeInfo"]["authors"][0].string
@@ -71,11 +73,13 @@ class IntroductionVC: UIViewController {
                         book.pageCount = json["volumeInfo"]["pageCount"].string
                         book.categories = json["volumeInfo"]["categories"].arrayObject as? [String]
                         book.id = json["id"].string
-
+                        SVProgressHUD.showProgress(0.8)
                         self.updateView(book)
                         
                     }
                 case .failure(let error):
+                    SVProgressHUD.showError(withStatus: "Error")
+                    SVProgressHUD.dismiss()
                     statusCode = error._code // statusCode private
                     print("status code is: \(String(describing: statusCode))")
                     print(error)

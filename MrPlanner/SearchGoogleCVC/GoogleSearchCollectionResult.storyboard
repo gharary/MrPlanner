@@ -92,13 +92,7 @@
                             <outlet property="delegate" destination="1FP-MD-wPv" id="Lqf-aY-DQN"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="4KG-HL-FkW">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="man-tO-SNO">
-                            <connections>
-                                <action selector="returnBack:" destination="1FP-MD-wPv" id="Mn8-mi-OTs"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="4KG-HL-FkW"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="khk-BN-P7m" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Yvq-WV-tqH">
@@ -132,7 +126,7 @@
         <!--Book Detail-->
         <scene sceneID="2Vk-09-nCR">
             <objects>
-                <viewController title="Book Detail" id="rYU-4A-fTi" customClass="BookDetailVC" customModule="MrPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookDetailVC" title="Book Detail" id="rYU-4A-fTi" customClass="BookDetailVC" customModule="MrPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XyZ-E7-m3v">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

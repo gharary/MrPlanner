@@ -48,6 +48,8 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
     ]
     
     
+    let BookCategories: [String] = ["Education","Fiction","Business","Design"]
+    
     let columns: CGFloat = 3
     let inset: CGFloat = 8.0
     let spacing: CGFloat = 8.0
@@ -72,10 +74,22 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
     var activityInd: UIActivityIndicatorView = UIActivityIndicatorView()
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        randomCatBook()
+        
+    }
+    
+    
+    private func randomCatBook() {
+        if searchBarIsEmpty() {
+            let i = Int.random(in: 0 ..< BookCategories.count)
+            reqSearchServer(term: "subject=\(BookCategories[i])")
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        //let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
         //self.collectionView.addGestureRecognizer(tap)
         self.searchData = []
         receivedData = Data()
@@ -158,7 +172,7 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
     */
     
     func searchBarIsEmpty() -> Bool {
-        return searchController.searchBar.text?.isEmpty ?? true
+        return (searchController.searchBar.text?.isEmpty)! //?? true
     }
     
 
@@ -283,7 +297,7 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
                 vc.booktitle = searchData?[indexPath.row].title ?? "No title"
                 vc.bookAuthor = searchData?[indexPath.row].author ?? "No Author"
                 vc.bookID = searchData[indexPath.row].id ?? ""
-            
+                vc.averageRating = searchData[indexPath.row].avgRating ?? ""
             }
             
         }
@@ -320,14 +334,21 @@ extension SearchResultCVC : UICollectionViewDelegateFlowLayout {
         return lineSpacing
     }
 }
+extension SearchResultCVC: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        randomCatBook()
+    }
+}
 extension SearchResultCVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text {
             reqSearchServer(term: searchText)
         } else {
-            collectionView.reloadData()
+            randomCatBook()
+            //collectionView.reloadData()
         }
     }
+    
     
     func reqSearchServer(term: String) {
         
@@ -340,7 +361,7 @@ extension SearchResultCVC: UISearchResultsUpdating {
                 switch response.result {
                 case .success:
                     
-                    print("Success!")
+                    //print("Success!")
                     if response.data != nil {
                         
                         let json = try! JSON(data: response.data!)
@@ -356,6 +377,7 @@ extension SearchResultCVC: UISearchResultsUpdating {
                             book.image = subJson["volumeInfo"]["imageLinks"]["thumbnail"].string
                             book.title = subJson["volumeInfo"]["title"].string
                             book.id = subJson["id"].string
+                            book.avgRating = subJson["volumeInfo"]["averageRating"].string
                             self.searchData.append(book)
                             
                         }
