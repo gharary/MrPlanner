@@ -33,7 +33,11 @@ class BookDetailVC: UIViewController {
     var bookID:String = ""
     var averageRating:String = ""
     
+    var segueString:String = ""
+    
     lazy var IntroductionVC: IntroductionVC = {
+        
+        
         let storyboard = UIStoryboard(name: "GoogleSearchCollectionResult", bundle: Bundle.main)
         
         var viewController = storyboard.instantiateViewController(withIdentifier: "IntroductionVC") as! IntroductionVC
@@ -52,10 +56,10 @@ class BookDetailVC: UIViewController {
         return viewController
     }()
     
-    lazy var ReviewVC: ReviewVC = {
+    lazy var ReviewVC: ReviewTVC = {
         let storyboard = UIStoryboard(name: "GoogleSearchCollectionResult", bundle: Bundle.main)
         
-        var viewController = storyboard.instantiateViewController(withIdentifier: "ReviewVC") as! ReviewVC
+        var viewController = storyboard.instantiateViewController(withIdentifier: "ReviewVC") as! ReviewTVC
         self.addViewControllerAsChildViewController(childViewController: viewController)
         
         return viewController
@@ -104,6 +108,8 @@ class BookDetailVC: UIViewController {
     //@IBOutlet weak var cate
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        checkSegue()
         initStart()
         // Do any additional setup after loading the view.
         loadData()
@@ -112,6 +118,21 @@ class BookDetailVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         //print(bookID)
+    }
+    
+    private func checkSegue() {
+        switch segueString {
+        case "BookDetailVC":
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(addTapped))
+        case "bookDetail":
+            print("")
+        default:
+            print("")
+        }
+    }
+    
+    @objc func addTapped(){
+        self.dismiss(animated: true, completion: nil)
     }
     func loadData() {
         bookTitleLbl.text = booktitle
@@ -180,6 +201,10 @@ class BookDetailVC: UIViewController {
         
         //segmentControl.normalFont = UIFont(name: "SF-Compact-Rounded-Regular", size: 14.0)!
         segmentControl.addTarget(self, action: #selector(controlValueChanged), for: .valueChanged)
+        
+        //ContainerView init
+        containerView.layer.cornerRadius = 5
+        
         
         
     }

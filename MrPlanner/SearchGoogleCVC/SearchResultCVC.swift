@@ -286,7 +286,7 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "bookDetail" {
-            let vc = segue.destination as! BookDetailVC
+            if let nav = segue.destination as? UINavigationController, let vc = nav.topViewController as? BookDetailVC {
             let cell = sender as! UICollectionViewCell
             
             if let indexPath = self.collectionView.indexPath(for: cell) {
@@ -298,6 +298,7 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
                 vc.bookAuthor = searchData?[indexPath.row].author ?? "No Author"
                 vc.bookID = searchData[indexPath.row].id ?? ""
                 vc.averageRating = searchData[indexPath.row].avgRating ?? ""
+                }
             }
             
         }

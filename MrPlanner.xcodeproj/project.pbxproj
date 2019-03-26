@@ -100,6 +100,7 @@
 		5FB7E626223E2F8200A7B9CB /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7E625223E2F8100A7B9CB /* Books.swift */; };
 		5FB7E629223E3B1B00A7B9CB /* BookDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7E628223E3B1B00A7B9CB /* BookDetailVC.swift */; };
 		5FD15E0D2225969900DB5BFE /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD15E0C2225969900DB5BFE /* MainVC.swift */; };
+		5FF26D57224A116500D23645 /* ReviewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF26D56224A116500D23645 /* ReviewTVC.swift */; };
 		5FFA1A402239559E00A484F4 /* FirstView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FFA1A3F2239559E00A484F4 /* FirstView.storyboard */; };
 		5FFA1A422239576A00A484F4 /* FirstViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFA1A412239576A00A484F4 /* FirstViewVC.swift */; };
 /* End PBXBuildFile section */
@@ -227,6 +228,7 @@
 		5FB7E625223E2F8100A7B9CB /* Books.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
 		5FB7E628223E3B1B00A7B9CB /* BookDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailVC.swift; sourceTree = "<group>"; };
 		5FD15E0C2225969900DB5BFE /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		5FF26D56224A116500D23645 /* ReviewTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTVC.swift; sourceTree = "<group>"; };
 		5FFA1A3F2239559E00A484F4 /* FirstView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstView.storyboard; sourceTree = "<group>"; };
 		5FFA1A412239576A00A484F4 /* FirstViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewVC.swift; sourceTree = "<group>"; };
 		905BC6073AA8B982E8B243B3 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -263,6 +265,7 @@
 				5F14A6CC2242AC72008384D3 /* IntroductionVC.swift */,
 				5F14A6CE2242AC87008384D3 /* DetailVC.swift */,
 				5F14A6D02242AC94008384D3 /* ReviewVC.swift */,
+				5FF26D56224A116500D23645 /* ReviewTVC.swift */,
 			);
 			path = "Book Detail";
 			sourceTree = "<group>";
@@ -805,6 +808,7 @@
 				5F76AA752219993E003BE931 /* SearchTVC.swift in Sources */,
 				5FB412B0222A8DD500B4A3E7 /* PopularBookCVC.swift in Sources */,
 				5FFA1A422239576A00A484F4 /* FirstViewVC.swift in Sources */,
+				5FF26D57224A116500D23645 /* ReviewTVC.swift in Sources */,
 				5F76AA792219A373003BE931 /* BookTVCell.swift in Sources */,
 				5FADA483223D4C2200F1B2A8 /* SplashViewController.swift in Sources */,
 				5FB412AB222A7B6900B4A3E7 /* PopularReadersCell.swift in Sources */,
