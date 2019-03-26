@@ -123,17 +123,21 @@ class BookDetailVC: UIViewController {
     private func checkSegue() {
         switch segueString {
         case "BookDetailVC":
-            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(addTapped))
+             navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(addTapped))
+             
         case "bookDetail":
-            print("")
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(addTapped))
+            
         default:
-            print("")
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(addTapped))
         }
     }
     
     @objc func addTapped(){
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
     func loadData() {
         bookTitleLbl.text = booktitle
         bookAuthorLbl.text = bookAuthor

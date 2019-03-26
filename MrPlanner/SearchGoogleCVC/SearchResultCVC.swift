@@ -297,6 +297,7 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
                 vc.booktitle = searchData?[indexPath.row].title ?? "No title"
                 vc.bookAuthor = searchData?[indexPath.row].author ?? "No Author"
                 vc.bookID = searchData[indexPath.row].id ?? ""
+                //print(searchData[indexPath.row].avgRating!)
                 vc.averageRating = searchData[indexPath.row].avgRating ?? ""
                 }
             }
@@ -378,6 +379,7 @@ extension SearchResultCVC: UISearchResultsUpdating {
                             book.image = subJson["volumeInfo"]["imageLinks"]["thumbnail"].string
                             book.title = subJson["volumeInfo"]["title"].string
                             book.id = subJson["id"].string
+                            let avg = subJson["volumeInfo"]["averageRating"].int
                             book.avgRating = subJson["volumeInfo"]["averageRating"].string
                             self.searchData.append(book)
                             

@@ -41,7 +41,7 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
 
     let columns: CGFloat = 3.5
     let inset: CGFloat = 8.0
-    let spacing: CGFloat = 20.0
+    let spacing: CGFloat = 8.0
     let lineSpacing:CGFloat = 8.0
     
     
@@ -68,16 +68,9 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
         let i = Int.random(in: 0 ..< BookCategories.count)
         reqSearchServer(term: "subject=\(BookCategories[i])")
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+ 
+ 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -231,19 +224,22 @@ extension PopularBookCVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.size.width / columns, height: collectionView.frame.size.height)
+        let width = Int((collectionView.frame.width / columns) - (inset + spacing))
+        
+        
+        return CGSize(width: width, height: width * 2)
         
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return spacing
     }
     
     func collectionView(_ collectionView: UICollectionView, layout
         collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return lineSpacing
     }
 }
