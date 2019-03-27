@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import Floaty
 
-class MainVC: UIViewController {
+
+
+
+class MainVC: UIViewController, FloatyDelegate{
 
     
     @IBOutlet weak var googleBTN: UIButton!
@@ -25,9 +29,22 @@ class MainVC: UIViewController {
         googleBTN.layer.borderWidth = 2.5
         avoCodeTest()
         testCode()
+        floatingButton()
     }
     
-
+  
+    private func floatingButton() {
+        let floaty = Floaty()
+        //floaty.addItem(title: "Hello World!")
+        //floaty.buttonImage = UIImage(named: "Bill")
+        floaty.fabDelegate = self
+        self.view.addSubview(floaty)
+    }
+    
+    
+    func emptyFloatySelected(_ floaty: Floaty) {
+        //print("Floaty Clicked!")
+    }
     func testCode(){
         
         testButton.clipsToBounds = true

@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Floaty
 
-class ReviewTVC: UITableViewController {
+
+
+class ReviewTVC: UITableViewController, FloatyDelegate {
 
     
     let reuseIdentifier = "ReviewCell"
@@ -16,13 +19,23 @@ class ReviewTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        floatingButton()
+    }
+    
+    private func floatingButton() {
+        let floaty = Floaty()
+        
+        floaty.fabDelegate = self
+        floaty.sticky = true
+        self.tableView.addSubview(floaty)
+    }
+    
+    func emptyFloatySelected(_ floaty: Floaty) {
+        print("Floaty ReviewTVC Clicked!")
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
