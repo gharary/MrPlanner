@@ -109,7 +109,7 @@ class SearchTVC: UITableViewController , XMLParserDelegate {
 
         var dictionary: [Books] = searchData
         // Configure the cell...
-        cell.bookAuthor.text = dictionary[indexPath.row].author
+        cell.bookAuthor.text = dictionary[indexPath.row].authors?[0]
         cell.bookTitle.text = dictionary[indexPath.row].title
         if dictionary[indexPath.row].image != nil {
             let url:URL! = URL(string: dictionary[indexPath.row].image!)
@@ -209,7 +209,7 @@ extension SearchTVC: UISearchResultsUpdating {
                         
                         var book: Books = Books()
                         
-                        book.author = elem["best_book"]["author"]["name"].element?.text
+                        //book.authors = elem["best_book"]["author"]["name"].element?.text
                         book.title = elem["best_book"]["title"].element?.text
                         book.image = elem["best_book"]["small_image_url"].element?.text
                         book.id = elem["id"].element?.text

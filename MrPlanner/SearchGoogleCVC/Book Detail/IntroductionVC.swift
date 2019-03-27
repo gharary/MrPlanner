@@ -43,9 +43,21 @@ class IntroductionVC: UIViewController {
         //print(baseURL!)
         print(book)
         SVProgressHUD.showProgress(1)
-        publisherLbl.text = "Publisher: \(book.publisher ?? "")"
-        descTV.text = book.desc
-        mainCategory.text = "Category: \(book.categories?[0] ?? "")"
+        
+        let replace = book.desc?.replacingOccurrences(of: "<p>|</p>|<br>|</br>|<i>|</i>|<b>|</b>", with: "", options: .regularExpression)
+        
+        descTV.text = replace
+        
+        publisherLbl.isHidden = true
+        mainCategory.isHidden = true
+        
+        let topAnchor = descTV.topAnchor.constraint(equalTo: view.topAnchor, constant: 20)
+        
+        view.addConstraint(topAnchor)
+        
+        
+        //publisherLbl.text = "Publisher: \(book.publisher ?? "")"
+        //mainCategory.text = "Category: \(book.categories?[0] ?? "")"
         SVProgressHUD.dismiss(withDelay: 0.5)
     }
     
@@ -65,7 +77,7 @@ class IntroductionVC: UIViewController {
                         SVProgressHUD.showProgress(0.6)
                         let json = try! JSON(data: response.data!)
                         var book:Books = Books()
-                        book.author = json["volumeInfo"]["authors"][0].string
+                        book.authors = json["volumeInfo"]["authors"].arrayObject as? [String]
                         book.publisher = json["volumeInfo"]["publisher"].string
                         book.desc = json["volumeInfo"]["description"].string
                         book.image = json["volumeInfo"]["imageLinks"]["thumbnail"].string

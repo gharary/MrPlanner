@@ -10,14 +10,18 @@ import Foundation
 struct Books {
     var id:String?
     var title:String?
-    var author:String?
+    var authors:[String]?
     var image:String?
     var desc: String?
     var publisher: String?
+    var publishDate: String?
+    var ISBN_13: String?
+    var ISBN_10: String?
     var pageCount:String?
     var mainCategory:String?
     var categories:[String]?
-    var avgRating:String?
+    var avgRating:Double?
+    var ratingsCount: Int?
     
     
 }

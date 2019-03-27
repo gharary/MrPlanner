@@ -48,7 +48,7 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
     ]
     
     
-    let BookCategories: [String] = ["Education","Fiction","Business","Design"]
+    let BookCategories: [String] = ["Education","Fiction","Business","Design", "Growth", "Drama", "Lesbian"]
     
     let columns: CGFloat = 3
     let inset: CGFloat = 8.0
@@ -75,6 +75,7 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
     
     
     override func viewWillAppear(_ animated: Bool) {
+        self.title = "Discover Books!"
         randomCatBook()
         
     }
@@ -97,11 +98,15 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
     }
 
     func setupSearchController() {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Books"
         
+        
         navigationItem.searchController = searchController
+        navigationItem.searchController?.searchBar.delegate = self
         definesPresentationContext = true
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
@@ -119,57 +124,6 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
     @objc func handleTap(sender: UITapGestureRecognizer) {
         performSegue(withIdentifier: "bookDetail", sender: self)
     }
-    /*
-    @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
-        
-        switch sender.state {
-        case .began:
-           
-            button?.removeFromSuperview()
-            let touchPoint = sender.location(in: self.collectionView)
-            if let indexPath = self.collectionView.indexPathForItem(at: touchPoint) {
-                let cell = self.collectionView.cellForItem(at: indexPath)
-                print(indexPath)
-                
-                
-                // init Button
-                /*
-                button = CircleMenu(frame: CGRect(x: ((cell?.center.x)!) , y: (cell?.center.y)!, width: 50, height: 50), normalIcon: "icon_menu", selectedIcon: "icon_close", buttonsCount: 4, duration: 1, distance: 100)
-                button?.delegate = self
-               
-                button?.layer.cornerRadius = (button?.frame.size.width)! / 2.0
-                */
-                
-                //init blur view
-                /*
-                let blurEffect = UIBlurEffect(style: .light)
-                let blurEffectView = UIVisualEffectView(effect: blurEffect)
-                blurEffectView.frame = self.view.bounds
-                blurEffectView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-                
-                let view = UIView(frame: (cell?.frame)!)
-                view.addSubview(cell!)
-                
-                self.view.addSubview(view)
-                self.view.addSubview(blurEffectView)
-                
-                
-                button?.removeFromSuperview()
-                self.view.addSubview(button!)
-                button?.sendActions(for: .touchUpInside)
-                //cell?.addSubview(button)
-                */
-                
-            }
-        case .changed:
-            let point = sender.location(in: self.view)
-            
-        case .ended, .cancelled, .failed, .possible:
-            let point = sender.location(in: self.view)
-            
-        }
-    }
-    */
     
     func searchBarIsEmpty() -> Bool {
         return (searchController.searchBar.text?.isEmpty)! //?? true
@@ -213,7 +167,7 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
         var dictionary: [Books] = searchData
         
         cell.titleLbl.text = dictionary[indexPath.row].title
-        cell.authorLbl.text = dictionary[indexPath.row].author
+        cell.authorLbl.text = dictionary[indexPath.row].authors?[0]
         
         if dictionary[indexPath.row].image != nil {
             let str = dictionary[indexPath.row].image
@@ -295,10 +249,10 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
             
                 vc.bookImage = searchData?[indexPath.row].image ?? ""
                 vc.booktitle = searchData?[indexPath.row].title ?? "No title"
-                vc.bookAuthor = searchData?[indexPath.row].author ?? "No Author"
+                vc.bookAuthor = searchData?[indexPath.row].authors?[0] ?? "No Author"
                 vc.bookID = searchData[indexPath.row].id ?? ""
                 //print(searchData[indexPath.row].avgRating!)
-                vc.averageRating = searchData[indexPath.row].avgRating ?? ""
+                vc.averageRating = searchData[indexPath.row].avgRating ?? 0
                 }
             }
             
@@ -336,6 +290,9 @@ extension SearchResultCVC : UICollectionViewDelegateFlowLayout {
         return lineSpacing
     }
 }
+
+
+
 extension SearchResultCVC: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         randomCatBook()
@@ -371,16 +328,20 @@ extension SearchResultCVC: UISearchResultsUpdating {
                         self.searchData = []
                         for (_,subJson):(String, JSON) in json["items"] {
                             
-                            //print("This is subJson: \(String(describing: subJson["volumeInfo"]["title"].string))")
                             
                             var book:Books = Books()
-                            book.author = subJson["volumeInfo"]["authors"][0].string
-                            book.desc = subJson["volumeInfo"]["description"].string
+                            book.authors = subJson["volumeInfo"]["authors"].arrayObject as? [String]
+                            if let desc = subJson["volumeInfo"]["description"].string {
+                                let replace = desc.replacingOccurrences(of: "<p>|</p>|<br>|</br>|<i>|</i>|<b>|</b>", with: "", options: .regularExpression)
+                                
+                                book.desc = replace
+                            }
+                            
                             book.image = subJson["volumeInfo"]["imageLinks"]["thumbnail"].string
                             book.title = subJson["volumeInfo"]["title"].string
                             book.id = subJson["id"].string
-                            let avg = subJson["volumeInfo"]["averageRating"].int
-                            book.avgRating = subJson["volumeInfo"]["averageRating"].string
+                            if let avg = subJson["volumeInfo"]["averageRating"].int { book.avgRating = Double(avg) }
+                            
                             self.searchData.append(book)
                             
                         }

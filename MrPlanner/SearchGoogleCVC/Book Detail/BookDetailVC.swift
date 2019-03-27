@@ -31,7 +31,7 @@ class BookDetailVC: UIViewController {
     var bookDesc : String = ""
     var bookImage: String = ""
     var bookID:String = ""
-    var averageRating:String = ""
+    var averageRating:Double = 0
     
     var segueString:String = ""
     
@@ -51,6 +51,9 @@ class BookDetailVC: UIViewController {
         let storyboard = UIStoryboard(name: "GoogleSearchCollectionResult", bundle: Bundle.main)
         
         var viewController = storyboard.instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
+        viewController.bookID = self.bookID
+        
+        
         self.addViewControllerAsChildViewController(childViewController: viewController)
         //viewController.bookID = self.bookID
         return viewController
@@ -108,7 +111,7 @@ class BookDetailVC: UIViewController {
     //@IBOutlet weak var cate
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "Book Details"
         checkSegue()
         initStart()
         // Do any additional setup after loading the view.
@@ -145,8 +148,9 @@ class BookDetailVC: UIViewController {
         
         let replace = bookImage.replacingOccurrences(of: "http", with: "https")
         let url:URL!  = URL(string: replace)
+        bookImg.layer.cornerRadius = 15
+        bookImg.clipsToBounds = true
         bookImg.kf.indicatorType = .activity
-        
         bookImg.kf.setImage(with: url, options: [.transition(.fade(0.2))])
         
     }
@@ -156,7 +160,7 @@ class BookDetailVC: UIViewController {
         starsCosmos.settings.emptyImage = UIImage(named: "star-regular")
         starsCosmos.settings.fillMode = .precise
         starsCosmos.settings.updateOnTouch = false
-        starsCosmos.rating = Double(averageRating) ?? 0
+        starsCosmos.rating = Double(averageRating) 
         
         //button init
         addToShelfBtn.clipsToBounds = true
@@ -207,7 +211,8 @@ class BookDetailVC: UIViewController {
         segmentControl.addTarget(self, action: #selector(controlValueChanged), for: .valueChanged)
         
         //ContainerView init
-        containerView.layer.cornerRadius = 5
+        containerView.clipsToBounds = true
+        containerView.layer.cornerRadius = 15
         
         
         

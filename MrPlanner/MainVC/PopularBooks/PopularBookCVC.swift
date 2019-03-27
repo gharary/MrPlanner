@@ -101,7 +101,7 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
         */
         
         cell.titleLbl.text = searchData[indexPath.row].title
-        cell.authorLbl.text = searchData[indexPath.row].author
+        cell.authorLbl.text = searchData[indexPath.row].authors?[0]
         if searchData[indexPath.row].image != nil {
             let replace = searchData[indexPath.row].image?.replacingOccurrences(of: "http", with: "https")
             let url:URL! = URL(string: replace!)
@@ -162,12 +162,12 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
                             //print("This is subJson: \(String(describing: subJson["volumeInfo"]["title"].string))")
                             
                             var book:Books = Books()
-                            book.author = subJson["volumeInfo"]["authors"][0].string
+                            book.authors = subJson["volumeInfo"]["authors"].arrayObject as? [String]
                             book.desc = subJson["volumeInfo"]["description"].string
                             book.image = subJson["volumeInfo"]["imageLinks"]["thumbnail"].string
                             book.title = subJson["volumeInfo"]["title"].string
                             book.id = subJson["id"].string
-                            book.avgRating = subJson["volumeInfo"]["averageRating"].string
+                            book.avgRating = subJson["volumeInfo"]["averageRating"].double
                             self.searchData.append(book)
                             
                         }
@@ -208,9 +208,9 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
                 
                 vc.bookImage = searchData?[indexPath.row].image ?? ""
                 vc.booktitle = searchData?[indexPath.row].title ?? "No title"
-                vc.bookAuthor = searchData?[indexPath.row].author ?? "No Author"
+                vc.bookAuthor = searchData?[indexPath.row].authors?[0] ?? "No Author"
                 vc.bookID = searchData[indexPath.row].id ?? ""
-                vc.averageRating = searchData[indexPath.row].avgRating ?? ""
+                vc.averageRating = searchData[indexPath.row].avgRating ?? 0
                 vc.segueString = "BookDetailVC"
                 }
             }
