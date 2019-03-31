@@ -9,7 +9,7 @@
 import UIKit
 import Cosmos
 
-class AddReviewVC: UIViewController {
+class AddReviewVC: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var reviewDesc: UITextView!
     @IBOutlet weak var submitBtn: UIButton!
@@ -53,21 +53,48 @@ class AddReviewVC: UIViewController {
         reviewDesc.layer.cornerRadius = 10
         reviewDesc.backgroundColor = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1)
         reviewDesc.alpha = 1
+        reviewDesc.delegate = self
+        reviewDesc.text = "Your Review Description Here!"
+        reviewDesc.textAlignment = .center
+        reviewDesc.textColor = .lightGray
         
         //init label2
+        label2.backgroundColor = UIColor(red: 0.61, green: 0.61, blue: 0.61, alpha: 1)
+        label2.textColor = UIColor(red: 0.29, green: 0.29, blue: 0.29, alpha: 1)
+        label2.clipsToBounds = true
+        label2.layer.cornerRadius = 5
+        /*
         label2.translatesAutoresizingMaskIntoConstraints = false
         label2.widthAnchor.constraint(equalToConstant: 234).isActive = true
         label2.heightAnchor.constraint(equalToConstant: 13).isActive = true
         label2.clipsToBounds = true
-        label2.backgroundColor = UIColor(red: 0.61, green: 0.61, blue: 0.61, alpha: 1)
+        
         label2.alpha = 1
         label2.text = "Your review pending for accept by moderator"
         label2.font = UIFont(name: "SFProText-Light", size: 11)
-        label2.textColor = UIColor(red: 0.29, green: 0.29, blue: 0.29, alpha: 1)
         
+        */
+        
+        reviewRating.rating = 0
         
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == .lightGray {
+            textView.textAlignment = .left
+            textView.text = nil
+            textView.textColor = .black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Your Review Description Here!"
+            textView.textAlignment = .center
+            textView.textColor = .lightGray
+            
+        }
+    }
     /*
     // MARK: - Navigation
 

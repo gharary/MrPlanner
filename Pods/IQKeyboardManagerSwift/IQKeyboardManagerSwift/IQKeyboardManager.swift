@@ -35,7 +35,7 @@ import QuartzCore
 Codeless drop-in universal library allows to prevent issues of keyboard sliding up and cover UITextField/UITextView. Neither need to write any code nor any setup required and much more. A generic version of KeyboardManagement. https://developer.apple.com/library/ios/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/KeyboardManagement/KeyboardManagement.html
 */
 
-public class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
+@objc public class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
     
     /**
     Default tag for toolbar with Done button   -1002.
@@ -575,15 +575,18 @@ public class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                 let isAcceptAsFirstResponder = goPrevious()
                 
                 var invocation = barButton.invocation
+                var sender = textFieldRetain
+
                 //Handling search bar special case
                 do {
                     if let searchBar = textFieldRetain.textFieldSearchBar() {
                         invocation = searchBar.keyboardToolbar.previousBarButton.invocation
+                        sender = searchBar
                     }
                 }
 
                 if isAcceptAsFirstResponder {
-                    invocation?.invoke(from: textFieldRetain)
+                    invocation?.invoke(from: sender)
                 }
             }
         }
@@ -604,15 +607,18 @@ public class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                 let isAcceptAsFirstResponder = goNext()
                 
                 var invocation = barButton.invocation
+                var sender = textFieldRetain
+
                 //Handling search bar special case
                 do {
                     if let searchBar = textFieldRetain.textFieldSearchBar() {
                         invocation = searchBar.keyboardToolbar.nextBarButton.invocation
+                        sender = searchBar
                     }
                 }
 
                 if isAcceptAsFirstResponder {
-                    invocation?.invoke(from: textFieldRetain)
+                    invocation?.invoke(from: sender)
                 }
             }
         }
@@ -632,15 +638,18 @@ public class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
             let isResignedFirstResponder = resignFirstResponder()
             
             var invocation = barButton.invocation
+            var sender = textFieldRetain
+
             //Handling search bar special case
             do {
                 if let searchBar = textFieldRetain.textFieldSearchBar() {
                     invocation = searchBar.keyboardToolbar.doneBarButton.invocation
+                    sender = searchBar
                 }
             }
 
             if isResignedFirstResponder {
-                invocation?.invoke(from: textFieldRetain)
+                invocation?.invoke(from: sender)
             }
         }
     }
@@ -651,7 +660,7 @@ public class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
         if gesture.state == .ended {
 
             //Resigning currently responder textField.
-            _ = resignFirstResponder()
+            resignFirstResponder()
         }
     }
     

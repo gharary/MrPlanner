@@ -12,6 +12,7 @@ import UserNotifications
 import FirebaseMessaging
 import OneSignal
 import AVFoundation
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
@@ -20,6 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        //Config IQKeyboardManager
+        IQKeyboardManager.shared.enable = true
+        
+        
         // Firebase Messagin Config
         if #available(iOS 10.0, *) {
             // For iOS 10 display notification (sent via APNS)
