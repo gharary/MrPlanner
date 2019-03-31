@@ -34,7 +34,8 @@ class ReviewTVC: UITableViewController, FloatyDelegate {
     }
     
     func emptyFloatySelected(_ floaty: Floaty) {
-        print("Floaty ReviewTVC Clicked!")
+        performSegue(withIdentifier: "addReview", sender: self)
+        //print("Floaty ReviewTVC Clicked!")
     }
     // MARK: - Table view data source
 

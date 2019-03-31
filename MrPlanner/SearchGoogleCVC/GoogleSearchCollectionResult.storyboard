@@ -13,14 +13,23 @@
         <array key="SF-Compact-Display-Regular.otf">
             <string>SFCompactDisplay-Regular</string>
         </array>
+        <array key="SF-Compact-Rounded-Medium.otf">
+            <string>SFCompactRounded-Medium</string>
+        </array>
         <array key="SF-Compact-Rounded-Regular.otf">
             <string>SFCompactRounded-Regular</string>
         </array>
         <array key="SF-Compact-Rounded-Semibold.otf">
             <string>SFCompactRounded-Semibold</string>
         </array>
+        <array key="SF-Compact-Rounded-Ultralight.otf">
+            <string>SFCompactRounded-Ultralight</string>
+        </array>
         <array key="SF-Pro-Display-Regular.otf">
             <string>SFProDisplay-Regular</string>
+        </array>
+        <array key="SF-Pro-Text-Medium.otf">
+            <string>SFProText-Medium</string>
         </array>
     </customFonts>
     <scenes>
@@ -378,10 +387,115 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="shT-Ei-TP3"/>
+                    <connections>
+                        <segue destination="ccH-fO-kKS" kind="show" identifier="addReview" id="NWn-us-amA"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VBd-8g-ySi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5444" y="67.466266866566727"/>
+        </scene>
+        <!--Add ReviewVC-->
+        <scene sceneID="q9Q-RE-442">
+            <objects>
+                <viewController id="ccH-fO-kKS" customClass="AddReviewVC" customModule="MrPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LcF-b0-QkG">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="298"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Reviewicon" translatesAutoresizingMaskIntoConstraints="NO" id="WIR-QZ-7yP">
+                                <rect key="frame" x="126.5" y="30" width="90" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="WIR-QZ-7yP" secondAttribute="height" id="EIy-4b-ujP"/>
+                                    <constraint firstAttribute="height" constant="90" id="dV3-rD-KQv"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ywm-d2-FKB" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="66.5" y="226" width="210" height="35"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="4lP-ul-yf5"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="star-fill-color"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="star-empty"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="Your Rating"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                        <real key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="textMargin">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gyh-ts-9mX">
+                                <rect key="frame" x="16" y="128" width="311" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leave a review for the " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2a5-eb-gpv">
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="30"/>
+                                        <fontDescription key="fontDescription" name="SFCompactRounded-Medium" family="SF Compact Rounded" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your review pending for accept by moderator" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPa-GZ-6hI">
+                                        <rect key="frame" x="0.0" y="30" width="311" height="30"/>
+                                        <fontDescription key="fontDescription" name="SFCompactRounded-Ultralight" family="SF Compact Rounded" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="LLN-if-ofp"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVI-wY-iqI">
+                                <rect key="frame" x="130" y="440" width="83" height="30"/>
+                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="13"/>
+                                <state key="normal" title="Submit review"/>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9Cx-Gu-L1M">
+                                <rect key="frame" x="67" y="259" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gyh-ts-9mX" firstAttribute="top" secondItem="WIR-QZ-7yP" secondAttribute="bottom" constant="8" id="73m-e9-5EH"/>
+                            <constraint firstItem="WIR-QZ-7yP" firstAttribute="centerX" secondItem="LcF-b0-QkG" secondAttribute="centerX" id="AXf-Sd-uRg"/>
+                            <constraint firstItem="Phj-G7-EEl" firstAttribute="trailing" secondItem="gyh-ts-9mX" secondAttribute="trailing" constant="16" id="MUj-Ie-ABN"/>
+                            <constraint firstItem="9Cx-Gu-L1M" firstAttribute="top" secondItem="ywm-d2-FKB" secondAttribute="bottom" constant="38" id="Mg5-WI-7vY"/>
+                            <constraint firstItem="MVI-wY-iqI" firstAttribute="centerX" secondItem="LcF-b0-QkG" secondAttribute="centerX" id="OfF-DP-PfF"/>
+                            <constraint firstItem="gyh-ts-9mX" firstAttribute="leading" secondItem="Phj-G7-EEl" secondAttribute="leading" constant="16" id="ToZ-4T-uQs"/>
+                            <constraint firstItem="WIR-QZ-7yP" firstAttribute="top" secondItem="Phj-G7-EEl" secondAttribute="top" constant="30" id="XIq-Up-fWr"/>
+                            <constraint firstItem="MVI-wY-iqI" firstAttribute="top" secondItem="9Cx-Gu-L1M" secondAttribute="bottom" constant="24" id="Z35-bh-aew"/>
+                            <constraint firstItem="9Cx-Gu-L1M" firstAttribute="centerX" secondItem="LcF-b0-QkG" secondAttribute="centerX" id="gvf-e7-Ceu"/>
+                            <constraint firstItem="ywm-d2-FKB" firstAttribute="centerX" secondItem="LcF-b0-QkG" secondAttribute="centerX" id="hiD-2v-x2S"/>
+                            <constraint firstItem="ywm-d2-FKB" firstAttribute="top" secondItem="gyh-ts-9mX" secondAttribute="bottom" constant="38" id="uEg-pY-BUN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Phj-G7-EEl"/>
+                    </view>
+                    <connections>
+                        <outlet property="label1" destination="2a5-eb-gpv" id="Dyk-Ef-hW1"/>
+                        <outlet property="label2" destination="pPa-GZ-6hI" id="YVO-Vf-H4C"/>
+                        <outlet property="reviewDesc" destination="9Cx-Gu-L1M" id="otN-Yt-YhH"/>
+                        <outlet property="reviewRating" destination="ywm-d2-FKB" id="pKj-kU-mH0"/>
+                        <outlet property="submitBtn" destination="MVI-wY-iqI" id="wiU-Cx-hEF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s8b-si-iMc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6189.6000000000004" y="93.553223388305852"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="RUu-0k-o38">
@@ -482,5 +596,8 @@
     </scenes>
     <resources>
         <image name="Discover" width="24" height="24"/>
+        <image name="Reviewicon" width="97" height="98"/>
+        <image name="star-empty" width="8.5" height="8"/>
+        <image name="star-fill-color" width="8" height="8"/>
     </resources>
 </document>

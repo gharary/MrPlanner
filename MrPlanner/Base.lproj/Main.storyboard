@@ -357,6 +357,16 @@
             </objects>
             <point key="canvasLocation" x="900" y="797"/>
         </scene>
+        <!--Profile-->
+        <scene sceneID="YdS-5j-y75">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="4hT-8E-QfZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="OYQ-x2-9xn"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lae-Gw-fqY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130" y="-671"/>
+        </scene>
         <!--FirstView-->
         <scene sceneID="Lec-35-NTW">
             <objects>
@@ -365,7 +375,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yvR-Kz-mGi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-519" y="-564"/>
+            <point key="canvasLocation" x="-274" y="-573"/>
         </scene>
         <!--Custom Tabbar Controller-->
         <scene sceneID="Q1N-N9-ATN">
@@ -395,10 +405,10 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Onj-gV-WeM"/>
                         <segue destination="p2I-TI-JTC" kind="relationship" relationship="viewControllers" id="HWb-c2-S98"/>
                         <segue destination="nwT-Yl-Mar" kind="relationship" relationship="viewControllers" id="u6M-58-lX9"/>
                         <segue destination="b7q-Fl-uBw" kind="relationship" relationship="viewControllers" id="p0c-26-6JI"/>
+                        <segue destination="4hT-8E-QfZ" kind="relationship" relationship="viewControllers" id="M1r-9e-U9F"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zBH-vo-4Ol" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -444,6 +454,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vuO-y7-6cr"/>
+        <segue reference="u6M-58-lX9"/>
     </inferredMetricsTieBreakers>
 </document>
