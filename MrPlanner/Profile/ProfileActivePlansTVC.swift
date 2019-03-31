@@ -46,7 +46,6 @@ class ProfileActivePlansTVC: UIViewController, UITableViewDataSource, UITableVie
         cell.textLabel?.text = "My Literature Books!"
         cell.layer.cornerRadius = 10 //set corner radius here
         cell.layer.borderColor = cell.backgroundColor?.cgColor  // set cell border color here
-        //cell.layer.borderWidth = 2 // set border width here
         return cell
     }
     

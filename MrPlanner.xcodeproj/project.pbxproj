@@ -108,6 +108,8 @@
 		5FF26D57224A116500D23645 /* ReviewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF26D56224A116500D23645 /* ReviewTVC.swift */; };
 		5FFA1A402239559E00A484F4 /* FirstView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FFA1A3F2239559E00A484F4 /* FirstView.storyboard */; };
 		5FFA1A422239576A00A484F4 /* FirstViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFA1A412239576A00A484F4 /* FirstViewVC.swift */; };
+		5FFB9E572250E65F00473A5E /* ProfileActivitiesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFB9E562250E65F00473A5E /* ProfileActivitiesTVC.swift */; };
+		5FFB9E592250E7B300473A5E /* ProfileActivitiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFB9E582250E7B300473A5E /* ProfileActivitiesCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -241,6 +243,8 @@
 		5FF26D56224A116500D23645 /* ReviewTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTVC.swift; sourceTree = "<group>"; };
 		5FFA1A3F2239559E00A484F4 /* FirstView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstView.storyboard; sourceTree = "<group>"; };
 		5FFA1A412239576A00A484F4 /* FirstViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewVC.swift; sourceTree = "<group>"; };
+		5FFB9E562250E65F00473A5E /* ProfileActivitiesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActivitiesTVC.swift; sourceTree = "<group>"; };
+		5FFB9E582250E7B300473A5E /* ProfileActivitiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActivitiesCell.swift; sourceTree = "<group>"; };
 		905BC6073AA8B982E8B243B3 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57A700E957A881C32B8D3E7 /* Pods-MrPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MrPlanner.release.xcconfig"; path = "Target Support Files/Pods-MrPlanner/Pods-MrPlanner.release.xcconfig"; sourceTree = "<group>"; };
 		D17642E08F23420967DA7F7F /* Pods-MrPlanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MrPlanner.debug.xcconfig"; path = "Target Support Files/Pods-MrPlanner/Pods-MrPlanner.debug.xcconfig"; sourceTree = "<group>"; };
@@ -306,6 +310,8 @@
 			isa = PBXGroup;
 			children = (
 				5F64F7BF224F499A00265FF1 /* Profile.storyboard */,
+				5FFB9E582250E7B300473A5E /* ProfileActivitiesCell.swift */,
+				5FFB9E562250E65F00473A5E /* ProfileActivitiesTVC.swift */,
 				5FF14D7A2250AE0500FF42A8 /* ActivePlansCell.swift */,
 				5FF14D782250AA0300FF42A8 /* ProfileActivePlansTVC.swift */,
 				5F64F7C4224F5C3C00265FF1 /* UpperVC.swift */,
@@ -847,9 +853,11 @@
 				5FD15E0D2225969900DB5BFE /* MainVC.swift in Sources */,
 				5F14A6CF2242AC87008384D3 /* DetailVC.swift in Sources */,
 				5FB412B4222AC8B800B4A3E7 /* TabBar.swift in Sources */,
+				5FFB9E572250E65F00473A5E /* ProfileActivitiesTVC.swift in Sources */,
 				5FB7E626223E2F8200A7B9CB /* Books.swift in Sources */,
 				5FB412AE222A8DC100B4A3E7 /* PopularBookCell.swift in Sources */,
 				5FB7E629223E3B1B00A7B9CB /* BookDetailVC.swift in Sources */,
+				5FFB9E592250E7B300473A5E /* ProfileActivitiesCell.swift in Sources */,
 				5FADA47F223CD5EA00F1B2A8 /* goodreadLoginVC.swift in Sources */,
 				5F14A6CD2242AC72008384D3 /* IntroductionVC.swift in Sources */,
 				5F7C214C22195CB5002FAEBF /* AppDelegate.swift in Sources */,
