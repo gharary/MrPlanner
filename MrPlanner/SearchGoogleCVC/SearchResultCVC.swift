@@ -11,6 +11,7 @@ import Alamofire
 import Kingfisher
 import SwiftyJSON
 import JonContextMenu
+import SVProgressHUD
 
 private let reuseIdentifier = "bookCell"
 
@@ -75,8 +76,13 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
     
     
     override func viewWillAppear(_ animated: Bool) {
-        self.title = "Discover Books!"
+        self.title = "Discover"
         randomCatBook()
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        //SVProgressHUD.setContainerView(self.view)
+        SVProgressHUD.showProgress(0.1)
         
     }
     
@@ -84,6 +90,7 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
     private func randomCatBook() {
         if searchBarIsEmpty() {
             let i = Int.random(in: 0 ..< BookCategories.count)
+            SVProgressHUD.showProgress(0.2)
             reqSearchServer(term: "subject=\(BookCategories[i])")
         }
     }
@@ -159,7 +166,7 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+        SVProgressHUD.showProgress(1)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SearchResultCell
     
         // Configure the cell
@@ -201,6 +208,7 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
         
         cell.titleLbl.textColor = UIColor(red: 0.33, green: 0.39, blue: 0.47, alpha: 1)
         //cell.authorLbl.textColor = UIColor(red: 0.85, green: 0.86, blue: 0.89, alpha: 1)
+        SVProgressHUD.dismiss(withDelay: 0.5)
         return cell
     }
 
@@ -312,7 +320,7 @@ extension SearchResultCVC: UISearchResultsUpdating {
     func reqSearchServer(term: String) {
         
         let parameters: Parameters = ["q":term,"key":"AIzaSyCIXIPXJQwCYE9hHdTghuH-jNRIm2tvx8Y","maxResults":"40"]
-        
+        SVProgressHUD.showProgress(0.3)
         Alamofire.request(baseURL!, method: .get, parameters: parameters)
             .responseJSON { response in
                 var statusCode = response.response?.statusCode
@@ -322,7 +330,7 @@ extension SearchResultCVC: UISearchResultsUpdating {
                     
                     //print("Success!")
                     if response.data != nil {
-                        
+                        SVProgressHUD.showProgress(0.6)
                         let json = try! JSON(data: response.data!)
                         //print(json)
                         self.searchData = []
@@ -346,12 +354,14 @@ extension SearchResultCVC: UISearchResultsUpdating {
                             
                         }
                         
-                        
+                        SVProgressHUD.showProgress(0.8)
                         self.collectionView.reloadData()
                         
                     }
                 case .failure(let error):
                     statusCode = error._code // statusCode private
+                    SVProgressHUD.showError(withStatus: "Error")
+                    SVProgressHUD.dismiss()
                     print("status code is: \(String(describing: statusCode))")
                     print(error)
                 }

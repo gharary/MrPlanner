@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import Kingfisher
 import JonContextMenu
-
+import SVProgressHUD
 
 
 private let reuseIdentifier = "BookCell"
@@ -56,6 +56,10 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        //SVProgressHUD.setContainerView(MainVC)
+        SVProgressHUD.showProgress(0.1)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -66,6 +70,7 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
     private func randomCatBook() {
         self.searchData = []
         let i = Int.random(in: 0 ..< BookCategories.count)
+        SVProgressHUD.showProgress(0.2)
         reqSearchServer(term: "subject=\(BookCategories[i])")
     }
     
@@ -100,6 +105,8 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
         cell.authorLbl.textColor = UIColor(red: 0.85, green: 0.86, blue: 0.89, alpha: 1)
         */
         
+        SVProgressHUD.showProgress(1)
+        
         cell.titleLbl.text = searchData[indexPath.row].title
         cell.authorLbl.text = searchData[indexPath.row].authors?[0]
         if searchData[indexPath.row].image != nil {
@@ -131,7 +138,7 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
             .build()
         
         self.view.addGestureRecognizer(contextMenu)
-        
+        SVProgressHUD.dismiss(withDelay: 0.5)
         return cell
     }
     
@@ -143,7 +150,7 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
     func reqSearchServer(term: String) {
         
         let parameters: Parameters = ["q":term,"key":"AIzaSyCIXIPXJQwCYE9hHdTghuH-jNRIm2tvx8Y","maxResults":"40"]
-        
+        SVProgressHUD.showProgress(0.3)
         Alamofire.request(baseURL!, method: .get, parameters: parameters)
             .responseJSON { response in
                 var statusCode = response.response?.statusCode
@@ -153,7 +160,7 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
                     
                     //print("Success!")
                     if response.data != nil {
-                        
+                        SVProgressHUD.showProgress(0.6)
                         let json = try! JSON(data: response.data!)
                         //print(json)
                         self.searchData = []
@@ -172,12 +179,15 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
                             
                         }
                         
-                        
+                        SVProgressHUD.showProgress(0.8)
                         self.collectionView.reloadData()
                         
                     }
                 case .failure(let error):
                     statusCode = error._code // statusCode private
+                    
+                    SVProgressHUD.showError(withStatus: "Error")
+                    SVProgressHUD.dismiss(withDelay: 0.5)
                     print("status code is: \(String(describing: statusCode))")
                     print(error)
                 }
