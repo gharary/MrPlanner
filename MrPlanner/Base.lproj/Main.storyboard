@@ -401,8 +401,8 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="nwT-Yl-Mar" kind="relationship" relationship="viewControllers" id="u6M-58-lX9"/>
-                        <segue destination="b7q-Fl-uBw" kind="relationship" relationship="viewControllers" id="p0c-26-6JI"/>
                         <segue destination="p2I-TI-JTC" kind="relationship" relationship="viewControllers" id="HWb-c2-S98"/>
+                        <segue destination="b7q-Fl-uBw" kind="relationship" relationship="viewControllers" id="p0c-26-6JI"/>
                         <segue destination="4hT-8E-QfZ" kind="relationship" relationship="viewControllers" id="M1r-9e-U9F"/>
                     </connections>
                 </tabBarController>
@@ -449,6 +449,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vuO-y7-6cr"/>
+        <segue reference="u6M-58-lX9"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -18,7 +18,7 @@ class BookDetailVC: UIViewController {
 
     @IBOutlet weak var bookTitleLbl: UILabel!
     @IBOutlet weak var bookAuthorLbl: UILabel!
-    @IBOutlet weak var bookDescLbl: UILabel!
+    @IBOutlet weak var categoriesView: UIView!
     @IBOutlet weak var bookImg: UIImageView!
     @IBOutlet weak var addedToShelfTimeLbl: UILabel!
     @IBOutlet weak var starsCosmos: CosmosView!
@@ -26,6 +26,8 @@ class BookDetailVC: UIViewController {
     @IBOutlet weak var segmentControl: BetterSegmentedControl!
     @IBOutlet weak var containerView: UIView!
     
+    
+    var book: Books!
     var booktitle: String = ""
     var bookAuthor: String = ""
     var bookDesc : String = ""
@@ -142,16 +144,41 @@ class BookDetailVC: UIViewController {
     
     
     func loadData() {
+        
+        //Load Titles
         bookTitleLbl.text = booktitle
         bookAuthorLbl.text = bookAuthor
-        //bookDescLbl.text = bookDesc
         
+        //Load Image
         let replace = bookImage.replacingOccurrences(of: "http", with: "https")
         let url:URL!  = URL(string: replace)
         bookImg.layer.cornerRadius = 15
         bookImg.clipsToBounds = true
         bookImg.kf.indicatorType = .activity
         bookImg.kf.setImage(with: url, options: [.transition(.fade(0.2))])
+        
+        
+        //Load Categories
+        guard book.mainCategory != nil else { return }
+        
+            guard let width = book.mainCategory?.stringWidth else { return  }
+            let label = UILabel(frame: CGRect(x: 6, y: 0, width: width, height: 25))
+            label.backgroundColor = UIColor(hexString: "D8DCE2")
+            label.layer.cornerRadius = 5
+            label.clipsToBounds = true
+            let font = UIFont(name: "SFProText-Regular", size: 10)
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: font!,
+                .foregroundColor: UIColor.white,
+                
+            ]
+            
+            let attributedText = NSMutableAttributedString(string: book.mainCategory!, attributes: attributes)
+            
+            label.attributedText = attributedText
+            label.textAlignment = .center
+
+            self.categoriesView.addSubview(label)
         
     }
 
@@ -253,4 +280,18 @@ class BookDetailVC: UIViewController {
     }
     */
 
+}
+
+extension String {
+    var stringWidth: CGFloat {
+        let constraintRect = CGSize(width: UIScreen.main.bounds.width, height: .greatestFiniteMagnitude)
+        let boundingBox = self.trimmingCharacters(in: .whitespacesAndNewlines).boundingRect(with: constraintRect, options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)], context: nil)
+        return boundingBox.width
+    }
+    
+    var stringHeight: CGFloat {
+        let constraintRect = CGSize(width: UIScreen.main.bounds.width, height: .greatestFiniteMagnitude)
+        let boundingBox = self.trimmingCharacters(in: .whitespacesAndNewlines).boundingRect(with: constraintRect, options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)], context: nil)
+        return boundingBox.height
+    }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import Cosmos
+import SVProgressHUD
 
 class AddReviewVC: UIViewController, UITextViewDelegate {
 
@@ -94,6 +95,23 @@ class AddReviewVC: UIViewController, UITextViewDelegate {
             textView.textColor = .lightGray
             
         }
+    }
+    @IBAction func SubmitClicked(_ sender: UIButton) {
+        
+        
+        SVProgressHUD.showSuccess(withStatus: "Your review submited successfully")
+        
+        
+        
+        let alert = UIAlertController(title: "Submit", message: "Your review submited successfully.", preferredStyle: .alert)
+       
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+            //self.dismiss(animated: true, completion: nil)
+            self.performSegueToReturnBack()
+        } ))
+        //self.present(alert, animated: true, completion: nil)
+        
+
     }
     /*
     // MARK: - Navigation

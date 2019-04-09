@@ -45,7 +45,7 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
     let lineSpacing:CGFloat = 8.0
     
     
-    let BookCategories: [String] = ["Education","Fiction","Business","Design"]
+    let BookCategories: [String] = ["Education","Fiction","Business","Design", "Growth", "Drama", "History", "Horror", "Art", "NonFiction", "Biography"]
     let baseURL = URL(string: "https://www.googleapis.com/books/v1/volumes")
 
     
