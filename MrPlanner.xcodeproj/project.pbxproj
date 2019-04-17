@@ -32,6 +32,11 @@
 		5F7C215322195CB7002FAEBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F7C215222195CB7002FAEBF /* Assets.xcassets */; };
 		5F7C215622195CB7002FAEBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F7C215422195CB7002FAEBF /* LaunchScreen.storyboard */; };
 		5F7C215E22195E45002FAEBF /* BookDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7C215D22195E45002FAEBF /* BookDetail.swift */; };
+		5F9D8B112265C22B0086E1F6 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F9D8B102265C22B0086E1F6 /* Calendar.storyboard */; };
+		5F9D8B132265C2AB0086E1F6 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9D8B122265C2AB0086E1F6 /* CustomCell.swift */; };
+		5F9D8B152265C39B0086E1F6 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9D8B142265C39B0086E1F6 /* CalendarVC.swift */; };
+		5F9D8B17226725040086E1F6 /* TimePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9D8B16226725040086E1F6 /* TimePickerVC.swift */; };
+		5F9D8B19226770720086E1F6 /* TimePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9D8B18226770720086E1F6 /* TimePickerCell.swift */; };
 		5FABC874223E9AB500E275BE /* SF-Pro-Text-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5FABC856223E9AAB00E275BE /* SF-Pro-Text-BoldItalic.otf */; };
 		5FABC875223E9AB500E275BE /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5FABC857223E9AAC00E275BE /* SF-Pro-Text-Semibold.otf */; };
 		5FABC876223E9AB500E275BE /* SF-Pro-Display-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5FABC858223E9AAC00E275BE /* SF-Pro-Display-RegularItalic.otf */; };
@@ -167,6 +172,11 @@
 		5F7C215522195CB7002FAEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5F7C215722195CB7002FAEBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F7C215D22195E45002FAEBF /* BookDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetail.swift; sourceTree = "<group>"; };
+		5F9D8B102265C22B0086E1F6 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
+		5F9D8B122265C2AB0086E1F6 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		5F9D8B142265C39B0086E1F6 /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
+		5F9D8B16226725040086E1F6 /* TimePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerVC.swift; sourceTree = "<group>"; };
+		5F9D8B18226770720086E1F6 /* TimePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerCell.swift; sourceTree = "<group>"; };
 		5FABC856223E9AAB00E275BE /* SF-Pro-Text-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-BoldItalic.otf"; sourceTree = "<group>"; };
 		5FABC857223E9AAC00E275BE /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		5FABC858223E9AAC00E275BE /* SF-Pro-Display-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-RegularItalic.otf"; sourceTree = "<group>"; };
@@ -370,6 +380,7 @@
 				5FB7E627223E2F9500A7B9CB /* init */,
 				5F5A7348223697860003F66E /* Fonts */,
 				5FB412A6222A7AF300B4A3E7 /* MainVC */,
+				5F9D8B0F2265C18B0086E1F6 /* Calendar */,
 				5F64F7C1224F49AE00265FF1 /* Profile */,
 				5F5A734722363D9F0003F66E /* SearchGoogleCVC */,
 				5F76AA7A221B0371003BE931 /* BookSearch */,
@@ -381,6 +392,18 @@
 				5F77761A2226ED2C00D1A7A7 /* GoogleService-Info.plist */,
 			);
 			path = MrPlanner;
+			sourceTree = "<group>";
+		};
+		5F9D8B0F2265C18B0086E1F6 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				5F9D8B102265C22B0086E1F6 /* Calendar.storyboard */,
+				5F9D8B18226770720086E1F6 /* TimePickerCell.swift */,
+				5F9D8B142265C39B0086E1F6 /* CalendarVC.swift */,
+				5F9D8B122265C2AB0086E1F6 /* CustomCell.swift */,
+				5F9D8B16226725040086E1F6 /* TimePickerVC.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		5FABC855223E9A9200E275BE /* SF Pro */ = {
@@ -687,6 +710,7 @@
 				5FABC8B4223E9AE100E275BE /* SF-Compact-Text-BoldItalic.otf in Resources */,
 				5FABC8CA223E9B1500E275BE /* SF-Compact-Rounded-Heavy.otf in Resources */,
 				5FABC876223E9AB500E275BE /* SF-Pro-Display-RegularItalic.otf in Resources */,
+				5F9D8B112265C22B0086E1F6 /* Calendar.storyboard in Resources */,
 				5FABC883223E9AB600E275BE /* SF-Pro-Display-BoldItalic.otf in Resources */,
 				5FABC8B2223E9AE100E275BE /* SF-Compact-Text-SemiboldItalic.otf in Resources */,
 				5FABC874223E9AB500E275BE /* SF-Pro-Text-BoldItalic.otf in Resources */,
@@ -732,6 +756,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/JonContextMenu/JonContextMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
@@ -757,6 +782,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JonContextMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
@@ -837,6 +863,7 @@
 				5F14A6CA224238AE008384D3 /* TabbarMultipleChild.swift in Sources */,
 				5F467BB8223565C000D3F41F /* SearchResultCVC.swift in Sources */,
 				5F7C215E22195E45002FAEBF /* BookDetail.swift in Sources */,
+				5F9D8B132265C2AB0086E1F6 /* CustomCell.swift in Sources */,
 				5F76AA7E221C01C0003BE931 /* googleSearchTVC.swift in Sources */,
 				5F64F7C3224F4D2400265FF1 /* ProfileVC.swift in Sources */,
 				5F467BBA223565E700D3F41F /* SearchResultCell.swift in Sources */,
@@ -852,6 +879,7 @@
 				5FB412AB222A7B6900B4A3E7 /* PopularReadersCell.swift in Sources */,
 				5FD15E0D2225969900DB5BFE /* MainVC.swift in Sources */,
 				5F14A6CF2242AC87008384D3 /* DetailVC.swift in Sources */,
+				5F9D8B19226770720086E1F6 /* TimePickerCell.swift in Sources */,
 				5FB412B4222AC8B800B4A3E7 /* TabBar.swift in Sources */,
 				5FFB9E572250E65F00473A5E /* ProfileActivitiesTVC.swift in Sources */,
 				5FB7E626223E2F8200A7B9CB /* Books.swift in Sources */,
@@ -862,6 +890,8 @@
 				5F14A6CD2242AC72008384D3 /* IntroductionVC.swift in Sources */,
 				5F7C214C22195CB5002FAEBF /* AppDelegate.swift in Sources */,
 				5FF14D792250AA0300FF42A8 /* ProfileActivePlansTVC.swift in Sources */,
+				5F9D8B152265C39B0086E1F6 /* CalendarVC.swift in Sources */,
+				5F9D8B17226725040086E1F6 /* TimePickerVC.swift in Sources */,
 				5F76AA7C221B0739003BE931 /* UserInfoVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

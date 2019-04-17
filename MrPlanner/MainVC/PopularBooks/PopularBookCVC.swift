@@ -169,12 +169,63 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
                             //print("This is subJson: \(String(describing: subJson["volumeInfo"]["title"].string))")
                             
                             var book:Books = Books()
+                            //Author
                             book.authors = subJson["volumeInfo"]["authors"].arrayObject as? [String]
-                            book.desc = subJson["volumeInfo"]["description"].string
+                            
+                            //Description
+                            if let desc = subJson["volumeInfo"]["description"].string {
+                                let replace = desc.replacingOccurrences(of: "<p>|</p>|<br>|</br>|<i>|</i>|<b>|</b>", with: "", options: .regularExpression)
+                                
+                                book.desc = replace
+                            }
+                            
+                            //Image
                             book.image = subJson["volumeInfo"]["imageLinks"]["thumbnail"].string
+                            
+                            //Title
                             book.title = subJson["volumeInfo"]["title"].string
+                            
+                            //ID
                             book.id = subJson["id"].string
-                            book.avgRating = subJson["volumeInfo"]["averageRating"].double
+                            
+                            //Average Rating
+                            if let avg = subJson["volumeInfo"]["averageRating"].int { book.avgRating = Double(avg) }
+                            
+                            //Categories
+                            if subJson["volumeInfo"]["categories"].count == 1 {
+                                /*
+                                 let item:String = subJson["volumeInfo"]["categories"][0].string!
+                                 book.categories?.append(item)
+                                 */
+                                
+                                book.mainCategory = subJson["volumeInfo"]["categories"][0].string!
+                                //print(subJson["volumeInfo"]["categories"][0].string!)
+                            } else {
+                                book.categories = subJson["volumeInfo"]["categories"].arrayObject as? [String]
+                            }
+                            
+                            //Publisher
+                            book.publisher = subJson["volumeInfo"]["publisher"].string
+                            
+                            //Publish Date
+                            book.publishDate = subJson["volumeInfo"]["publishedDate"].string
+                            
+                            
+                            //ISBN
+                            if subJson["volumeInfo"]["industryIdentifiers"][0]["type"] == "ISBN_10" {
+                                book.ISBN_10 = subJson["volumeInfo"]["industryIdentifiers"][0]["identifier"].string
+                                book.ISBN_13 = subJson["volumeInfo"]["industryIdentifiers"][1]["identifier"].string
+                            } else if subJson["volumeInfo"]["industryIdentifiers"][0]["type"] == "ISBN_13" {
+                                book.ISBN_10 = subJson["volumeInfo"]["industryIdentifiers"][1]["identifier"].string
+                                book.ISBN_13 = subJson["volumeInfo"]["industryIdentifiers"][0]["identifier"].string
+                                
+                            }
+                            
+                            //Page Count
+                            book.pageCount = subJson["volumeInfo"]["pageCount"].string
+                            
+                            
+                            
                             self.searchData.append(book)
                             
                         }
@@ -216,6 +267,7 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
             let cell = sender as! UICollectionViewCell
             if let indexPath = self.collectionView.indexPath(for: cell) {
                 
+                vc.book = searchData?[indexPath.row]
                 vc.bookImage = searchData?[indexPath.row].image ?? ""
                 vc.booktitle = searchData?[indexPath.row].title ?? "No title"
                 vc.bookAuthor = searchData?[indexPath.row].authors?[0] ?? "No Author"

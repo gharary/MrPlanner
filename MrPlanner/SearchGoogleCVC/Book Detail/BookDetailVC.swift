@@ -145,7 +145,7 @@ class BookDetailVC: UIViewController {
     
     func loadData() {
         
-        //Load Titles
+        //Load TitlesR
         bookTitleLbl.text = booktitle
         bookAuthorLbl.text = bookAuthor
         

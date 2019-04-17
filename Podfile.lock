@@ -4,18 +4,18 @@ PODS:
     - Alamofire (~> 4.8)
   - BetterSegmentedControl (1.0.3)
   - Cosmos (18.0.1)
-  - Firebase/Core (5.20.1):
+  - Firebase/Core (5.20.2):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 5.8.0)
-  - Firebase/CoreOnly (5.20.1):
+    - FirebaseAnalytics (= 5.8.1)
+  - Firebase/CoreOnly (5.20.2):
     - FirebaseCore (= 5.4.1)
-  - Firebase/Messaging (5.20.1):
+  - Firebase/Messaging (5.20.2):
     - Firebase/CoreOnly
     - FirebaseMessaging (= 3.5.0)
-  - FirebaseAnalytics (5.8.0):
+  - FirebaseAnalytics (5.8.1):
     - FirebaseCore (~> 5.4)
     - FirebaseInstanceID (~> 3.8)
-    - GoogleAppMeasurement (= 5.8.0)
+    - GoogleAppMeasurement (= 5.8.1)
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
@@ -38,30 +38,30 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 5.3)
     - Protobuf (~> 3.1)
   - Floaty (4.1.0)
-  - FontAwesome.swift (1.6.0)
-  - GoogleAppMeasurement (5.8.0):
+  - FontAwesome.swift (1.7.0)
+  - GoogleAppMeasurement (5.8.1):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
-  - GoogleUtilities/AppDelegateSwizzler (5.5.0):
+  - GoogleUtilities/AppDelegateSwizzler (5.7.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (5.5.0)
-  - GoogleUtilities/Logger (5.5.0):
+  - GoogleUtilities/Environment (5.7.0)
+  - GoogleUtilities/Logger (5.7.0):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (5.5.0):
+  - GoogleUtilities/MethodSwizzler (5.7.0):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (5.5.0):
+  - GoogleUtilities/Network (5.7.0):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (5.5.0)"
-  - GoogleUtilities/Reachability (5.5.0):
+  - "GoogleUtilities/NSData+zlib (5.7.0)"
+  - GoogleUtilities/Reachability (5.7.0):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (5.5.0):
+  - GoogleUtilities/UserDefaults (5.7.0):
     - GoogleUtilities/Logger
   - ImageSlideshow (1.7.0):
     - ImageSlideshow/Core (= 1.7.0)
@@ -74,6 +74,7 @@ PODS:
     - Kingfisher (> 3.0)
   - IQKeyboardManagerSwift (6.2.1)
   - JonContextMenu (1.0.0)
+  - JTAppleCalendar (7.1.7)
   - Kingfisher (5.3.1)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -86,8 +87,8 @@ PODS:
   - RevealingSplashView (0.6.0)
   - SideMenu (5.0.3)
   - SVProgressHUD (2.2.5)
-  - SwiftyJSON (4.2.0)
-  - SwiftyXMLParser (4.3.0)
+  - SwiftyJSON (4.3.0)
+  - SwiftyXMLParser (5.0.0)
   - SWXMLHash (4.7.6)
 
 DEPENDENCIES:
@@ -104,6 +105,7 @@ DEPENDENCIES:
   - ImageSlideshow/Kingfisher
   - IQKeyboardManagerSwift
   - JonContextMenu (from `https://github.com/jonSurrey/JonContextMenu.git`, branch `master`)
+  - JTAppleCalendar (~> 7.1)
   - Kingfisher (~> 5.0)
   - OneSignal (< 3.0, >= 2.6.2)
   - PKHUD (~> 5.0)
@@ -132,6 +134,7 @@ SPEC REPOS:
     - GoogleUtilities
     - ImageSlideshow
     - IQKeyboardManagerSwift
+    - JTAppleCalendar
     - Kingfisher
     - nanopb
     - OneSignal
@@ -159,7 +162,7 @@ CHECKOUT OPTIONS:
     :commit: e2a6aaa12321962cbe9fbecc370475f369c6566c
     :git: https://github.com/SVProgressHUD/SVProgressHUD.git
   SwiftyXMLParser:
-    :commit: 9f64c4acce90d897992be200d91af1d56bd20d71
+    :commit: cbf9951f7d3c8de3d1368f4883556354f11c21f7
     :git: https://github.com/yahoojapan/SwiftyXMLParser.git
 
 SPEC CHECKSUMS:
@@ -167,19 +170,20 @@ SPEC CHECKSUMS:
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
   BetterSegmentedControl: 4e3bd0bd517b0f6077c9e17f5663a01cff48e2c5
   Cosmos: 7dfaa3f52584ca5f94ab74b5c2e264019cc9f7f5
-  Firebase: 2f5235e62f141cb86181c3af0dfe4509706351ac
-  FirebaseAnalytics: fd72a26bf8dac84cefba2f0864366f718555a5b0
+  Firebase: 0c8cf33f266410c61ab3e2265cfa412200351d9c
+  FirebaseAnalytics: ece1aa57a4f43c64d53a648b5a5e05151aae947b
   FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
   FirebaseCore: f1a9a8be1aee4bf71a2fc0f4096df6788bdfda61
   FirebaseInstanceID: a122b0c258720cf250551bb2bedf48c699f80d90
   FirebaseMessaging: 4235f949ce1c4e827aeb19705ba5c53f9b85aa10
   Floaty: 1a4e213f3512cf3045ef9cb0c1ff456226d1f66a
-  FontAwesome.swift: 71a422e7b209ee940c7c21a5d13964ecf2897ca4
-  GoogleAppMeasurement: 1624046ab1bcc5e170061a56ef5679000b079c8e
-  GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
+  FontAwesome.swift: 9f377615aa61381796dca143cddfd2a388723ea1
+  GoogleAppMeasurement: ffe513e90551844a739e7bcbb1d2aca1c28a4338
+  GoogleUtilities: 273e67030e0de313e7304f6dcfa96fc5214f6c23
   ImageSlideshow: f8eec5e37a980f60923b585ff23b0e140fd24018
   IQKeyboardManagerSwift: 0f0ae8935360b4003e6ea1ac7c19898f01e2f7c7
   JonContextMenu: b7a6763da959b17fb03423cb0d936f4d28a594ae
+  JTAppleCalendar: 96da4d8388fa6dc82d6a60d41ef36a015e167e2f
   Kingfisher: d9e7e0b209b59b8f9873aa2f37654e81a7beea51
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   OneSignal: ccdeb961882f8668305e5b694e2cb7cb325fc907
@@ -188,10 +192,10 @@ SPEC CHECKSUMS:
   RevealingSplashView: 40c5a770894459736acdc95655eeba0dd30ce91c
   SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
-  SwiftyXMLParser: b2e0b0dd0e0fb1ac39869dd4a0c6181847af2945
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  SwiftyXMLParser: 5ebb8793192f403fa8cc691045143906122a7a75
   SWXMLHash: f6e0933ce74f2626669dc544851bc9fc1941670d
 
-PODFILE CHECKSUM: 20e313982dfa07d79e0e73848c81406170b4c6fa
+PODFILE CHECKSUM: 4ca4b0e783c64b78dae3ceabfb0c38bb35ea62b7
 
 COCOAPODS: 1.6.0
