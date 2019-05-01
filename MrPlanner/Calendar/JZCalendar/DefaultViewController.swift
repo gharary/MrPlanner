@@ -90,14 +90,7 @@ extension DefaultViewController: JZBaseViewDelegate {
         }
         
     }
-    
-    
-    
-    //Test commit
-    
-    
-    
-    
+
     func generateDailyEvents(_ beginDate: Date=Date() ) -> [DefaultEvent] {
         
         // get the current date and time
