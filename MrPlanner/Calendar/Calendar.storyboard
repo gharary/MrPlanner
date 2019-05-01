@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="95C-24-Hbl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c1A-0B-hec">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,286 +9,55 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="SF-Compact-Display-Semibold.otf">
-            <string>SFCompactDisplay-Semibold</string>
-        </array>
-        <array key="SF-Pro-Text-Regular.otf">
-            <string>SFProText-Regular</string>
-        </array>
-    </customFonts>
     <scenes>
-        <!--Ib Calendar Data Source-->
-        <scene sceneID="whe-8x-pSE">
+        <!--Default View Controller-->
+        <scene sceneID="pcR-Pa-QAh">
             <objects>
-                <viewController id="3Tr-Id-v6p" customClass="CalendarVC" customModule="MrPlanner" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="SaY-M9-WJI">
+                <viewController id="d7S-p4-SRg" customClass="DefaultViewController" customModule="MrPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Sdi-yr-IJB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fOI-S3-JL9" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                <rect key="frame" x="0.0" y="44" width="414" height="350"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="350" id="dD7-vm-oLP"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e4D-26-735">
-                                    <size key="itemSize" width="127" height="116"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomCell" id="kYz-aL-3KG" customClass="CustomCell" customModule="MrPlanner" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="127" height="116"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="127" height="116"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gr7-Ba-RXi">
-                                                    <rect key="frame" x="42.5" y="47.5" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="gr7-Ba-RXi" firstAttribute="centerY" secondItem="kYz-aL-3KG" secondAttribute="centerY" id="QQr-CM-nQ6"/>
-                                            <constraint firstItem="gr7-Ba-RXi" firstAttribute="centerX" secondItem="kYz-aL-3KG" secondAttribute="centerX" id="ohb-ha-F4S"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="dateLabel" destination="gr7-Ba-RXi" id="4Rc-qy-uwN"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="ibCalendarDataSource" destination="3Tr-Id-v6p" id="DJn-jG-wKp"/>
-                                    <outlet property="ibCalendarDelegate" destination="3Tr-Id-v6p" id="3Wv-V8-hWA"/>
-                                </connections>
-                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZHI-cy-vXc" customClass="DefaultWeekView" customModule="MrPlanner" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="YsC-FG-E0b" firstAttribute="trailing" secondItem="fOI-S3-JL9" secondAttribute="trailing" id="ZVw-P0-TQ4"/>
-                            <constraint firstItem="fOI-S3-JL9" firstAttribute="top" secondItem="YsC-FG-E0b" secondAttribute="top" id="b8x-J8-Zbk"/>
-                            <constraint firstItem="fOI-S3-JL9" firstAttribute="leading" secondItem="YsC-FG-E0b" secondAttribute="leading" id="ryd-Om-WwM"/>
+                            <constraint firstItem="ZHI-cy-vXc" firstAttribute="leading" secondItem="oyz-6d-QND" secondAttribute="leading" id="56Z-zC-wbF"/>
+                            <constraint firstItem="oyz-6d-QND" firstAttribute="bottom" secondItem="ZHI-cy-vXc" secondAttribute="bottom" id="KEG-21-spr"/>
+                            <constraint firstItem="oyz-6d-QND" firstAttribute="trailing" secondItem="ZHI-cy-vXc" secondAttribute="trailing" id="Yit-Oa-3z8"/>
+                            <constraint firstItem="ZHI-cy-vXc" firstAttribute="top" secondItem="oyz-6d-QND" secondAttribute="top" id="dE2-nB-jAh"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="YsC-FG-E0b"/>
+                        <viewLayoutGuide key="safeArea" id="oyz-6d-QND"/>
                     </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sbZ-gH-SMZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-249.27536231884059" y="158.70535714285714"/>
-        </scene>
-        <!--Time PickerVC-->
-        <scene sceneID="Xsq-yO-AS2">
-            <objects>
-                <viewController id="esD-6H-f6c" customClass="TimePickerVC" customModule="MrPlanner" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6zv-NK-uf9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wakeup Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cgr-th-fp9">
-                                <rect key="frame" x="55.5" y="96" width="95.5" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="vcu-jN-0CZ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sleep Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObW-mT-MBA">
-                                <rect key="frame" x="271.5" y="96" width="79" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="Zn7-BU-lOB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="30" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNz-KC-dGp">
-                                <rect key="frame" x="10" y="124" width="186.5" height="80"/>
-                                <date key="date" timeIntervalSinceReferenceDate="577159213.66903806">
-                                    <!--2019-04-17 02:00:13 +0000-->
-                                </date>
-                                <date key="minimumDate" timeIntervalSinceReferenceDate="-978296400">
-                                    <!--1970-01-01 03:00:00 +0000-->
-                                </date>
-                                <connections>
-                                    <action selector="pickerValueChanged:" destination="esD-6H-f6c" eventType="valueChanged" id="de8-F0-A3S"/>
-                                </connections>
-                            </datePicker>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="30" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ew-X1-ZxO">
-                                <rect key="frame" x="217.5" y="124" width="186.5" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="TEe-b6-BUK"/>
-                                </constraints>
-                                <date key="date" timeIntervalSinceReferenceDate="577220413.66903806">
-                                    <!--2019-04-17 19:00:13 +0000-->
-                                </date>
-                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167595200">
-                                    <!--2037-12-31 20:00:00 +0000-->
-                                </date>
-                                <connections>
-                                    <action selector="pickerValueChanged:" destination="esD-6H-f6c" eventType="valueChanged" id="nvk-yC-POB"/>
-                                </connections>
-                            </datePicker>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yjh-hj-ng9">
-                                <rect key="frame" x="16" y="255" width="382" height="30"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5T-8o-spw">
-                                        <rect key="frame" x="0.0" y="5" width="46" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cwk-Yq-rcO">
-                                        <rect key="frame" x="56" y="5" width="46" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QhI-pc-krN">
-                                        <rect key="frame" x="112" y="5" width="46" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAd-YS-MUH">
-                                        <rect key="frame" x="168" y="5" width="46" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fp4-HM-Z6E">
-                                        <rect key="frame" x="224" y="5" width="46" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VfU-hS-brR">
-                                        <rect key="frame" x="280" y="5" width="46" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fri" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCV-Tf-JLf">
-                                        <rect key="frame" x="336" y="5" width="46" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="oUN-ol-M9d"/>
-                                </constraints>
-                            </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dFe-VG-Qpt">
-                                <rect key="frame" x="16" y="293" width="382" height="561"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dq5-ET-clK">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="reuseIdentifier" id="fbd-cf-2Jf" customClass="TimePickerCell" customModule="MrPlanner" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuR-pi-wbd">
-                                                    <rect key="frame" x="4" y="14.5" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="fuR-pi-wbd" firstAttribute="centerX" secondItem="fbd-cf-2Jf" secondAttribute="centerX" id="1BE-iG-fQT"/>
-                                            <constraint firstItem="fuR-pi-wbd" firstAttribute="centerY" secondItem="fbd-cf-2Jf" secondAttribute="centerY" id="cnB-JY-nNe"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="time" destination="fuR-pi-wbd" id="qej-qK-WGt"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="esD-6H-f6c" id="AY9-CF-c7X"/>
-                                    <outlet property="delegate" destination="esD-6H-f6c" id="f1Q-lF-13q"/>
-                                </connections>
-                            </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Your Free Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQ4-VL-T3v">
-                                <rect key="frame" x="16" y="212" width="382" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="1CR-N9-gse"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SFCompactDisplay-Semibold" family="SF Compact Display" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="CEH-R0-Vr4" firstAttribute="trailing" secondItem="Yjh-hj-ng9" secondAttribute="trailing" constant="16" id="6iv-j7-hiA"/>
-                            <constraint firstItem="bNz-KC-dGp" firstAttribute="width" secondItem="6zv-NK-uf9" secondAttribute="width" multiplier="0.45" id="Adj-7o-cGn"/>
-                            <constraint firstItem="bNz-KC-dGp" firstAttribute="top" secondItem="Cgr-th-fp9" secondAttribute="bottom" constant="8" id="Al8-3e-IO4"/>
-                            <constraint firstItem="ObW-mT-MBA" firstAttribute="centerY" secondItem="Cgr-th-fp9" secondAttribute="centerY" id="FVl-BY-F5S"/>
-                            <constraint firstItem="dFe-VG-Qpt" firstAttribute="centerX" secondItem="Yjh-hj-ng9" secondAttribute="centerX" id="IFp-8x-3M3"/>
-                            <constraint firstItem="Yjh-hj-ng9" firstAttribute="leading" secondItem="CEH-R0-Vr4" secondAttribute="leading" constant="16" id="IIv-ZJ-grs"/>
-                            <constraint firstItem="ObW-mT-MBA" firstAttribute="centerX" secondItem="5ew-X1-ZxO" secondAttribute="centerX" id="NDB-Ji-Smu"/>
-                            <constraint firstItem="xQ4-VL-T3v" firstAttribute="leading" secondItem="CEH-R0-Vr4" secondAttribute="leading" constant="16" id="TdC-yP-eyH"/>
-                            <constraint firstItem="Cgr-th-fp9" firstAttribute="top" secondItem="CEH-R0-Vr4" secondAttribute="top" constant="8" id="WEc-jW-cwX"/>
-                            <constraint firstItem="CEH-R0-Vr4" firstAttribute="trailing" secondItem="xQ4-VL-T3v" secondAttribute="trailing" constant="16" id="WKz-37-rp3"/>
-                            <constraint firstItem="dFe-VG-Qpt" firstAttribute="top" secondItem="Yjh-hj-ng9" secondAttribute="bottom" constant="8" id="X6x-Ez-Flg"/>
-                            <constraint firstItem="Yjh-hj-ng9" firstAttribute="top" secondItem="xQ4-VL-T3v" secondAttribute="bottom" constant="8" id="Z5U-op-JVN"/>
-                            <constraint firstItem="bNz-KC-dGp" firstAttribute="height" secondItem="5ew-X1-ZxO" secondAttribute="height" id="buv-F2-azZ"/>
-                            <constraint firstItem="CEH-R0-Vr4" firstAttribute="trailing" secondItem="5ew-X1-ZxO" secondAttribute="trailing" constant="10" id="fix-RE-aJb"/>
-                            <constraint firstItem="dFe-VG-Qpt" firstAttribute="width" secondItem="Yjh-hj-ng9" secondAttribute="width" id="lJi-ec-3YG"/>
-                            <constraint firstItem="xQ4-VL-T3v" firstAttribute="top" secondItem="bNz-KC-dGp" secondAttribute="bottom" constant="8" id="m59-hF-jZR"/>
-                            <constraint firstItem="Cgr-th-fp9" firstAttribute="centerX" secondItem="bNz-KC-dGp" secondAttribute="centerX" id="oKK-oy-H8m"/>
-                            <constraint firstItem="5ew-X1-ZxO" firstAttribute="width" secondItem="6zv-NK-uf9" secondAttribute="width" multiplier="0.45" id="qg5-YR-PPf"/>
-                            <constraint firstItem="bNz-KC-dGp" firstAttribute="leading" secondItem="CEH-R0-Vr4" secondAttribute="leading" constant="10" id="sOe-uv-igb"/>
-                            <constraint firstItem="CEH-R0-Vr4" firstAttribute="bottom" secondItem="dFe-VG-Qpt" secondAttribute="bottom" constant="8" id="xIk-XQ-jz6"/>
-                            <constraint firstItem="5ew-X1-ZxO" firstAttribute="top" secondItem="ObW-mT-MBA" secondAttribute="bottom" constant="8" id="xlW-iP-WXK"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="CEH-R0-Vr4"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="FQb-HQ-1jz"/>
+                    <navigationItem key="navigationItem" id="gAr-Vi-kZa"/>
                     <connections>
-                        <outlet property="sleepPicker" destination="5ew-X1-ZxO" id="uAF-5G-bvH"/>
-                        <outlet property="timeCollection" destination="dFe-VG-Qpt" id="m42-NX-lrU"/>
-                        <outlet property="wakeUpPicker" destination="bNz-KC-dGp" id="MWj-MT-tKd"/>
-                        <outlet property="weakLabel" destination="v5T-8o-spw" id="K4y-aB-cjT"/>
+                        <outlet property="calendarWeekView" destination="ZHI-cy-vXc" id="7L8-eI-ZIu"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rDX-js-MLy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YZZ-zL-igf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1556.521739130435" y="166.74107142857142"/>
+            <point key="canvasLocation" x="-376.81159420289856" y="12.723214285714285"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="RpV-OQ-gWq">
+        <scene sceneID="A7X-We-Cmk">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="95C-24-Hbl" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c1A-0B-hec" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mXH-Bi-WOH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FAI-0J-yh8">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="esD-6H-f6c" kind="relationship" relationship="rootViewController" id="TtP-9U-cwd"/>
+                        <segue destination="d7S-p4-SRg" kind="relationship" relationship="rootViewController" id="09r-aR-aX6"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zfh-F6-dS6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xDB-2r-5u6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="646.37681159420299" y="166.74107142857142"/>
+            <point key="canvasLocation" x="-1286.9565217391305" y="12.723214285714285"/>
         </scene>
     </scenes>
 </document>

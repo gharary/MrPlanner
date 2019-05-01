@@ -33,10 +33,6 @@
 		5F7C215622195CB7002FAEBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F7C215422195CB7002FAEBF /* LaunchScreen.storyboard */; };
 		5F7C215E22195E45002FAEBF /* BookDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7C215D22195E45002FAEBF /* BookDetail.swift */; };
 		5F9D8B112265C22B0086E1F6 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F9D8B102265C22B0086E1F6 /* Calendar.storyboard */; };
-		5F9D8B132265C2AB0086E1F6 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9D8B122265C2AB0086E1F6 /* CustomCell.swift */; };
-		5F9D8B152265C39B0086E1F6 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9D8B142265C39B0086E1F6 /* CalendarVC.swift */; };
-		5F9D8B17226725040086E1F6 /* TimePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9D8B16226725040086E1F6 /* TimePickerVC.swift */; };
-		5F9D8B19226770720086E1F6 /* TimePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9D8B18226770720086E1F6 /* TimePickerCell.swift */; };
 		5FABC874223E9AB500E275BE /* SF-Pro-Text-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5FABC856223E9AAB00E275BE /* SF-Pro-Text-BoldItalic.otf */; };
 		5FABC875223E9AB500E275BE /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5FABC857223E9AAC00E275BE /* SF-Pro-Text-Semibold.otf */; };
 		5FABC876223E9AB500E275BE /* SF-Pro-Display-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5FABC858223E9AAC00E275BE /* SF-Pro-Display-RegularItalic.otf */; };
@@ -107,6 +103,14 @@
 		5FB412B4222AC8B800B4A3E7 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB412B3222AC8B800B4A3E7 /* TabBar.swift */; };
 		5FB7E626223E2F8200A7B9CB /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7E625223E2F8100A7B9CB /* Books.swift */; };
 		5FB7E629223E3B1B00A7B9CB /* BookDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7E628223E3B1B00A7B9CB /* BookDetailVC.swift */; };
+		5FC9FA3122782A1900777AA5 /* DefaultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9FA2B22782A1700777AA5 /* DefaultViewModel.swift */; };
+		5FC9FA3222782A1900777AA5 /* DefaultWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9FA2C22782A1800777AA5 /* DefaultWeekView.swift */; };
+		5FC9FA3322782A1900777AA5 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9FA2D22782A1800777AA5 /* EventCell.swift */; };
+		5FC9FA3422782A1900777AA5 /* DefaultEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9FA2E22782A1800777AA5 /* DefaultEvent.swift */; };
+		5FC9FA3522782A1900777AA5 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FC9FA2F22782A1900777AA5 /* EventCell.xib */; };
+		5FC9FA3622782A1900777AA5 /* DefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9FA3022782A1900777AA5 /* DefaultViewController.swift */; };
+		5FC9FA3A22782A3600777AA5 /* ToastUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9FA3822782A3500777AA5 /* ToastUtil.swift */; };
+		5FC9FA3B22782A3600777AA5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9FA3922782A3600777AA5 /* Extensions.swift */; };
 		5FD15E0D2225969900DB5BFE /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD15E0C2225969900DB5BFE /* MainVC.swift */; };
 		5FF14D792250AA0300FF42A8 /* ProfileActivePlansTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF14D782250AA0300FF42A8 /* ProfileActivePlansTVC.swift */; };
 		5FF14D7B2250AE0500FF42A8 /* ActivePlansCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF14D7A2250AE0500FF42A8 /* ActivePlansCell.swift */; };
@@ -173,10 +177,6 @@
 		5F7C215722195CB7002FAEBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F7C215D22195E45002FAEBF /* BookDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetail.swift; sourceTree = "<group>"; };
 		5F9D8B102265C22B0086E1F6 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
-		5F9D8B122265C2AB0086E1F6 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
-		5F9D8B142265C39B0086E1F6 /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
-		5F9D8B16226725040086E1F6 /* TimePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerVC.swift; sourceTree = "<group>"; };
-		5F9D8B18226770720086E1F6 /* TimePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerCell.swift; sourceTree = "<group>"; };
 		5FABC856223E9AAB00E275BE /* SF-Pro-Text-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-BoldItalic.otf"; sourceTree = "<group>"; };
 		5FABC857223E9AAC00E275BE /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		5FABC858223E9AAC00E275BE /* SF-Pro-Display-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-RegularItalic.otf"; sourceTree = "<group>"; };
@@ -247,6 +247,14 @@
 		5FB412B3222AC8B800B4A3E7 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		5FB7E625223E2F8100A7B9CB /* Books.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
 		5FB7E628223E3B1B00A7B9CB /* BookDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailVC.swift; sourceTree = "<group>"; };
+		5FC9FA2B22782A1700777AA5 /* DefaultViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultViewModel.swift; sourceTree = "<group>"; };
+		5FC9FA2C22782A1800777AA5 /* DefaultWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultWeekView.swift; sourceTree = "<group>"; };
+		5FC9FA2D22782A1800777AA5 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		5FC9FA2E22782A1800777AA5 /* DefaultEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultEvent.swift; sourceTree = "<group>"; };
+		5FC9FA2F22782A1900777AA5 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		5FC9FA3022782A1900777AA5 /* DefaultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultViewController.swift; sourceTree = "<group>"; };
+		5FC9FA3822782A3500777AA5 /* ToastUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastUtil.swift; sourceTree = "<group>"; };
+		5FC9FA3922782A3600777AA5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5FD15E0C2225969900DB5BFE /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		5FF14D782250AA0300FF42A8 /* ProfileActivePlansTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActivePlansTVC.swift; sourceTree = "<group>"; };
 		5FF14D7A2250AE0500FF42A8 /* ActivePlansCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivePlansCell.swift; sourceTree = "<group>"; };
@@ -397,11 +405,8 @@
 		5F9D8B0F2265C18B0086E1F6 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				5FC9FA2A227829CB00777AA5 /* JZCalendar */,
 				5F9D8B102265C22B0086E1F6 /* Calendar.storyboard */,
-				5F9D8B18226770720086E1F6 /* TimePickerCell.swift */,
-				5F9D8B142265C39B0086E1F6 /* CalendarVC.swift */,
-				5F9D8B122265C2AB0086E1F6 /* CustomCell.swift */,
-				5F9D8B16226725040086E1F6 /* TimePickerVC.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -534,6 +539,29 @@
 				5FADA482223D4C2200F1B2A8 /* SplashViewController.swift */,
 			);
 			path = init;
+			sourceTree = "<group>";
+		};
+		5FC9FA2A227829CB00777AA5 /* JZCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				5FC9FA3722782A1E00777AA5 /* Utils */,
+				5FC9FA2E22782A1800777AA5 /* DefaultEvent.swift */,
+				5FC9FA3022782A1900777AA5 /* DefaultViewController.swift */,
+				5FC9FA2B22782A1700777AA5 /* DefaultViewModel.swift */,
+				5FC9FA2C22782A1800777AA5 /* DefaultWeekView.swift */,
+				5FC9FA2D22782A1800777AA5 /* EventCell.swift */,
+				5FC9FA2F22782A1900777AA5 /* EventCell.xib */,
+			);
+			path = JZCalendar;
+			sourceTree = "<group>";
+		};
+		5FC9FA3722782A1E00777AA5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5FC9FA3922782A3600777AA5 /* Extensions.swift */,
+				5FC9FA3822782A3500777AA5 /* ToastUtil.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		74A6A8B1BC4E0EE1E5512F8F /* Pods */ = {
@@ -693,6 +721,7 @@
 				5FABC8AE223E9AE100E275BE /* SF-Compact-Display-Semibold.otf in Resources */,
 				5FABC880223E9AB600E275BE /* SF-Pro-Display-ThinItalic.otf in Resources */,
 				5F64F7C0224F499A00265FF1 /* Profile.storyboard in Resources */,
+				5FC9FA3522782A1900777AA5 /* EventCell.xib in Resources */,
 				5FFA1A402239559E00A484F4 /* FirstView.storyboard in Resources */,
 				5FABC88E223E9AB600E275BE /* SF-Pro-Display-Heavy.otf in Resources */,
 				5FABC8AB223E9AE100E275BE /* SF-Compact-Display-Regular.otf in Resources */,
@@ -757,6 +786,7 @@
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/JZCalendarWeekView/JZCalendarWeekView.framework",
 				"${BUILT_PRODUCTS_DIR}/JonContextMenu/JonContextMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
@@ -783,6 +813,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JZCalendarWeekView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JonContextMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
@@ -862,8 +893,9 @@
 				5F64F7BE224C999300265FF1 /* AddReviewVC.swift in Sources */,
 				5F14A6CA224238AE008384D3 /* TabbarMultipleChild.swift in Sources */,
 				5F467BB8223565C000D3F41F /* SearchResultCVC.swift in Sources */,
+				5FC9FA3A22782A3600777AA5 /* ToastUtil.swift in Sources */,
 				5F7C215E22195E45002FAEBF /* BookDetail.swift in Sources */,
-				5F9D8B132265C2AB0086E1F6 /* CustomCell.swift in Sources */,
+				5FC9FA3422782A1900777AA5 /* DefaultEvent.swift in Sources */,
 				5F76AA7E221C01C0003BE931 /* googleSearchTVC.swift in Sources */,
 				5F64F7C3224F4D2400265FF1 /* ProfileVC.swift in Sources */,
 				5F467BBA223565E700D3F41F /* SearchResultCell.swift in Sources */,
@@ -872,26 +904,28 @@
 				5FB412B0222A8DD500B4A3E7 /* PopularBookCVC.swift in Sources */,
 				5FFA1A422239576A00A484F4 /* FirstViewVC.swift in Sources */,
 				5F64F7C5224F5C3C00265FF1 /* UpperVC.swift in Sources */,
+				5FC9FA3B22782A3600777AA5 /* Extensions.swift in Sources */,
 				5FF26D57224A116500D23645 /* ReviewTVC.swift in Sources */,
 				5F76AA792219A373003BE931 /* BookTVCell.swift in Sources */,
 				5FF14D7B2250AE0500FF42A8 /* ActivePlansCell.swift in Sources */,
+				5FC9FA3122782A1900777AA5 /* DefaultViewModel.swift in Sources */,
 				5FADA483223D4C2200F1B2A8 /* SplashViewController.swift in Sources */,
 				5FB412AB222A7B6900B4A3E7 /* PopularReadersCell.swift in Sources */,
 				5FD15E0D2225969900DB5BFE /* MainVC.swift in Sources */,
 				5F14A6CF2242AC87008384D3 /* DetailVC.swift in Sources */,
-				5F9D8B19226770720086E1F6 /* TimePickerCell.swift in Sources */,
 				5FB412B4222AC8B800B4A3E7 /* TabBar.swift in Sources */,
 				5FFB9E572250E65F00473A5E /* ProfileActivitiesTVC.swift in Sources */,
 				5FB7E626223E2F8200A7B9CB /* Books.swift in Sources */,
 				5FB412AE222A8DC100B4A3E7 /* PopularBookCell.swift in Sources */,
+				5FC9FA3622782A1900777AA5 /* DefaultViewController.swift in Sources */,
 				5FB7E629223E3B1B00A7B9CB /* BookDetailVC.swift in Sources */,
 				5FFB9E592250E7B300473A5E /* ProfileActivitiesCell.swift in Sources */,
 				5FADA47F223CD5EA00F1B2A8 /* goodreadLoginVC.swift in Sources */,
 				5F14A6CD2242AC72008384D3 /* IntroductionVC.swift in Sources */,
+				5FC9FA3322782A1900777AA5 /* EventCell.swift in Sources */,
+				5FC9FA3222782A1900777AA5 /* DefaultWeekView.swift in Sources */,
 				5F7C214C22195CB5002FAEBF /* AppDelegate.swift in Sources */,
 				5FF14D792250AA0300FF42A8 /* ProfileActivePlansTVC.swift in Sources */,
-				5F9D8B152265C39B0086E1F6 /* CalendarVC.swift in Sources */,
-				5F9D8B17226725040086E1F6 /* TimePickerVC.swift in Sources */,
 				5F76AA7C221B0739003BE931 /* UserInfoVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

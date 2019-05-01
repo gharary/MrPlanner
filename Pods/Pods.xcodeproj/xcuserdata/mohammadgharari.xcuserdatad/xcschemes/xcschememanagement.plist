@@ -132,6 +132,11 @@
 		</dict>
 		<key>JZCalendarWeekView.xcscheme</key>
 		<dict>
+<<<<<<< HEAD
+=======
+			<key>isShown</key>
+			<false/>
+>>>>>>> Calendar
 			<key>orderHint</key>
 			<integer>20</integer>
 		</dict>
