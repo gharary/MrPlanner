@@ -28,6 +28,7 @@ target 'MrPlanner' do
   pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
   pod 'Floaty', '~> 4.1.0'
   pod 'JTAppleCalendar', '~> 7.1'
+  pod 'JZCalendarWeekView'
 end
 
 target 'OneSignalNotificationServiceExtension' do
