@@ -1,177 +1,89 @@
 //
-//  SearchResultCVC.swift
+//  BookSelectionVC.swift
 //  MrPlanner
 //
-//  Created by Mohammad Gharari on 3/10/19.
+//  Created by Mohammad Gharari on 5/2/19.
 //  Copyright © 2019 Mohammad Gharari. All rights reserved.
 //
 
 import UIKit
 import Alamofire
 import Kingfisher
-import SwiftyJSON
-import JonContextMenu
 import SVProgressHUD
+import SwiftyJSON
+private let reuseIdentifier = "BookCell"
 
-private let reuseIdentifier = "bookCell"
+class BookSelectionVC: UIViewController {
 
-class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,JonContextMenuDelegate {
-    func menuOpened() {
-        //UIDevice.vibrate()
-        let generator = UIImpactFeedbackGenerator(style: .medium)
-        generator.impactOccurred()
-    }
-    
-    func menuClosed() {
-        
-    }
-    
-    func menuItemWasSelected(item: JonItem) {
-        print("Selected Item is \(String(describing: item.id))")
-    }
-    
-    func menuItemWasActivated(item: JonItem) {
-        
-    }
-    
-    func menuItemWasDeactivated(item: JonItem) {
-        
-    }
-    
-    
-    private var options:[JonItem] = []
-    let items: [(icon: String, color: UIColor)] = [
-        ("icon_home", UIColor(red: 0.19, green: 0.57, blue: 1, alpha: 1)),
-        ("icon_search", UIColor(red: 0.22, green: 0.74, blue: 0, alpha: 1)),
-        ("notifications-btn", UIColor(red: 0.96, green: 0.23, blue: 0.21, alpha: 1)),
-        ("settings-btn", UIColor(red: 0.51, green: 0.15, blue: 1, alpha: 1)),
-        ("nearby-btn", UIColor(red: 1, green: 0.39, blue: 0, alpha: 1))
-    ]
-    
-    
-    let BookCategories: [String] = ["Education","Fiction","Business","Design", "Growth", "Drama", "History", "Horror", "Art", "NonFiction", "Biography"]
+    @IBOutlet weak var collectionView: UICollectionView!
     
     let columns: CGFloat = 3
     let inset: CGFloat = 8.0
     let spacing: CGFloat = 8.0
     let lineSpacing: CGFloat = 8.0
     
-    
     let searchController = UISearchController(searchResultsController: nil)
+    
+    let BookCategories: [String] = ["Education","Fiction","Business","Design", "Growth", "Drama", "History", "Horror", "Art", "NonFiction", "Biography"]
     let baseURL = URL(string: "https://www.googleapis.com/books/v1/volumes")
-    
-    
-    var scopeString: String = ""
-    var currentParsingElement: String = ""
-    var searchTerm: String = ""
+
     var searchData: [Books]!
     {
         didSet{
             self.collectionView.reloadData()
         }
     }
-    var receivedData = Data()
-    var VM_Overlay: UIView = UIView()
-    var activityInd: UIActivityIndicatorView = UIActivityIndicatorView()
-    
     
     override func viewWillAppear(_ animated: Bool) {
-        self.title = "Discover"
+        self.title = "Book Selection!"
         randomCatBook()
-        
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        
-        
-    }
-    
-    
-    private func randomCatBook() {
-        if searchBarIsEmpty() {
-            let i = Int.random(in: 0 ..< BookCategories.count)
-            SVProgressHUD.showProgress(0.2)
-            reqSearchServer(term: "subject=\(BookCategories[i])")
-        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.searchData = []
-        receivedData = Data()
-        setupSearchController()
-    }
+        
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
 
-    func setupSearchController() {
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Books"
-        
-        
-        navigationItem.searchController = searchController
-        navigationItem.searchController?.searchBar.delegate = self
-        definesPresentationContext = true
-        if #available(iOS 11.0, *) {
-            navigationItem.searchController = searchController
-            navigationItem.hidesSearchBarWhenScrolling = false
-            
-        }
-    }
-    deinit {
-        self.searchController.view.removeFromSuperview()
+        collectionView.layer.cornerRadius = 5
     }
     @IBAction func returnBack(_ sender: UIBarButtonItem) {
-        //performSegueToReturnBack()
-        self.dismiss(animated: true, completion: nil)
-    }
-    @objc func handleTap(sender: UITapGestureRecognizer) {
-        performSegue(withIdentifier: "bookDetail", sender: self)
+        self.dismiss(animated: true
+            , completion: nil)
     }
     
-    func searchBarIsEmpty() -> Bool {
-        return (searchController.searchBar.text?.isEmpty)! //?? true
-    }
     
+}
 
-
-    func removeBlur() {
-        for subview in view.subviews {
-            if subview is UIVisualEffectView {
-                subview.removeFromSuperview()
-            }
-        }
-    }
-    
+extension BookSelectionVC: UICollectionViewDataSource, UICollectionViewDelegate {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-    
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of items
+        guard searchData != nil && searchData.count != nil else { return 0 }
+        return searchData.count
         
-        
-        if searchData.count == 0 {
-            return 0
-        } else {
-            return searchData.count
-        }
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        SVProgressHUD.showProgress(1)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SearchResultCell
     
         // Configure the cell
-    
         var dictionary: [Books] = searchData
         
         cell.titleLbl.text = dictionary[indexPath.row].title
         cell.authorLbl.text = dictionary[indexPath.row].authors?[0]
+        
+        cell.checkMarkView.style = .grayedOut
+        cell.checkMarkView.setNeedsDisplay()
         
         if dictionary[indexPath.row].image != nil {
             let str = dictionary[indexPath.row].image
@@ -181,59 +93,24 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
             cell.bookImage.kf.setImage(with: url!)
             
         }
-     
-        
-        //init JonContextMenu
-        
-        let items = [JonItem(id: 1, title: "Google"   , icon: UIImage(named:"google")),
-                   JonItem(id: 2, title: "Twitter"  , icon: UIImage(named:"twitter")),
-                   JonItem(id: 3, title: "Facebook" , icon: UIImage(named:"facebook")),
-                   JonItem(id: 4, title: "Instagram", icon: UIImage(named:"instagram"))]
-        let contextMenu = JonContextMenu().setItems(items)
-
-            .setBackgroundColorTo(.orange)
-            .setItemsDefaultColorTo(.black)
-            .setItemsActiveColorTo(.blue)
-            .setIconsDefaultColorTo(.white)
-            .setItemsActiveColorTo(.white)
-            .setItemsTitleColorTo(.black)
-            .setDelegate(self)
-            .build()
-        
-        self.view.addGestureRecognizer(contextMenu)
-        cell.titleLbl.textColor = UIColor(red: 0.33, green: 0.39, blue: 0.47, alpha: 1)
-        //cell.authorLbl.textColor = UIColor(red: 0.85, green: 0.86, blue: 0.89, alpha: 1)
-        SVProgressHUD.dismiss(withDelay: 0.5)
+    
         return cell
     }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! SearchResultCell
+   
+        cell.checkMarkView.checked = !cell.checkMarkView.checked
+        
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "bookDetail" {
-            if let nav = segue.destination as? UINavigationController, let vc = nav.topViewController as? BookDetailVC {
-            let cell = sender as! UICollectionViewCell
-            
-            if let indexPath = self.collectionView.indexPath(for: cell) {
-            
-            
-                vc.book = searchData?[indexPath.row]
-                vc.bookImage = searchData?[indexPath.row].image ?? ""
-                vc.booktitle = searchData?[indexPath.row].title ?? "No title"
-                vc.bookAuthor = searchData?[indexPath.row].authors?[0] ?? "No Author"
-                vc.bookID = searchData[indexPath.row].id ?? ""
-                //print(searchData[indexPath.row].avgRating!)
-                vc.averageRating = searchData[indexPath.row].avgRating ?? 0
-                }
-            }
-            
-        }
-    }
+
+
 }
 
-extension SearchResultCVC : UICollectionViewDelegateFlowLayout {
+extension BookSelectionVC: UICollectionViewDelegateFlowLayout {
+    
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -263,29 +140,35 @@ extension SearchResultCVC : UICollectionViewDelegateFlowLayout {
         return lineSpacing
     }
 }
-
-
-
-extension SearchResultCVC: UISearchBarDelegate {
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        randomCatBook()
+extension BookSelectionVC: UISearchResultsUpdating {
+    
+    
+    func searchBarIsEmpty() -> Bool {
+        return (searchController.searchBar.text?.isEmpty)!
     }
-}
-extension SearchResultCVC: UISearchResultsUpdating {
+    
+    private func randomCatBook() {
+        
+        
+        
+            let i = Int.random(in: 0 ..< BookCategories.count)
+            //SVProgressHUD.showProgress(0.2)
+            reqSearchServer(term: "subject=\(BookCategories[i])")
+        
+        
+    }
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text {
             reqSearchServer(term: searchText)
         } else {
-            randomCatBook()
-            //collectionView.reloadData()
+            
         }
     }
-    
     
     func reqSearchServer(term: String) {
         
         let parameters: Parameters = ["q":term,"key":"AIzaSyCIXIPXJQwCYE9hHdTghuH-jNRIm2tvx8Y","maxResults":"40"]
-        SVProgressHUD.showProgress(0.3)
+        //SVProgressHUD.showProgress(0.3)
         Alamofire.request(baseURL!, method: .get, parameters: parameters)
             .responseJSON { response in
                 var statusCode = response.response?.statusCode
@@ -295,7 +178,7 @@ extension SearchResultCVC: UISearchResultsUpdating {
                     
                     //print("Success!")
                     if response.data != nil {
-                        SVProgressHUD.showProgress(0.6)
+                        
                         let json = try! JSON(data: response.data!)
                         //print(json)
                         self.searchData = []
@@ -329,9 +212,9 @@ extension SearchResultCVC: UISearchResultsUpdating {
                             //Categories
                             if subJson["volumeInfo"]["categories"].count == 1 {
                                 /*
-                                let item:String = subJson["volumeInfo"]["categories"][0].string!
-                                book.categories?.append(item)
-                                */
+                                 let item:String = subJson["volumeInfo"]["categories"][0].string!
+                                 book.categories?.append(item)
+                                 */
                                 
                                 book.mainCategory = subJson["volumeInfo"]["categories"][0].string!
                                 //print(subJson["volumeInfo"]["categories"][0].string!)
@@ -365,7 +248,7 @@ extension SearchResultCVC: UISearchResultsUpdating {
                             
                         }
                         
-                        SVProgressHUD.showProgress(0.8)
+                        
                         self.collectionView.reloadData()
                         
                     }
@@ -378,4 +261,6 @@ extension SearchResultCVC: UISearchResultsUpdating {
                 }
         }
     }
+    
+    
 }

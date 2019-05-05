@@ -9,9 +9,11 @@
 import UIKit
 
 class SearchResultCell: UICollectionViewCell {
+    
     @IBOutlet weak var bookImage: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var authorLbl: UILabel!
+    @IBOutlet weak var checkMarkView: CheckMarkView!
     
     
     override var bounds: CGRect {

@@ -32,14 +32,28 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oyz-6d-QND"/>
                     </view>
-                    <navigationItem key="navigationItem" id="gAr-Vi-kZa"/>
+                    <navigationItem key="navigationItem" id="gAr-Vi-kZa">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="GIN-Ma-I27">
+                            <connections>
+                                <segue destination="DVS-Gd-Bw9" kind="show" id="O8L-6X-xCY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="calendarWeekView" destination="ZHI-cy-vXc" id="7L8-eI-ZIu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YZZ-zL-igf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-376.81159420289856" y="12.723214285714285"/>
+            <point key="canvasLocation" x="-525" y="-205"/>
+        </scene>
+        <!--‌BookSelection-->
+        <scene sceneID="f2a-WV-9lc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="‌BookSelection" id="DVS-Gd-Bw9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wMn-DK-6hN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="98" y="-460"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="A7X-We-Cmk">
@@ -57,7 +71,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDB-2r-5u6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1286.9565217391305" y="12.723214285714285"/>
+            <point key="canvasLocation" x="-1314" y="-206"/>
         </scene>
     </scenes>
 </document>

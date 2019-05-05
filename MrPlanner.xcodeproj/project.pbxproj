@@ -20,6 +20,7 @@
 		5F64F7C0224F499A00265FF1 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F64F7BF224F499A00265FF1 /* Profile.storyboard */; };
 		5F64F7C3224F4D2400265FF1 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F64F7C2224F4D2400265FF1 /* ProfileVC.swift */; };
 		5F64F7C5224F5C3C00265FF1 /* UpperVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F64F7C4224F5C3C00265FF1 /* UpperVC.swift */; };
+		5F6BBECA22799072001020BB /* ‌BookSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F6BBEC922799072001020BB /* ‌BookSelection.storyboard */; };
 		5F76AA752219993E003BE931 /* SearchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F76AA742219993E003BE931 /* SearchTVC.swift */; };
 		5F76AA792219A373003BE931 /* BookTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F76AA782219A373003BE931 /* BookTVCell.swift */; };
 		5F76AA7C221B0739003BE931 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F76AA7B221B0739003BE931 /* UserInfoVC.swift */; };
@@ -32,6 +33,8 @@
 		5F7C215322195CB7002FAEBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F7C215222195CB7002FAEBF /* Assets.xcassets */; };
 		5F7C215622195CB7002FAEBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F7C215422195CB7002FAEBF /* LaunchScreen.storyboard */; };
 		5F7C215E22195E45002FAEBF /* BookDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7C215D22195E45002FAEBF /* BookDetail.swift */; };
+		5F8F64D9227AD2DA00D86900 /* BookSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F64D8227AD2DA00D86900 /* BookSelectionVC.swift */; };
+		5F8F64DB227AE84700D86900 /* Checkmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F64DA227AE84700D86900 /* Checkmark.swift */; };
 		5F9D8B112265C22B0086E1F6 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F9D8B102265C22B0086E1F6 /* Calendar.storyboard */; };
 		5FABC874223E9AB500E275BE /* SF-Pro-Text-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5FABC856223E9AAB00E275BE /* SF-Pro-Text-BoldItalic.otf */; };
 		5FABC875223E9AB500E275BE /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5FABC857223E9AAC00E275BE /* SF-Pro-Text-Semibold.otf */; };
@@ -159,6 +162,7 @@
 		5F64F7BF224F499A00265FF1 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		5F64F7C2224F4D2400265FF1 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		5F64F7C4224F5C3C00265FF1 /* UpperVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperVC.swift; sourceTree = "<group>"; };
+		5F6BBEC922799072001020BB /* ‌BookSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "‌BookSelection.storyboard"; sourceTree = "<group>"; };
 		5F76AA742219993E003BE931 /* SearchTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTVC.swift; sourceTree = "<group>"; };
 		5F76AA782219A373003BE931 /* BookTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTVCell.swift; sourceTree = "<group>"; };
 		5F76AA7B221B0739003BE931 /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
@@ -176,6 +180,8 @@
 		5F7C215522195CB7002FAEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5F7C215722195CB7002FAEBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F7C215D22195E45002FAEBF /* BookDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetail.swift; sourceTree = "<group>"; };
+		5F8F64D8227AD2DA00D86900 /* BookSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSelectionVC.swift; sourceTree = "<group>"; };
+		5F8F64DA227AE84700D86900 /* Checkmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkmark.swift; sourceTree = "<group>"; };
 		5F9D8B102265C22B0086E1F6 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		5FABC856223E9AAB00E275BE /* SF-Pro-Text-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-BoldItalic.otf"; sourceTree = "<group>"; };
 		5FABC857223E9AAC00E275BE /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
@@ -338,6 +344,16 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		5F6BBEC822798FDB001020BB /* BookSelection */ = {
+			isa = PBXGroup;
+			children = (
+				5F6BBEC922799072001020BB /* ‌BookSelection.storyboard */,
+				5F8F64D8227AD2DA00D86900 /* BookSelectionVC.swift */,
+				5F8F64DA227AE84700D86900 /* Checkmark.swift */,
+			);
+			path = BookSelection;
+			sourceTree = "<group>";
+		};
 		5F76AA7A221B0371003BE931 /* BookSearch */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,6 +422,7 @@
 			isa = PBXGroup;
 			children = (
 				5FC9FA2A227829CB00777AA5 /* JZCalendar */,
+				5F6BBEC822798FDB001020BB /* BookSelection */,
 				5F9D8B102265C22B0086E1F6 /* Calendar.storyboard */,
 			);
 			path = Calendar;
@@ -759,6 +776,7 @@
 				5FABC87B223E9AB600E275BE /* SF-Pro-Display-UltralightItalic.otf in Resources */,
 				5FABC8CC223E9B1500E275BE /* SF-Compact-Rounded-Semibold.otf in Resources */,
 				5FABC8CD223E9B1500E275BE /* SF-Compact-Rounded-Medium.otf in Resources */,
+				5F6BBECA22799072001020BB /* ‌BookSelection.storyboard in Resources */,
 				5FABC88D223E9AB600E275BE /* SF-Pro-Display-LightItalic.otf in Resources */,
 				5FABC88A223E9AB600E275BE /* SF-Pro-Display-BlackItalic.otf in Resources */,
 			);
@@ -902,6 +920,7 @@
 				5FB412A9222A7B5200B4A3E7 /* PopularReadersCVC.swift in Sources */,
 				5F76AA752219993E003BE931 /* SearchTVC.swift in Sources */,
 				5FB412B0222A8DD500B4A3E7 /* PopularBookCVC.swift in Sources */,
+				5F8F64DB227AE84700D86900 /* Checkmark.swift in Sources */,
 				5FFA1A422239576A00A484F4 /* FirstViewVC.swift in Sources */,
 				5F64F7C5224F5C3C00265FF1 /* UpperVC.swift in Sources */,
 				5FC9FA3B22782A3600777AA5 /* Extensions.swift in Sources */,
@@ -912,6 +931,7 @@
 				5FADA483223D4C2200F1B2A8 /* SplashViewController.swift in Sources */,
 				5FB412AB222A7B6900B4A3E7 /* PopularReadersCell.swift in Sources */,
 				5FD15E0D2225969900DB5BFE /* MainVC.swift in Sources */,
+				5F8F64D9227AD2DA00D86900 /* BookSelectionVC.swift in Sources */,
 				5F14A6CF2242AC87008384D3 /* DetailVC.swift in Sources */,
 				5FB412B4222AC8B800B4A3E7 /* TabBar.swift in Sources */,
 				5FFB9E572250E65F00473A5E /* ProfileActivitiesTVC.swift in Sources */,
