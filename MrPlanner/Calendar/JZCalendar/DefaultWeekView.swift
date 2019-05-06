@@ -25,9 +25,9 @@ class DefaultWeekView: JZBaseWeekView {
         
         let event = getCurrentEvent(with: indexPath)
         if selectedTime.firstIndex(of: event!) != nil {
-            cell.backgroundColor = .red
+            cell.backgroundColor = .green
         } else {
-            cell.backgroundColor = .clear//UIColor(hex: 0xEEF7FF)
+            cell.backgroundColor = UIColor(hex: 0xEEF7FF) //.clear//
         }
         
         return cell
@@ -44,14 +44,14 @@ class DefaultWeekView: JZBaseWeekView {
         
         
         let cell = self.collectionView.cellForItem(at: indexPath)
-        if cell?.backgroundColor == UIColor.red {
+        if cell?.backgroundColor == UIColor.green {
             cell?.backgroundColor =  UIColor(hex: 0xEEF7FF)
             let event = getCurrentEvent(with: indexPath)
             selectedTime.remove(at: selectedTime.firstIndex(of: event!)!)
             
         }
         else {
-            cell?.backgroundColor = .red
+            cell?.backgroundColor = .green
             let event = getCurrentEvent(with: indexPath)
             selectedTime.append(event!)
             

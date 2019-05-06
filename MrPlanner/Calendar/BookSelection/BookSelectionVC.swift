@@ -22,6 +22,9 @@ class BookSelectionVC: UIViewController {
     let spacing: CGFloat = 8.0
     let lineSpacing: CGFloat = 8.0
     
+    
+   
+    
     let searchController = UISearchController(searchResultsController: nil)
     
     let BookCategories: [String] = ["Education","Fiction","Business","Design", "Growth", "Drama", "History", "Horror", "Art", "NonFiction", "Biography"]

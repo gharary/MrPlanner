@@ -35,6 +35,10 @@
 		5F7C215E22195E45002FAEBF /* BookDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7C215D22195E45002FAEBF /* BookDetail.swift */; };
 		5F8F64D9227AD2DA00D86900 /* BookSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F64D8227AD2DA00D86900 /* BookSelectionVC.swift */; };
 		5F8F64DB227AE84700D86900 /* Checkmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F64DA227AE84700D86900 /* Checkmark.swift */; };
+		5F8F64DD228004BC00D86900 /* PlanOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F64DC228004BC00D86900 /* PlanOptionsVC.swift */; };
+		5F8F64DF2280213000D86900 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F64DE2280213000D86900 /* NetworkManager.swift */; };
+		5F8F64E12280235E00D86900 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F64E02280235E00D86900 /* LaunchController.swift */; };
+		5F8F64E322802DCC00D86900 /* OfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F64E222802DCC00D86900 /* OfflineViewController.swift */; };
 		5F9D8B112265C22B0086E1F6 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F9D8B102265C22B0086E1F6 /* Calendar.storyboard */; };
 		5FABC874223E9AB500E275BE /* SF-Pro-Text-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5FABC856223E9AAB00E275BE /* SF-Pro-Text-BoldItalic.otf */; };
 		5FABC875223E9AB500E275BE /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5FABC857223E9AAC00E275BE /* SF-Pro-Text-Semibold.otf */; };
@@ -182,6 +186,10 @@
 		5F7C215D22195E45002FAEBF /* BookDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetail.swift; sourceTree = "<group>"; };
 		5F8F64D8227AD2DA00D86900 /* BookSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSelectionVC.swift; sourceTree = "<group>"; };
 		5F8F64DA227AE84700D86900 /* Checkmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkmark.swift; sourceTree = "<group>"; };
+		5F8F64DC228004BC00D86900 /* PlanOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanOptionsVC.swift; sourceTree = "<group>"; };
+		5F8F64DE2280213000D86900 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		5F8F64E02280235E00D86900 /* LaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchController.swift; sourceTree = "<group>"; };
+		5F8F64E222802DCC00D86900 /* OfflineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineViewController.swift; sourceTree = "<group>"; };
 		5F9D8B102265C22B0086E1F6 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		5FABC856223E9AAB00E275BE /* SF-Pro-Text-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-BoldItalic.otf"; sourceTree = "<group>"; };
 		5FABC857223E9AAC00E275BE /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
@@ -349,7 +357,6 @@
 			children = (
 				5F6BBEC922799072001020BB /* ‌BookSelection.storyboard */,
 				5F8F64D8227AD2DA00D86900 /* BookSelectionVC.swift */,
-				5F8F64DA227AE84700D86900 /* Checkmark.swift */,
 			);
 			path = BookSelection;
 			sourceTree = "<group>";
@@ -424,6 +431,7 @@
 				5FC9FA2A227829CB00777AA5 /* JZCalendar */,
 				5F6BBEC822798FDB001020BB /* BookSelection */,
 				5F9D8B102265C22B0086E1F6 /* Calendar.storyboard */,
+				5F8F64DC228004BC00D86900 /* PlanOptionsVC.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -554,6 +562,10 @@
 				5FB7E625223E2F8100A7B9CB /* Books.swift */,
 				5FB412B3222AC8B800B4A3E7 /* TabBar.swift */,
 				5FADA482223D4C2200F1B2A8 /* SplashViewController.swift */,
+				5F8F64DE2280213000D86900 /* NetworkManager.swift */,
+				5F8F64E02280235E00D86900 /* LaunchController.swift */,
+				5F8F64E222802DCC00D86900 /* OfflineViewController.swift */,
+				5F8F64DA227AE84700D86900 /* Checkmark.swift */,
 			);
 			path = init;
 			sourceTree = "<group>";
@@ -809,6 +821,7 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/RevealingSplashView/RevealingSplashView.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
@@ -836,6 +849,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealingSplashView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
@@ -926,6 +940,7 @@
 				5FC9FA3B22782A3600777AA5 /* Extensions.swift in Sources */,
 				5FF26D57224A116500D23645 /* ReviewTVC.swift in Sources */,
 				5F76AA792219A373003BE931 /* BookTVCell.swift in Sources */,
+				5F8F64DF2280213000D86900 /* NetworkManager.swift in Sources */,
 				5FF14D7B2250AE0500FF42A8 /* ActivePlansCell.swift in Sources */,
 				5FC9FA3122782A1900777AA5 /* DefaultViewModel.swift in Sources */,
 				5FADA483223D4C2200F1B2A8 /* SplashViewController.swift in Sources */,
@@ -946,6 +961,9 @@
 				5FC9FA3222782A1900777AA5 /* DefaultWeekView.swift in Sources */,
 				5F7C214C22195CB5002FAEBF /* AppDelegate.swift in Sources */,
 				5FF14D792250AA0300FF42A8 /* ProfileActivePlansTVC.swift in Sources */,
+				5F8F64DD228004BC00D86900 /* PlanOptionsVC.swift in Sources */,
+				5F8F64E322802DCC00D86900 /* OfflineViewController.swift in Sources */,
+				5F8F64E12280235E00D86900 /* LaunchController.swift in Sources */,
 				5F76AA7C221B0739003BE931 /* UserInfoVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

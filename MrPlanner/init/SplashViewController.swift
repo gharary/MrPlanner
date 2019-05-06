@@ -5,13 +5,16 @@
 //  Created by Mohammad Gharari on 3/16/19.
 //  Copyright © 2019 Mohammad Gharari. All rights reserved.
 //
-
+//https://medium.freecodecamp.org/how-to-handle-internet-connection-reachability-in-swift-34482301ea57
 import UIKit
 import RevealingSplashView
 
 
 class SplashViewController: UIViewController {
 
+    
+    let network: NetworkManager = NetworkManager.sharedInstance
+    
     
     //@IBOutlet weak var logo: 
     override func viewDidLoad() {
@@ -29,12 +32,38 @@ class SplashViewController: UIViewController {
         //Starts animation
         revealingSplashView.startAnimation(){
             print("Completed")
-            self.performSegue(withIdentifier: "showMain", sender: self)
+            self.checkNetwork()
+            //self.performSegue(withIdentifier: "showMain", sender: self)
         }
         
         // Do any additional setup after loading the view.
     }
     
+    private func checkNetwork() {
+        
+        NetworkManager.isReachable { (_) in
+            self.showMainPage()
+            }
+        
+        NetworkManager.isUnreachable { (_) in
+            self.showOfflinePage()
+        }
+    }
+    
+    private func showOfflinePage() -> Void {
+        DispatchQueue.main.async {
+            self.performSegue(
+                withIdentifier: "NetworkUnavailable", sender: self)
+        }
+    }
+    private func showMainPage() -> Void {
+        DispatchQueue.main.async {
+            self.performSegue(
+                withIdentifier: "showMain",
+                sender: self
+            )
+        }
+    }
 
     /*
     // MARK: - Navigation

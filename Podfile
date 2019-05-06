@@ -29,6 +29,7 @@ target 'MrPlanner' do
   pod 'Floaty', '~> 4.1.0'
   pod 'JTAppleCalendar', '~> 7.1'
   pod 'JZCalendarWeekView'
+  pod 'ReachabilitySwift'
 end
 
 target 'OneSignalNotificationServiceExtension' do

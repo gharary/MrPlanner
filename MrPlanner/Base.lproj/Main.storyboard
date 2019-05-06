@@ -372,6 +372,33 @@
             </objects>
             <point key="canvasLocation" x="-274" y="-573"/>
         </scene>
+        <!--Offline View Controller-->
+        <scene sceneID="FxO-p2-rwj">
+            <objects>
+                <viewController id="F1Z-an-zvz" customClass="OfflineViewController" customModule="MrPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NFd-93-49f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Offline" translatesAutoresizingMaskIntoConstraints="NO" id="66h-mx-5BW">
+                                <rect key="frame" x="37" y="158" width="301" height="157"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="66h-mx-5BW" firstAttribute="top" secondItem="pW4-wW-QJu" secondAttribute="top" constant="138" id="6KL-Lx-jgA"/>
+                            <constraint firstItem="66h-mx-5BW" firstAttribute="centerX" secondItem="NFd-93-49f" secondAttribute="centerX" id="nui-IS-n5x"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pW4-wW-QJu"/>
+                    </view>
+                    <connections>
+                        <segue destination="cJa-nH-Bhm" kind="show" identifier="showMainController" id="g2A-2C-riM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OEO-Nq-YJh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1695" y="-273"/>
+        </scene>
         <!--Custom Tabbar Controller-->
         <scene sceneID="Q1N-N9-ATN">
             <objects>
@@ -408,7 +435,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zBH-vo-4Ol" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-884" y="97.601199400299862"/>
+            <point key="canvasLocation" x="-692" y="98"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="Rrc-Xe-yac">
@@ -433,15 +460,17 @@
                     </view>
                     <connections>
                         <segue destination="cJa-nH-Bhm" kind="presentation" identifier="showMain" id="CGt-q7-SqB"/>
+                        <segue destination="F1Z-an-zvz" kind="show" identifier="NetworkUnavailable" id="drS-7V-euF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0s3-hb-IgV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1882" y="98"/>
+            <point key="canvasLocation" x="-2484" y="98"/>
         </scene>
     </scenes>
     <resources>
         <image name="HomeTab" width="26" height="24"/>
+        <image name="Offline" width="301" height="157"/>
         <image name="Splash" width="375" height="667"/>
         <image name="schdule" width="347" height="145"/>
         <namedColor name="greyBlue">
@@ -449,6 +478,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="g2A-2C-riM"/>
         <segue reference="u6M-58-lX9"/>
     </inferredMetricsTieBreakers>
 </document>

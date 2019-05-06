@@ -14,6 +14,12 @@ class DefaultViewController: UIViewController {
     @IBOutlet weak var calendarWeekView: DefaultWeekView!
     
     let viewModel = DefaultViewModel()
+    
+    var wakeupTime:Date = Date()
+    var sleepTime:Date = Date()
+    var weekduration: Int = 0
+    
+    
     var fullGridEvents = [DefaultEvent]()
     
     
@@ -39,14 +45,18 @@ class DefaultViewController: UIViewController {
         
         // Basic setup
         let eventsByDate = JZWeekViewHelper.getIntraEventsByDate(originalEvents: fullGridEvents)
+        
+    
+        
+        let endDate = Date().add(component: .weekOfMonth, value: weekduration)
         calendarWeekView.setupCalendar(numOfDays: 7,
                                        setDate: Date(),
                                        allEvents: eventsByDate,
                                        scrollType: .pageScroll,
                                        firstDayOfWeek: .Monday,
                                        currentTimelineType: .page,
-                                       visibleTime: Date())
-                                       //,scrollableRange: (startDate: startDate, endDate: endDate))
+                                       visibleTime: Date()
+                                       ,scrollableRange: (startDate: Date(), endDate: endDate))
         // Optional
         calendarWeekView.updateFlowLayout(JZWeekViewFlowLayout(hourGridDivision: JZHourGridDivision.noneDiv))
     }
@@ -75,16 +85,26 @@ extension DefaultViewController: JZBaseViewDelegate {
     
     func setupEvents() {
         fullGridEvents.removeAll()
-        let dateBegin = Date().add(component: .day, value: -1)
-        let dateEnd = dateBegin.add(component: .weekOfMonth, value: 2)
+        let calendar = Calendar.current
+        let today = Date().add(component: .day, value: 1)
+        var nextFirstWeekday = DateComponents()
+        nextFirstWeekday.weekday = calendar.firstWeekday
+        //nextMonday.weekday = 3
+        let startDate = calendar.nextDate(after: today,
+                                          matching: nextFirstWeekday,
+                                          matchingPolicy: .nextTimePreservingSmallerComponents)
+        
+        
+        
+        let dateEnd = startDate?.add(component: .weekOfMonth, value: weekduration)
      
         for date in DateRange(calendar: Calendar.autoupdatingCurrent,
-                              startDate: dateBegin,
+                              startDate: startDate!,
                               endDate: dateEnd,
                               component: .day,
                               step: 1)
             {
-                                print(date)
+                                //print(date)
                 fullGridEvents.append(contentsOf: generateDailyEvents(date))
                 //fullGridEvents = generateDailyEvents(date)
         }
