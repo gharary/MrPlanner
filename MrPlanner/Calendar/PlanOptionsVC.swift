@@ -10,12 +10,13 @@ import UIKit
 
 class PlanOptionsVC: UIViewController {
 
-    @IBOutlet weak var wakeupDatePicker: UIDatePicker!
-    @IBOutlet weak var sleepDatePicker: UIDatePicker!
+    
     @IBOutlet weak var planDurationWeek: UIPickerView!
+    @IBOutlet weak var dateBeginTF: UITextField!
+    
     
     var weekDuration:Int = 0
-    
+    let datePicker = UIDatePicker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +29,16 @@ class PlanOptionsVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func returnBack(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showCalendar" {
             let vc = segue.destination as! DefaultViewController
-                
-                vc.wakeupTime = wakeupDatePicker.date
-                vc.sleepTime = sleepDatePicker.date
-                vc.weekduration = weekDuration
+            
+            vc.planBeginDate = dateBeginTF.text!.isEmpty ? "" : dateBeginTF!.text!
+            vc.weekduration = weekDuration
                 
             
         }
@@ -68,8 +71,18 @@ extension PlanOptionsVC: UIPickerViewDataSource, UIPickerViewDelegate {
         weekDuration = row
     }
     
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let attributedString = NSAttributedString(string: String(row), attributes: [NSAttributedString.Key.foregroundColor : UIColor(hexString: "546379")!])
+        return attributedString
+    }
+    
+    
+    
+    
     func setupPicker() {
-        //ToolBar
+        //Formate Date
+        datePicker.datePickerMode = .date
+        
         //ToolBar
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
@@ -77,25 +90,51 @@ extension PlanOptionsVC: UIPickerViewDataSource, UIPickerViewDelegate {
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
         
-        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)
         
         // add toolbar to textField
-        //txtDatePicker.inputAccessoryView = toolbar
+        dateBeginTF.inputAccessoryView = toolbar
+                
         // add datepicker to textField
-        //txtDatePicker.inputView = datePicker
+        dateBeginTF.inputView = datePicker
         
         
+       
         
     }
     @objc func donedatePicker(){
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
-        //txtDatePicker.text = formatter.string(from: datePicker.date)
+        formatter.dateFormat = "yyyy/MM/dd"
+        dateBeginTF.text = formatter.string(from: datePicker.date)
         self.view.endEditing(true)
     }
     
     @objc func cancelDatePicker(){
         self.view.endEditing(true)
+    }
+    
+    
+    @IBAction func TextFieldEditingBegin(_ sender: UITextField) {
+        
+        datePicker.datePickerMode = .date
+        
+        
+        sender.inputView = datePicker
+        datePicker.addTarget(self, action: #selector(datePickerValueChanged(sender:)), for: .valueChanged)
+    }
+    
+    @objc func datePickerValueChanged(sender:UIDatePicker) {
+        
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+        
+        
+        let date = dateFormatter.string(from: sender.date)
+        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        
+        dateBeginTF.text = date
     }
 }

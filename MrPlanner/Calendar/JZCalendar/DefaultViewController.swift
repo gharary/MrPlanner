@@ -15,8 +15,7 @@ class DefaultViewController: UIViewController {
     
     let viewModel = DefaultViewModel()
     
-    var wakeupTime:Date = Date()
-    var sleepTime:Date = Date()
+    var planBeginDate:String = ""
     var weekduration: Int = 0
     
     
@@ -46,11 +45,14 @@ class DefaultViewController: UIViewController {
         // Basic setup
         let eventsByDate = JZWeekViewHelper.getIntraEventsByDate(originalEvents: fullGridEvents)
         
-    
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
         
-        let endDate = Date().add(component: .weekOfMonth, value: weekduration)
+        let beginDate = planBeginDate.isEmpty ? Date() : formatter.date(from: planBeginDate)
+        let endDate = beginDate?.add(component: .weekOfMonth, value: weekduration)
+        
         calendarWeekView.setupCalendar(numOfDays: 7,
-                                       setDate: Date(),
+                                       setDate: beginDate ?? Date(),
                                        allEvents: eventsByDate,
                                        scrollType: .pageScroll,
                                        firstDayOfWeek: .Monday,
@@ -87,10 +89,17 @@ extension DefaultViewController: JZBaseViewDelegate {
         fullGridEvents.removeAll()
         let calendar = Calendar.current
         let today = Date().add(component: .day, value: 1)
+       
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        
+        let beginDate = planBeginDate.isEmpty ? Date() : formatter.date(from: planBeginDate)
+        
+        
         var nextFirstWeekday = DateComponents()
         nextFirstWeekday.weekday = calendar.firstWeekday
         //nextMonday.weekday = 3
-        let startDate = calendar.nextDate(after: today,
+        let startDate = calendar.nextDate(after: beginDate ?? today,
                                           matching: nextFirstWeekday,
                                           matchingPolicy: .nextTimePreservingSmallerComponents)
         
