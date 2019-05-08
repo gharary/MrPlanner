@@ -21,6 +21,7 @@ class ProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = "Profile"
         //setupUpper()
         // Do any additional setup after loading the view.
     }

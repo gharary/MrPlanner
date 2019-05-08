@@ -21,6 +21,7 @@ class PlanOptionsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        dateBeginTF.becomeFirstResponder()
         planDurationWeek.delegate = self
         planDurationWeek.dataSource = self
         

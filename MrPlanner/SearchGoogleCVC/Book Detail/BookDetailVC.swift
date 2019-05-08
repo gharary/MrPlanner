@@ -128,17 +128,17 @@ class BookDetailVC: UIViewController {
     private func checkSegue() {
         switch segueString {
         case "BookDetailVC":
-             navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(addTapped))
+             navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backTapped))
              
         case "bookDetail":
-            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(addTapped))
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backTapped))
             
         default:
-            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(addTapped))
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backTapped))
         }
     }
     
-    @objc func addTapped(){
+    @objc func backTapped(){
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -159,10 +159,11 @@ class BookDetailVC: UIViewController {
         
         
         //Load Categories
+        categoriesView.layer.cornerRadius = 5
         guard book.mainCategory != nil else { return }
         
             guard let width = book.mainCategory?.stringWidth else { return  }
-            let label = UILabel(frame: CGRect(x: 6, y: 0, width: width, height: 25))
+            let label = UILabel(frame: CGRect(x: 6, y: 2, width: width, height: 25))
             label.backgroundColor = UIColor(hexString: "D8DCE2")
             label.layer.cornerRadius = 5
             label.clipsToBounds = true
@@ -239,7 +240,7 @@ class BookDetailVC: UIViewController {
         
         //ContainerView init
         containerView.clipsToBounds = true
-        containerView.layer.cornerRadius = 15
+        containerView.layer.cornerRadius = 5
         
         
         

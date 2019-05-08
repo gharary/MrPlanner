@@ -13,11 +13,17 @@ import UIKit
 
 class MainVC: UIViewController{
 
+    @IBOutlet weak var image: UIImageView!
+    
     @IBOutlet weak var popularBookUIView: UIView!
     @IBOutlet weak var popularReaderUIView: UIView!
     
    
     
+    override func viewDidLoad() {
+        self.title = "Home"
+        image.layer.cornerRadius = 15
+    }
     /*
     // MARK: - Navigation
 

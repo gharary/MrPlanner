@@ -23,6 +23,7 @@ class ReviewTVC: UITableViewController, FloatyDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         floatingButton()
+        self.view.layer.cornerRadius = 5
     }
     
     private func floatingButton() {

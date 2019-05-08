@@ -28,7 +28,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.95715135340000002" green="0.94560986759999999" blue="0.91623795029999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ZHI-cy-vXc" firstAttribute="leading" secondItem="oyz-6d-QND" secondAttribute="leading" id="56Z-zC-wbF"/>
                             <constraint firstItem="oyz-6d-QND" firstAttribute="bottom" secondItem="ZHI-cy-vXc" secondAttribute="bottom" id="KEG-21-spr"/>

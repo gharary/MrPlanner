@@ -14,7 +14,7 @@ import JonContextMenu
 import SVProgressHUD
 
 
-private let reuseIdentifier = "BookCell"
+private let reuseIdentifier = "bookCell"
 
 class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
     func menuOpened() {
@@ -58,7 +58,7 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         //SVProgressHUD.setContainerView(MainVC)
-        SVProgressHUD.showProgress(0.1)
+        //SVProgressHUD.showProgress(0.1)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +70,7 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
     private func randomCatBook() {
         self.searchData = []
         let i = Int.random(in: 0 ..< BookCategories.count)
-        SVProgressHUD.showProgress(0.2)
+        //SVProgressHUD.showProgress(0.2)
         reqSearchServer(term: "subject=\(BookCategories[i])")
     }
     

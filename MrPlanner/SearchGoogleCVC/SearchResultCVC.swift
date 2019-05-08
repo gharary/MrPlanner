@@ -77,6 +77,7 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
     
     override func viewWillAppear(_ animated: Bool) {
         self.title = "Discover"
+        SVProgressHUD.dismiss()
         randomCatBook()
         
     }
