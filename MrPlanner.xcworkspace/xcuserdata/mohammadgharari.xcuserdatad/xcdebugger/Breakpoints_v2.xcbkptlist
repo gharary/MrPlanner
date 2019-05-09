@@ -153,11 +153,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MrPlanner/AppDelegate.swift"
-            timestampString = "579094378.93291"
+            timestampString = "579105954.496383"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "registerForPushNotification()"
             landmarkType = "7">
          </BreakpointContent>

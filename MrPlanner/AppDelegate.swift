@@ -41,8 +41,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
             //self.presentViewController(walkthroughVC, animated: true)
                 
+        } else if !defaults.bool(forKey: "Login") {
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "RegisterVC")
+            
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+            
         }
-        
         
         
         // Firebase Messagin Config

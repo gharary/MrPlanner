@@ -122,6 +122,8 @@
 		5FE54D7A228421970096402A /* WalkthroughVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE54D79228421970096402A /* WalkthroughVC.swift */; };
 		5FE54D7C228421DF0096402A /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE54D7B228421DF0096402A /* Slide.swift */; };
 		5FE54D802284271C0096402A /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FE54D7F2284271C0096402A /* Slide.xib */; };
+		5FE54D8322844A4E0096402A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE54D8222844A4E0096402A /* Login.storyboard */; };
+		5FE54D852284700C0096402A /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE54D842284700C0096402A /* RegisterVC.swift */; };
 		5FF14D792250AA0300FF42A8 /* ProfileActivePlansTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF14D782250AA0300FF42A8 /* ProfileActivePlansTVC.swift */; };
 		5FF14D7B2250AE0500FF42A8 /* ActivePlansCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF14D7A2250AE0500FF42A8 /* ActivePlansCell.swift */; };
 		5FF26D57224A116500D23645 /* ReviewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF26D56224A116500D23645 /* ReviewTVC.swift */; };
@@ -276,6 +278,8 @@
 		5FE54D79228421970096402A /* WalkthroughVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughVC.swift; sourceTree = "<group>"; };
 		5FE54D7B228421DF0096402A /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		5FE54D7F2284271C0096402A /* Slide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
+		5FE54D8222844A4E0096402A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		5FE54D842284700C0096402A /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		5FF14D782250AA0300FF42A8 /* ProfileActivePlansTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActivePlansTVC.swift; sourceTree = "<group>"; };
 		5FF14D7A2250AE0500FF42A8 /* ActivePlansCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivePlansCell.swift; sourceTree = "<group>"; };
 		5FF26D56224A116500D23645 /* ReviewTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTVC.swift; sourceTree = "<group>"; };
@@ -422,6 +426,7 @@
 				5F5A734722363D9F0003F66E /* SearchGoogleCVC */,
 				5F76AA7A221B0371003BE931 /* BookSearch */,
 				5FB7E624223E2F0300A7B9CB /* FirstView */,
+				5FE54D81228449FA0096402A /* LoginRegister */,
 				5F7C214F22195CB5002FAEBF /* Main.storyboard */,
 				5F7C215422195CB7002FAEBF /* LaunchScreen.storyboard */,
 				5F7C215222195CB7002FAEBF /* Assets.xcassets */,
@@ -602,6 +607,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		5FE54D81228449FA0096402A /* LoginRegister */ = {
+			isa = PBXGroup;
+			children = (
+				5FE54D8222844A4E0096402A /* Login.storyboard */,
+				5FE54D842284700C0096402A /* RegisterVC.swift */,
+			);
+			path = LoginRegister;
+			sourceTree = "<group>";
+		};
 		74A6A8B1BC4E0EE1E5512F8F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -734,6 +748,7 @@
 				5FABC8BB223E9AE100E275BE /* SF-Compact-Text-HeavyItalic.otf in Resources */,
 				5FABC886223E9AB600E275BE /* SF-Pro-Display-Black.otf in Resources */,
 				5FE54D802284271C0096402A /* Slide.xib in Resources */,
+				5FE54D8322844A4E0096402A /* Login.storyboard in Resources */,
 				5F467BB62235652400D3F41F /* GoogleSearchCollectionResult.storyboard in Resources */,
 				5FABC8AA223E9AE100E275BE /* SF-Compact-Text-Bold.otf in Resources */,
 				5FABC87D223E9AB600E275BE /* SF-Pro-Display-Ultralight.otf in Resources */,
@@ -961,6 +976,7 @@
 				5F14A6CF2242AC87008384D3 /* DetailVC.swift in Sources */,
 				5FB412B4222AC8B800B4A3E7 /* TabBar.swift in Sources */,
 				5FFB9E572250E65F00473A5E /* ProfileActivitiesTVC.swift in Sources */,
+				5FE54D852284700C0096402A /* RegisterVC.swift in Sources */,
 				5FB7E626223E2F8200A7B9CB /* Books.swift in Sources */,
 				5FB412AE222A8DC100B4A3E7 /* PopularBookCell.swift in Sources */,
 				5FC9FA3622782A1900777AA5 /* DefaultViewController.swift in Sources */,
