@@ -25,6 +25,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         //Config IQKeyboardManager
         IQKeyboardManager.shared.enable = true
         
+        //Showing Walkthrough View
+        // this should be your initial view controller
+        
+        let defaults = UserDefaults.standard
+        if !defaults.bool(forKey: "walkthroughSeen") {
+                // create page view controller and display
+            let storyboard = UIStoryboard(name: "FirstView", bundle: nil)
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "WalkthroughVC")
+            
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+            
+            //defaults.set(true, forKey: "walkthroughSeen")
+
+            //self.presentViewController(walkthroughVC, animated: true)
+                
+        }
+        
+        
         
         // Firebase Messagin Config
         if #available(iOS 10.0, *) {
@@ -68,6 +87,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     // The callback to handle data message received via FCM for devices running iOS 10 or above.
+    /*
+     func checkLogin() {
+     
+     if let login = defaults.object(forKey: "loggedIn")
+     {
+     if login as? Bool == true {
+     resetDefaults()
+     //Show main VC
+     let storyboard = UIStoryboard(name: "Main", bundle: nil)
+     
+     let initialViewController = storyboard.instantiateViewController(withIdentifier: "mainTabbarVC")
+     
+     self.window?.rootViewController = initialViewController
+     self.window?.makeKeyAndVisible()
+     }
+     
+     } else {
+     let storyboard = UIStoryboard(name: "Register", bundle: nil)
+     
+     let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginSignupVC")
+     
+     self.window?.rootViewController = initialViewController
+     self.window?.makeKeyAndVisible()
+     //show register VC
+     
+     }
+     }
+ */
     
     func registerForPushNotification() {
         UNUserNotificationCenter.current()

@@ -119,6 +119,9 @@
 		5FC9FA3A22782A3600777AA5 /* ToastUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9FA3822782A3500777AA5 /* ToastUtil.swift */; };
 		5FC9FA3B22782A3600777AA5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9FA3922782A3600777AA5 /* Extensions.swift */; };
 		5FD15E0D2225969900DB5BFE /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD15E0C2225969900DB5BFE /* MainVC.swift */; };
+		5FE54D7A228421970096402A /* WalkthroughVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE54D79228421970096402A /* WalkthroughVC.swift */; };
+		5FE54D7C228421DF0096402A /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE54D7B228421DF0096402A /* Slide.swift */; };
+		5FE54D802284271C0096402A /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FE54D7F2284271C0096402A /* Slide.xib */; };
 		5FF14D792250AA0300FF42A8 /* ProfileActivePlansTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF14D782250AA0300FF42A8 /* ProfileActivePlansTVC.swift */; };
 		5FF14D7B2250AE0500FF42A8 /* ActivePlansCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF14D7A2250AE0500FF42A8 /* ActivePlansCell.swift */; };
 		5FF26D57224A116500D23645 /* ReviewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF26D56224A116500D23645 /* ReviewTVC.swift */; };
@@ -270,6 +273,9 @@
 		5FC9FA3822782A3500777AA5 /* ToastUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastUtil.swift; sourceTree = "<group>"; };
 		5FC9FA3922782A3600777AA5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5FD15E0C2225969900DB5BFE /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		5FE54D79228421970096402A /* WalkthroughVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughVC.swift; sourceTree = "<group>"; };
+		5FE54D7B228421DF0096402A /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
+		5FE54D7F2284271C0096402A /* Slide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		5FF14D782250AA0300FF42A8 /* ProfileActivePlansTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActivePlansTVC.swift; sourceTree = "<group>"; };
 		5FF14D7A2250AE0500FF42A8 /* ActivePlansCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivePlansCell.swift; sourceTree = "<group>"; };
 		5FF26D56224A116500D23645 /* ReviewTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTVC.swift; sourceTree = "<group>"; };
@@ -549,8 +555,11 @@
 			isa = PBXGroup;
 			children = (
 				5FFA1A3F2239559E00A484F4 /* FirstView.storyboard */,
+				5FE54D7B228421DF0096402A /* Slide.swift */,
 				5FADA47E223CD5EA00F1B2A8 /* goodreadLoginVC.swift */,
 				5FFA1A412239576A00A484F4 /* FirstViewVC.swift */,
+				5FE54D79228421970096402A /* WalkthroughVC.swift */,
+				5FE54D7F2284271C0096402A /* Slide.xib */,
 			);
 			path = FirstView;
 			sourceTree = "<group>";
@@ -724,6 +733,7 @@
 				5F7C215622195CB7002FAEBF /* LaunchScreen.storyboard in Resources */,
 				5FABC8BB223E9AE100E275BE /* SF-Compact-Text-HeavyItalic.otf in Resources */,
 				5FABC886223E9AB600E275BE /* SF-Pro-Display-Black.otf in Resources */,
+				5FE54D802284271C0096402A /* Slide.xib in Resources */,
 				5F467BB62235652400D3F41F /* GoogleSearchCollectionResult.storyboard in Resources */,
 				5FABC8AA223E9AE100E275BE /* SF-Compact-Text-Bold.otf in Resources */,
 				5FABC87D223E9AB600E275BE /* SF-Pro-Display-Ultralight.otf in Resources */,
@@ -946,6 +956,7 @@
 				5FADA483223D4C2200F1B2A8 /* SplashViewController.swift in Sources */,
 				5FB412AB222A7B6900B4A3E7 /* PopularReadersCell.swift in Sources */,
 				5FD15E0D2225969900DB5BFE /* MainVC.swift in Sources */,
+				5FE54D7C228421DF0096402A /* Slide.swift in Sources */,
 				5F8F64D9227AD2DA00D86900 /* BookSelectionVC.swift in Sources */,
 				5F14A6CF2242AC87008384D3 /* DetailVC.swift in Sources */,
 				5FB412B4222AC8B800B4A3E7 /* TabBar.swift in Sources */,
@@ -957,6 +968,7 @@
 				5FFB9E592250E7B300473A5E /* ProfileActivitiesCell.swift in Sources */,
 				5FADA47F223CD5EA00F1B2A8 /* goodreadLoginVC.swift in Sources */,
 				5F14A6CD2242AC72008384D3 /* IntroductionVC.swift in Sources */,
+				5FE54D7A228421970096402A /* WalkthroughVC.swift in Sources */,
 				5FC9FA3322782A1900777AA5 /* EventCell.swift in Sources */,
 				5FC9FA3222782A1900777AA5 /* DefaultWeekView.swift in Sources */,
 				5F7C214C22195CB5002FAEBF /* AppDelegate.swift in Sources */,

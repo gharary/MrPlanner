@@ -408,7 +408,7 @@
         <!--Custom Tabbar Controller-->
         <scene sceneID="Q1N-N9-ATN">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="cJa-nH-Bhm" customClass="CustomTabbarController" customModule="MrPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Tabbar" automaticallyAdjustsScrollViewInsets="NO" id="cJa-nH-Bhm" customClass="CustomTabbarController" customModule="MrPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VoJ-gi-6as">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
