@@ -47,14 +47,7 @@ class FirstViewVC: UIViewController, UIPopoverPresentationControllerDelegate {
         
     }
     @IBAction func goodReadsLoginBtn(_ sender: UIButton) {
-        /*
-        let popup = goodreadLoginVC.create()
-        let sbPopup = SBCardPopupViewController(contentViewController: popup)
-        sbPopup.show(onViewController: self)
-        //sbPopup.show(onViewController: self)
-        
-        */
-        //print("Login Clicked!")
+
         let storyBoard: UIStoryboard = UIStoryboard(name: "FirstView", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "goodreadLoginVC")
         vc.modalPresentationStyle = .popover

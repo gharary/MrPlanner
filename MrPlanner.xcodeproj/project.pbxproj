@@ -124,6 +124,14 @@
 		5FE54D802284271C0096402A /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FE54D7F2284271C0096402A /* Slide.xib */; };
 		5FE54D8322844A4E0096402A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE54D8222844A4E0096402A /* Login.storyboard */; };
 		5FE54D852284700C0096402A /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE54D842284700C0096402A /* RegisterVC.swift */; };
+		5FE54D872288A3810096402A /* GoodreadsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE54D862288A3810096402A /* GoodreadsService.swift */; };
+		5FE54D892288A76F0096402A /* Secrets.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5FE54D882288A76F0096402A /* Secrets.strings */; };
+		5FE54D8C2288AA3A0096402A /* AuthStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE54D8B2288AA3A0096402A /* AuthStorageService.swift */; };
+		5FE54D8E2288AABD0096402A /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE54D8D2288AABD0096402A /* KeychainPasswordItem.swift */; };
+		5FE54D902289876C0096402A /* Shelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE54D8F2289876C0096402A /* Shelf.swift */; };
+		5FE54D9222898D5C0096402A /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE54D9122898D5C0096402A /* Book.swift */; };
+		5FE54D9422898E190096402A /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE54D9322898E190096402A /* Author.swift */; };
+		5FE54D962289D8520096402A /* GoodreadsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE54D952289D8520096402A /* GoodreadsVC.swift */; };
 		5FF14D792250AA0300FF42A8 /* ProfileActivePlansTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF14D782250AA0300FF42A8 /* ProfileActivePlansTVC.swift */; };
 		5FF14D7B2250AE0500FF42A8 /* ActivePlansCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF14D7A2250AE0500FF42A8 /* ActivePlansCell.swift */; };
 		5FF26D57224A116500D23645 /* ReviewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF26D56224A116500D23645 /* ReviewTVC.swift */; };
@@ -280,6 +288,14 @@
 		5FE54D7F2284271C0096402A /* Slide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		5FE54D8222844A4E0096402A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		5FE54D842284700C0096402A /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		5FE54D862288A3810096402A /* GoodreadsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodreadsService.swift; sourceTree = "<group>"; };
+		5FE54D882288A76F0096402A /* Secrets.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Secrets.strings; sourceTree = "<group>"; };
+		5FE54D8B2288AA3A0096402A /* AuthStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStorageService.swift; sourceTree = "<group>"; };
+		5FE54D8D2288AABD0096402A /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
+		5FE54D8F2289876C0096402A /* Shelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shelf.swift; sourceTree = "<group>"; };
+		5FE54D9122898D5C0096402A /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		5FE54D9322898E190096402A /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
+		5FE54D952289D8520096402A /* GoodreadsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodreadsVC.swift; sourceTree = "<group>"; };
 		5FF14D782250AA0300FF42A8 /* ProfileActivePlansTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActivePlansTVC.swift; sourceTree = "<group>"; };
 		5FF14D7A2250AE0500FF42A8 /* ActivePlansCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivePlansCell.swift; sourceTree = "<group>"; };
 		5FF26D56224A116500D23645 /* ReviewTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTVC.swift; sourceTree = "<group>"; };
@@ -425,6 +441,7 @@
 				5F64F7C1224F49AE00265FF1 /* Profile */,
 				5F5A734722363D9F0003F66E /* SearchGoogleCVC */,
 				5F76AA7A221B0371003BE931 /* BookSearch */,
+				5FE54D8A2288AA0B0096402A /* Goodreads */,
 				5FB7E624223E2F0300A7B9CB /* FirstView */,
 				5FE54D81228449FA0096402A /* LoginRegister */,
 				5F7C214F22195CB5002FAEBF /* Main.storyboard */,
@@ -616,6 +633,21 @@
 			path = LoginRegister;
 			sourceTree = "<group>";
 		};
+		5FE54D8A2288AA0B0096402A /* Goodreads */ = {
+			isa = PBXGroup;
+			children = (
+				5FE54D862288A3810096402A /* GoodreadsService.swift */,
+				5FE54D8F2289876C0096402A /* Shelf.swift */,
+				5FE54D9122898D5C0096402A /* Book.swift */,
+				5FE54D9322898E190096402A /* Author.swift */,
+				5FE54D882288A76F0096402A /* Secrets.strings */,
+				5FE54D8B2288AA3A0096402A /* AuthStorageService.swift */,
+				5FE54D8D2288AABD0096402A /* KeychainPasswordItem.swift */,
+				5FE54D952289D8520096402A /* GoodreadsVC.swift */,
+			);
+			path = Goodreads;
+			sourceTree = "<group>";
+		};
 		74A6A8B1BC4E0EE1E5512F8F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -759,6 +791,7 @@
 				5FABC8CF223E9B1500E275BE /* SF-Compact-Rounded-Ultralight.otf in Resources */,
 				5FABC875223E9AB500E275BE /* SF-Pro-Text-Semibold.otf in Resources */,
 				5FABC8B0223E9AE100E275BE /* SF-Compact-Text-MediumItalic.otf in Resources */,
+				5FE54D892288A76F0096402A /* Secrets.strings in Resources */,
 				5FABC88B223E9AB600E275BE /* SF-Pro-Display-Semibold.otf in Resources */,
 				5FABC8B9223E9AE100E275BE /* SF-Compact-Text-RegularItalic.otf in Resources */,
 				5FABC8AF223E9AE100E275BE /* SF-Compact-Text-Heavy.otf in Resources */,
@@ -844,7 +877,9 @@
 				"${BUILT_PRODUCTS_DIR}/JZCalendarWeekView/JZCalendarWeekView.framework",
 				"${BUILT_PRODUCTS_DIR}/JonContextMenu/JonContextMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/OAuthSwift/OAuthSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Pastel/Pastel.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/RevealingSplashView/RevealingSplashView.framework",
@@ -872,7 +907,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JZCalendarWeekView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JonContextMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OAuthSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pastel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealingSplashView.framework",
@@ -950,12 +987,15 @@
 				5F64F7BE224C999300265FF1 /* AddReviewVC.swift in Sources */,
 				5F14A6CA224238AE008384D3 /* TabbarMultipleChild.swift in Sources */,
 				5F467BB8223565C000D3F41F /* SearchResultCVC.swift in Sources */,
+				5FE54D8E2288AABD0096402A /* KeychainPasswordItem.swift in Sources */,
 				5FC9FA3A22782A3600777AA5 /* ToastUtil.swift in Sources */,
 				5F7C215E22195E45002FAEBF /* BookDetail.swift in Sources */,
 				5FC9FA3422782A1900777AA5 /* DefaultEvent.swift in Sources */,
 				5F76AA7E221C01C0003BE931 /* googleSearchTVC.swift in Sources */,
 				5F64F7C3224F4D2400265FF1 /* ProfileVC.swift in Sources */,
 				5F467BBA223565E700D3F41F /* SearchResultCell.swift in Sources */,
+				5FE54D962289D8520096402A /* GoodreadsVC.swift in Sources */,
+				5FE54D872288A3810096402A /* GoodreadsService.swift in Sources */,
 				5FB412A9222A7B5200B4A3E7 /* PopularReadersCVC.swift in Sources */,
 				5F76AA752219993E003BE931 /* SearchTVC.swift in Sources */,
 				5FB412B0222A8DD500B4A3E7 /* PopularBookCVC.swift in Sources */,
@@ -967,12 +1007,14 @@
 				5F76AA792219A373003BE931 /* BookTVCell.swift in Sources */,
 				5F8F64DF2280213000D86900 /* NetworkManager.swift in Sources */,
 				5FF14D7B2250AE0500FF42A8 /* ActivePlansCell.swift in Sources */,
+				5FE54D9422898E190096402A /* Author.swift in Sources */,
 				5FC9FA3122782A1900777AA5 /* DefaultViewModel.swift in Sources */,
 				5FADA483223D4C2200F1B2A8 /* SplashViewController.swift in Sources */,
 				5FB412AB222A7B6900B4A3E7 /* PopularReadersCell.swift in Sources */,
 				5FD15E0D2225969900DB5BFE /* MainVC.swift in Sources */,
 				5FE54D7C228421DF0096402A /* Slide.swift in Sources */,
 				5F8F64D9227AD2DA00D86900 /* BookSelectionVC.swift in Sources */,
+				5FE54D8C2288AA3A0096402A /* AuthStorageService.swift in Sources */,
 				5F14A6CF2242AC87008384D3 /* DetailVC.swift in Sources */,
 				5FB412B4222AC8B800B4A3E7 /* TabBar.swift in Sources */,
 				5FFB9E572250E65F00473A5E /* ProfileActivitiesTVC.swift in Sources */,
@@ -990,9 +1032,11 @@
 				5F7C214C22195CB5002FAEBF /* AppDelegate.swift in Sources */,
 				5FF14D792250AA0300FF42A8 /* ProfileActivePlansTVC.swift in Sources */,
 				5F8F64DD228004BC00D86900 /* PlanOptionsVC.swift in Sources */,
+				5FE54D902289876C0096402A /* Shelf.swift in Sources */,
 				5F8F64E322802DCC00D86900 /* OfflineViewController.swift in Sources */,
 				5F8F64E12280235E00D86900 /* LaunchController.swift in Sources */,
 				5F76AA7C221B0739003BE931 /* UserInfoVC.swift in Sources */,
+				5FE54D9222898D5C0096402A /* Book.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

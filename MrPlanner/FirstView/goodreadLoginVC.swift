@@ -9,17 +9,13 @@
 import UIKit
 import Alamofire
 import SWXMLHash
+import OAuthSwift
 
 class goodreadLoginVC: UIViewController {
 
-    /*
-    var popupViewController: SBCardPopupViewController?
-    
-    var allowsTapToDismissPopupCard: Bool = true
-    
-    var allowsSwipeToDismissPopupCard: Bool = true
-    */
+  
     //let create initiate for popup
+    
     static func create() -> UIViewController {
         /*
         let storyBoard = UIStoryboard.init(name: "FirstView", bundle: nil).instantiateViewController(withIdentifier: "goodreadLoginVC") as! goodreadLoginVC
@@ -43,7 +39,7 @@ class goodreadLoginVC: UIViewController {
     
      let baseUrl = URL(string: "https://www.goodreads.com/user/show.xml")
     
-    
+  
     override func viewDidAppear(_ animated: Bool) {
         notFoundLbl.alpha = 0
         initBorders()
@@ -52,6 +48,20 @@ class goodreadLoginVC: UIViewController {
         super.viewDidLoad()
         initBorders()
         // Do any additional setup after loading the view.
+    }
+    
+
+    
+    func getUserID(_ oAuth: OAuth1Swift) {
+ 
+        
+    }
+
+    func showAlert(_ title: String? = nil, message: String? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func initBorders() {
@@ -72,6 +82,7 @@ class goodreadLoginVC: UIViewController {
         locationLbl.layer.borderColor = locationLbl.backgroundColor?.cgColor
         locationLbl.layer.borderWidth = 1
         
+        
     }
     
     
@@ -91,10 +102,7 @@ class goodreadLoginVC: UIViewController {
     @IBAction func usernameTFEdit(_ sender: UITextField) {
         notFoundLbl.alpha = 0
     }
-    
-    
-    
-    
+
     func getDataGoodreads(){
         let parameters: Parameters = ["key":"FQ0SFjCwuDb7SRo6bOkPQ","username":usernameTF.text!]
         

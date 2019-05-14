@@ -13,12 +13,19 @@ import FirebaseMessaging
 import OneSignal
 import AVFoundation
 import IQKeyboardManagerSwift
+import OAuthSwift
+
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
 
     var window: UIWindow?
 
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        applicationHandle(url: url)
+        return true
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -36,10 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             
             self.window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
-            
-            //defaults.set(true, forKey: "walkthroughSeen")
-
-            //self.presentViewController(walkthroughVC, animated: true)
+        
                 
         } else if !defaults.bool(forKey: "Login") {
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
@@ -48,6 +52,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             self.window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
             
+        } else {
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "SplashVC")
+            self.window?.rootViewController = vc
+            self.window?.makeKeyAndVisible()
         }
         
         
@@ -92,35 +101,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
-    // The callback to handle data message received via FCM for devices running iOS 10 or above.
-    /*
-     func checkLogin() {
-     
-     if let login = defaults.object(forKey: "loggedIn")
-     {
-     if login as? Bool == true {
-     resetDefaults()
-     //Show main VC
-     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-     
-     let initialViewController = storyboard.instantiateViewController(withIdentifier: "mainTabbarVC")
-     
-     self.window?.rootViewController = initialViewController
-     self.window?.makeKeyAndVisible()
-     }
-     
-     } else {
-     let storyboard = UIStoryboard(name: "Register", bundle: nil)
-     
-     let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginSignupVC")
-     
-     self.window?.rootViewController = initialViewController
-     self.window?.makeKeyAndVisible()
-     //show register VC
-     
-     }
-     }
- */
+    func application(_ application:UIApplication, open url:URL, sourceApplication: String?, annotation:Any) -> Bool {
+        applicationHandle(url: url)
+        return true
+    }
     
     func registerForPushNotification() {
         UNUserNotificationCenter.current()
@@ -177,6 +161,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 
 }
+extension AppDelegate {
+    
+    func applicationHandle(url: URL) {
+        if (url.host == "oauth-callback") {
+            OAuthSwift.handle(url: url)
+        } else {
+            OAuthSwift.handle(url: url)
+        }
+    }
+}
+
 
 extension UIDevice {
     static func vibrate() {

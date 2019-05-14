@@ -30,6 +30,8 @@ target 'MrPlanner' do
   pod 'JTAppleCalendar', '~> 7.1'
   pod 'JZCalendarWeekView'
   pod 'ReachabilitySwift'
+  pod 'OAuthSwift'
+  pod "Pastel"
 end
 
 target 'OneSignalNotificationServiceExtension' do

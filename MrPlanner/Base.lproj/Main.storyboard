@@ -446,7 +446,7 @@
         <!--Splash View Controller-->
         <scene sceneID="Rrc-Xe-yac">
             <objects>
-                <viewController id="lgS-i7-HYa" customClass="SplashViewController" customModule="MrPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SplashVC" id="lgS-i7-HYa" customClass="SplashViewController" customModule="MrPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t8Z-NR-wHi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -501,7 +501,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="g2A-2C-riM"/>
+        <segue reference="CGt-q7-SqB"/>
         <segue reference="u6M-58-lX9"/>
     </inferredMetricsTieBreakers>
 </document>

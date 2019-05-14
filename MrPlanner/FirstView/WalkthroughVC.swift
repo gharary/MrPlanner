@@ -16,7 +16,7 @@ class WalkthroughVC: UIViewController {
     @IBOutlet weak var skipBtn: UIButton!
     
     var slides:[Slide] = [];
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,6 @@ class WalkthroughVC: UIViewController {
     
     var window: UIWindow?
     
-    
     @IBAction func skipButton(_ sender: UIButton) {
         let defaults = UserDefaults.standard
         
@@ -48,9 +47,10 @@ class WalkthroughVC: UIViewController {
             self.present(vc, animated: true, completion: nil)
             return
         }
+        //defaults.set(true, forKey: "walkthroughSeen")
         self.present(initialViewController, animated: true, completion: nil)
-        //Tabbar
     }
+    
     func createSlides() -> [Slide] {
         
         let slide1:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
@@ -97,15 +97,6 @@ class WalkthroughVC: UIViewController {
             
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 extension WalkthroughVC: UIScrollViewDelegate {
