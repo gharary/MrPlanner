@@ -24,6 +24,13 @@ class GoodreadsVC: UIViewController {
         
         GoodreadsService.sharedInstance.isLoggedIn = AuthStorageService.readAuthToken().isEmpty ? .LoggedOut : .LoggedIn
         
+        if GoodreadsService.sharedInstance.isLoggedIn == .LoggedOut {
+            GoodreadsService.sharedInstance.loginToGoodreadsAccount(sender: self) {
+                
+            }
+            return
+        }
+        
     }
     
     

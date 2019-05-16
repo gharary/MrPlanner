@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         applicationHandle(url: url)
+        //OAuthSwift.handle(url: url)
         return true
     }
 
@@ -165,6 +166,7 @@ extension AppDelegate {
     
     func applicationHandle(url: URL) {
         if (url.host == "oauth-callback") {
+            
             OAuthSwift.handle(url: url)
         } else {
             OAuthSwift.handle(url: url)

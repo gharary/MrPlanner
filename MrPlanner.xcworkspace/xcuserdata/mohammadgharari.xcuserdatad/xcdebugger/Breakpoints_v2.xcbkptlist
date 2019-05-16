@@ -391,7 +391,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MrPlanner/SearchGoogleCVC/SearchResultCVC.swift"
-            timestampString = "578995583.820075"
+            timestampString = "579639902.871233"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "338"
@@ -493,6 +493,22 @@
             startingLineNumber = "52"
             endingLineNumber = "52"
             landmarkName = "setupCalendarView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MrPlanner/AppDelegate.swift"
+            timestampString = "579532123.782843"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "applicationHandle(url:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

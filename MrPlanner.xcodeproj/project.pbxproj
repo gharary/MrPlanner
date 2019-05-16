@@ -342,6 +342,27 @@
 			path = "Book Detail";
 			sourceTree = "<group>";
 		};
+		5F4698B4228AE1740070CE57 /* Init */ = {
+			isa = PBXGroup;
+			children = (
+				5FE54D8F2289876C0096402A /* Shelf.swift */,
+				5FE54D9122898D5C0096402A /* Book.swift */,
+				5FE54D9322898E190096402A /* Author.swift */,
+				5FE54D882288A76F0096402A /* Secrets.strings */,
+			);
+			path = Init;
+			sourceTree = "<group>";
+		};
+		5F4698B5228AE25A0070CE57 /* Walkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				5FE54D7F2284271C0096402A /* Slide.xib */,
+				5FE54D7B228421DF0096402A /* Slide.swift */,
+				5FE54D79228421970096402A /* WalkthroughVC.swift */,
+			);
+			path = Walkthrough;
+			sourceTree = "<group>";
+		};
 		5F5A734722363D9F0003F66E /* SearchGoogleCVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -576,12 +597,10 @@
 		5FB7E624223E2F0300A7B9CB /* FirstView */ = {
 			isa = PBXGroup;
 			children = (
+				5F4698B5228AE25A0070CE57 /* Walkthrough */,
 				5FFA1A3F2239559E00A484F4 /* FirstView.storyboard */,
-				5FE54D7B228421DF0096402A /* Slide.swift */,
 				5FADA47E223CD5EA00F1B2A8 /* goodreadLoginVC.swift */,
 				5FFA1A412239576A00A484F4 /* FirstViewVC.swift */,
-				5FE54D79228421970096402A /* WalkthroughVC.swift */,
-				5FE54D7F2284271C0096402A /* Slide.xib */,
 			);
 			path = FirstView;
 			sourceTree = "<group>";
@@ -636,14 +655,11 @@
 		5FE54D8A2288AA0B0096402A /* Goodreads */ = {
 			isa = PBXGroup;
 			children = (
+				5F4698B4228AE1740070CE57 /* Init */,
+				5FE54D952289D8520096402A /* GoodreadsVC.swift */,
 				5FE54D862288A3810096402A /* GoodreadsService.swift */,
-				5FE54D8F2289876C0096402A /* Shelf.swift */,
-				5FE54D9122898D5C0096402A /* Book.swift */,
-				5FE54D9322898E190096402A /* Author.swift */,
-				5FE54D882288A76F0096402A /* Secrets.strings */,
 				5FE54D8B2288AA3A0096402A /* AuthStorageService.swift */,
 				5FE54D8D2288AABD0096402A /* KeychainPasswordItem.swift */,
-				5FE54D952289D8520096402A /* GoodreadsVC.swift */,
 			);
 			path = Goodreads;
 			sourceTree = "<group>";

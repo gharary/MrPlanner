@@ -59,7 +59,7 @@ class GoodreadsService {
         
         if authToken.isEmpty || authSecret.isEmpty {
             let _ = oauthswift.authorize(
-                withCallbackURL: URL(string: "Quotey://oauth-callback/goodreads")!,
+                withCallbackURL: URL(string: "MrPlanner://oauth-callback/goodreads")!,
                 success: { credential, response, parameters in
                         AuthStorageService.saveAuthToken(credential.oauthToken)
                         AuthStorageService.saveTokenSecret(credential.oauthTokenSecret)
@@ -103,6 +103,46 @@ class GoodreadsService {
         }, failure: { error in
             print(error)
         })
+    }
+    
+    func loadBooks(sender: UIViewController, completion: @escaping ([Book]) -> ()) {
+        var returnResult = [Book]()
+        guard let _ = self.id else {
+            loginToGoodreadsAccount(sender: sender) {
+                self.loadBooks(sender: sender, completion: completion)
+            }
+            return
+        }
+        
+        let parameters: Parameters = ["key": Bundle.main.localizedString(forKey: "goodreads_key", value: nil, table: "Secrets"), "user_id":id, "v":"2"]
+        
+        var components = URLComponents(string: "https://www.goodreads.com/review/list")
+        components?.queryItems = [
+            URLQueryItem(name: "key", value: "\(Bundle.main.localizedString(forKey: "goodreads_key", value: nil, table: "Secrets"))"),
+            URLQueryItem(name: "id", value: "\(id ?? "")"),
+        URLQueryItem(name: "v", value: "2")]
+        
+        if let url = components?.url
+        {
+            Alamofire.request(url).response { response in
+                let xml = XML.parse(response.data!)
+                //let count = xml["GoodreadsResponse", "reviews",0,"review"].all?.count
+                for item in xml["GoodreadsResponse", "reviews",0,"review"] {
+        
+                    //let book = Book(xml: books[0, "review",i,"book"])
+                    let book = Book(xml: item["book"])
+                    returnResult.append(book)
+                }
+                
+                completion(returnResult)
+                
+            }
+        }
+        
+        
+        
+        
+        
     }
     
     func loadShelves(sender: UIViewController, completion: (([Shelf]) -> ())?) {

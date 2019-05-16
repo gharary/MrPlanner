@@ -8,7 +8,9 @@
 
 import UIKit
 import Floaty
-
+import Alamofire
+import AlamofireImage
+import OAuthSwift
 
 
 class ReviewTVC: UITableViewController, FloatyDelegate {
@@ -24,6 +26,9 @@ class ReviewTVC: UITableViewController, FloatyDelegate {
     override func viewDidAppear(_ animated: Bool) {
         floatingButton()
         self.view.layer.cornerRadius = 5
+        GoodreadsService.sharedInstance.isLoggedIn =  AuthStorageService.readAuthToken().isEmpty ? .LoggedOut : .LoggedIn
+        
+        readBookReview()
     }
     
     private func floatingButton() {
@@ -36,7 +41,6 @@ class ReviewTVC: UITableViewController, FloatyDelegate {
     
     func emptyFloatySelected(_ floaty: Floaty) {
         performSegue(withIdentifier: "addReview", sender: self)
-        //print("Floaty ReviewTVC Clicked!")
     }
     // MARK: - Table view data source
 
@@ -64,49 +68,16 @@ class ReviewTVC: UITableViewController, FloatyDelegate {
     }
     
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    var oauthswift: OAuthSwift?
+    var currentBook:Book?
+    
+    func readBookReview() {
+    
+        GoodreadsService.sharedInstance.loadBooks(sender: self) {
+            (books)  in
+            //self.currentBook = book
+            print(books)
+        }
+ 
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -15,60 +15,17 @@ import Kingfisher
 class FirstViewVC: UIViewController, UIPopoverPresentationControllerDelegate {
     
     
-
-    @IBOutlet weak var imageShow: ImageSlideshow!
-    
-    
     var effectView: UIVisualEffectView!
 
-    
-    override func viewWillAppear(_ animated: Bool) {
-       
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        initImageShow()
+        
         // Do any additional setup after loading the view.
     }
     
-    func initImageShow() {
-        //let view: PageIndicatorView =
-        imageShow.circular = true
-        //imageShow.pageIndicator = LabelPageIndicator()
-        imageShow.setImageInputs([AlamofireSource(urlString: "https://images.unsplash.com/photo-1432679963831-2dab49187847?w=1080")!,
-                                  KingfisherSource(urlString: "https://images.unsplash.com/photo-1432679963831-2dab49187847?w=1080")!])
-        
-        imageShow.slideshowInterval = 10
-        //Custom View Page Indicator
-        
-        
-        imageShow.pageIndicatorPosition = .init(horizontal: .center, vertical: .bottom)
-        
-    }
-    @IBAction func goodReadsLoginBtn(_ sender: UIButton) {
 
-        let storyBoard: UIStoryboard = UIStoryboard(name: "FirstView", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "goodreadLoginVC")
-        vc.modalPresentationStyle = .popover
-        vc.modalTransitionStyle = .crossDissolve
-        vc.preferredContentSize = CGSize(width: 300, height: 400)
-        //self.view.
-        let popover = vc.popoverPresentationController!
-        popover.delegate = self
-        popover.permittedArrowDirections = .down
-        
-        popover.sourceView = sender
-        popover.sourceRect = sender.bounds
-        
-        
-        
-        blurBackground()
-        self.present(vc, animated: true, completion: nil)
- 
-        
-        
-    }
+    
     
     func blurBackground() {
         let blurEffect = UIBlurEffect(style: .light)

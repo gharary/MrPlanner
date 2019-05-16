@@ -20,6 +20,8 @@ class WalkthroughVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         scrollView.delegate = self
         
         slides = createSlides()
@@ -37,6 +39,7 @@ class WalkthroughVC: UIViewController {
     
     @IBAction func skipButton(_ sender: UIButton) {
         let defaults = UserDefaults.standard
+        defaults.set(true, forKey: "Login")
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "Tabbar")

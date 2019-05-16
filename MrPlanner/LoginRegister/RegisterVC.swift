@@ -29,6 +29,9 @@ class RegisterVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        emailTF.delegate = self
+        passTF.delegate = self
+        
         initBorder()
         passTF.isHidden = true
         self.view.bringSubviewToFront(loginBtn)
@@ -97,4 +100,15 @@ class RegisterVC: UIViewController {
     }
     
 
+}
+extension RegisterVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if textField == emailTF && passTF.isHidden == false
+        {
+            passTF.becomeFirstResponder()
+            
+        }
+        return true
+    }
 }
