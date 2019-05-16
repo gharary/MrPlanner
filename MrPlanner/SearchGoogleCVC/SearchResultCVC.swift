@@ -81,9 +81,8 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
         randomCatBook()
         
     }
-    override func viewDidAppear(_ animated: Bool) {
-        
-        
+    override func viewWillDisappear(_ animated: Bool) {
+        SVProgressHUD.dismiss()
     }
     
     

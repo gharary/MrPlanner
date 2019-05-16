@@ -28,7 +28,6 @@ class ReviewTVC: UITableViewController, FloatyDelegate {
         self.view.layer.cornerRadius = 5
         GoodreadsService.sharedInstance.isLoggedIn =  AuthStorageService.readAuthToken().isEmpty ? .LoggedOut : .LoggedIn
         
-        readBookReview()
     }
     
     private func floatingButton() {
@@ -49,8 +48,15 @@ class ReviewTVC: UITableViewController, FloatyDelegate {
         return 1
     }
 
+    let noData: Bool = true
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if noData {
+            self.tableView.setEmptyMessage("No Data!")
+        } else {
+            self.tableView.restore()
+        }
+        
         return 25
     }
 
@@ -67,17 +73,44 @@ class ReviewTVC: UITableViewController, FloatyDelegate {
         return cell
     }
     
-
-    var oauthswift: OAuthSwift?
-    var currentBook:Book?
     
-    func readBookReview() {
+}
+extension UITableView {
     
-        GoodreadsService.sharedInstance.loadBooks(sender: self) {
-            (books)  in
-            //self.currentBook = book
-            print(books)
-        }
- 
+    func setEmptyMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = .black
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = .center;
+        messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
+        messageLabel.sizeToFit()
+        
+        self.backgroundView = messageLabel;
+        self.separatorStyle = .none;
+    }
+    
+    func restore() {
+        self.backgroundView = nil
+        self.separatorStyle = .singleLine
+    }
+}
+extension UICollectionView {
+    func setEmptyMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = .black
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = .center;
+        messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
+        messageLabel.sizeToFit()
+        
+        self.backgroundView = messageLabel;
+        //self.separatorStyle = .none;
+    }
+    
+    func restore() {
+        self.backgroundView = nil
+        //self.separatorStyle = .singleLine
     }
 }

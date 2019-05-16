@@ -60,6 +60,9 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
         //SVProgressHUD.setContainerView(MainVC)
         //SVProgressHUD.showProgress(0.1)
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        SVProgressHUD.dismiss()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

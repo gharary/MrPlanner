@@ -39,7 +39,11 @@ class BookSelectionVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.title = "Book Selection!"
-        randomCatBook()
+        //randomCatBook()
+        loadShelfBooks()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        SVProgressHUD.dismiss()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +60,21 @@ class BookSelectionVC: UIViewController {
             , completion: nil)
     }
     
+    var books = [Book]()
+    
+    func loadShelfBooks() {
+        SVProgressHUD.showProgress(0.3)
+        GoodreadsService.sharedInstance.loadBooks(sender: self) {
+            (books)  in
+            self.books = books
+            SVProgressHUD.showProgress(0.6)
+            self.collectionView.reloadData()
+            SVProgressHUD.showProgress(1)
+            
+            print(books)
+        }
+        SVProgressHUD.dismiss(withDelay: 0.3)
+    }
     
 }
 
@@ -71,14 +90,24 @@ extension BookSelectionVC: UICollectionViewDataSource, UICollectionViewDelegate 
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
+        if books.count > 0 {
+            self.collectionView.restore()
+            SVProgressHUD.dismiss()
+            return books.count
+        } else {
+            self.collectionView.setEmptyMessage("No Data!")
+        }
+        return books.count
+        /*
         guard searchData != nil && searchData.count != nil else { return 0 }
         return searchData.count
-        
+        */
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SearchResultCell
     
+        /*
         // Configure the cell
         var dictionary: [Books] = searchData
         
@@ -96,7 +125,18 @@ extension BookSelectionVC: UICollectionViewDataSource, UICollectionViewDelegate 
             cell.bookImage.kf.setImage(with: url!)
             
         }
-    
+    */
+        cell.titleLbl.text = books[indexPath.row].title
+        cell.authorLbl.text = books[indexPath.row].author.name
+        cell.checkMarkView.style = .grayedOut
+        cell.checkMarkView.setNeedsDisplay()
+        if books[indexPath.row].imageUrl != nil {
+            
+            let url:URL! = URL(string: books[indexPath.row].imageUrl)
+            cell.bookImage.kf.indicatorType = .activity
+            cell.bookImage.kf.setImage(with: url)
+        }
+        
         return cell
     }
     
