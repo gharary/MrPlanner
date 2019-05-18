@@ -69,7 +69,7 @@ class EmailVerifyVC: UIViewController {
                         
                         let result = JSON(response.result.value!)
                         
-                        print(result["password"].string?.isEmpty as Any)
+                        //print(result["password"].string?.isEmpty as Any)
                         if !result["password"].string!.isEmpty {
                             defaults.set(result["user_name"].string, forKey: "username")
                             defaults.set(result["password"].string, forKey: "password")
