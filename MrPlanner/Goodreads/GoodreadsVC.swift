@@ -9,7 +9,6 @@
 import UIKit
 import Alamofire
 import AlamofireImage
-import Pastel
 
 class GoodreadsVC: UIViewController {
 
@@ -35,10 +34,7 @@ class GoodreadsVC: UIViewController {
     
     
     func addBookToShelf() {
-        guard let book = currentBook else {
-            return
-        }
-        //GoodreadsService.sharedInstance.add
+        
         
     }
 

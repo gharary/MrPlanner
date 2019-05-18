@@ -97,7 +97,7 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUI-A0-rPF">
                                                 <rect key="frame" x="0.0" y="48" width="248" height="40"/>
@@ -108,6 +108,9 @@
                                                 <state key="normal" title="Sign Up">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="singupBtnTapped:" destination="aqr-VP-PJH" eventType="touchUpInside" id="HS2-7q-k9s"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -183,11 +186,51 @@
                         <outlet property="signupBtn" destination="RUI-A0-rPF" id="2mg-Eo-2T0"/>
                         <outlet property="stackView" destination="gGb-oD-iNs" id="Be8-wD-ayf"/>
                         <outlet property="stackViewHeight" destination="Fin-IT-C3x" id="goe-8g-s63"/>
+                        <segue destination="2Ck-kk-Zg2" kind="show" identifier="showVerifyVC" id="Fua-5n-4Kd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dGe-2r-68o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="98.550724637681171" y="93.75"/>
+        </scene>
+        <!--Email VerifyVC-->
+        <scene sceneID="T6R-OA-n3u">
+            <objects>
+                <viewController id="2Ck-kk-Zg2" customClass="EmailVerifyVC" customModule="MrPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q1A-CZ-L25">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="77i-iT-ohA" customClass="KWVerificationCodeView" customModule="KWVerificationCodeView">
+                                <rect key="frame" x="87" y="155" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="digits">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yT-Nm-iSZ">
+                                <rect key="frame" x="87" y="341" width="240" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Verify">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.62745098039215685" green="0.75294117647058822" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
+                        <viewLayoutGuide key="safeArea" id="UWJ-gx-4Jx"/>
+                    </view>
+                    <connections>
+                        <outlet property="submitButton" destination="2yT-Nm-iSZ" id="i1z-T0-a4A"/>
+                        <outlet property="verificationCode" destination="77i-iT-ohA" id="txc-oA-ktG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JUp-xG-A2N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="853.62318840579712" y="87.723214285714278"/>
         </scene>
     </scenes>
     <resources>

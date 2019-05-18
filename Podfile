@@ -31,7 +31,9 @@ target 'MrPlanner' do
   pod 'JZCalendarWeekView'
   pod 'ReachabilitySwift'
   pod 'OAuthSwift'
-  pod "Pastel"
+  pod "KWVerificationCodeView"
+  pod 'Validator'
+  pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :tag => '4.2.0'
 end
 
 target 'OneSignalNotificationServiceExtension' do

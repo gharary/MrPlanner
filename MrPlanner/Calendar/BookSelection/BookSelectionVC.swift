@@ -95,7 +95,7 @@ extension BookSelectionVC: UICollectionViewDataSource, UICollectionViewDelegate 
             SVProgressHUD.dismiss()
             return books.count
         } else {
-            self.collectionView.setEmptyMessage("No Data!")
+            self.collectionView.setEmptyMessage("Loading Data...!")
         }
         return books.count
         /*
@@ -130,7 +130,7 @@ extension BookSelectionVC: UICollectionViewDataSource, UICollectionViewDelegate 
         cell.authorLbl.text = books[indexPath.row].author.name
         cell.checkMarkView.style = .grayedOut
         cell.checkMarkView.setNeedsDisplay()
-        if books[indexPath.row].imageUrl != nil {
+        if !books[indexPath.row].imageUrl.isEmpty {
             
             let url:URL! = URL(string: books[indexPath.row].imageUrl)
             cell.bookImage.kf.indicatorType = .activity

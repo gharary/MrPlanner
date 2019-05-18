@@ -12,6 +12,8 @@
 		5F14A6CA224238AE008384D3 /* TabbarMultipleChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F14A6C9224238AE008384D3 /* TabbarMultipleChild.swift */; };
 		5F14A6CD2242AC72008384D3 /* IntroductionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F14A6CC2242AC72008384D3 /* IntroductionVC.swift */; };
 		5F14A6CF2242AC87008384D3 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F14A6CE2242AC87008384D3 /* DetailVC.swift */; };
+		5F36BDF2228F3F180033EA5C /* EmailVerifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F36BDF1228F3F180033EA5C /* EmailVerifyVC.swift */; };
+		5F36BDF4228F83860033EA5C /* ValidationErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F36BDF3228F83860033EA5C /* ValidationErrorType.swift */; };
 		5F467BB4223564BF00D3F41F /* GoogleSearchTableResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F467BB3223564BF00D3F41F /* GoogleSearchTableResult.storyboard */; };
 		5F467BB62235652400D3F41F /* GoogleSearchCollectionResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F467BB52235652400D3F41F /* GoogleSearchCollectionResult.storyboard */; };
 		5F467BB8223565C000D3F41F /* SearchResultCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F467BB7223565C000D3F41F /* SearchResultCVC.swift */; };
@@ -171,6 +173,8 @@
 		5F14A6C9224238AE008384D3 /* TabbarMultipleChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarMultipleChild.swift; sourceTree = "<group>"; };
 		5F14A6CC2242AC72008384D3 /* IntroductionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionVC.swift; sourceTree = "<group>"; };
 		5F14A6CE2242AC87008384D3 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		5F36BDF1228F3F180033EA5C /* EmailVerifyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerifyVC.swift; sourceTree = "<group>"; };
+		5F36BDF3228F83860033EA5C /* ValidationErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationErrorType.swift; sourceTree = "<group>"; };
 		5F467BB3223564BF00D3F41F /* GoogleSearchTableResult.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GoogleSearchTableResult.storyboard; sourceTree = "<group>"; };
 		5F467BB52235652400D3F41F /* GoogleSearchCollectionResult.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoogleSearchCollectionResult.storyboard; sourceTree = "<group>"; };
 		5F467BB7223565C000D3F41F /* SearchResultCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCVC.swift; sourceTree = "<group>"; };
@@ -616,6 +620,7 @@
 				5F8F64E02280235E00D86900 /* LaunchController.swift */,
 				5F8F64E222802DCC00D86900 /* OfflineViewController.swift */,
 				5F8F64DA227AE84700D86900 /* Checkmark.swift */,
+				5F36BDF3228F83860033EA5C /* ValidationErrorType.swift */,
 			);
 			path = init;
 			sourceTree = "<group>";
@@ -648,6 +653,7 @@
 			children = (
 				5FE54D8222844A4E0096402A /* Login.storyboard */,
 				5FE54D842284700C0096402A /* RegisterVC.swift */,
+				5F36BDF1228F3F180033EA5C /* EmailVerifyVC.swift */,
 			);
 			path = LoginRegister;
 			sourceTree = "<group>";
@@ -892,18 +898,20 @@
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/JZCalendarWeekView/JZCalendarWeekView.framework",
 				"${BUILT_PRODUCTS_DIR}/JonContextMenu/JonContextMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/KWVerificationCodeView/KWVerificationCodeView.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/OAuthSwift/OAuthSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/Pastel/Pastel.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/RevealingSplashView/RevealingSplashView.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftValidator/SwiftValidator.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework",
+				"${BUILT_PRODUCTS_DIR}/Validator/Validator.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -922,18 +930,20 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JZCalendarWeekView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JonContextMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KWVerificationCodeView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OAuthSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pastel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealingSplashView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftValidator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXMLParser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Validator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1004,6 +1014,7 @@
 				5F14A6CA224238AE008384D3 /* TabbarMultipleChild.swift in Sources */,
 				5F467BB8223565C000D3F41F /* SearchResultCVC.swift in Sources */,
 				5FE54D8E2288AABD0096402A /* KeychainPasswordItem.swift in Sources */,
+				5F36BDF2228F3F180033EA5C /* EmailVerifyVC.swift in Sources */,
 				5FC9FA3A22782A3600777AA5 /* ToastUtil.swift in Sources */,
 				5F7C215E22195E45002FAEBF /* BookDetail.swift in Sources */,
 				5FC9FA3422782A1900777AA5 /* DefaultEvent.swift in Sources */,
@@ -1050,6 +1061,7 @@
 				5F8F64DD228004BC00D86900 /* PlanOptionsVC.swift in Sources */,
 				5FE54D902289876C0096402A /* Shelf.swift in Sources */,
 				5F8F64E322802DCC00D86900 /* OfflineViewController.swift in Sources */,
+				5F36BDF4228F83860033EA5C /* ValidationErrorType.swift in Sources */,
 				5F8F64E12280235E00D86900 /* LaunchController.swift in Sources */,
 				5F76AA7C221B0739003BE931 /* UserInfoVC.swift in Sources */,
 				5FE54D9222898D5C0096402A /* Book.swift in Sources */,

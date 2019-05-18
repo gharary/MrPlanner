@@ -114,7 +114,7 @@ class GoodreadsService {
             return
         }
         
-        let parameters: Parameters = ["key": Bundle.main.localizedString(forKey: "goodreads_key", value: nil, table: "Secrets"), "user_id":id, "v":"2"]
+        //let parameters: Parameters = ["key": Bundle.main.localizedString(forKey: "goodreads_key", value: nil, table: "Secrets"), "user_id":id, "v":"2"]
         
         var components = URLComponents(string: "https://www.goodreads.com/review/list")
         components?.queryItems = [
