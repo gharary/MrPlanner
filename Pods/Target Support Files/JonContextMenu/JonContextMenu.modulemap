@@ -1,6 +1,0 @@
-framework module JonContextMenu {
-  umbrella header "JonContextMenu-umbrella.h"
-
-  export *
-  module * { export * }
-}
