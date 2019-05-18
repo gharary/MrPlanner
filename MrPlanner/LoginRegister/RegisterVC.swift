@@ -9,7 +9,7 @@
 import UIKit
 import SwiftValidator
 import Validator
-
+import Alamofire
 
 class RegisterVC: UIViewController {
 
@@ -101,7 +101,7 @@ class RegisterVC: UIViewController {
                 self.leadersTitle.text = "Welcome Back!"
                 self.descriptionTitle.isHidden = true
                 self.GoogleBtnTopAnchor.constant -= self.descriptionTitle.frame.height
-                self.stackViewHeight.constant += 48
+                self.stackViewHeight.constant += 53
                 self.stackView.layoutIfNeeded()
                 self.view.layoutIfNeeded()
                 
@@ -126,7 +126,7 @@ class RegisterVC: UIViewController {
                 self.leadersTitle.text = "Leaders are Readers!"
                 self.GoogleBtnTopAnchor.constant += self.descriptionTitle.frame.height
                 self.descriptionTitle.isHidden = false
-                self.stackViewHeight.constant -= 48
+                self.stackViewHeight.constant -= 53
                 self.view.layoutIfNeeded()
             })
             
@@ -140,19 +140,59 @@ class RegisterVC: UIViewController {
         switch passTF.isHidden {
         case false:
             if !emailTF.text!.isEmpty  && !passTF.text!.isEmpty {
-                performSegue(withIdentifier: "showVerifyVC", sender: self)
+                registerEmailServer(emailTF.text!)
+                //performSegue(withIdentifier: "showVerifyVC", sender: self)
             } else {
                 present(alert, animated: true, completion: nil)
             }
         case true:
             if !emailTF.text!.isEmpty {
-                performSegue(withIdentifier: "showVerifyVC", sender: self)
+                registerEmailServer(emailTF.text!)
+                //performSegue(withIdentifier: "showVerifyVC", sender: self)
             } else {
                 present(alert, animated: true, completion: nil)
 
             }
         }
         
+    }
+    
+    
+    private func registerEmailServer(_ email:String) {
+        let url = URL(string: "http://www.mrplanner.org/api/sendCode")
+        
+        let parameters: Parameters = ["email":email]
+        let headers: HTTPHeaders = [
+            "X-API-TOKEN" : Bundle.main.localizedString(forKey: "X-API-TOKEN", value: nil, table: "Secrets"),
+            "Accept" : "application/json"
+        ]
+        
+        Alamofire.request(url!, method: .post, parameters: parameters, headers: headers)
+            .responseString  { response in
+                let statusCode = response.response?.statusCode
+                if statusCode == 200 {
+                    switch response.result {
+                    case .success:
+                        self.performSegue(withIdentifier: "showVerifyVC", sender: self)
+                    case .failure(let error):
+                        print(error)
+                        
+                    }
+                } else {
+                    print(response)
+                }
+                
+        
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showVerifyVC" {
+            let vc = segue.destination as! EmailVerifyVC
+            vc.email = emailTF.text!
+            
+        }
     }
     
 }
