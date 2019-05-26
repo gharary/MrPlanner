@@ -18,13 +18,20 @@ class EmailVerifyVC: UIViewController {
     //Mark: - IBOutlets
     @IBOutlet var verificationCode: KWVerificationCodeView!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var verificationLbl: UILabel!
     
+    var label: String = "Check Your Email for a Verification Code"
     var email: String = ""
     
     //Mark: - Lifecycle
-    
+    override func viewDidAppear(_ animated: Bool) {
+        submitButton.loadingIndicator(false)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        verificationLbl.text = "Check Your Email '\(email)' or Spam for a Verification Code"
+        
         submitButton.isEnabled = false
         verificationCode.delegate = self
         verificationCode.clear()
@@ -32,10 +39,12 @@ class EmailVerifyVC: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-    
+    @IBAction func returnBtnTapped(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBAction func submitButtonTapped(_ sender: UIButton) {
         if verificationCode.hasValidCode() {
-            
+            submitButton.loadingIndicator(true)
             verifyCode(verificationCode.getVerificationCode())
             
             let alert = UIAlertController(title: "Success", message: "Code is \(verificationCode.getVerificationCode())", preferredStyle: .alert)
@@ -70,7 +79,7 @@ class EmailVerifyVC: UIViewController {
                         let result = JSON(response.result.value!)
                         
                         //print(result["password"].string?.isEmpty as Any)
-                        if !result["password"].string!.isEmpty {
+                        if result["password"].string != nil && !result["password"].string!.isEmpty {
                             defaults.set(result["user_name"].string, forKey: "username")
                             defaults.set(result["password"].string, forKey: "password")
                         } else {
@@ -82,14 +91,22 @@ class EmailVerifyVC: UIViewController {
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let initialViewController = storyboard.instantiateViewController(withIdentifier: "Tabbar")
                         self.removeFromParent()
+                        
                         self.present(initialViewController, animated: true, completion: nil)
                         
                     case .failure(let error):
-                        print(error)
+                        print(error.localizedDescription)
                         
                     }
                 } else {
-                    print(response)
+                    let alert = UIAlertController(title: "Error", message: "Wrong Code! Try Again", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: { (_) in
+                        self.verificationCode.clear()
+                        self.submitButton.loadingIndicator(false)
+                    }))
+                    
+                    self.present(alert, animated: true, completion: nil)
+                    print(response.error!.localizedDescription)
                 }
                 
                 

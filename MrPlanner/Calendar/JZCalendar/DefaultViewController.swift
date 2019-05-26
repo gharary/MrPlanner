@@ -141,8 +141,10 @@ extension DefaultViewController: JZBaseViewDelegate {
         
         var fullGridEvents = [DefaultEvent]()
         for i in 0..<24 {
-            
-            fullGridEvents.append(DefaultEvent(id: "\(i)", title: "", startDate: dayBeginTime!.add(component: .hour, value: i), endDate: (dayBeginTime?.add(component: .hour, value: i+1))!, location: ""))
+            if i > 0 {
+                let j = Int.random(in: 0..<i)
+                fullGridEvents.append(DefaultEvent(id: "\(j)", title: "", startDate: dayBeginTime!.add(component: .hour, value: j), endDate: (dayBeginTime?.add(component: .hour, value: j+1))!, page: ""))
+            }
         }
         
         return fullGridEvents

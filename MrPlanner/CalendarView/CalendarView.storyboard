@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RgH-iB-sGR">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Calendar ViewVC-->
+        <scene sceneID="DWI-hx-ogl">
+            <objects>
+                <viewController id="SSp-e2-vlP" customClass="CalendarViewVC" customModule="MrPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sIO-wl-ZXx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4G-HJ-p0M" customClass="WeekView" customModule="MrPlanner" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="F4G-HJ-p0M" firstAttribute="leading" secondItem="7dL-XW-51D" secondAttribute="leading" id="2F1-Nc-r7b"/>
+                            <constraint firstItem="F4G-HJ-p0M" firstAttribute="top" secondItem="7dL-XW-51D" secondAttribute="top" id="7a9-T2-NQJ"/>
+                            <constraint firstItem="7dL-XW-51D" firstAttribute="bottom" secondItem="F4G-HJ-p0M" secondAttribute="bottom" id="dBR-wo-Egp"/>
+                            <constraint firstItem="7dL-XW-51D" firstAttribute="trailing" secondItem="F4G-HJ-p0M" secondAttribute="trailing" id="pPn-yc-C4v"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7dL-XW-51D"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7YA-PX-GR1">
+                        <barButtonItem key="leftBarButtonItem" title="Today" id="GbU-PQ-Ppm">
+                            <connections>
+                                <action selector="todayBtnTapped:" destination="SSp-e2-vlP" id="Hqm-81-lFK"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="New Plan" id="HGN-oY-BI4">
+                            <connections>
+                                <segue destination="pTX-R9-cGY" kind="show" id="b7c-Lu-QKb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="calendarWeekView" destination="F4G-HJ-p0M" id="Jts-Fa-4s8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zt2-Ln-uqD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="742.02898550724649" y="112.5"/>
+        </scene>
+        <!--Calendar-->
+        <scene sceneID="cih-Zr-hTz">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Calendar" id="pTX-R9-cGY" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="acd-d7-h7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1572" y="-139"/>
+        </scene>
+        <!--Calendar-->
+        <scene sceneID="gJr-7N-QWk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RgH-iB-sGR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Calendar" image="event" id="q0t-oV-US8"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VT5-6a-ezM">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="SSp-e2-vlP" kind="relationship" relationship="rootViewController" id="VhX-5c-PXt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ATw-4O-Rdw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-168.11594202898553" y="112.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="event" width="24" height="24"/>
+    </resources>
+</document>

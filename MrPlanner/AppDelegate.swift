@@ -30,19 +30,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        let defaults = UserDefaults.standard
+        
         //Config IQKeyboardManager
         IQKeyboardManager.shared.enable = true
         
         //Showing Walkthrough View
         // this should be your initial view controller
+        defaults.set(true, forKey: "walkthroughSeen")
+        defaults.set(true, forKey: "Login")
         
-        let defaults = UserDefaults.standard
+        
         if !defaults.bool(forKey: "walkthroughSeen") {
                 // create page view controller and display
-            let storyboard = UIStoryboard(name: "FirstView", bundle: nil)
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "WalkthroughVC")
+            //let storyboard = UIStoryboard(name: "FirstView", bundle: nil)
+            let storyboard = UIStoryboard(name: "WalkthroughVC", bundle: nil)
+            let initVC = storyboard.instantiateViewController(withIdentifier: "WalkthroughVC")
             
-            self.window?.rootViewController = initialViewController
+            self.window?.rootViewController = initVC
             self.window?.makeKeyAndVisible()
         
                 
@@ -97,7 +102,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         OneSignal.promptForPushNotifications(userResponse: { accepted in
             print("User accepted notifications: \(accepted)")
         })
-      
+        
+        //Disable OneSignal Shared Location Service
+      //OneSignal.setLocationShared(false)
         FirebaseApp.configure()
         return true
     }

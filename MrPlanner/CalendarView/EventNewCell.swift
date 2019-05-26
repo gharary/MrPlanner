@@ -1,25 +1,24 @@
 //
-//  EventCell.swift
-//  timegenii
+//  EventNewCell.swift
+//  MrPlanner
 //
-//  Created by Jeff Zhang on 14/9/17.
-//  Copyright © 2017 unimelb. All rights reserved.
+//  Created by Mohammad Gharari on 5/25/19.
+//  Copyright © 2019 Mohammad Gharari. All rights reserved.
 //
 
 import UIKit
 import JZCalendarWeekView
 
-class EventCell: UICollectionViewCell {
+class EventNewCell: UICollectionViewCell {
     
     
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var pageLabel: UILabel!
     
     var event: DefaultEvent!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -32,8 +31,8 @@ class EventCell: UICollectionViewCell {
         layer.shadowOffset = CGSize(width: 0, height: 4)
         layer.shadowRadius = 5
         layer.shadowOpacity = 0
-        locationLabel.font = UIFont.systemFont(ofSize: 12)
-        titleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        pageLabel.font = UIFont.systemFont(ofSize: 9)
+        titleLabel.font = UIFont.systemFont(ofSize: 11, weight: .medium)
         self.backgroundColor = UIColor(hex: 0xEEF7FF)
         //borderView.backgroundColor = UIColor(hex: 0x0899FF)
     }
@@ -43,5 +42,5 @@ class EventCell: UICollectionViewCell {
         pageLabel.text = event.page
         titleLabel.text = event.title
     }
-
+    
 }

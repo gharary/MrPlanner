@@ -141,7 +141,7 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
             .build()
         
         self.view.addGestureRecognizer(contextMenu)
-        SVProgressHUD.dismiss(withDelay: 0.5)
+        SVProgressHUD.dismiss()
         return cell
     }
     
@@ -234,6 +234,7 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
                         }
                         
                         SVProgressHUD.showProgress(0.8)
+                        SVProgressHUD.dismiss(withDelay: 0.1)
                         self.collectionView.reloadData()
                         
                     }
@@ -241,7 +242,7 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
                     statusCode = error._code // statusCode private
                     
                     SVProgressHUD.showError(withStatus: "Error")
-                    SVProgressHUD.dismiss(withDelay: 0.5)
+                    SVProgressHUD.dismiss(withDelay: 0.1)
                     print("status code is: \(String(describing: statusCode))")
                     print(error)
                 }

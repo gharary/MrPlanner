@@ -25,7 +25,7 @@ class SplashViewController: UIViewController {
         
         
         revealingSplashView.animationType = .twitter
-        revealingSplashView.backgroundColor = .gray
+        revealingSplashView.backgroundColor = .lightGray
         //Adds the revealing splash view as a sub view
         self.view.addSubview(revealingSplashView)
         

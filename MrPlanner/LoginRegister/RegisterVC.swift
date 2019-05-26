@@ -33,9 +33,14 @@ class RegisterVC: UIViewController {
     
     let validator = Validator()
     
+    override func viewDidAppear(_ animated: Bool) {
+        signupBtn.loadingIndicator(false)
+        goodreadsLoginBtn.loadingIndicator(false)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         emailTF.delegate = self
         passTF.delegate = self
         emailFieldValidator()
@@ -63,7 +68,7 @@ class RegisterVC: UIViewController {
                 self.emailTF.layer.borderColor = UIColor.red.cgColor
                 self.emailTF.layer.borderWidth = 1.0
                 self.signupBtn.isEnabled = false
-                //print("Invalid!", failureErrors)
+                print("Invalid!", failureErrors)
             
             }
         }
@@ -91,6 +96,7 @@ class RegisterVC: UIViewController {
             login = true
             
             loginBtn.setTitle("Sign Up", for: .normal)
+            signupBtn.setTitle("Login", for: .normal)
             self.view.layoutIfNeeded()
             self.passTF.isHidden = false
             UIView.animate(withDuration: 0.35, animations: {
@@ -113,6 +119,8 @@ class RegisterVC: UIViewController {
         } else {
             login = false
             loginBtn.setTitle("Log In", for: .normal)
+            signupBtn.setTitle("Sign Up", for: .normal)
+            
             self.view.layoutIfNeeded()
             self.passTF.isHidden = true
             emailTF.validateOnInputChange(enabled: true)
@@ -140,6 +148,7 @@ class RegisterVC: UIViewController {
         switch passTF.isHidden {
         case false:
             if !emailTF.text!.isEmpty  && !passTF.text!.isEmpty {
+                signupBtn.loadingIndicator(true)
                 registerEmailServer(emailTF.text!)
                 //performSegue(withIdentifier: "showVerifyVC", sender: self)
             } else {
@@ -147,6 +156,7 @@ class RegisterVC: UIViewController {
             }
         case true:
             if !emailTF.text!.isEmpty {
+                signupBtn.loadingIndicator(true)
                 registerEmailServer(emailTF.text!)
                 //performSegue(withIdentifier: "showVerifyVC", sender: self)
             } else {
@@ -157,7 +167,59 @@ class RegisterVC: UIViewController {
         
     }
     
+    @IBAction func goodreadsBtnTapped(_ sender: UIButton) {
+        goodreadsLoginBtn.loadingIndicator(true)
+        GoodreadsService.sharedInstance.isLoggedIn = AuthStorageService.readAuthToken().isEmpty ? .LoggedOut : .LoggedIn
+        if GoodreadsService.sharedInstance.isLoggedIn == .LoggedOut {
+            GoodreadsService.sharedInstance.loginToGoodreadsAccount(sender: self) {
+                
+            }
+            //goodreadsLoginBtn.loadingIndicator(false)
+            return
+        } else {
+            let alert = UIAlertController(title: "Loggin", message: "You've already logged In", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            goodreadsLoginBtn.loadingIndicator(false)
+        }
+    }
     
+    private func loginToServer() {
+        
+        
+        let url = URL(string: "")
+        
+        let parameters: Parameters = [:]
+        
+        let headers: HTTPHeaders = [
+            "X-API-TOKEN" : Bundle.main.localizedString(forKey: "X-API-TOKEN", value: nil, table: "Secrets"),
+            "Accept" : "application/json"
+        ]
+        
+        Alamofire.request(url!, method: .post, parameters: parameters, headers: headers)
+            .responseString { response in
+                let statusCode = response.response?.statusCode
+                if statusCode == 200 {
+                    
+                } else {
+                    print(response)
+                }
+                
+                
+        }
+        
+            .responseJSON { response in
+                let statusCode = response.response?.statusCode
+                if statusCode == 200 {
+                    
+                }else {
+                    print(response)
+                }
+        }
+        
+        
+        
+    }
     private func registerEmailServer(_ email:String) {
         let url = URL(string: "http://www.mrplanner.org/api/sendCode")
         
@@ -173,13 +235,22 @@ class RegisterVC: UIViewController {
                 if statusCode == 200 {
                     switch response.result {
                     case .success:
+                        
                         self.performSegue(withIdentifier: "showVerifyVC", sender: self)
                     case .failure(let error):
-                        print(error)
+                        self.signupBtn.loadingIndicator(false)
+                        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                        print(error.localizedDescription)
                         
                     }
                 } else {
-                    print(response)
+                    self.signupBtn.loadingIndicator(false)
+                    let alert = UIAlertController(title: "Error", message: response.error?.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    print(response.error?.localizedDescription)
                 }
                 
         
@@ -191,6 +262,7 @@ class RegisterVC: UIViewController {
         if segue.identifier == "showVerifyVC" {
             let vc = segue.destination as! EmailVerifyVC
             vc.email = emailTF.text!
+        
             
         }
     }
@@ -207,4 +279,29 @@ extension RegisterVC: UITextFieldDelegate {
         return true
     }
 }
+
+extension UIButton {
+    func loadingIndicator(_ show: Bool) {
+        let tag = 808404
+        if show {
+            self.isEnabled = false
+            self.alpha = 0.5
+            let indicator = UIActivityIndicatorView()
+            let buttonHeight = self.bounds.size.height
+            let buttonWidth = self.bounds.size.width
+            indicator.center = CGPoint(x: buttonWidth/2, y: buttonHeight/2)
+            indicator.tag = tag
+            self.addSubview(indicator)
+            indicator.startAnimating()
+        } else {
+            self.isEnabled = true
+            self.alpha = 1.0
+            if let indicator = self.viewWithTag(tag) as? UIActivityIndicatorView {
+                indicator.stopAnimating()
+                indicator.removeFromSuperview()
+            }
+        }
+    }
+}
+
 

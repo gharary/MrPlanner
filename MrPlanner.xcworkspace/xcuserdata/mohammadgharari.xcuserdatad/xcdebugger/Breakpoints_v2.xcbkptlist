@@ -470,46 +470,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MrPlanner/Calendar/JZCalendar/DefaultWeekView.swift"
-            timestampString = "578848184.810805"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MrPlanner/Calendar/JZCalendar/DefaultViewController.swift"
-            timestampString = "578949842.1180069"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "setupCalendarView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MrPlanner/AppDelegate.swift"
-            timestampString = "579878318.804731"
+            timestampString = "580561520.123873"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "applicationHandle(url:)"
-            landmarkType = "7">
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "AppDelegate"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -531,49 +499,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MrPlanner/LoginRegister/EmailVerifyVC.swift"
-            timestampString = "579878318.804812"
+            filePath = "MrPlanner/LoginRegister/RegisterVC.swift"
+            timestampString = "580556520.789162"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "verifyCode(_:)"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "goodreadsBtnTapped(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MrPlanner.EmailVerifyVC.(verifyCode in _9FC01A4435050C03EFF816B7AB7EAF0F)(Swift.String) -&gt; ()"
-                  moduleName = "MrPlanner"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mohammadgharari/Desktop/Desktop/iOS/MrPlanner/MrPlanner/LoginRegister/EmailVerifyVC.swift"
-                  timestampString = "579864745.175299"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
-                  offsetFromSymbolStart = "1820">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Swift.String&gt;) -&gt; () in MrPlanner.EmailVerifyVC.(verifyCode in _9FC01A4435050C03EFF816B7AB7EAF0F)(Swift.String) -&gt; ()"
-                  moduleName = "MrPlanner"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mohammadgharari/Desktop/Desktop/iOS/MrPlanner/MrPlanner/LoginRegister/EmailVerifyVC.swift"
-                  timestampString = "579864745.178897"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "156">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -582,13 +518,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MrPlanner/LoginRegister/EmailVerifyVC.swift"
-            timestampString = "579878318.805231"
+            filePath = "MrPlanner/CalendarView/CalendarViewVC.swift"
+            timestampString = "580560825.614783"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "verifyCode(_:)"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "setupEvents()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MrPlanner/CalendarView/CalendarViewVC.swift"
+            timestampString = "580560825.6148469"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "setupCalendar()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

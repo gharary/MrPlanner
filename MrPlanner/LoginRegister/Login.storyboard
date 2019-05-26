@@ -100,7 +100,7 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                                             </textField>
                                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DN8-Bu-qux">
                                                 <rect key="frame" x="0.0" y="49" width="331" height="45"/>
@@ -153,6 +153,9 @@
                                         <state key="normal" title="Continue with Goodreads">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="goodreadsBtnTapped:" destination="aqr-VP-PJH" eventType="touchUpInside" id="4q4-1o-aPd"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -220,10 +223,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77i-iT-ohA" customClass="KWVerificationCodeView" customModule="KWVerificationCodeView">
-                                <rect key="frame" x="41.5" y="144" width="331" height="150"/>
+                                <rect key="frame" x="41.5" y="192.5" width="331" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="7mA-Fr-LEf"/>
+                                    <constraint firstAttribute="height" constant="100" id="7mA-Fr-LEf"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="digits">
@@ -232,7 +235,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yT-Nm-iSZ">
-                                <rect key="frame" x="41.5" y="354" width="331" height="50"/>
+                                <rect key="frame" x="41.5" y="352.5" width="331" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="C95-Zo-VeB"/>
@@ -246,7 +249,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Verification Code:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEo-LH-H8y">
-                                <rect key="frame" x="95.5" y="64" width="223" height="30"/>
+                                <rect key="frame" x="95.5" y="89" width="223" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="VxC-LW-4bX"/>
                                 </constraints>
@@ -254,34 +257,45 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check Your Email or Spam for a Verification Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="782-5m-GYW">
-                                <rect key="frame" x="64.5" y="102" width="285.5" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="a2c-lK-hgp"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check Your Email ghararym@gmail.com for a Verification Code" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="782-5m-GYW">
+                                <rect key="frame" x="74.5" y="127" width="265" height="33.5"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="47V-ji-iqg">
+                                <rect key="frame" x="16" y="60" width="70" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="kQl-sw-rie"/>
+                                </constraints>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="returnBtnTapped:" destination="2Ck-kk-Zg2" eventType="touchUpInside" id="idI-WS-pk2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.62745098039215685" green="0.75294117647058822" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="77i-iT-ohA" firstAttribute="top" secondItem="UWJ-gx-4Jx" secondAttribute="top" constant="100" id="8I6-dc-QcD"/>
+                            <constraint firstItem="77i-iT-ohA" firstAttribute="top" secondItem="782-5m-GYW" secondAttribute="bottom" constant="32" id="Col-GB-V5y"/>
                             <constraint firstItem="2yT-Nm-iSZ" firstAttribute="width" secondItem="77i-iT-ohA" secondAttribute="width" id="Ihg-C5-9rA"/>
                             <constraint firstItem="77i-iT-ohA" firstAttribute="centerX" secondItem="Q1A-CZ-L25" secondAttribute="centerX" id="LC0-e4-oew"/>
-                            <constraint firstItem="OEo-LH-H8y" firstAttribute="top" secondItem="UWJ-gx-4Jx" secondAttribute="top" constant="20" id="Lco-7U-2rY"/>
+                            <constraint firstItem="OEo-LH-H8y" firstAttribute="top" secondItem="UWJ-gx-4Jx" secondAttribute="top" constant="45" id="Lco-7U-2rY"/>
                             <constraint firstItem="2yT-Nm-iSZ" firstAttribute="top" secondItem="77i-iT-ohA" secondAttribute="bottom" constant="60" id="MPI-cd-a2u"/>
                             <constraint firstItem="782-5m-GYW" firstAttribute="top" secondItem="OEo-LH-H8y" secondAttribute="bottom" constant="8" id="NcW-mk-FlY"/>
                             <constraint firstItem="2yT-Nm-iSZ" firstAttribute="centerX" secondItem="77i-iT-ohA" secondAttribute="centerX" id="dxS-Zq-ICg"/>
                             <constraint firstItem="77i-iT-ohA" firstAttribute="width" secondItem="Q1A-CZ-L25" secondAttribute="width" multiplier="0.8" id="f4h-Me-qew"/>
+                            <constraint firstItem="782-5m-GYW" firstAttribute="width" relation="lessThanOrEqual" secondItem="Q1A-CZ-L25" secondAttribute="width" multiplier="0.75" id="gIq-ae-uRC"/>
                             <constraint firstItem="782-5m-GYW" firstAttribute="centerX" secondItem="Q1A-CZ-L25" secondAttribute="centerX" id="lOn-rw-xzd"/>
                             <constraint firstItem="OEo-LH-H8y" firstAttribute="centerX" secondItem="Q1A-CZ-L25" secondAttribute="centerX" id="nxE-pO-94q"/>
+                            <constraint firstItem="47V-ji-iqg" firstAttribute="leading" secondItem="UWJ-gx-4Jx" secondAttribute="leading" constant="16" id="tZT-4M-6ob"/>
+                            <constraint firstItem="47V-ji-iqg" firstAttribute="top" secondItem="UWJ-gx-4Jx" secondAttribute="top" constant="16" id="xcq-vm-qln"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UWJ-gx-4Jx"/>
                     </view>
                     <connections>
                         <outlet property="submitButton" destination="2yT-Nm-iSZ" id="i1z-T0-a4A"/>
                         <outlet property="verificationCode" destination="77i-iT-ohA" id="txc-oA-ktG"/>
+                        <outlet property="verificationLbl" destination="782-5m-GYW" id="XgF-11-W23"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JUp-xG-A2N" userLabel="First Responder" sceneMemberID="firstResponder"/>

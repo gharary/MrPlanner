@@ -77,11 +77,11 @@
             </objects>
             <point key="canvasLocation" x="1057.9710144927537" y="131.91964285714286"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Profile-->
         <scene sceneID="g21-LX-Pgt">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IHL-qu-tte" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="PSP-VO-K6E"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="user" id="PSP-VO-K6E"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6If-cX-XgH">
@@ -427,5 +427,6 @@
         <image name="book" width="24" height="30"/>
         <image name="calendar-full" width="34" height="30"/>
         <image name="library" width="402" height="290"/>
+        <image name="user" width="22" height="22"/>
     </resources>
 </document>
