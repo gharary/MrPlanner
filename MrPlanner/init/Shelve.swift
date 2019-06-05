@@ -7,15 +7,25 @@
 //
 
 import Foundation
-struct Shelve {
-    var id: String
-    var title:String?
-    var isbn: String?
-    var author:Author?
-    var pages: String?
-    var images:String?
-    var description: String?
-    var publisher:String?
+import RealmSwift
+
+@objcMembers class Shelve:Object {
+    
+    dynamic var Book: Books?
+    dynamic var InternalID: String?
+    dynamic var GoogleID:String?
+    dynamic var GoodreadsID: String?
+    
+    
+    convenience init(Book:Books, InternalID:String, GoogleID:String, GoodreadsID:String) {
+        self.init()
+        
+        self.Book = Book
+        self.InternalID = InternalID
+        self.GoogleID = GoogleID
+        self.GoodreadsID = GoodreadsID
+        
+    }
     
     
 }

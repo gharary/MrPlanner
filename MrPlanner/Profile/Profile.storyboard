@@ -284,6 +284,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNG-jg-ILL">
                                                 <rect key="frame" x="0.0" y="0.0" width="89" height="27.5"/>
                                                 <state key="normal" image="book"/>
+                                                <connections>
+                                                    <segue destination="VWM-rc-Uw2" kind="show" id="h2K-ma-r9A"/>
+                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8tu-90-BYe">
                                                 <rect key="frame" x="0.0" y="35.5" width="89" height="26.5"/>
@@ -294,7 +297,7 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Luh-7V-z6C">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Books" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Luh-7V-z6C">
                                                         <rect key="frame" x="0.0" y="17.5" width="89" height="9"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="12"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -386,12 +389,23 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMW-6G-0Pc">
+                                <rect key="frame" x="319" y="8" width="48" height="30"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" red="0.84705882349999995" green="0.86274509799999999" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutBtnTapped:" destination="T8p-pq-TEy" eventType="touchUpInside" id="fbk-Bj-grF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="rMW-6G-0Pc" firstAttribute="top" secondItem="orl-Y4-x71" secondAttribute="top" constant="8" id="75i-mf-cNB"/>
                             <constraint firstAttribute="bottom" secondItem="cwc-MV-9bt" secondAttribute="bottom" id="DpE-yo-jQD"/>
                             <constraint firstItem="fkC-HS-0cJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2wM-Gb-MXZ" secondAttribute="bottom" constant="8" id="ImV-1n-7ql"/>
                             <constraint firstItem="2wM-Gb-MXZ" firstAttribute="width" secondItem="cwc-MV-9bt" secondAttribute="width" multiplier="0.35" id="Jxx-Rx-1Qc"/>
+                            <constraint firstItem="orl-Y4-x71" firstAttribute="trailing" secondItem="rMW-6G-0Pc" secondAttribute="trailing" constant="8" id="MYL-Qf-9kT"/>
                             <constraint firstItem="fkC-HS-0cJ" firstAttribute="leading" secondItem="jmH-XS-Ecy" secondAttribute="leadingMargin" constant="30" id="VPl-YA-dOe"/>
                             <constraint firstItem="wmD-36-7cW" firstAttribute="top" secondItem="jmH-XS-Ecy" secondAttribute="topMargin" constant="54" id="hIv-nV-AUX"/>
                             <constraint firstAttribute="trailing" secondItem="cwc-MV-9bt" secondAttribute="trailing" id="j2G-2T-gQq"/>
@@ -408,6 +422,7 @@
                     </view>
                     <connections>
                         <outlet property="bookBtn" destination="zNG-jg-ILL" id="Pny-Dq-7OV"/>
+                        <outlet property="bookCount" destination="HQZ-dZ-uaI" id="cqY-ky-HYZ"/>
                         <outlet property="idLbl" destination="giB-K1-skH" id="D4j-Tb-xLG"/>
                         <outlet property="nameLbl" destination="mGv-zF-2jk" id="lXX-3g-51V"/>
                         <outlet property="nameNidStack" destination="wmD-36-7cW" id="Cwr-7o-dBb"/>
@@ -418,6 +433,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qx4-kJ-zxA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1954" y="-116"/>
+        </scene>
+        <!--Shelf-->
+        <scene sceneID="Gro-Od-YBw">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Shelf" id="VWM-rc-Uw2" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z8Q-TL-JA9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2582" y="-142"/>
         </scene>
     </scenes>
     <resources>

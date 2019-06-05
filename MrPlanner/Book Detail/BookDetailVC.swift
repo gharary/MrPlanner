@@ -11,8 +11,8 @@ import Cosmos
 import Kingfisher
 import BetterSegmentedControl
 import FontAwesome_swift
-
-
+import SVProgressHUD
+import RealmSwift
 
 class BookDetailVC: UIViewController {
 
@@ -34,6 +34,7 @@ class BookDetailVC: UIViewController {
     var bookImage: String = ""
     var bookID:String = ""
     var averageRating:Double = 0
+    var defaults = UserDefaults.standard
     
     var segueString:String = ""
     
@@ -43,7 +44,9 @@ class BookDetailVC: UIViewController {
         let storyboard = UIStoryboard(name: "GoogleSearchCollectionResult", bundle: Bundle.main)
         
         var viewController = storyboard.instantiateViewController(withIdentifier: "IntroductionVC") as! IntroductionVC
-        viewController.bookID = self.bookID
+        viewController.book = self.book
+        
+        //viewController.bookID = self.book.id ?? ""
         self.addViewControllerAsChildViewController(childViewController: viewController)
         
         return viewController
@@ -53,7 +56,10 @@ class BookDetailVC: UIViewController {
         let storyboard = UIStoryboard(name: "GoogleSearchCollectionResult", bundle: Bundle.main)
         
         var viewController = storyboard.instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
-        viewController.bookID = self.bookID
+        viewController.book = self.book
+        
+        
+        //viewController.bookID = self.bookID
         
         
         self.addViewControllerAsChildViewController(childViewController: viewController)
@@ -88,35 +94,12 @@ class BookDetailVC: UIViewController {
         childViewController.removeFromParent()
     }
     
-    private func updateViews(){
-        switch index {
-        case 0:
-            IntroductionVC.view.isHidden = false
-            IntroductionVC.bookID = bookID
-            DetailVC.view.isHidden = true
-            ReviewVC.view.isHidden = true
-        case 1:
-            IntroductionVC.view.isHidden = true
-            DetailVC.view.isHidden = false
-            ReviewVC.view.isHidden = true
-        case 2:
-            IntroductionVC.view.isHidden = true
-            DetailVC.view.isHidden = true
-            ReviewVC.view.isHidden = false
-        default:
-            IntroductionVC.view.isHidden = false
-            DetailVC.view.isHidden = true
-            ReviewVC.view.isHidden = true
-        }
-        
-    }
-    //@IBOutlet weak var cate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Book Details"
         checkSegue()
         initStart()
-        // Do any additional setup after loading the view.
         loadData()
         updateViews()
     }
@@ -124,6 +107,52 @@ class BookDetailVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         //print(bookID)
     }
+    
+    
+    @IBAction func addShelfBtn(_ sender: UIButton) {
+        checkLoggin(sender: self) { }
+    
+    }
+    
+    private func checkLoggin(sender: UIViewController, completion: @escaping () -> () ) {
+        
+        let realm = try! Realm()
+        
+        //print("Tapped")
+        guard MrPlannerService.sharedInstance.isLoggedIn == .LoggedIn else {
+            MrPlannerService.sharedInstance.loginToMrPlannerAccount(sender: sender) {
+                self.checkLoggin(sender: sender, completion: completion)
+            }
+            return
+        }
+       
+        let item = realm.objects(Shelve.self).filter("GoogleID = %@", book.id!)
+        if !item.isEmpty {
+            //print("Item was found")
+            //alertUser(sender: self, "Item Already Exist in your shelf.")
+            SVProgressHUD.showError(withStatus: "Item Already Exist in your shelf.")
+            return
+        }
+        
+        MrPlannerService.sharedInstance.addShelfBookToDB(book:book ,title: book.title!, cat: (book.categories.first!) , pageNr: book.pageCount!, completion: { result in
+            
+            if result {
+                SVProgressHUD.showSuccess(withStatus: "Done!")
+            } else {
+                SVProgressHUD.showError(withStatus: "Error, Try Again Later")
+                
+            }
+        })
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
     
     private func checkSegue() {
         switch segueString {
@@ -160,9 +189,9 @@ class BookDetailVC: UIViewController {
         
         //Load Categories
         categoriesView.layer.cornerRadius = 5
-        guard book.mainCategory != nil else { return }
+        guard !book.categories.isEmpty else { return }
         
-            guard let width = book.mainCategory?.stringWidth else { return  }
+        guard let width = book.categories.first?.stringWidth else { return  }
             let label = UILabel(frame: CGRect(x: 6, y: 2, width: width, height: 25))
             label.backgroundColor = UIColor(hexString: "D8DCE2")
             label.layer.cornerRadius = 5
@@ -174,7 +203,7 @@ class BookDetailVC: UIViewController {
                 
             ]
             
-            let attributedText = NSMutableAttributedString(string: book.mainCategory!, attributes: attributes)
+        let attributedText = NSMutableAttributedString(string: (book.categories.first)!, attributes: attributes)
             
             label.attributedText = attributedText
             label.textAlignment = .center
@@ -198,9 +227,10 @@ class BookDetailVC: UIViewController {
         shadow0.layer.shadowColor = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 0.10).cgColor
         shadow0.layer.shadowOpacity = 0.1
         shadow0.layer.shadowOffset = CGSize(width: 0, height: 0)
-        addToShelfBtn.addSubview(shadow0)
+        //addToShelfBtn.addSubview(shadow0)
         addToShelfBtn.layer.cornerRadius = 15
         addToShelfBtn.backgroundColor = UIColor(red: 0.11, green: 0.82, blue: 0.63, alpha: 1)
+        //view.bringSubviewToFront(addToShelfBtn)
         addToShelfBtn.alpha = 1
         
         
@@ -247,6 +277,7 @@ class BookDetailVC: UIViewController {
     }
     
     var index:Int = 0
+    
     @objc func controlValueChanged(_ sender: BetterSegmentedControl) {
         //print(sender.index)
         switch sender.index {
@@ -270,6 +301,28 @@ class BookDetailVC: UIViewController {
         
     }
     
+    private func updateViews(){
+        switch index {
+        case 0:
+            IntroductionVC.view.isHidden = false
+            IntroductionVC.bookID = bookID
+            DetailVC.view.isHidden = true
+            ReviewVC.view.isHidden = true
+        case 1:
+            IntroductionVC.view.isHidden = true
+            DetailVC.view.isHidden = false
+            ReviewVC.view.isHidden = true
+        case 2:
+            IntroductionVC.view.isHidden = true
+            DetailVC.view.isHidden = true
+            ReviewVC.view.isHidden = false
+        default:
+            IntroductionVC.view.isHidden = false
+            DetailVC.view.isHidden = true
+            ReviewVC.view.isHidden = true
+        }
+        
+    }
 
     /*
     // MARK: - Navigation

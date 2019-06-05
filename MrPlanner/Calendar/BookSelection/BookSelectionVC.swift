@@ -196,18 +196,20 @@ extension BookSelectionVC: UISearchResultsUpdating {
         
             let i = Int.random(in: 0 ..< BookCategories.count)
             //SVProgressHUD.showProgress(0.2)
-            reqSearchServer(term: "subject=\(BookCategories[i])")
+            //reqSearchServer(term: "subject=\(BookCategories[i])")
         
         
     }
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text {
-            reqSearchServer(term: searchText)
+            //reqSearchServer(term: searchText)
         } else {
             
         }
     }
     
+    /*
+ 
     func reqSearchServer(term: String) {
         
         let parameters: Parameters = ["q":term,"key":"AIzaSyCIXIPXJQwCYE9hHdTghuH-jNRIm2tvx8Y","maxResults":"40"]
@@ -304,6 +306,6 @@ extension BookSelectionVC: UISearchResultsUpdating {
                 }
         }
     }
-    
+    */
     
 }

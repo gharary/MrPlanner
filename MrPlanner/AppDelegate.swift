@@ -14,7 +14,8 @@ import OneSignal
 import AVFoundation
 import IQKeyboardManagerSwift
 import OAuthSwift
-
+import Buglife
+import RealmSwift
 
 
 @UIApplicationMain
@@ -32,8 +33,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         let defaults = UserDefaults.standard
         
+        
+        //MrPlannerAuthStorageService.removeTokenSecret()
+        //try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
+        SyncManager.shared.logLevel = .off
+        
+        //BugLife Configure
+        
+        //Register Email
+        Buglife.shared().start(withEmail: "gharary.dev@gmail.com")
+        //Init with screenshot
+        Buglife.shared().invocationOptions = .screenshot
+        
+        
         //Config IQKeyboardManager
         IQKeyboardManager.shared.enable = true
+        
+        
+        //FirebaseApp.configure()
+        
         
         //Showing Walkthrough View
         // this should be your initial view controller
@@ -138,7 +156,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
         let token = tokenParts.joined()
-        print("Device Token: \(token)")
+        //print("Device Token: \(token)")
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {

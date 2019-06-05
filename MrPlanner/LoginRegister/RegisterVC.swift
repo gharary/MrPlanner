@@ -237,20 +237,18 @@ class RegisterVC: UIViewController {
                     case .success:
                         
                         self.performSegue(withIdentifier: "showVerifyVC", sender: self)
+                        
                     case .failure(let error):
+                        
                         self.signupBtn.loadingIndicator(false)
-                        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                        print(error.localizedDescription)
+                        self.alertUser(sender: self, error.localizedDescription)
+                        
                         
                     }
                 } else {
                     self.signupBtn.loadingIndicator(false)
-                    let alert = UIAlertController(title: "Error", message: response.error?.localizedDescription, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                    print(response.error?.localizedDescription)
+                    self.alertUser(sender: self, response.error!.localizedDescription)
+                    
                 }
                 
         

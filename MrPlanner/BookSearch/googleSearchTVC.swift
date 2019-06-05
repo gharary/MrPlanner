@@ -92,7 +92,7 @@ class googleSearchTVC: UITableViewController {
         
         var dictionary: [Books] = searchData
         // Configure the cell...
-        cell.bookAuthor.text = dictionary[indexPath.row].authors?[0]
+        cell.bookAuthor.text = dictionary[indexPath.row].authors.first
         cell.bookTitle.text = dictionary[indexPath.row].title
         if dictionary[indexPath.row].image != nil {
             let str = dictionary[indexPath.row].image
@@ -157,8 +157,9 @@ extension googleSearchTVC: UISearchResultsUpdating {
                             
                             //print("This is subJson: \(String(describing: subJson["volumeInfo"]["title"].string))")
                         
-                            var book:Books = Books()
-                            book.authors = subJson["volumeInfo"]["authors"].arrayObject as? [String]
+                            let book:Books = Books()
+                            let authors = subJson["volumeInfo", "authors"].arrayObject as? [String] ?? ["No Author"]
+                            book.authors.append(objectsIn: authors)
                             book.desc = subJson["volumeInfo"]["description"].string
                             book.image = subJson["volumeInfo"]["imageLinks"]["thumbnail"].string
                             book.title = subJson["volumeInfo"]["title"].string

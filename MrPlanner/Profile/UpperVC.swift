@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SVProgressHUD
+import RealmSwift
 
 class UpperVC: UIViewController {
 
@@ -17,28 +19,54 @@ class UpperVC: UIViewController {
     @IBOutlet weak var idLbl: UILabel!
     @IBOutlet weak var bookBtn: UIButton!
     @IBOutlet weak var nameNidStack: UIStackView!
+    @IBOutlet weak var bookCount: UILabel!
+    
+    let defaults = UserDefaults.standard
+    private var bookToken: NotificationToken?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let realm = try! Realm()
+        let books = realm.objects(Shelve.self)
+        bookToken = books.observe { [weak self] _ in
+            guard let this = self else { return }
+            
+            UIView.transition(with: this.bookCount,
+                              duration: 0.33,
+                              options: [.transitionFlipFromTop],
+                              animations: {
+                                this.bookCount.text = "\(books.count)"
+            }, completion: nil)
+            
+        }
         setupUpper()
         cornerRadius()
-        //setupLayout()
         // Do any additional setup after loading the view.
     }
+    @IBAction func logoutBtnTapped(_ sender: UIButton) {
+        
+        MrPlannerService.sharedInstance.isLoggedIn = .LoggedOut
+        defaults.removeObject(forKey: "username")
+        defaults.removeObject(forKey: "password")
+        defaults.removeObject(forKey: "UserID")
+        defaults.set(false, forKey: "Login")
+        SVProgressHUD.showInfo(withStatus: "You have logged Out!")
+    }
+    
+    
+    
     private func setupUpper() {
+        
+        nameLbl.text = defaults.object(forKey: "username") as? String ?? defaults.object(forKey: "email") as? String
+        idLbl.text = defaults.object(forKey: "UserID") as? String
+        
+        
         
         //init StackView
         let color = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 0.50)
         shapeStackView.addBackground(color: color)
-        
-        /*
-        
-        shapeStackView.backgroundColor = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 0.50)
-        shapeStackView.alpha = 1
-         */
-        
         
         
         //init profile image
@@ -58,7 +86,6 @@ class UpperVC: UIViewController {
     
     private func cornerRadius() {
         profileImg.layer.cornerRadius = profileImg.frame.height / 2
-        //let width = self.view.frame.width * UIScreen.main.scale
         
             
     }

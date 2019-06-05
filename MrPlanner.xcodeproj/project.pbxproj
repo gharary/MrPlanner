@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3972B3E0D7884376B242916B /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905BC6073AA8B982E8B243B3 /* Pods_OneSignalNotificationServiceExtension.framework */; };
 		3F07507BF9FFC1CF85C84F42 /* Pods_MrPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0936315C369E5F4213EA8B18 /* Pods_MrPlanner.framework */; };
+		5F10A98E22A546BE0002F1A0 /* MrPlannerAuthStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F10A98D22A546BE0002F1A0 /* MrPlannerAuthStorageService.swift */; };
+		5F10A99022A697290002F1A0 /* Shelf.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F10A98F22A697290002F1A0 /* Shelf.storyboard */; };
+		5F10A99322A697650002F1A0 /* ShelfVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F10A99222A697650002F1A0 /* ShelfVC.swift */; };
 		5F14A6CA224238AE008384D3 /* TabbarMultipleChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F14A6C9224238AE008384D3 /* TabbarMultipleChild.swift */; };
 		5F14A6CD2242AC72008384D3 /* IntroductionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F14A6CC2242AC72008384D3 /* IntroductionVC.swift */; };
 		5F14A6CF2242AC87008384D3 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F14A6CE2242AC87008384D3 /* DetailVC.swift */; };
@@ -23,6 +26,9 @@
 		5F4AF7BA2299742700D1C2DD /* EventNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4AF7B92299742700D1C2DD /* EventNewCell.swift */; };
 		5F4AF7BC229974C700D1C2DD /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4AF7BB229974C700D1C2DD /* WeekView.swift */; };
 		5F4AF7C2229A9FBA00D1C2DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F4AF7C1229A9FBA00D1C2DD /* Assets.xcassets */; };
+		5F5619AB22A1CEEF008D26AE /* fillProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5619AA22A1CEEF008D26AE /* fillProfileVC.swift */; };
+		5F5619AD22A1DFE3008D26AE /* MrPlannerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5619AC22A1DFE3008D26AE /* MrPlannerConfig.swift */; };
+		5F5619B022A3D9AC008D26AE /* GoogleBookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5619AF22A3D9AC008D26AE /* GoogleBookService.swift */; };
 		5F64F7BE224C999300265FF1 /* AddReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F64F7BD224C999300265FF1 /* AddReviewVC.swift */; };
 		5F64F7C0224F499A00265FF1 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F64F7BF224F499A00265FF1 /* Profile.storyboard */; };
 		5F64F7C3224F4D2400265FF1 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F64F7C2224F4D2400265FF1 /* ProfileVC.swift */; };
@@ -174,6 +180,9 @@
 /* Begin PBXFileReference section */
 		0936315C369E5F4213EA8B18 /* Pods_MrPlanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MrPlanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B5A74FE9DA9096DBF0FF302 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
+		5F10A98D22A546BE0002F1A0 /* MrPlannerAuthStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MrPlannerAuthStorageService.swift; sourceTree = "<group>"; };
+		5F10A98F22A697290002F1A0 /* Shelf.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Shelf.storyboard; path = ../Shelf.storyboard; sourceTree = "<group>"; };
+		5F10A99222A697650002F1A0 /* ShelfVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfVC.swift; sourceTree = "<group>"; };
 		5F14A6C9224238AE008384D3 /* TabbarMultipleChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarMultipleChild.swift; sourceTree = "<group>"; };
 		5F14A6CC2242AC72008384D3 /* IntroductionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionVC.swift; sourceTree = "<group>"; };
 		5F14A6CE2242AC87008384D3 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
@@ -188,6 +197,9 @@
 		5F4AF7B92299742700D1C2DD /* EventNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNewCell.swift; sourceTree = "<group>"; };
 		5F4AF7BB229974C700D1C2DD /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		5F4AF7C1229A9FBA00D1C2DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5F5619AA22A1CEEF008D26AE /* fillProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fillProfileVC.swift; sourceTree = "<group>"; };
+		5F5619AC22A1DFE3008D26AE /* MrPlannerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MrPlannerConfig.swift; sourceTree = "<group>"; };
+		5F5619AF22A3D9AC008D26AE /* GoogleBookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleBookService.swift; sourceTree = "<group>"; };
 		5F64F7BD224C999300265FF1 /* AddReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewVC.swift; sourceTree = "<group>"; };
 		5F64F7BF224F499A00265FF1 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		5F64F7C2224F4D2400265FF1 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -341,6 +353,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F10A99122A697480002F1A0 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				5F10A98F22A697290002F1A0 /* Shelf.storyboard */,
+				5F10A99222A697650002F1A0 /* ShelfVC.swift */,
+			);
+			name = "New Group";
+			path = "Profile/New Group";
+			sourceTree = "<group>";
+		};
 		5F14A6CB2242AC49008384D3 /* Book Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,7 +413,6 @@
 		5F5A734722363D9F0003F66E /* SearchGoogleCVC */ = {
 			isa = PBXGroup;
 			children = (
-				5F14A6CB2242AC49008384D3 /* Book Detail */,
 				5F467BB7223565C000D3F41F /* SearchResultCVC.swift */,
 				5F467BB9223565E700D3F41F /* SearchResultCell.swift */,
 				5F467BB52235652400D3F41F /* GoogleSearchCollectionResult.storyboard */,
@@ -478,14 +499,18 @@
 		5F7C214A22195CB5002FAEBF /* MrPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				5F5619AF22A3D9AC008D26AE /* GoogleBookService.swift */,
 				5F77761C2226F11700D1A7A7 /* MrPlanner.entitlements */,
 				5F7C214B22195CB5002FAEBF /* AppDelegate.swift */,
+				5F10A98D22A546BE0002F1A0 /* MrPlannerAuthStorageService.swift */,
 				5FB7E627223E2F9500A7B9CB /* init */,
 				5F5A7348223697860003F66E /* Fonts */,
 				5FB412A6222A7AF300B4A3E7 /* MainVC */,
 				5F4AF7B622996CB900D1C2DD /* CalendarView */,
 				5F9D8B0F2265C18B0086E1F6 /* Calendar */,
+				5F10A99122A697480002F1A0 /* New Group */,
 				5F64F7C1224F49AE00265FF1 /* Profile */,
+				5F14A6CB2242AC49008384D3 /* Book Detail */,
 				5F5A734722363D9F0003F66E /* SearchGoogleCVC */,
 				5F76AA7A221B0371003BE931 /* BookSearch */,
 				5FE54D8A2288AA0B0096402A /* Goodreads */,
@@ -633,6 +658,7 @@
 				5F8F64E222802DCC00D86900 /* OfflineViewController.swift */,
 				5F8F64DA227AE84700D86900 /* Checkmark.swift */,
 				5F36BDF3228F83860033EA5C /* ValidationErrorType.swift */,
+				5F5619AC22A1DFE3008D26AE /* MrPlannerConfig.swift */,
 			);
 			path = init;
 			sourceTree = "<group>";
@@ -666,6 +692,7 @@
 				5FE54D8222844A4E0096402A /* Login.storyboard */,
 				5FE54D842284700C0096402A /* RegisterVC.swift */,
 				5F36BDF1228F3F180033EA5C /* EmailVerifyVC.swift */,
+				5F5619AA22A1CEEF008D26AE /* fillProfileVC.swift */,
 			);
 			path = LoginRegister;
 			sourceTree = "<group>";
@@ -885,6 +912,7 @@
 				5F6BBECA22799072001020BB /* ‌BookSelection.storyboard in Resources */,
 				5FABC88D223E9AB600E275BE /* SF-Pro-Display-LightItalic.otf in Resources */,
 				5FABC88A223E9AB600E275BE /* SF-Pro-Display-BlackItalic.otf in Resources */,
+				5F10A99022A697290002F1A0 /* Shelf.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -903,6 +931,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework",
+				"${BUILT_PRODUCTS_DIR}/Buglife/Buglife.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/Floaty/Floaty.framework",
 				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
@@ -918,6 +947,8 @@
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RevealingSplashView/RevealingSplashView.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
@@ -935,6 +966,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BetterSegmentedControl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Buglife.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Floaty.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
@@ -950,6 +982,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealingSplashView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
@@ -1047,6 +1081,7 @@
 				5FF26D57224A116500D23645 /* ReviewTVC.swift in Sources */,
 				5F76AA792219A373003BE931 /* BookTVCell.swift in Sources */,
 				5F8F64DF2280213000D86900 /* NetworkManager.swift in Sources */,
+				5F5619B022A3D9AC008D26AE /* GoogleBookService.swift in Sources */,
 				5FF14D7B2250AE0500FF42A8 /* ActivePlansCell.swift in Sources */,
 				5FE54D9422898E190096402A /* Author.swift in Sources */,
 				5FC9FA3122782A1900777AA5 /* DefaultViewModel.swift in Sources */,
@@ -1054,6 +1089,7 @@
 				5FB412AB222A7B6900B4A3E7 /* PopularReadersCell.swift in Sources */,
 				5FD15E0D2225969900DB5BFE /* MainVC.swift in Sources */,
 				5FE54D7C228421DF0096402A /* Slide.swift in Sources */,
+				5F5619AD22A1DFE3008D26AE /* MrPlannerConfig.swift in Sources */,
 				5F8F64D9227AD2DA00D86900 /* BookSelectionVC.swift in Sources */,
 				5FE54D8C2288AA3A0096402A /* AuthStorageService.swift in Sources */,
 				5F14A6CF2242AC87008384D3 /* DetailVC.swift in Sources */,
@@ -1061,14 +1097,17 @@
 				5FFB9E572250E65F00473A5E /* ProfileActivitiesTVC.swift in Sources */,
 				5FE54D852284700C0096402A /* RegisterVC.swift in Sources */,
 				5FB7E626223E2F8200A7B9CB /* Books.swift in Sources */,
+				5F10A98E22A546BE0002F1A0 /* MrPlannerAuthStorageService.swift in Sources */,
 				5FB412AE222A8DC100B4A3E7 /* PopularBookCell.swift in Sources */,
 				5FC9FA3622782A1900777AA5 /* DefaultViewController.swift in Sources */,
 				5FB7E629223E3B1B00A7B9CB /* BookDetailVC.swift in Sources */,
+				5F10A99322A697650002F1A0 /* ShelfVC.swift in Sources */,
 				5FFB9E592250E7B300473A5E /* ProfileActivitiesCell.swift in Sources */,
 				5F14A6CD2242AC72008384D3 /* IntroductionVC.swift in Sources */,
 				5FE54D7A228421970096402A /* WalkthroughVC.swift in Sources */,
 				5F4AF7BC229974C700D1C2DD /* WeekView.swift in Sources */,
 				5FC9FA3322782A1900777AA5 /* EventCell.swift in Sources */,
+				5F5619AB22A1CEEF008D26AE /* fillProfileVC.swift in Sources */,
 				5FC9FA3222782A1900777AA5 /* DefaultWeekView.swift in Sources */,
 				5F7C214C22195CB5002FAEBF /* AppDelegate.swift in Sources */,
 				5FF14D792250AA0300FF42A8 /* ProfileActivePlansTVC.swift in Sources */,

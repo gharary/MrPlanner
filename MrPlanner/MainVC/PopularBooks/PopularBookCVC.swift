@@ -74,10 +74,12 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
         self.searchData = []
         let i = Int.random(in: 0 ..< BookCategories.count)
         //SVProgressHUD.showProgress(0.2)
-        reqSearchServer(term: "subject=\(BookCategories[i])")
+        GoogleBookService.sharedInstance.searchGoogle(sender: self, "subject=\(BookCategories[i])", completion: { (books) in
+            self.searchData = books.filter { $0.pageCount != nil }
+            self.collectionView.reloadData()
+        })
     }
     
- 
  
     // MARK: UICollectionViewDataSource
 
@@ -89,11 +91,8 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        if searchData.count == 0 {
-            return 0
-        } else {
-            return searchData.count
-        }
+        return searchData.count
+        
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -111,7 +110,7 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
         SVProgressHUD.showProgress(1)
         
         cell.titleLbl.text = searchData[indexPath.row].title
-        cell.authorLbl.text = searchData[indexPath.row].authors?[0]
+        cell.authorLbl.text = searchData[indexPath.row].authors.first
         if searchData[indexPath.row].image != nil {
             let replace = searchData[indexPath.row].image?.replacingOccurrences(of: "http", with: "https")
             let url:URL! = URL(string: replace!)
@@ -150,104 +149,7 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
         
     }
     
-    func reqSearchServer(term: String) {
-        
-        let parameters: Parameters = ["q":term,"key":"AIzaSyCIXIPXJQwCYE9hHdTghuH-jNRIm2tvx8Y","maxResults":"40"]
-        SVProgressHUD.showProgress(0.3)
-        Alamofire.request(baseURL!, method: .get, parameters: parameters)
-            .responseJSON { response in
-                var statusCode = response.response?.statusCode
-                
-                switch response.result {
-                case .success:
-                    
-                    //print("Success!")
-                    if response.data != nil {
-                        SVProgressHUD.showProgress(0.6)
-                        let json = try! JSON(data: response.data!)
-                        //print(json)
-                        self.searchData = []
-                        for (_,subJson):(String, JSON) in json["items"] {
-                            
-                            //print("This is subJson: \(String(describing: subJson["volumeInfo"]["title"].string))")
-                            
-                            var book:Books = Books()
-                            //Author
-                            book.authors = subJson["volumeInfo"]["authors"].arrayObject as? [String]
-                            
-                            //Description
-                            if let desc = subJson["volumeInfo"]["description"].string {
-                                let replace = desc.replacingOccurrences(of: "<p>|</p>|<br>|</br>|<i>|</i>|<b>|</b>", with: "", options: .regularExpression)
-                                
-                                book.desc = replace
-                            }
-                            
-                            //Image
-                            book.image = subJson["volumeInfo"]["imageLinks"]["thumbnail"].string
-                            
-                            //Title
-                            book.title = subJson["volumeInfo"]["title"].string
-                            
-                            //ID
-                            book.id = subJson["id"].string
-                            
-                            //Average Rating
-                            if let avg = subJson["volumeInfo"]["averageRating"].int { book.avgRating = Double(avg) }
-                            
-                            //Categories
-                            if subJson["volumeInfo"]["categories"].count == 1 {
-                                /*
-                                 let item:String = subJson["volumeInfo"]["categories"][0].string!
-                                 book.categories?.append(item)
-                                 */
-                                
-                                book.mainCategory = subJson["volumeInfo"]["categories"][0].string!
-                                //print(subJson["volumeInfo"]["categories"][0].string!)
-                            } else {
-                                book.categories = subJson["volumeInfo"]["categories"].arrayObject as? [String]
-                            }
-                            
-                            //Publisher
-                            book.publisher = subJson["volumeInfo"]["publisher"].string
-                            
-                            //Publish Date
-                            book.publishDate = subJson["volumeInfo"]["publishedDate"].string
-                            
-                            
-                            //ISBN
-                            if subJson["volumeInfo"]["industryIdentifiers"][0]["type"] == "ISBN_10" {
-                                book.ISBN_10 = subJson["volumeInfo"]["industryIdentifiers"][0]["identifier"].string
-                                book.ISBN_13 = subJson["volumeInfo"]["industryIdentifiers"][1]["identifier"].string
-                            } else if subJson["volumeInfo"]["industryIdentifiers"][0]["type"] == "ISBN_13" {
-                                book.ISBN_10 = subJson["volumeInfo"]["industryIdentifiers"][1]["identifier"].string
-                                book.ISBN_13 = subJson["volumeInfo"]["industryIdentifiers"][0]["identifier"].string
-                                
-                            }
-                            
-                            //Page Count
-                            book.pageCount = subJson["volumeInfo"]["pageCount"].string
-                            
-                            
-                            
-                            self.searchData.append(book)
-                            
-                        }
-                        
-                        SVProgressHUD.showProgress(0.8)
-                        SVProgressHUD.dismiss(withDelay: 0.1)
-                        self.collectionView.reloadData()
-                        
-                    }
-                case .failure(let error):
-                    statusCode = error._code // statusCode private
-                    
-                    SVProgressHUD.showError(withStatus: "Error")
-                    SVProgressHUD.dismiss(withDelay: 0.1)
-                    print("status code is: \(String(describing: statusCode))")
-                    print(error)
-                }
-        }
-    }
+    
     
     // MARK: UICollectionViewDelegate
 
@@ -272,9 +174,10 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
             if let indexPath = self.collectionView.indexPath(for: cell) {
                 
                 vc.book = searchData?[indexPath.row]
+                
                 vc.bookImage = searchData?[indexPath.row].image ?? ""
                 vc.booktitle = searchData?[indexPath.row].title ?? "No title"
-                vc.bookAuthor = searchData?[indexPath.row].authors?[0] ?? "No Author"
+                vc.bookAuthor = searchData?[indexPath.row].authors.first ?? "No Author"
                 vc.bookID = searchData[indexPath.row].id ?? ""
                 vc.averageRating = searchData[indexPath.row].avgRating ?? 0
                 vc.segueString = "BookDetailVC"

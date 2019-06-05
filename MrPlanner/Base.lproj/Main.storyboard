@@ -28,24 +28,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" image="schdule" translatesAutoresizingMaskIntoConstraints="NO" id="yVy-67-X9O">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="578-o2-EJG" customClass="ImageSlideshow" customModule="ImageSlideshow">
                                 <rect key="frame" x="14" y="96" width="347" height="223"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" distribution="equalCentering" alignment="firstBaseline" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rkZ-K1-4VY">
                                 <rect key="frame" x="14" y="333" width="347" height="48"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jzq-rq-OUh">
-                                        <rect key="frame" x="0.0" y="0.0" width="198.66666666666666" height="48"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="182.66666666666666" height="48"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMI-03-RC3">
-                                                <rect key="frame" x="0.0" y="0.0" width="198.66666666666666" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="182.66666666666666" height="20"/>
                                                 <fontDescription key="fontDescription" name="SFCompactRounded-Regular" family="SF Compact Rounded" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This Book Read By Many Users" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vn0-cq-uOD">
-                                                <rect key="frame" x="0.0" y="28" width="198.66666666666666" height="20"/>
+                                                <rect key="frame" x="0.0" y="28" width="182.66666666666666" height="20"/>
                                                 <fontDescription key="fontDescription" name="SFCompactRounded-Regular" family="SF Compact Rounded" pointSize="14"/>
                                                 <color key="textColor" red="0.37647058820000001" green="0.43137254899999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -120,30 +120,30 @@
                             <constraint firstItem="e6m-4n-jW8" firstAttribute="leading" secondItem="qVH-z2-x49" secondAttribute="leading" constant="14" id="3R6-Zd-ElS"/>
                             <constraint firstItem="qVH-z2-x49" firstAttribute="bottom" secondItem="tyn-at-YuQ" secondAttribute="bottom" id="4yl-7P-vqa"/>
                             <constraint firstItem="e6m-4n-jW8" firstAttribute="top" secondItem="Tou-65-d3F" secondAttribute="bottom" constant="14" id="8Z4-TH-8pV"/>
-                            <constraint firstItem="yVy-67-X9O" firstAttribute="leading" secondItem="qVH-z2-x49" secondAttribute="leading" constant="14" id="91B-GQ-927"/>
                             <constraint firstItem="Tou-65-d3F" firstAttribute="leading" secondItem="qVH-z2-x49" secondAttribute="leading" constant="14" id="FA1-qS-VuQ"/>
                             <constraint firstItem="rkZ-K1-4VY" firstAttribute="leading" secondItem="qVH-z2-x49" secondAttribute="leading" constant="14" id="FWs-Xl-xg1"/>
                             <constraint firstItem="qVH-z2-x49" firstAttribute="trailing" secondItem="rkZ-K1-4VY" secondAttribute="trailing" constant="14" id="KEg-Gx-eZk"/>
                             <constraint firstItem="qVH-z2-x49" firstAttribute="trailing" secondItem="tyn-at-YuQ" secondAttribute="trailing" constant="14" id="UaN-6c-scg"/>
-                            <constraint firstItem="qVH-z2-x49" firstAttribute="trailing" secondItem="yVy-67-X9O" secondAttribute="trailing" constant="14" id="VeL-eZ-Qtj"/>
+                            <constraint firstItem="qVH-z2-x49" firstAttribute="trailing" secondItem="578-o2-EJG" secondAttribute="trailing" constant="14" id="dII-TA-fwv"/>
+                            <constraint firstItem="578-o2-EJG" firstAttribute="leading" secondItem="qVH-z2-x49" secondAttribute="leading" constant="14" id="eS4-hP-WDr"/>
                             <constraint firstItem="qVH-z2-x49" firstAttribute="trailing" secondItem="Tou-65-d3F" secondAttribute="trailing" constant="14" id="iHE-GN-rQx"/>
                             <constraint firstItem="Tou-65-d3F" firstAttribute="top" secondItem="rkZ-K1-4VY" secondAttribute="bottom" constant="6" id="j3B-FA-n5H"/>
-                            <constraint firstItem="yVy-67-X9O" firstAttribute="top" secondItem="qVH-z2-x49" secondAttribute="top" constant="8" id="sTF-31-Clx"/>
+                            <constraint firstItem="578-o2-EJG" firstAttribute="top" secondItem="qVH-z2-x49" secondAttribute="top" constant="8" id="kUd-6n-N72"/>
+                            <constraint firstItem="rkZ-K1-4VY" firstAttribute="top" secondItem="578-o2-EJG" secondAttribute="bottom" constant="14" id="rwm-XR-N1I"/>
                             <constraint firstItem="tyn-at-YuQ" firstAttribute="leading" secondItem="qVH-z2-x49" secondAttribute="leading" constant="14" id="tOS-2C-l7C"/>
                             <constraint firstItem="qVH-z2-x49" firstAttribute="trailing" secondItem="e6m-4n-jW8" secondAttribute="trailing" constant="14" id="v5t-bk-bq6"/>
-                            <constraint firstItem="rkZ-K1-4VY" firstAttribute="top" secondItem="yVy-67-X9O" secondAttribute="bottom" constant="14" id="ybE-XF-kdj"/>
                             <constraint firstItem="tyn-at-YuQ" firstAttribute="top" secondItem="e6m-4n-jW8" secondAttribute="bottom" constant="8" id="zab-WG-vEw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qVH-z2-x49"/>
                     </view>
                     <navigationItem key="navigationItem" id="d4o-yI-sA4"/>
                     <connections>
-                        <outlet property="image" destination="yVy-67-X9O" id="1ql-hc-byY"/>
+                        <outlet property="slideShow" destination="578-o2-EJG" id="beI-uC-ZMV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bIo-eX-AUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1024.8" y="509.59520239880067"/>
+            <point key="canvasLocation" x="1024.8" y="509.11330049261085"/>
         </scene>
         <!--GoogleSearchCollectionResult-->
         <scene sceneID="GUW-c5-jTP">
@@ -420,7 +420,6 @@
         <image name="Home" width="26" height="24"/>
         <image name="Logo" width="213" height="208"/>
         <image name="Offline" width="301" height="157"/>
-        <image name="schdule" width="347" height="145"/>
         <namedColor name="greyBlue">
             <color red="0.37599998712539673" green="0.4309999942779541" blue="0.50999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

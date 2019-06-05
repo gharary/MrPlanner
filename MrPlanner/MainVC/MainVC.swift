@@ -7,13 +7,16 @@
 //
 
 import UIKit
-
+import ImageSlideshow
+import Alamofire
+import AlamofireImage
+import Kingfisher
 
 
 
 class MainVC: UIViewController{
 
-    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var slideShow: ImageSlideshow!
     
     @IBOutlet weak var popularBookUIView: UIView!
     @IBOutlet weak var popularReaderUIView: UIView!
@@ -22,7 +25,26 @@ class MainVC: UIViewController{
     
     override func viewDidLoad() {
         self.title = "Home"
-        image.layer.cornerRadius = 15
+        loadImage()
+    }
+    
+    private func loadImage() {
+        let image = UIImage(named: "schdule")
+        //slideShow.setImageInputs(Placeholder(image))
+        
+        slideShow.setImageInputs([
+            ImageSource(image: image!),
+            AlamofireSource(urlString: "https://images.unsplash.com/photo-1432679963831-2dab49187847?w=1080", placeholder: image)!,
+            KingfisherSource(urlString: "https://images.unsplash.com/photo-1432679963831-2dab49187847?w=1080")!
+            
+            ])
+        
+        slideShow.slideshowInterval = 3
+        slideShow.pageIndicatorPosition = .init(horizontal: .center, vertical: .bottom)
+        slideShow.backgroundColor = UIColor(hex: 0xA0C0C4 )
+        slideShow.layer.cornerRadius = 5
+        
+        
     }
     /*
     // MARK: - Navigation

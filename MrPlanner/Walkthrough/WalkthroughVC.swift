@@ -38,6 +38,8 @@ class WalkthroughVC: UIViewController {
     var window: UIWindow?
     
     @IBAction func skipButton(_ sender: UIButton) {
+        
+        /*
         let defaults = UserDefaults.standard
         defaults.set(nil, forKey: "remember_token")
         defaults.set(nil, forKey: "password")
@@ -49,10 +51,11 @@ class WalkthroughVC: UIViewController {
             self.present(initialViewController, animated: true, completion: nil)
         
         } else {
+         */
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "RegisterVC")
             self.present(vc, animated: true, completion: nil)
-        }
+        //}
       
     }
     

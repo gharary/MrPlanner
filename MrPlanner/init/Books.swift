@@ -7,21 +7,26 @@
 //
 
 import Foundation
-struct Books {
-    var id:String?
-    var title:String?
-    var authors:[String]?
-    var image:String?
-    var desc: String?
-    var publisher: String?
-    var publishDate: String?
-    var ISBN_13: String?
-    var ISBN_10: String?
-    var pageCount:String?
-    var mainCategory:String?
-    var categories:[String]?
-    var avgRating:Double?
-    var ratingsCount: Int?
+import RealmSwift
+
+
+
+@objcMembers class Books:Object {
+    dynamic var id:String? // either Google ID or GoodreadsID
+    dynamic var title:String?
+    dynamic var authors = List<String>() //[Authors]? //Google Authors
+    dynamic var image: String?
+    dynamic var desc: String?
+    dynamic var publisher: String?
+    dynamic var publishDate: String?
+    dynamic var ISBN13: String?
+    dynamic var ISBN10: String?
+    dynamic var pageCount: Int?
+    dynamic var categories = List<String>()
+    dynamic var avgRating: Double?
+    dynamic var ratingCount: Int?
+    
     
     
 }
+

@@ -52,7 +52,6 @@ class EmailVerifyVC: UIViewController {
                 self.performSegue(withIdentifier: "ShowMain", sender: nil)
             }
             alert.addAction(okAction)
-            //present(alert, animated: true, completion: nil)
         }
     }
     
@@ -77,28 +76,25 @@ class EmailVerifyVC: UIViewController {
                     case .success:
                         
                         let result = JSON(response.result.value!)
+                    
+                        defaults.set(self.email, forKey: "username")
+                        defaults.set(result["remember_token"].string, forKey: "password")
+                        defaults.set(result["id"].int, forKey: "UserID")
+                        defaults.set(true, forKey: "Login")
                         
-                        //print(result["password"].string?.isEmpty as Any)
-                        if result["password"].string != nil && !result["password"].string!.isEmpty {
-                            defaults.set(result["user_name"].string, forKey: "username")
-                            defaults.set(result["password"].string, forKey: "password")
-                        } else {
-                            defaults.set(result["remember_token"].string, forKey: "token")
-                        }
+                        //MrPlannerAuthStorageService.saveAuthToken(self.email)
+                    //MrPlannerAuthStorageService.saveTokenSecret(result["remember_token"].string!)
                         
+                        MrPlannerService.sharedInstance.isLoggedIn = .LoggedIn
+                    self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
                         
-                        
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let initialViewController = storyboard.instantiateViewController(withIdentifier: "Tabbar")
-                        self.removeFromParent()
-                        
-                        self.present(initialViewController, animated: true, completion: nil)
                         
                     case .failure(let error):
                         print(error.localizedDescription)
                         
                     }
                 } else {
+                    
                     let alert = UIAlertController(title: "Error", message: "Wrong Code! Try Again", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: { (_) in
                         self.verificationCode.clear()

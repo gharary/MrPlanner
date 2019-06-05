@@ -34,6 +34,8 @@ target 'MrPlanner' do
   pod "KWVerificationCodeView"
   pod 'Validator'
   pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :tag => '4.2.0'
+  pod 'Buglife'
+  pod 'RealmSwift'
 end
 
 target 'OneSignalNotificationServiceExtension' do
