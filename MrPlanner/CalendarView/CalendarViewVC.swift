@@ -23,7 +23,11 @@ class CalendarViewVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.dismiss()
-        setupEvents()
+        DispatchQueue.main.async {
+            self.setupEvents()
+            self.view.layoutIfNeeded()
+        }
+        
         setupBasic()
         setupCalendar()
         
@@ -99,6 +103,12 @@ extension CalendarViewVC: JZBaseViewDelegate {
                               step: 1) {
                                 events.append(contentsOf: genEvents(date))
         }
+        
+        
+        UIView.transition(with: self.calendarWeekView, duration: 0.33, options: [], animations: {
+            self.calendarWeekView.refreshWeekView()
+            self.view.layoutIfNeeded()
+        }, completion: nil)
         
     }
     

@@ -8,12 +8,12 @@
 
 import UIKit
 import JZCalendarWeekView
-
+import RealmSwift
 class DefaultWeekView: JZBaseWeekView {
     
+    var selectedData = [UserTimeTable]()
     
     
-    var selectedTime = [JZBaseEvent]()
     override func registerViewClasses() {
         super.registerViewClasses()
         
@@ -24,11 +24,13 @@ class DefaultWeekView: JZBaseWeekView {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EventCell.className, for: indexPath) as! EventCell
         
         let event = getCurrentEvent(with: indexPath)
-        if selectedTime.firstIndex(of: event!) != nil {
-            cell.backgroundColor = .green
-        } else {
-            cell.backgroundColor = UIColor(hex: 0xEEF7FF) //.clear//
+        guard selectedData.firstIndex(where: { $0.selectedTime == event }) != nil else {
+            
+            cell.backgroundColor = UIColor(hex: 0xEEF7FF)
+            return cell
         }
+        
+        cell.backgroundColor = .green
         
         return cell
  
@@ -39,24 +41,26 @@ class DefaultWeekView: JZBaseWeekView {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //let selectedEvent = getCurrentEvent(with: indexPath) as! DefaultEvent
-        //ToastUtil.toastMessageInTheMiddle(message: selectedEvent.title)
-        
-        
         let cell = self.collectionView.cellForItem(at: indexPath)
         if cell?.backgroundColor == UIColor.green {
             cell?.backgroundColor =  UIColor(hex: 0xEEF7FF)
-            let event = getCurrentEvent(with: indexPath)
-            selectedTime.remove(at: selectedTime.firstIndex(of: event!)!)
+            let event = getCurrentEvent(with: indexPath)!
+            BookSelectionVC.sharedInstance.getSelectedTime(event, add: false)
+            
             
         }
         else {
             cell?.backgroundColor = .green
-            let event = getCurrentEvent(with: indexPath)
-            selectedTime.append(event!)
+            let event = getCurrentEvent(with: indexPath)!
+            //selectedData.append(UserTimeTable(selectedTime: event))
+            BookSelectionVC.sharedInstance.getSelectedTime(event, add: true)
             
         }
-        
     }
+    
+    
+    
+    
+    
 
 }

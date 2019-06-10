@@ -179,7 +179,7 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
                 vc.booktitle = searchData?[indexPath.row].title ?? "No title"
                 vc.bookAuthor = searchData?[indexPath.row].authors.first ?? "No Author"
                 vc.bookID = searchData[indexPath.row].id ?? ""
-                vc.averageRating = searchData[indexPath.row].avgRating ?? 0
+                //vc.averageRating = searchData[indexPath.row].avgRating ?? 0
                 vc.segueString = "BookDetailVC"
                 }
             }

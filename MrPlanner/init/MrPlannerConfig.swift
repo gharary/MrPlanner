@@ -51,7 +51,7 @@ class MrPlannerService {
         }
         
     }
-    func addShelfBookToDB(book: Books,title: String, cat: String, pageNr: Int, completion: @escaping (Bool) -> ()) {
+    func addShelfBookToDB(book: Books,title: String, cat: String, pageNr: RealmOptional<Int>, completion: @escaping (Bool) -> ()) {
         
    
         let user = defaults.string(forKey: "username") ?? "gharary@outlook.com"
@@ -70,7 +70,7 @@ class MrPlannerService {
         
         let param: Parameters = ["name":title,
                                  "major":cat,
-                                 "number_pages":pageNr,
+                                 "number_pages":pageNr.value!,
                                  "hard_grade":1]
         
         

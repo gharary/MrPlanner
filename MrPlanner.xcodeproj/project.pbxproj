@@ -132,6 +132,7 @@
 		5FC9FA3A22782A3600777AA5 /* ToastUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9FA3822782A3500777AA5 /* ToastUtil.swift */; };
 		5FC9FA3B22782A3600777AA5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9FA3922782A3600777AA5 /* Extensions.swift */; };
 		5FD15E0D2225969900DB5BFE /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD15E0C2225969900DB5BFE /* MainVC.swift */; };
+		5FD63E0922A84EBA005EC503 /* UserTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD63E0822A84EBA005EC503 /* UserTimeTable.swift */; };
 		5FE54D7A228421970096402A /* WalkthroughVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE54D79228421970096402A /* WalkthroughVC.swift */; };
 		5FE54D7C228421DF0096402A /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE54D7B228421DF0096402A /* Slide.swift */; };
 		5FE54D802284271C0096402A /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FE54D7F2284271C0096402A /* Slide.xib */; };
@@ -308,6 +309,7 @@
 		5FC9FA3822782A3500777AA5 /* ToastUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastUtil.swift; sourceTree = "<group>"; };
 		5FC9FA3922782A3600777AA5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5FD15E0C2225969900DB5BFE /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		5FD63E0822A84EBA005EC503 /* UserTimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTimeTable.swift; sourceTree = "<group>"; };
 		5FE54D79228421970096402A /* WalkthroughVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughVC.swift; sourceTree = "<group>"; };
 		5FE54D7B228421DF0096402A /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		5FE54D7F2284271C0096402A /* Slide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
@@ -353,14 +355,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5F10A99122A697480002F1A0 /* New Group */ = {
+		5F10A99122A697480002F1A0 /* Shelf */ = {
 			isa = PBXGroup;
 			children = (
 				5F10A98F22A697290002F1A0 /* Shelf.storyboard */,
 				5F10A99222A697650002F1A0 /* ShelfVC.swift */,
 			);
-			name = "New Group";
-			path = "Profile/New Group";
+			name = Shelf;
+			path = Profile/Shelf;
 			sourceTree = "<group>";
 		};
 		5F14A6CB2242AC49008384D3 /* Book Detail */ = {
@@ -499,16 +501,14 @@
 		5F7C214A22195CB5002FAEBF /* MrPlanner */ = {
 			isa = PBXGroup;
 			children = (
-				5F5619AF22A3D9AC008D26AE /* GoogleBookService.swift */,
 				5F77761C2226F11700D1A7A7 /* MrPlanner.entitlements */,
 				5F7C214B22195CB5002FAEBF /* AppDelegate.swift */,
-				5F10A98D22A546BE0002F1A0 /* MrPlannerAuthStorageService.swift */,
 				5FB7E627223E2F9500A7B9CB /* init */,
 				5F5A7348223697860003F66E /* Fonts */,
 				5FB412A6222A7AF300B4A3E7 /* MainVC */,
 				5F4AF7B622996CB900D1C2DD /* CalendarView */,
 				5F9D8B0F2265C18B0086E1F6 /* Calendar */,
-				5F10A99122A697480002F1A0 /* New Group */,
+				5F10A99122A697480002F1A0 /* Shelf */,
 				5F64F7C1224F49AE00265FF1 /* Profile */,
 				5F14A6CB2242AC49008384D3 /* Book Detail */,
 				5F5A734722363D9F0003F66E /* SearchGoogleCVC */,
@@ -648,6 +648,8 @@
 		5FB7E627223E2F9500A7B9CB /* init */ = {
 			isa = PBXGroup;
 			children = (
+				5F10A98D22A546BE0002F1A0 /* MrPlannerAuthStorageService.swift */,
+				5F5619AF22A3D9AC008D26AE /* GoogleBookService.swift */,
 				5F3CF7B8229149C700B80910 /* Shelve.swift */,
 				5F76AA7B221B0739003BE931 /* UserInfoVC.swift */,
 				5FB7E625223E2F8100A7B9CB /* Books.swift */,
@@ -659,6 +661,7 @@
 				5F8F64DA227AE84700D86900 /* Checkmark.swift */,
 				5F36BDF3228F83860033EA5C /* ValidationErrorType.swift */,
 				5F5619AC22A1DFE3008D26AE /* MrPlannerConfig.swift */,
+				5FD63E0822A84EBA005EC503 /* UserTimeTable.swift */,
 			);
 			path = init;
 			sourceTree = "<group>";
@@ -1062,6 +1065,7 @@
 				5F14A6CA224238AE008384D3 /* TabbarMultipleChild.swift in Sources */,
 				5F467BB8223565C000D3F41F /* SearchResultCVC.swift in Sources */,
 				5FE54D8E2288AABD0096402A /* KeychainPasswordItem.swift in Sources */,
+				5FD63E0922A84EBA005EC503 /* UserTimeTable.swift in Sources */,
 				5F36BDF2228F3F180033EA5C /* EmailVerifyVC.swift in Sources */,
 				5FC9FA3A22782A3600777AA5 /* ToastUtil.swift in Sources */,
 				5F3CF7B9229149C700B80910 /* Shelve.swift in Sources */,

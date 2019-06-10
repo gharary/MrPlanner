@@ -40,7 +40,7 @@
                     <navigationItem key="navigationItem" id="gAr-Vi-kZa">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="GIN-Ma-I27">
                             <connections>
-                                <segue destination="DVS-Gd-Bw9" kind="show" id="O8L-6X-xCY"/>
+                                <segue destination="DVS-Gd-Bw9" kind="show" identifier="BookSelection" id="O8L-6X-xCY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -118,7 +118,7 @@
                                 <rect key="frame" x="47" y="273" width="320" height="216"/>
                             </pickerView>
                         </subviews>
-                        <color key="backgroundColor" red="0.95715135340000002" green="0.94560986759999999" blue="0.91623795029999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.62745098040000002" green="0.75294117650000003" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="7Br-IF-n2v" firstAttribute="centerX" secondItem="zaq-IX-gwU" secondAttribute="centerX" id="1MX-px-tQH"/>
                             <constraint firstItem="Mo0-Kr-VdH" firstAttribute="centerX" secondItem="zaq-IX-gwU" secondAttribute="centerX" id="4iP-Kh-hzC"/>

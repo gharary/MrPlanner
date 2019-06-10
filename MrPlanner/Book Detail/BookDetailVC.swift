@@ -134,7 +134,7 @@ class BookDetailVC: UIViewController {
             return
         }
         
-        MrPlannerService.sharedInstance.addShelfBookToDB(book:book ,title: book.title!, cat: (book.categories.first!) , pageNr: book.pageCount!, completion: { result in
+        MrPlannerService.sharedInstance.addShelfBookToDB(book:book ,title: book.title!, cat: (book.categories.first!) , pageNr: book!.pageCount, completion: { result in
             
             if result {
                 SVProgressHUD.showSuccess(withStatus: "Done!")

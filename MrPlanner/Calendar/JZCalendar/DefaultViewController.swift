@@ -11,13 +11,13 @@ import JZCalendarWeekView
 
 class DefaultViewController: UIViewController {
     
+    
     @IBOutlet weak var calendarWeekView: DefaultWeekView!
     
     let viewModel = DefaultViewModel()
     
     var planBeginDate:String = ""
     var weekduration: Int = 0
-    
     
     var fullGridEvents = [DefaultEvent]()
     
@@ -37,6 +37,8 @@ class DefaultViewController: UIViewController {
     
     
     
+    var beginDate = Date()
+    var endDate = Date()
     
     private func setupCalendarView() {
         
@@ -48,11 +50,11 @@ class DefaultViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         
-        let beginDate = planBeginDate.isEmpty ? Date() : formatter.date(from: planBeginDate)
-        let endDate = beginDate?.add(component: .weekOfMonth, value: weekduration)
+        beginDate = planBeginDate.isEmpty ? Date() : formatter.date(from: planBeginDate)!
+        endDate = beginDate.add(component: .weekOfMonth, value: weekduration)
         
         calendarWeekView.setupCalendar(numOfDays: 7,
-                                       setDate: beginDate ?? Date(),
+                                       setDate: beginDate ,
                                        allEvents: eventsByDate,
                                        scrollType: .pageScroll,
                                        firstDayOfWeek: .Monday,
@@ -61,6 +63,22 @@ class DefaultViewController: UIViewController {
                                        ,scrollableRange: (startDate: Date(), endDate: endDate))
         // Optional
         calendarWeekView.updateFlowLayout(JZWeekViewFlowLayout(hourGridDivision: JZHourGridDivision.noneDiv))
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "BookSelection" {
+            var nextFirstWeekday = DateComponents()
+            nextFirstWeekday.weekday = Calendar.autoupdatingCurrent.firstWeekday
+            
+            let nav = segue.destination as! UINavigationController
+            let vc = nav.topViewController as! BookSelectionVC
+            vc.weekDuration = self.weekduration
+            vc.startDate = beginDate
+                //Calendar.current.nextDate(after: beginDate ,matching: nextFirstWeekday,matchingPolicy: .nextTimePreservingSmallerComponents)!
+            vc.endDate = endDate
+            
+            
+        }
     }
     
 }
@@ -99,9 +117,7 @@ extension DefaultViewController: JZBaseViewDelegate {
         var nextFirstWeekday = DateComponents()
         nextFirstWeekday.weekday = calendar.firstWeekday
         //nextMonday.weekday = 3
-        let startDate = calendar.nextDate(after: beginDate ?? today,
-                                          matching: nextFirstWeekday,
-                                          matchingPolicy: .nextTimePreservingSmallerComponents)
+        let startDate = beginDate //calendar.nextDate(after: beginDate ?? today,matching: nextFirstWeekday,matchingPolicy: .nextTimePreservingSmallerComponents)
         
         
         
@@ -141,10 +157,8 @@ extension DefaultViewController: JZBaseViewDelegate {
         
         var fullGridEvents = [DefaultEvent]()
         for i in 0..<24 {
-            if i > 0 {
-                let j = Int.random(in: 0..<i)
-                fullGridEvents.append(DefaultEvent(id: "\(j)", title: "", startDate: dayBeginTime!.add(component: .hour, value: j), endDate: (dayBeginTime?.add(component: .hour, value: j+1))!, page: ""))
-            }
+                fullGridEvents.append(DefaultEvent(id: "\(i)", title: "", startDate: dayBeginTime!.add(component: .hour, value: i), endDate: (dayBeginTime?.add(component: .hour, value: i+1))!, page: ""))
+            
         }
         
         return fullGridEvents

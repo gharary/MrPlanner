@@ -11,6 +11,9 @@ import Alamofire
 import Kingfisher
 import SVProgressHUD
 import SwiftyJSON
+import RealmSwift
+import JZCalendarWeekView
+
 private let reuseIdentifier = "BookCell"
 
 class BookSelectionVC: UIViewController {
@@ -21,30 +24,53 @@ class BookSelectionVC: UIViewController {
     let inset: CGFloat = 8.0
     let spacing: CGFloat = 8.0
     let lineSpacing: CGFloat = 8.0
+
+    var weekDuration:Int = 0
     
+    static var sharedInstance = BookSelectionVC()
     
-   
+    static var selectedData = [UserTimeTable]()
+    
     
     let searchController = UISearchController(searchResultsController: nil)
     
     let BookCategories: [String] = ["Education","Fiction","Business","Design", "Growth", "Drama", "History", "Horror", "Art", "NonFiction", "Biography"]
     let baseURL = URL(string: "https://www.googleapis.com/books/v1/volumes")
-
-    var searchData: [Books]!
-    {
-        didSet{
-            self.collectionView.reloadData()
-        }
-    }
+    let defaults = UserDefaults.standard
+    
     
     override func viewWillAppear(_ animated: Bool) {
         self.title = "Book Selection!"
-        //randomCatBook()
         loadShelfBooks()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //print(BookSelectionVC.selectedData.count)
+        //BookSelectionVC.selectedData.sort(by: {$0 })
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         SVProgressHUD.dismiss()
     }
+    
+    func getSelectedTime(_ time:JZBaseEvent, add: Bool = true) {
+        switch add {
+        case true:
+            let isDuplicate = BookSelectionVC.selectedData.filter{ $0.selectedTime == time }
+            if isDuplicate.isEmpty { BookSelectionVC.selectedData.append(UserTimeTable(selectedTime: time)) }
+        case false:
+            if let index = BookSelectionVC.selectedData.firstIndex(where: { $0.selectedTime == time }) {
+            
+                BookSelectionVC.selectedData.remove(at: index)
+            }
+            
+            break
+        }
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -55,23 +81,144 @@ class BookSelectionVC: UIViewController {
 
         collectionView.layer.cornerRadius = 5
     }
+    
+    @IBAction func NextBtnTapped(_ sender: UIBarButtonItem) {
+        getBookIDs(selectedBooks)
+        getWeekTimes(BookSelectionVC.selectedData)
+        submitToServer()
+        
+    }
+    
+    
+    private func submitToServer() {
+        
+        let user = defaults.string(forKey: "username") ?? ""
+        let password = defaults.string(forKey: "password") ?? ""
+        let userID = defaults.string(forKey: "UserID") ?? ""
+        let url = URL(string: "http://www.mrplanner.org/api/createProgram")
+        let credentialData = "\(user):\(password)".data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
+        let base64Credential = credentialData.base64EncodedString()
+        let header: HTTPHeaders = ["X-API-TOKEN" : Bundle.main.localizedString(forKey: "X-API-TOKEN", value: nil, table: "Secrets"),
+                                   "Accept" : "application/json",
+                                   "Authorization":"Basic \(base64Credential)"]
+        
+        let param: Parameters = ["user_id":userID,
+                                 "lessons":lessonData,
+                                 "weeks":weekJSON]
+        
+        
+        Alamofire.request(url!, method: .post, parameters: param, headers: header)
+            .responseJSON { response in
+                
+                
+        }
+        
+    }
+    
+    
+    private var lessonData: [[String: Any]] = [[:]]
+    
+    private func getBookIDs(_ books: [String]) -> () {
+        
+        
+        
+        let realm = try! Realm()
+        let shelve = realm.objects(Shelve.self).filter("GoogleID IN %@", books.self)
+        //let books = realm.objects(Books.self).filter("id IN %@", books.self)
+        
+        var bookIDs = [String]()
+        lessonData.removeAll()
+        for i in 0..<shelve.count {
+            bookIDs.append(shelve[i].InternalID!)
+            lessonData.append( ["\( shelve[i].InternalID!)":["ch_1":"1-\(String(describing: shelve[i].Book!.pageCount.value!))"]])
+        }
+        
+    }
+    
+    
+    private var weekJSON: [[String: Any]] = [[:]]
+    
+    var startDate = Date()
+    var endDate = Date()
+    
+    private func getWeekTimes(_ hours: [UserTimeTable]) -> Void {
+        
+        weekJSON.removeAll()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        let userCalendar = Calendar.current
+        let dailyComponents: Set<Calendar.Component> = [.hour, .minute,.second]
+        let dateComponents : Set<Calendar.Component> = [.year,.month,.day]
+        
+        var w = 0
+        var d = 0
+        
+        //each week
+        for weeks in DateRange(calendar: Calendar.autoupdatingCurrent, startDate: startDate.add(component: .weekOfYear, value: -1), endDate: endDate, component: .weekOfYear, step: 1) {
+            
+            var dayJson:[[String:Any]] = [[:]]
+            dayJson.removeAll()
+            d = 0
+            for days in DateRange(calendar: Calendar.autoupdatingCurrent, startDate: weeks.startOfDay, endDate: weeks.startOfDay.add(component: .day, value: 7), component: .day, step: 1) {
+                
+                let dateFirst = Calendar.autoupdatingCurrent.dateComponents(dateComponents, from: days)
+                //print("Day of first date is :\(days.startOfDay)")
+                
+                let sameDays = BookSelectionVC.selectedData.filter {
+                    let date =  Calendar.autoupdatingCurrent.dateComponents(dateComponents, from: $0.selectedTime.startDate)
+                    return date.day == dateFirst.day
+                }
+                guard !sameDays.isEmpty else {
+                    dayJson.append(
+                        ["day_\(d)":
+                            ["date":"\(dateFirst.month!)-\(dateFirst.day!)-\(dateFirst.year!)",
+                                "hours":"null"]])
+                    d += 1
+                    continue
+                }
+                //print(sameDays)
+                var sameHours:[[String:Any]] = [[:]]
+                sameHours.removeAll()
+                for day in sameDays {
+                    let temp = userCalendar.dateComponents(dailyComponents, from: day.selectedTime.startDate)
+                    sameHours.append(["hour_\(temp.hour!)":"\(temp.hour!)"])
+                }
+                dayJson.append(
+                    ["day_\(d)":
+                        ["date":"\(dateFirst.month!)-\(dateFirst.day!)-\(dateFirst.year!)",
+                            "hours":sameHours]])
+                d += 1
+            }
+            weekJSON.append(["week_\(w)":"\(dayJson)"])
+            w += 1
+        }
+    }
+    
+    
     @IBAction func returnBack(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true
             , completion: nil)
     }
     
-    var books = [Book]()
+    
+    var books: Results<Books>?
+    var selectedBooks = [String]()
     
     func loadShelfBooks() {
-        SVProgressHUD.showProgress(0.3)
+        
+        let realm = try! Realm()
+        books = realm.objects(Books.self)
+        
+        
+        //SVProgressHUD.showProgress(0.3)
         GoodreadsService.sharedInstance.loadBooks(sender: self) {
             (books)  in
-            self.books = books
+            //self.books = books
             SVProgressHUD.showProgress(0.6)
             self.collectionView.reloadData()
             SVProgressHUD.showProgress(1)
-            
-            print(books)
+            SVProgressHUD.dismiss()
+            //print(books)
         }
         SVProgressHUD.dismiss(withDelay: 0.3)
     }
@@ -90,51 +237,25 @@ extension BookSelectionVC: UICollectionViewDataSource, UICollectionViewDelegate 
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        if books.count > 0 {
-            self.collectionView.restore()
-            SVProgressHUD.dismiss()
-            return books.count
-        } else {
-            self.collectionView.setEmptyMessage("Loading Data...!")
-        }
-        return books.count
-        /*
-        guard searchData != nil && searchData.count != nil else { return 0 }
-        return searchData.count
-        */
+        
+        return books?.count ?? 0
+        
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SearchResultCell
-    
-        /*
-        // Configure the cell
-        var dictionary: [Books] = searchData
-        
-        cell.titleLbl.text = dictionary[indexPath.row].title
-        cell.authorLbl.text = dictionary[indexPath.row].authors?[0]
-        
-        cell.checkMarkView.style = .grayedOut
-        cell.checkMarkView.setNeedsDisplay()
-        
-        if dictionary[indexPath.row].image != nil {
-            let str = dictionary[indexPath.row].image
-            let replace = str?.replacingOccurrences(of: "http", with: "https")
-            let url:URL! = URL(string: replace!)
-            cell.bookImage.kf.indicatorType = .activity
-            cell.bookImage.kf.setImage(with: url!)
+
+        if let book = books?[indexPath.row] {
+            cell.titleLbl.text = book.title
+            cell.authorLbl.text = book.authors.first
+            cell.checkMarkView.style = .grayedOut
+            cell.checkMarkView.setNeedsDisplay()
+            if !book.image!.isEmpty {
             
-        }
-    */
-        cell.titleLbl.text = books[indexPath.row].title
-        cell.authorLbl.text = books[indexPath.row].author.name
-        cell.checkMarkView.style = .grayedOut
-        cell.checkMarkView.setNeedsDisplay()
-        if !books[indexPath.row].imageUrl.isEmpty {
-            
-            let url:URL! = URL(string: books[indexPath.row].imageUrl)
-            cell.bookImage.kf.indicatorType = .activity
-            cell.bookImage.kf.setImage(with: url)
+                let url:URL! = URL(string: book.image!)
+                cell.bookImage.kf.indicatorType = .activity
+                cell.bookImage.kf.setImage(with: url)
+            }
         }
         
         return cell
@@ -143,7 +264,20 @@ extension BookSelectionVC: UICollectionViewDataSource, UICollectionViewDelegate 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! SearchResultCell
    
-        cell.checkMarkView.checked = !cell.checkMarkView.checked
+        let bookID = books?[indexPath.row].id
+        
+        if !cell.checkMarkView.checked {
+            selectedBooks.append(bookID ?? "")
+            cell.checkMarkView.checked = !cell.checkMarkView.checked
+        } else {
+            selectedBooks.removeAll(where: {$0 == bookID })
+            
+            cell.checkMarkView.checked = !cell.checkMarkView.checked
+        }
+        
+        
+        
+        
         
     }
 
@@ -190,122 +324,13 @@ extension BookSelectionVC: UISearchResultsUpdating {
         return (searchController.searchBar.text?.isEmpty)!
     }
     
-    private func randomCatBook() {
-        
-        
-        
-            let i = Int.random(in: 0 ..< BookCategories.count)
-            //SVProgressHUD.showProgress(0.2)
-            //reqSearchServer(term: "subject=\(BookCategories[i])")
-        
-        
-    }
+    
     func updateSearchResults(for searchController: UISearchController) {
-        if let searchText = searchController.searchBar.text {
+        if searchController.searchBar.text != nil {
             //reqSearchServer(term: searchText)
         } else {
             
         }
     }
-    
-    /*
- 
-    func reqSearchServer(term: String) {
-        
-        let parameters: Parameters = ["q":term,"key":"AIzaSyCIXIPXJQwCYE9hHdTghuH-jNRIm2tvx8Y","maxResults":"40"]
-        //SVProgressHUD.showProgress(0.3)
-        Alamofire.request(baseURL!, method: .get, parameters: parameters)
-            .responseJSON { response in
-                var statusCode = response.response?.statusCode
-                
-                switch response.result {
-                case .success:
-                    
-                    //print("Success!")
-                    if response.data != nil {
-                        
-                        let json = try! JSON(data: response.data!)
-                        //print(json)
-                        self.searchData = []
-                        for (_,subJson):(String, JSON) in json["items"] {
-                            
-                            
-                            var book:Books = Books()
-                            
-                            //Author
-                            book.authors = subJson["volumeInfo"]["authors"].arrayObject as? [String]
-                            
-                            //Description
-                            if let desc = subJson["volumeInfo"]["description"].string {
-                                let replace = desc.replacingOccurrences(of: "<p>|</p>|<br>|</br>|<i>|</i>|<b>|</b>", with: "", options: .regularExpression)
-                                
-                                book.desc = replace
-                            }
-                            
-                            //Image
-                            book.image = subJson["volumeInfo"]["imageLinks"]["thumbnail"].string
-                            
-                            //Title
-                            book.title = subJson["volumeInfo"]["title"].string
-                            
-                            //ID
-                            book.id = subJson["id"].string
-                            
-                            //Average Rating
-                            if let avg = subJson["volumeInfo"]["averageRating"].int { book.avgRating = Double(avg) }
-                            
-                            //Categories
-                            if subJson["volumeInfo"]["categories"].count == 1 {
-                                /*
-                                 let item:String = subJson["volumeInfo"]["categories"][0].string!
-                                 book.categories?.append(item)
-                                 */
-                                
-                                book.mainCategory = subJson["volumeInfo"]["categories"][0].string!
-                                //print(subJson["volumeInfo"]["categories"][0].string!)
-                            } else {
-                                book.categories = subJson["volumeInfo"]["categories"].arrayObject as? [String]
-                            }
-                            
-                            //Publisher
-                            book.publisher = subJson["volumeInfo"]["publisher"].string
-                            
-                            //Publish Date
-                            book.publishDate = subJson["volumeInfo"]["publishedDate"].string
-                            
-                            
-                            //ISBN
-                            if subJson["volumeInfo"]["industryIdentifiers"][0]["type"] == "ISBN_10" {
-                                book.ISBN_10 = subJson["volumeInfo"]["industryIdentifiers"][0]["identifier"].string
-                                book.ISBN_13 = subJson["volumeInfo"]["industryIdentifiers"][1]["identifier"].string
-                            } else if subJson["volumeInfo"]["industryIdentifiers"][0]["type"] == "ISBN_13" {
-                                book.ISBN_10 = subJson["volumeInfo"]["industryIdentifiers"][1]["identifier"].string
-                                book.ISBN_13 = subJson["volumeInfo"]["industryIdentifiers"][0]["identifier"].string
-                                
-                            }
-                            
-                            //Page Count
-                            book.pageCount = subJson["volumeInfo"]["pageCount"].string
-                            
-                            
-                            
-                            self.searchData.append(book)
-                            
-                        }
-                        
-                        
-                        self.collectionView.reloadData()
-                        
-                    }
-                case .failure(let error):
-                    statusCode = error._code // statusCode private
-                    SVProgressHUD.showError(withStatus: "Error")
-                    SVProgressHUD.dismiss()
-                    print("status code is: \(String(describing: statusCode))")
-                    print(error)
-                }
-        }
-    }
-    */
     
 }

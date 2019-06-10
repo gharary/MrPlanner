@@ -21,10 +21,10 @@ import RealmSwift
     dynamic var publishDate: String?
     dynamic var ISBN13: String?
     dynamic var ISBN10: String?
-    dynamic var pageCount: Int?
+    dynamic var pageCount = RealmOptional<Int>()
     dynamic var categories = List<String>()
-    dynamic var avgRating: Double?
-    dynamic var ratingCount: Int?
+    dynamic var avgRating = RealmOptional<Double>()
+    dynamic var ratingCount = RealmOptional<Int>()
     
     
     
