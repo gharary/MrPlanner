@@ -13,6 +13,7 @@ import SVProgressHUD
 import SwiftyJSON
 import RealmSwift
 import JZCalendarWeekView
+import Foundation
 
 private let reuseIdentifier = "BookCell"
 
@@ -92,9 +93,9 @@ class BookSelectionVC: UIViewController {
     
     private func submitToServer() {
         
-        let user = defaults.string(forKey: "username") ?? ""
-        let password = defaults.string(forKey: "password") ?? ""
-        let userID = defaults.string(forKey: "UserID") ?? ""
+        let user = defaults.string(forKey: "username") ?? "info@mrplanner.org"
+        let password = defaults.string(forKey: "password") ?? "3ca068a53e4e834419ac3f85f985a07f"
+        let userID = defaults.string(forKey: "UserID") ?? "2"
         let url = URL(string: "http://www.mrplanner.org/api/createProgram")
         let credentialData = "\(user):\(password)".data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
         let base64Credential = credentialData.base64EncodedString()
@@ -102,13 +103,38 @@ class BookSelectionVC: UIViewController {
                                    "Accept" : "application/json",
                                    "Authorization":"Basic \(base64Credential)"]
         
+        let jsonString = JSONStringify(value: weekJson as AnyObject, prettyPrinted: false)
+        let jSonString = JSONStringify(value: weekJSON as AnyObject, prettyPrinted: false)
+        let jsonstring = JSON(weekJson)
+        
         let param: Parameters = ["user_id":userID,
                                  "lessons":lessonData,
-                                 "weeks":weekJSON]
+                                 "weeks":jsonString]
+        let param2: Parameters = ["user_id":userID,
+                                  "lessons":lessonData,
+                                  "weeks":jSonString]
+        let param3: Parameters = ["user_id":userID,
+                                  "lessons":lessonData,
+                                  "weeks":jsonstring]
         
-        
-        Alamofire.request(url!, method: .post, parameters: param, headers: header)
+        Alamofire.request(url!, method: .post, parameters: param3, headers: header)
             .responseJSON { response in
+                
+                let statusCode = response.response?.statusCode
+                if statusCode! >= 200 && statusCode! <= 300 {
+                    
+                    switch response.result {
+                    case .success:
+                        
+                        break
+                    case .failure(let error):
+                        print(error)
+                        
+                    }
+                } else {
+                    print(response.error?.localizedDescription as Any)
+                    
+                }
                 
                 
         }
@@ -137,6 +163,10 @@ class BookSelectionVC: UIViewController {
     
     
     private var weekJSON: [[String: Any]] = [[:]]
+    private var weekJson :[AnyObject] = []
+    private var weekSwiftyJSON: JSON = []
+    
+    
     
     var startDate = Date()
     var endDate = Date()
@@ -189,11 +219,41 @@ class BookSelectionVC: UIViewController {
                             "hours":sameHours]])
                 d += 1
             }
+            weekJson.append(["week_\(w)" as String,dayJson] as AnyObject)
+            
+            
             weekJSON.append(["week_\(w)":"\(dayJson)"])
+            
+            //weekSwiftyJSON[w].dictionaryObject = ["week_\(w)":dayJson]
+            
+            
+            
             w += 1
         }
     }
     
+    func JSONStringify(value: AnyObject,prettyPrinted:Bool = false) -> String{
+        
+        let options = prettyPrinted ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization.WritingOptions(rawValue: 0)
+        
+        
+        if JSONSerialization.isValidJSONObject(value) {
+            
+            do{
+                let data = try JSONSerialization.data(withJSONObject: value, options: [])
+                if let string = String(data: data, encoding: String.Encoding.utf8) {
+                    return string as String
+                }
+            }catch {
+                
+                print("error")
+                //Access error here
+            }
+            
+        }
+        return ""
+        
+    }
     
     @IBAction func returnBack(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true
@@ -333,4 +393,12 @@ extension BookSelectionVC: UISearchResultsUpdating {
         }
     }
     
+}
+
+extension Dictionary {
+    mutating func update(other:Dictionary) {
+        for (key,value) in other {
+            self.updateValue(value, forKey: key)
+        }
+    }
 }
