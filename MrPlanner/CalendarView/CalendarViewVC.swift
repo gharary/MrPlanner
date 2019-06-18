@@ -13,6 +13,8 @@ class CalendarViewVC: UIViewController {
     
     @IBOutlet weak var calendarWeekView: WeekView!
     
+    static var sharedInstance = CalendarViewVC()
+    
     var events = [DefaultEvent]()
     
     override func viewDidAppear(_ animated: Bool) {
@@ -23,10 +25,8 @@ class CalendarViewVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.dismiss()
-        DispatchQueue.main.async {
-            self.setupEvents()
-            self.view.layoutIfNeeded()
-        }
+        setupEvents()
+        
         
         setupBasic()
         setupCalendar()
@@ -103,23 +103,18 @@ extension CalendarViewVC: JZBaseViewDelegate {
                               step: 1) {
                                 events.append(contentsOf: genEvents(date))
         }
-        
-        
-        UIView.transition(with: self.calendarWeekView, duration: 0.33, options: [], animations: {
-            self.calendarWeekView.refreshWeekView()
-            self.view.layoutIfNeeded()
-        }, completion: nil)
+
         
     }
     
     func genEvents(_ beginDate: Date = Date()) -> [DefaultEvent] {
         
-        
+        let titleArray = ["Traction", "MindSet", "Freakonomics", "The Mom Test", "The Power of Habit"]
         var fullGridEvents = [DefaultEvent]()
         for i in 0..<5 {
             let startDate = beginDate.add(component: .hour, value: i)
             
-            fullGridEvents.append(DefaultEvent(id: "\(i)", title: "Traction", startDate: startDate, endDate: startDate.add(component: .hour, value: 1), page: "\(i)-\(i+10)"))
+            fullGridEvents.append(DefaultEvent(id: "\(i)", title: titleArray[i], startDate: startDate, endDate: startDate.add(component: .hour, value: 1), page: "\(i)-\(i+10)"))
             
         }
         

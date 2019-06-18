@@ -62,13 +62,13 @@
                                             <rect key="frame" x="0.0" y="109.5" width="100" height="20.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Qpy-JL-Fsc">
-                                                    <rect key="frame" x="30" y="0.0" width="40" height="9.5"/>
+                                                    <rect key="frame" x="29" y="0.0" width="42" height="9.5"/>
                                                     <fontDescription key="fontDescription" name="SFCompactRounded-Regular" family="SF Compact Rounded" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3q-1E-8bw">
-                                                    <rect key="frame" x="38.5" y="11.5" width="23" height="9"/>
+                                                    <rect key="frame" x="38" y="11.5" width="24.5" height="9"/>
                                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="10"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -422,7 +422,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Reviewicon" translatesAutoresizingMaskIntoConstraints="NO" id="WIR-QZ-7yP">
-                                <rect key="frame" x="126.5" y="30" width="90" height="90.000000000000028"/>
+                                <rect key="frame" x="126.5" y="30" width="90" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="WIR-QZ-7yP" secondAttribute="height" id="EIy-4b-ujP"/>
                                     <constraint firstAttribute="height" constant="90" id="dV3-rD-KQv"/>
@@ -476,7 +476,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVI-wY-iqI">
-                                <rect key="frame" x="127" y="440" width="89" height="30"/>
+                                <rect key="frame" x="130" y="440" width="83" height="30"/>
                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="13"/>
                                 <state key="normal" title="Submit review"/>
                                 <connections>

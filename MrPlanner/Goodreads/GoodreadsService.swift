@@ -105,8 +105,19 @@ class GoodreadsService {
         })
     }
     
+    
+    func loadLeadersBooks(sender: UIViewController, passID: String, completion: @escaping ([Book]) -> ()) {
+        guard !passID.isEmpty else {
+                return
+        }
+        let temp = self.id
+        self.id = passID
+        loadBooks(sender: sender, completion: completion)
+        self.id = temp
+    }
     func loadBooks(sender: UIViewController, completion: @escaping ([Book]) -> ()) {
         var returnResult = [Book]()
+        
         guard let _ = self.id else {
             loginToGoodreadsAccount(sender: sender) {
                 self.loadBooks(sender: sender, completion: completion)
@@ -114,13 +125,11 @@ class GoodreadsService {
             return
         }
         
-        //let parameters: Parameters = ["key": Bundle.main.localizedString(forKey: "goodreads_key", value: nil, table: "Secrets"), "user_id":id, "v":"2"]
-        
         var components = URLComponents(string: "https://www.goodreads.com/review/list")
         components?.queryItems = [
             URLQueryItem(name: "key", value: "\(Bundle.main.localizedString(forKey: "goodreads_key", value: nil, table: "Secrets"))"),
             URLQueryItem(name: "id", value: "\(id ?? "")"),
-        URLQueryItem(name: "v", value: "2")]
+        URLQueryItem(name: "v", value: "2"), URLQueryItem(name: "per_page", value: "200")]
         
         if let url = components?.url
         {

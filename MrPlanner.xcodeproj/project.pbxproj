@@ -25,10 +25,13 @@
 		5F4AF7B8229973DD00D1C2DD /* EventNewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F4AF7B7229973DD00D1C2DD /* EventNewCell.xib */; };
 		5F4AF7BA2299742700D1C2DD /* EventNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4AF7B92299742700D1C2DD /* EventNewCell.swift */; };
 		5F4AF7BC229974C700D1C2DD /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4AF7BB229974C700D1C2DD /* WeekView.swift */; };
-		5F4AF7C2229A9FBA00D1C2DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F4AF7C1229A9FBA00D1C2DD /* Assets.xcassets */; };
 		5F5619AB22A1CEEF008D26AE /* fillProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5619AA22A1CEEF008D26AE /* fillProfileVC.swift */; };
 		5F5619AD22A1DFE3008D26AE /* MrPlannerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5619AC22A1DFE3008D26AE /* MrPlannerConfig.swift */; };
 		5F5619B022A3D9AC008D26AE /* GoogleBookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5619AF22A3D9AC008D26AE /* GoogleBookService.swift */; };
+		5F6305D322B8DFDD00EBB3A6 /* LeadersBooksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6305D222B8DFDD00EBB3A6 /* LeadersBooksVC.swift */; };
+		5F6305D522B8E52B00EBB3A6 /* LeaderBooks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F6305D422B8E52B00EBB3A6 /* LeaderBooks.storyboard */; };
+		5F6305D722B9137B00EBB3A6 /* LeadersNameEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6305D622B9137B00EBB3A6 /* LeadersNameEnum.swift */; };
+		5F6305DD22B9141300EBB3A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F6305DC22B9141300EBB3A6 /* Assets.xcassets */; };
 		5F64F7BE224C999300265FF1 /* AddReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F64F7BD224C999300265FF1 /* AddReviewVC.swift */; };
 		5F64F7C0224F499A00265FF1 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F64F7BF224F499A00265FF1 /* Profile.storyboard */; };
 		5F64F7C3224F4D2400265FF1 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F64F7C2224F4D2400265FF1 /* ProfileVC.swift */; };
@@ -197,10 +200,13 @@
 		5F4AF7B7229973DD00D1C2DD /* EventNewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventNewCell.xib; sourceTree = "<group>"; };
 		5F4AF7B92299742700D1C2DD /* EventNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNewCell.swift; sourceTree = "<group>"; };
 		5F4AF7BB229974C700D1C2DD /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
-		5F4AF7C1229A9FBA00D1C2DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F5619AA22A1CEEF008D26AE /* fillProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fillProfileVC.swift; sourceTree = "<group>"; };
 		5F5619AC22A1DFE3008D26AE /* MrPlannerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MrPlannerConfig.swift; sourceTree = "<group>"; };
 		5F5619AF22A3D9AC008D26AE /* GoogleBookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleBookService.swift; sourceTree = "<group>"; };
+		5F6305D222B8DFDD00EBB3A6 /* LeadersBooksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadersBooksVC.swift; sourceTree = "<group>"; };
+		5F6305D422B8E52B00EBB3A6 /* LeaderBooks.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeaderBooks.storyboard; sourceTree = "<group>"; };
+		5F6305D622B9137B00EBB3A6 /* LeadersNameEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadersNameEnum.swift; sourceTree = "<group>"; };
+		5F6305DC22B9141300EBB3A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F64F7BD224C999300265FF1 /* AddReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewVC.swift; sourceTree = "<group>"; };
 		5F64F7BF224F499A00265FF1 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		5F64F7C2224F4D2400265FF1 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -520,7 +526,7 @@
 				5F7C215422195CB7002FAEBF /* LaunchScreen.storyboard */,
 				5F7C215722195CB7002FAEBF /* Info.plist */,
 				5F77761A2226ED2C00D1A7A7 /* GoogleService-Info.plist */,
-				5F4AF7C1229A9FBA00D1C2DD /* Assets.xcassets */,
+				5F6305DC22B9141300EBB3A6 /* Assets.xcassets */,
 			);
 			path = MrPlanner;
 			sourceTree = "<group>";
@@ -623,6 +629,7 @@
 				5FB412AC222A8DA900B4A3E7 /* PopularBooks */,
 				5FB412A7222A7B0800B4A3E7 /* PopularReadersCVC */,
 				5FD15E0C2225969900DB5BFE /* MainVC.swift */,
+				5F6305D622B9137B00EBB3A6 /* LeadersNameEnum.swift */,
 			);
 			path = MainVC;
 			sourceTree = "<group>";
@@ -632,6 +639,8 @@
 			children = (
 				5FB412A8222A7B5200B4A3E7 /* PopularReadersCVC.swift */,
 				5FB412AA222A7B6900B4A3E7 /* PopularReadersCell.swift */,
+				5F6305D222B8DFDD00EBB3A6 /* LeadersBooksVC.swift */,
+				5F6305D422B8E52B00EBB3A6 /* LeaderBooks.storyboard */,
 			);
 			path = PopularReadersCVC;
 			sourceTree = "<group>";
@@ -838,6 +847,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F6305D522B8E52B00EBB3A6 /* LeaderBooks.storyboard in Resources */,
 				5FABC88C223E9AB600E275BE /* SF-Pro-Text-Regular.otf in Resources */,
 				5FABC878223E9AB500E275BE /* SF-Pro-Text-Heavy.otf in Resources */,
 				5F7C215622195CB7002FAEBF /* LaunchScreen.storyboard in Resources */,
@@ -861,6 +871,7 @@
 				5FABC8AF223E9AE100E275BE /* SF-Compact-Text-Heavy.otf in Resources */,
 				5FABC87C223E9AB600E275BE /* SF-Pro-Text-RegularItalic.otf in Resources */,
 				5FABC87E223E9AB600E275BE /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
+				5F6305DD22B9141300EBB3A6 /* Assets.xcassets in Resources */,
 				5FABC87A223E9AB600E275BE /* SF-Pro-Display-HeavyItalic.otf in Resources */,
 				5FABC8A9223E9AE100E275BE /* SF-Compact-Display-Black.otf in Resources */,
 				5FABC8AD223E9AE100E275BE /* SF-Compact-Display-Ultralight.otf in Resources */,
@@ -895,7 +906,6 @@
 				5FABC883223E9AB600E275BE /* SF-Pro-Display-BoldItalic.otf in Resources */,
 				5FABC8B2223E9AE100E275BE /* SF-Compact-Text-SemiboldItalic.otf in Resources */,
 				5FABC874223E9AB500E275BE /* SF-Pro-Text-BoldItalic.otf in Resources */,
-				5F4AF7C2229A9FBA00D1C2DD /* Assets.xcassets in Resources */,
 				5FABC8B5223E9AE100E275BE /* SF-Compact-Text-Light.otf in Resources */,
 				5FABC8C8223E9B1500E275BE /* SF-Compact-Rounded-Light.otf in Resources */,
 				5FABC88F223E9AB600E275BE /* SF-Pro-Text-Bold.otf in Resources */,
@@ -1067,6 +1077,7 @@
 				5FE54D8E2288AABD0096402A /* KeychainPasswordItem.swift in Sources */,
 				5FD63E0922A84EBA005EC503 /* UserTimeTable.swift in Sources */,
 				5F36BDF2228F3F180033EA5C /* EmailVerifyVC.swift in Sources */,
+				5F6305D322B8DFDD00EBB3A6 /* LeadersBooksVC.swift in Sources */,
 				5FC9FA3A22782A3600777AA5 /* ToastUtil.swift in Sources */,
 				5F3CF7B9229149C700B80910 /* Shelve.swift in Sources */,
 				5F7C215E22195E45002FAEBF /* BookDetail.swift in Sources */,
@@ -1114,6 +1125,7 @@
 				5F5619AB22A1CEEF008D26AE /* fillProfileVC.swift in Sources */,
 				5FC9FA3222782A1900777AA5 /* DefaultWeekView.swift in Sources */,
 				5F7C214C22195CB5002FAEBF /* AppDelegate.swift in Sources */,
+				5F6305D722B9137B00EBB3A6 /* LeadersNameEnum.swift in Sources */,
 				5FF14D792250AA0300FF42A8 /* ProfileActivePlansTVC.swift in Sources */,
 				5F8F64DD228004BC00D86900 /* PlanOptionsVC.swift in Sources */,
 				5FE54D902289876C0096402A /* Shelf.swift in Sources */,

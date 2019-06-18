@@ -17,6 +17,8 @@ class ShelfVC: UIViewController {
 
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var importBtn: UIBarButtonItem!
+    
     let columns: CGFloat = 3
     let inset: CGFloat = 8.0
     let spacing: CGFloat = 8.0
@@ -88,18 +90,37 @@ class ShelfVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        if GoodreadsService.sharedInstance.isLoggedIn == .LoggedIn {
+            importBtn.title = "Log Out"
+        } else {
+            importBtn.title = "Import Goodreads"
+        }
         shelfToken?.invalidate()
     }
     
     
-    @IBAction func importGoodreads(_ sender: UIButton!) {
+    @IBAction func importGoodreads(_ sender: UIBarButtonItem!) {
         
-        GoodreadsService.sharedInstance.loadBooks(sender: self, completion: { (book) in
-            
-            self.goodreadsBook = book
-            
-            self.collectionView.reloadData()
+        switch sender.title {
+        case "Import Goodreads":
+            GoodreadsService.sharedInstance.loadBooks(sender: self, completion: { (book) in
+                
+                self.goodreadsBook = book
+                
+                self.collectionView.reloadData()
             })
+            
+            sender.title = "LogOut"
+            break
+        case "LogOut":
+            GoodreadsService.sharedInstance.logoutOfGoodreadsAccount()
+            sender.title = "Import Goodreads"
+            break
+        default:
+            break
+        }
+        
+        
     }
     
 

@@ -103,21 +103,17 @@ class BookSelectionVC: UIViewController {
                                    "Accept" : "application/json",
                                    "Authorization":"Basic \(base64Credential)"]
         
-        let jsonString = JSONStringify(value: weekJson as AnyObject, prettyPrinted: false)
-        let jSonString = JSONStringify(value: weekJSON as AnyObject, prettyPrinted: false)
-        let jsonstring = JSON(weekJson)
+        let jsonString = JSONStringify(value: weekSwiftyJSON as AnyObject, prettyPrinted: false)
+        let jsonstring = JSON(weekSwiftyJSON)
         
         let param: Parameters = ["user_id":userID,
                                  "lessons":lessonData,
                                  "weeks":jsonString]
-        let param2: Parameters = ["user_id":userID,
-                                  "lessons":lessonData,
-                                  "weeks":jSonString]
-        let param3: Parameters = ["user_id":userID,
+        let paramJSON: Parameters = ["user_id":userID,
                                   "lessons":lessonData,
                                   "weeks":jsonstring]
         
-        Alamofire.request(url!, method: .post, parameters: param3, headers: header)
+        Alamofire.request(url!, method: .post, parameters: paramJSON, headers: header)
             .responseJSON { response in
                 
                 let statusCode = response.response?.statusCode
@@ -162,9 +158,8 @@ class BookSelectionVC: UIViewController {
     }
     
     
-    private var weekJSON: [[String: Any]] = [[:]]
     private var weekJson :[AnyObject] = []
-    private var weekSwiftyJSON: JSON = []
+    private var weekSwiftyJSON: Dictionary<String,Any> = [:]
     
     
     
@@ -173,7 +168,6 @@ class BookSelectionVC: UIViewController {
     
     private func getWeekTimes(_ hours: [UserTimeTable]) -> Void {
         
-        weekJSON.removeAll()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         let userCalendar = Calendar.current
@@ -187,6 +181,8 @@ class BookSelectionVC: UIViewController {
         for weeks in DateRange(calendar: Calendar.autoupdatingCurrent, startDate: startDate.add(component: .weekOfYear, value: -1), endDate: endDate, component: .weekOfYear, step: 1) {
             
             var dayJson:[[String:Any]] = [[:]]
+            var dailyJSONDict: Dictionary<String, Any> = [:]
+            
             dayJson.removeAll()
             d = 0
             for days in DateRange(calendar: Calendar.autoupdatingCurrent, startDate: weeks.startOfDay, endDate: weeks.startOfDay.add(component: .day, value: 7), component: .day, step: 1) {
@@ -204,27 +200,37 @@ class BookSelectionVC: UIViewController {
                             ["date":"\(dateFirst.month!)-\(dateFirst.day!)-\(dateFirst.year!)",
                                 "hours":"null"]])
                     d += 1
+                    
                     continue
                 }
-                //print(sameDays)
-                var sameHours:[[String:Any]] = [[:]]
-                sameHours.removeAll()
+                var sameHourDict :Dictionary<String,Any> =  [:]
+                
                 for day in sameDays {
                     let temp = userCalendar.dateComponents(dailyComponents, from: day.selectedTime.startDate)
-                    sameHours.append(["hour_\(temp.hour!)":"\(temp.hour!)"])
+                    sameHourDict.updateValue("\(temp.hour!)", forKey: "hour_\(temp.hour!)")
                 }
+                let date = "\(dateFirst.month!)-\(dateFirst.day!)-\(dateFirst.year!)"
+                let dateParamJSON :Dictionary =  ["date":date]
+                
+                let tempJSON = JSON(sameHourDict)
+                let oneDayDict: Dictionary = ["hours":tempJSON]
+                
+                
+                dailyJSONDict.updateValue([dateParamJSON,oneDayDict], forKey: "day_\(d)")
+                
+                
+                
+                
                 dayJson.append(
                     ["day_\(d)":
-                        ["date":"\(dateFirst.month!)-\(dateFirst.day!)-\(dateFirst.year!)",
-                            "hours":sameHours]])
+                        ["date":"\(date)",
+                            "hours":sameHourDict]])
+                
                 d += 1
             }
             weekJson.append(["week_\(w)" as String,dayJson] as AnyObject)
             
-            
-            weekJSON.append(["week_\(w)":"\(dayJson)"])
-            
-            //weekSwiftyJSON[w].dictionaryObject = ["week_\(w)":dayJson]
+            weekSwiftyJSON.updateValue(dailyJSONDict, forKey: "week_\(w)")
             
             
             

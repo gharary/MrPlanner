@@ -18,7 +18,7 @@ class PopularReadersCVC: UICollectionViewController {
     let lineSpacing:CGFloat = 8.0
     
     
-    
+    private var namesArray : ReadersName.AllCases = []
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,8 +27,17 @@ class PopularReadersCVC: UICollectionViewController {
 
         // Do any additional setup after loading the view.
         //self.collectionView.backgroundColor = .green
+        namesArray = ReadersName.allCases.shuffled()
+        getName(.BillGates)
     }
 
+    
+    private func getName(_ name:ReadersName) {
+        
+        let id = name.rawValue
+        print(id)
+
+    }
     /*
     // MARK: - Navigation
 
@@ -49,20 +58,46 @@ class PopularReadersCVC: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 50
+        return ReadersName.allCases.count
     }
 
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PopularReadersCell
-    
+        
         // Configure the cell
-        cell.popularImage.image = UIImage(named: "Bill")
+        let image = UIImage(named: namesArray[indexPath.row].rawValue)
+        //let image = UIImage(named: nameArr!.rawValue)
+        cell.popularImage.image = image
+        
+        //cell.popularImage.image = UIImage(named: "Bill")
     
         return cell
     }
 
+    
+    
     // MARK: UICollectionViewDelegate
 
+    var leaderID:String = ""
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+        //let cell = collectionView.cellForItem(at: indexPath) as! SearchResultCell
+        
+        leaderID = namesArray[indexPath.row].rawValue
+        performSegue(withIdentifier: "showLeadersBooks", sender: self)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nav = segue.destination as? UINavigationController,
+            let vc = nav.topViewController as? LeadersBooksVC {
+        
+            vc.leaderID = leaderID
+        }
+        
+    }
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
@@ -94,12 +129,14 @@ class PopularReadersCVC: UICollectionViewController {
 
 }
 
+
+
 extension PopularReadersCVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //let width = Int((collectionView.frame.width / columns) - (inset + spacing))
-        let width = collectionView.bounds.width / columns
+        let width = Int((collectionView.frame.width / columns) - (inset + spacing))
+        //let width = collectionView.bounds.width / columns
         return CGSize(width: width , height: width)
         
     }
@@ -107,13 +144,36 @@ extension PopularReadersCVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return inset
     }
     
     func collectionView(_ collectionView: UICollectionView, layout
         collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return lineSpacing
     }
 }
 
+extension MutableCollection {
+    /// Shuffles the contents of this collection.
+    mutating func shuffle() {
+        let c = count
+        guard c > 1 else { return }
+        
+        for (firstUnshuffled, unshuffledCount) in zip(indices, stride(from: c, to: 1, by: -1)) {
+            // Change `Int` in the next line to `IndexDistance` in < Swift 4.1
+            let d: Int = numericCast(arc4random_uniform(numericCast(unshuffledCount)))
+            let i = index(firstUnshuffled, offsetBy: d)
+            swapAt(firstUnshuffled, i)
+        }
+    }
+}
+
+extension Sequence {
+    /// Returns an array with the contents of this sequence, shuffled.
+    func shuffled() -> [Element] {
+        var result = Array(self)
+        result.shuffle()
+        return result
+    }
+}

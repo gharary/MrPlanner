@@ -190,6 +190,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="popularImage" destination="Swq-Wd-qyC" id="MMN-te-yVo"/>
+                                    <segue destination="GsB-tV-gEe" kind="show" identifier="showLeadersBooks" id="VOr-5g-n8H"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -202,6 +203,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EA7-GE-ee6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1025" y="1069"/>
+        </scene>
+        <!--LeaderBooks-->
+        <scene sceneID="3UB-Wd-xk3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LeaderBooks" id="GsB-tV-gEe" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Puj-sc-sQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1839" y="1068"/>
         </scene>
         <!--Popular BookCVC-->
         <scene sceneID="Y7i-2g-6Vc">

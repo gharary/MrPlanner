@@ -12,12 +12,23 @@ class ProfileActivitiesTVC: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     
+    var events = [DefaultEvent]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
     }
 
+    
+    override func viewDidAppear(_ animated: Bool) {
+        generateRandomData()
+    }
+    private func generateRandomData() {
+        
+        events = CalendarViewVC.sharedInstance.genEvents()
+        tableView.reloadData()
+    }
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -27,7 +38,7 @@ class ProfileActivitiesTVC: UIViewController, UITableViewDataSource, UITableView
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return events.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -43,9 +54,19 @@ class ProfileActivitiesTVC: UIViewController, UITableViewDataSource, UITableView
     */
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .insert {
+        switch editingStyle {
+        case .insert:
             print("Complete")
+            break
+        case .delete:
+            print("Deleted")
+            break
+        case .none:
+            print("None")
+        @unknown default:
+            print("Default")
         }
+        
     }
     func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -66,9 +87,15 @@ class ProfileActivitiesTVC: UIViewController, UITableViewDataSource, UITableView
             cell.accessoryType = .none
             
         }
+        
         cell.clockImg.image = UIImage(named: "time")
-        cell.timeLbl.text = "14:00 - 15:00"
-        cell.bookNameLbl.text = "Traction"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        
+        cell.timeLbl.text = dateFormatter.string(from: events[indexPath.row].startDate) + "-" +  dateFormatter.string(from: events[indexPath.row].endDate)
+        
+        cell.bookNameLbl.text = events[indexPath.row].title
+        
         return cell
     }
     
