@@ -10,6 +10,7 @@ import Foundation
 import SwiftyXMLParser
 
 struct Author {
+    
     var id: String
     var name: String
     

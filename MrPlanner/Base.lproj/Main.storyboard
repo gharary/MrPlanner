@@ -190,7 +190,6 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="popularImage" destination="Swq-Wd-qyC" id="MMN-te-yVo"/>
-                                    <segue destination="GsB-tV-gEe" kind="show" identifier="showLeadersBooks" id="VOr-5g-n8H"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -199,6 +198,9 @@
                             <outlet property="delegate" destination="6M1-ao-UIN" id="vNt-Af-wAh"/>
                         </connections>
                     </collectionView>
+                    <connections>
+                        <segue destination="GsB-tV-gEe" kind="show" identifier="showLeadersBooks" id="tGJ-Xg-1ub"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EA7-GE-ee6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

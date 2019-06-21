@@ -28,6 +28,8 @@ class BookDetailVC: UIViewController {
     
     
     var book: Books!
+    var goodreadBook: Book!
+    
     var booktitle: String = ""
     var bookAuthor: String = ""
     var bookDesc : String = ""
@@ -98,14 +100,60 @@ class BookDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Book Details"
+        checkLoadingSource()
         checkSegue()
         initStart()
-        loadData()
         updateViews()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //print(bookID)
+        checkLoadingSource()
+    }
+    var itemIsGoodread: Bool = false
+    
+    
+    private func checkLoadingSource() {
+        if !itemIsGoodread {
+            loadData()
+            
+        } else {
+            loadGoodreadsData()
+        }
+    }
+    private func loadGoodreadsData() {
+        
+        let bookTemp = Books()
+        
+        bookTemp.id = goodreadBook.id
+        bookTemp.title = goodreadBook.title
+        bookTemp.authors.append((goodreadBook?.author)!)
+        bookTemp.image = goodreadBook.imageUrl
+        bookTemp.desc = goodreadBook.desc
+        bookTemp.publisher = goodreadBook.publisher
+        bookTemp.publishDate = goodreadBook.PublishDate
+        bookTemp.ISBN13 = goodreadBook.ISBN13
+        bookTemp.ISBN10 = goodreadBook.ISBN10
+        bookTemp.pageCount.value = Int(goodreadBook.numPages)
+        bookTemp.categories.append("Goodreads")
+        bookTemp.avgRating = RealmOptional<Double>(Double(goodreadBook.avgRating))
+        bookTemp.ratingCount = RealmOptional<Int>(Int(goodreadBook.numPages))
+        
+        
+        booktitle = bookTemp.title ?? ""
+        bookAuthor = bookTemp.authors.first ?? ""
+        bookDesc = bookTemp.desc ?? ""
+        bookImage = bookTemp.image ?? ""
+        bookID = bookTemp.id ?? ""
+        averageRating = bookTemp.avgRating.value ?? 0
+        
+        
+        self.book = bookTemp
+        
+        loadData()
+            
+            
+        
+        
     }
     
     
@@ -125,16 +173,26 @@ class BookDetailVC: UIViewController {
             }
             return
         }
-       
-        let item = realm.objects(Shelve.self).filter("GoogleID = %@", book.id!)
-        if !item.isEmpty {
-            //print("Item was found")
-            //alertUser(sender: self, "Item Already Exist in your shelf.")
-            SVProgressHUD.showError(withStatus: "Item Already Exist in your shelf.")
-            return
-        }
+        switch itemIsGoodread {
+        case true:
+            let item = realm.objects(Shelve.self).filter("GoogleID = %@", book.id!)
+            if !item.isEmpty {
+                //print("Item was found")
+                //alertUser(sender: self, "Item Already Exist in your shelf.")
+                SVProgressHUD.showError(withStatus: "Item Already Exist in your shelf.")
+                return
+            }
+        case false:
+            let item = realm.objects(Shelve.self).filter("Goodreads = %@", book.id!)
+            if !item.isEmpty {
+                //print("Item was found")
+                //alertUser(sender: self, "Item Already Exist in your shelf.")
+                SVProgressHUD.showError(withStatus: "Item Already Exist in your shelf.")
+                return
+            }
         
-        MrPlannerService.sharedInstance.addShelfBookToDB(book:book ,title: book.title!, cat: (book.categories.first!) , pageNr: book!.pageCount, completion: { result in
+        }
+         MrPlannerService.sharedInstance.addShelfBookToDB(book:book ,title: book.title!, cat: (book.categories.first!) , pageNr: book!.pageCount, completion: { result in
             
             if result {
                 SVProgressHUD.showSuccess(withStatus: "Done!")
@@ -168,7 +226,8 @@ class BookDetailVC: UIViewController {
     }
     
     @objc func backTapped(){
-        self.dismiss(animated: true, completion: nil)
+        performSegueToReturnBack()
+        //self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -179,8 +238,15 @@ class BookDetailVC: UIViewController {
         bookAuthorLbl.text = bookAuthor
         
         //Load Image
-        let replace = bookImage.replacingOccurrences(of: "http", with: "https")
-        let url:URL!  = URL(string: replace)
+        let url:URL
+        
+        if !itemIsGoodread {
+            let replace = bookImage.replacingOccurrences(of: "http", with: "https")
+            url = URL(string: replace)!
+            
+        } else {
+            url = URL(string: bookImage)!
+        }
         bookImg.layer.cornerRadius = 15
         bookImg.clipsToBounds = true
         bookImg.kf.indicatorType = .activity

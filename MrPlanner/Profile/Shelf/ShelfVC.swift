@@ -175,7 +175,7 @@ extension ShelfVC: UICollectionViewDataSource, UICollectionViewDelegate {
             
             let item = goodreadsBook[indexPath.row]
             cell.titleLbl.text = item.title
-            cell.authorLbl.text = item.author.name
+            cell.authorLbl.text = item.author//.name
             if !item.imageUrl.isEmpty {
                 let url:URL! = URL(string: item.imageUrl)
                 cell.bookImage.kf.indicatorType = .activity
@@ -261,7 +261,7 @@ extension ShelfVC: UITableViewDataSource {
             
             let item = goodreadsBook[indexPath.row]
             cell.textLabel?.text = item.title
-            cell.detailTextLabel?.text = item.author.name
+            cell.detailTextLabel?.text = item.author//.name
         default:
             break
         }

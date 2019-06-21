@@ -77,20 +77,18 @@ class MrPlannerService {
         Alamofire.request(url!, method: .post, parameters: param, headers: header)
             .responseString { response in
                 
-                let statusCode = response.response?.statusCode
-                if statusCode! >= 200 && statusCode! <= 300 {
-                    
-                    switch response.result {
-                    case .success :
-                        
+                switch response.result {
+                case .success:
+                    let statusCode = response.response?.statusCode
+                    if statusCode! >= 200 && statusCode! <= 300 {
                         let json = JSON(response.data!)
                         DispatchQueue.global(qos: .background).async {
-                           let realm = try! Realm()
+                            let realm = try! Realm()
                             let shelve = Shelve()
                             shelve.Book = book
                             shelve.GoogleID = book.id
                             shelve.InternalID = "\(json["id"].int ?? 0)"
-                        
+                            
                             try! realm.write {
                                 realm.add(shelve)
                             }
@@ -98,25 +96,16 @@ class MrPlannerService {
                         
                         SVProgressHUD.showSuccess(withStatus: "Done!")
                         completion(true)
-                        
-                        
-                        break
-                    case .failure(let error):
-                        SVProgressHUD.showError(withStatus: error.localizedDescription)
-                        
-                        print(error.localizedDescription)
-                        completion(false)
-                        
-                        
-                        
+                    } else {
+                        print(response.result.debugDescription)
                     }
-                } else {
-                    SVProgressHUD.showError(withStatus: response.result.description)
+                    
+                case .failure(let error):
+                    SVProgressHUD.showError(withStatus: error.localizedDescription)
+                    print(error.localizedDescription)
                 }
-                
         }
     }
-    
 }
 
 extension UIViewController {

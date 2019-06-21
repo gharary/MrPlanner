@@ -75,6 +75,7 @@
                                     <outlet property="authorLbl" destination="1fj-5X-RbR" id="gBg-tf-Sd6"/>
                                     <outlet property="bookImage" destination="noo-Dd-lS0" id="ftG-2y-EWv"/>
                                     <outlet property="titleLbl" destination="9CV-4B-gMf" id="eOJ-VQ-tOb"/>
+                                    <segue destination="KEg-ni-G1W" kind="show" identifier="bookDetail" id="mGK-54-BML"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -90,10 +91,21 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="8EP-4d-uf4" id="jK8-qt-njO"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6TI-hF-Vi0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="859" y="110"/>
+        </scene>
+        <!--BookDetailVC-->
+        <scene sceneID="fnt-mQ-ncc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GoogleSearchCollectionResult" referencedIdentifier="BookDetailVC" id="KEg-ni-G1W" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8NR-BA-LRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1560" y="84"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bsq-cA-PNe">

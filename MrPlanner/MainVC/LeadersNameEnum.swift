@@ -18,7 +18,7 @@ enum ReadersName:String, CaseIterable {
     case RickRiordan = "25375513"
     case ChristopherMoore = "32526"
     case BillGates = "62787798"
-    case MeganLindholm, RobbinHobb = "17730703"
+    case MeganLindholm = "17730703"
     case L_J_Smitch = "25376254"
     case RichelleMead = "3000424"
     case CassandraClare = "1799115"
