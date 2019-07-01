@@ -36,6 +36,7 @@ target 'MrPlanner' do
   pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :tag => '4.2.0'
   pod 'Buglife'
   pod 'RealmSwift'
+  #pod 'FacebookSDK'
 end
 
 target 'OneSignalNotificationServiceExtension' do

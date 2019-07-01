@@ -16,7 +16,7 @@ import IQKeyboardManagerSwift
 import OAuthSwift
 import Buglife
 import RealmSwift
-
+//import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
@@ -51,6 +51,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         
         //FirebaseApp.configure()
+        
+        
+        
+        //Facebook SDK
+        
+        //ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         
         //Showing Walkthrough View
@@ -126,6 +132,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         FirebaseApp.configure()
         return true
     }
+    
+    
+    
+    //Facebook SDK
     
     func application(_ application:UIApplication, open url:URL, sourceApplication: String?, annotation:Any) -> Bool {
         applicationHandle(url: url)

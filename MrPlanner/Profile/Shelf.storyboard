@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Zmg-oq-ubq">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Compact-Rounded-Regular.otf">
+            <string>SFCompactRounded-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--ShelfVC-->
+        <scene sceneID="F1J-DS-ahl">
+            <objects>
+                <viewController id="Q17-Mp-Efo" customClass="ShelfVC" customModule="MrPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ol9-Nf-ysn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RRV-HV-JdH">
+                                <rect key="frame" x="0.0" y="88" width="414" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="A0f-wi-aNr"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Your Shelf"/>
+                                    <segment title="Goodreads"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="Q17-Mp-Efo" eventType="valueChanged" id="5u3-4p-DaC"/>
+                                </connections>
+                            </segmentedControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ave-uB-SgE">
+                                <rect key="frame" x="0.0" y="123" width="414" height="739"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MWQ-3X-l4t">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookCell" id="ENZ-RQ-aMP" customClass="SearchResultCell" customModule="MrPlanner" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="KGZ-UY-6wk">
+                                                    <rect key="frame" x="0.0" y="43.5" width="50" height="43"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="xLX-GY-lzN">
+                                                            <rect key="frame" x="5" y="0.0" width="40" height="20.5"/>
+                                                            <fontDescription key="fontDescription" name="SFCompactRounded-Regular" family="SF Compact Rounded" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ibq-jh-Vya">
+                                                            <rect key="frame" x="13.5" y="22.5" width="23" height="20.5"/>
+                                                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="10"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1bE-Og-10D">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="37.5"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="KGZ-UY-6wk" firstAttribute="leading" secondItem="ENZ-RQ-aMP" secondAttribute="leading" id="2J8-7I-qzg"/>
+                                            <constraint firstItem="1bE-Og-10D" firstAttribute="top" secondItem="ENZ-RQ-aMP" secondAttribute="top" id="C5j-z1-owH"/>
+                                            <constraint firstItem="1bE-Og-10D" firstAttribute="height" secondItem="ENZ-RQ-aMP" secondAttribute="height" multiplier="0.75" id="GTH-b7-phc"/>
+                                            <constraint firstAttribute="trailing" secondItem="KGZ-UY-6wk" secondAttribute="trailing" id="NTi-Io-BCk"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="KGZ-UY-6wk" secondAttribute="bottom" id="RDJ-S8-B4J"/>
+                                            <constraint firstItem="KGZ-UY-6wk" firstAttribute="top" secondItem="1bE-Og-10D" secondAttribute="bottom" constant="6" id="Un1-Gc-oCX"/>
+                                            <constraint firstAttribute="trailing" secondItem="1bE-Og-10D" secondAttribute="trailing" id="cvE-Nq-yoj"/>
+                                            <constraint firstItem="1bE-Og-10D" firstAttribute="leading" secondItem="ENZ-RQ-aMP" secondAttribute="leading" id="ewD-dE-OMd"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="authorLbl" destination="Ibq-jh-Vya" id="aUu-bR-tcr"/>
+                                            <outlet property="bookImage" destination="1bE-Og-10D" id="GHa-qv-NXI"/>
+                                            <outlet property="titleLbl" destination="xLX-GY-lzN" id="MBn-cJ-JEk"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Q17-Mp-Efo" id="ftM-Xq-tbN"/>
+                                    <outlet property="delegate" destination="Q17-Mp-Efo" id="Zm2-Qj-UXH"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.62745098040000002" green="0.75294117650000003" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Yer-i1-XAC" firstAttribute="bottom" secondItem="ave-uB-SgE" secondAttribute="bottom" id="DW9-1R-I7z"/>
+                            <constraint firstItem="Yer-i1-XAC" firstAttribute="trailing" secondItem="RRV-HV-JdH" secondAttribute="trailing" id="MOC-WB-Pug"/>
+                            <constraint firstItem="Yer-i1-XAC" firstAttribute="trailing" secondItem="ave-uB-SgE" secondAttribute="trailing" id="WUg-6Z-g6v"/>
+                            <constraint firstItem="ave-uB-SgE" firstAttribute="top" secondItem="RRV-HV-JdH" secondAttribute="bottom" id="b1N-Di-tUo"/>
+                            <constraint firstItem="RRV-HV-JdH" firstAttribute="leading" secondItem="Yer-i1-XAC" secondAttribute="leading" id="jFs-f7-sp2"/>
+                            <constraint firstItem="RRV-HV-JdH" firstAttribute="top" secondItem="Yer-i1-XAC" secondAttribute="top" id="pQk-wG-ntF"/>
+                            <constraint firstItem="ave-uB-SgE" firstAttribute="leading" secondItem="Yer-i1-XAC" secondAttribute="leading" id="vYL-CP-3Xb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Yer-i1-XAC"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5pc-mN-3lG">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="Fvk-tZ-9gq">
+                            <connections>
+                                <action selector="backBtnTapped:" destination="Q17-Mp-Efo" id="H6q-EM-GJJ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Import Goodreads" id="EGv-4a-Uc4">
+                            <connections>
+                                <action selector="importGoodreads:" destination="Q17-Mp-Efo" id="pPd-Bl-E27"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="ave-uB-SgE" id="ieg-32-Pnf"/>
+                        <outlet property="importBtn" destination="EGv-4a-Uc4" id="whZ-gX-2Xt"/>
+                        <outlet property="segmentControl" destination="RRV-HV-JdH" id="XGM-CS-S24"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oU6-29-uVL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3828" y="51.724137931034484"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zwF-9J-0KU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zmg-oq-ubq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="53y-SP-h2j">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Q17-Mp-Efo" kind="relationship" relationship="rootViewController" id="qiD-Cm-5eM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xT0-r5-4X9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2888.8000000000002" y="51.724137931034484"/>
+        </scene>
+    </scenes>
+</document>
