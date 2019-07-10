@@ -152,6 +152,13 @@
 		5FF14D792250AA0300FF42A8 /* ProfileActivePlansTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF14D782250AA0300FF42A8 /* ProfileActivePlansTVC.swift */; };
 		5FF14D7B2250AE0500FF42A8 /* ActivePlansCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF14D7A2250AE0500FF42A8 /* ActivePlansCell.swift */; };
 		5FF26D57224A116500D23645 /* ReviewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF26D56224A116500D23645 /* ReviewTVC.swift */; };
+		5FF79B9022D1E6B0004CE637 /* Hour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF79B8F22D1E6AF004CE637 /* Hour.swift */; };
+		5FF79B9622D1E6D9004CE637 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF79B9122D1E6D8004CE637 /* Chapter.swift */; };
+		5FF79B9722D1E6D9004CE637 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF79B9222D1E6D8004CE637 /* Day.swift */; };
+		5FF79B9822D1E6D9004CE637 /* RootClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF79B9322D1E6D8004CE637 /* RootClass.swift */; };
+		5FF79B9922D1E6D9004CE637 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF79B9422D1E6D8004CE637 /* Week.swift */; };
+		5FF79B9A22D1E6D9004CE637 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF79B9522D1E6D9004CE637 /* Lesson.swift */; };
+		5FF79B9C22D26295004CE637 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF79B9B22D26295004CE637 /* Model.swift */; };
 		5FFA1A402239559E00A484F4 /* WalkthroughVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FFA1A3F2239559E00A484F4 /* WalkthroughVC.storyboard */; };
 		5FFB9E572250E65F00473A5E /* ProfileActivitiesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFB9E562250E65F00473A5E /* ProfileActivitiesTVC.swift */; };
 		5FFB9E592250E7B300473A5E /* ProfileActivitiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFB9E582250E7B300473A5E /* ProfileActivitiesCell.swift */; };
@@ -332,6 +339,13 @@
 		5FF14D782250AA0300FF42A8 /* ProfileActivePlansTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActivePlansTVC.swift; sourceTree = "<group>"; };
 		5FF14D7A2250AE0500FF42A8 /* ActivePlansCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivePlansCell.swift; sourceTree = "<group>"; };
 		5FF26D56224A116500D23645 /* ReviewTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTVC.swift; sourceTree = "<group>"; };
+		5FF79B8F22D1E6AF004CE637 /* Hour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hour.swift; sourceTree = "<group>"; };
+		5FF79B9122D1E6D8004CE637 /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
+		5FF79B9222D1E6D8004CE637 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		5FF79B9322D1E6D8004CE637 /* RootClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootClass.swift; sourceTree = "<group>"; };
+		5FF79B9422D1E6D8004CE637 /* Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
+		5FF79B9522D1E6D9004CE637 /* Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		5FF79B9B22D26295004CE637 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		5FFA1A3F2239559E00A484F4 /* WalkthroughVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WalkthroughVC.storyboard; sourceTree = "<group>"; };
 		5FFB9E562250E65F00473A5E /* ProfileActivitiesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActivitiesTVC.swift; sourceTree = "<group>"; };
 		5FFB9E582250E7B300473A5E /* ProfileActivitiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActivitiesCell.swift; sourceTree = "<group>"; };
@@ -390,7 +404,6 @@
 				5FE54D8F2289876C0096402A /* Shelf.swift */,
 				5FE54D9122898D5C0096402A /* Book.swift */,
 				5FE54D9322898E190096402A /* Author.swift */,
-				5FE54D882288A76F0096402A /* Secrets.strings */,
 			);
 			path = Init;
 			sourceTree = "<group>";
@@ -458,6 +471,7 @@
 			children = (
 				5F6BBEC922799072001020BB /* ‌BookSelection.storyboard */,
 				5F8F64D8227AD2DA00D86900 /* BookSelectionVC.swift */,
+				5FF79B8E22D1E66A004CE637 /* TimeTable */,
 			);
 			path = BookSelection;
 			sourceTree = "<group>";
@@ -657,6 +671,7 @@
 		5FB7E627223E2F9500A7B9CB /* init */ = {
 			isa = PBXGroup;
 			children = (
+				5FE54D882288A76F0096402A /* Secrets.strings */,
 				5F10A98D22A546BE0002F1A0 /* MrPlannerAuthStorageService.swift */,
 				5F5619AF22A3D9AC008D26AE /* GoogleBookService.swift */,
 				5F3CF7B8229149C700B80910 /* Shelve.swift */,
@@ -719,6 +734,20 @@
 				5FE54D8D2288AABD0096402A /* KeychainPasswordItem.swift */,
 			);
 			path = Goodreads;
+			sourceTree = "<group>";
+		};
+		5FF79B8E22D1E66A004CE637 /* TimeTable */ = {
+			isa = PBXGroup;
+			children = (
+				5FF79B9122D1E6D8004CE637 /* Chapter.swift */,
+				5FF79B9522D1E6D9004CE637 /* Lesson.swift */,
+				5FF79B9322D1E6D8004CE637 /* RootClass.swift */,
+				5FF79B9422D1E6D8004CE637 /* Week.swift */,
+				5FF79B9222D1E6D8004CE637 /* Day.swift */,
+				5FF79B8F22D1E6AF004CE637 /* Hour.swift */,
+				5FF79B9B22D26295004CE637 /* Model.swift */,
+			);
+			path = TimeTable;
 			sourceTree = "<group>";
 		};
 		74A6A8B1BC4E0EE1E5512F8F /* Pods */ = {
@@ -1085,6 +1114,7 @@
 				5F76AA7E221C01C0003BE931 /* googleSearchTVC.swift in Sources */,
 				5F64F7C3224F4D2400265FF1 /* ProfileVC.swift in Sources */,
 				5F467BBA223565E700D3F41F /* SearchResultCell.swift in Sources */,
+				5FF79B9A22D1E6D9004CE637 /* Lesson.swift in Sources */,
 				5FE54D962289D8520096402A /* GoodreadsVC.swift in Sources */,
 				5FE54D872288A3810096402A /* GoodreadsService.swift in Sources */,
 				5FB412A9222A7B5200B4A3E7 /* PopularReadersCVC.swift in Sources */,
@@ -1092,8 +1122,10 @@
 				5FB412B0222A8DD500B4A3E7 /* PopularBookCVC.swift in Sources */,
 				5F8F64DB227AE84700D86900 /* Checkmark.swift in Sources */,
 				5F64F7C5224F5C3C00265FF1 /* UpperVC.swift in Sources */,
+				5FF79B9022D1E6B0004CE637 /* Hour.swift in Sources */,
 				5FC9FA3B22782A3600777AA5 /* Extensions.swift in Sources */,
 				5FF26D57224A116500D23645 /* ReviewTVC.swift in Sources */,
+				5FF79B9622D1E6D9004CE637 /* Chapter.swift in Sources */,
 				5F76AA792219A373003BE931 /* BookTVCell.swift in Sources */,
 				5F8F64DF2280213000D86900 /* NetworkManager.swift in Sources */,
 				5F5619B022A3D9AC008D26AE /* GoogleBookService.swift in Sources */,
@@ -1106,6 +1138,7 @@
 				5FE54D7C228421DF0096402A /* Slide.swift in Sources */,
 				5F5619AD22A1DFE3008D26AE /* MrPlannerConfig.swift in Sources */,
 				5F8F64D9227AD2DA00D86900 /* BookSelectionVC.swift in Sources */,
+				5FF79B9922D1E6D9004CE637 /* Week.swift in Sources */,
 				5FE54D8C2288AA3A0096402A /* AuthStorageService.swift in Sources */,
 				5F14A6CF2242AC87008384D3 /* DetailVC.swift in Sources */,
 				5FB412B4222AC8B800B4A3E7 /* TabBar.swift in Sources */,
@@ -1127,10 +1160,13 @@
 				5F7C214C22195CB5002FAEBF /* AppDelegate.swift in Sources */,
 				5F6305D722B9137B00EBB3A6 /* LeadersNameEnum.swift in Sources */,
 				5FF14D792250AA0300FF42A8 /* ProfileActivePlansTVC.swift in Sources */,
+				5FF79B9822D1E6D9004CE637 /* RootClass.swift in Sources */,
 				5F8F64DD228004BC00D86900 /* PlanOptionsVC.swift in Sources */,
 				5FE54D902289876C0096402A /* Shelf.swift in Sources */,
+				5FF79B9C22D26295004CE637 /* Model.swift in Sources */,
 				5F8F64E322802DCC00D86900 /* OfflineViewController.swift in Sources */,
 				5F36BDF4228F83860033EA5C /* ValidationErrorType.swift in Sources */,
+				5FF79B9722D1E6D9004CE637 /* Day.swift in Sources */,
 				5F8F64E12280235E00D86900 /* LaunchController.swift in Sources */,
 				5FB8918022972F1C00269E68 /* CalendarViewVC.swift in Sources */,
 				5F76AA7C221B0739003BE931 /* UserInfoVC.swift in Sources */,

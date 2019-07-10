@@ -108,11 +108,16 @@ class BookDetailVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         checkLoadingSource()
+        DispatchQueue.main.async {
+            self.checkBookInShelve()
+        }
     }
     var itemIsGoodread: Bool = false
     
     
     private func checkLoadingSource() {
+        let backBarButtonItem = UIBarButtonItem(title: "Back", style: .done, target: self, action: #selector(returnBack(_:)))
+        self.navigationItem.leftBarButtonItem  = backBarButtonItem
         if !itemIsGoodread {
             loadData()
             
@@ -145,15 +150,24 @@ class BookDetailVC: UIViewController {
         bookImage = bookTemp.image ?? ""
         bookID = bookTemp.id ?? ""
         averageRating = bookTemp.avgRating.value ?? 0
-        
-        
         self.book = bookTemp
         
         loadData()
-            
-            
         
+    }
+    
+    private func checkBookInShelve() {
+        let realm = try! Realm()
+        let item = realm.objects(Shelve.self).filter(itemIsGoodread ? "GoodreadsID = %@" : "GoogleID = %@", book.id!)
+        if !item.isEmpty {
+            addToShelfBtn.isEnabled = false
+            addToShelfBtn.setTitle("In Shelf", for: .normal)
+            return
+        }
         
+        addToShelfBtn.setTitle("Add to Shelf", for: .normal)
+        addToShelfBtn.isEnabled = true
+
     }
     
     
@@ -162,40 +176,36 @@ class BookDetailVC: UIViewController {
     
     }
     
+    @objc func returnBack(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     private func checkLoggin(sender: UIViewController, completion: @escaping () -> () ) {
         
-        let realm = try! Realm()
         
-        //print("Tapped")
         guard MrPlannerService.sharedInstance.isLoggedIn == .LoggedIn else {
             MrPlannerService.sharedInstance.loginToMrPlannerAccount(sender: sender) {
                 self.checkLoggin(sender: sender, completion: completion)
             }
             return
         }
-        switch itemIsGoodread {
-        case true:
-            let item = realm.objects(Shelve.self).filter("GoogleID = %@", book.id!)
-            if !item.isEmpty {
-                //print("Item was found")
-                //alertUser(sender: self, "Item Already Exist in your shelf.")
-                SVProgressHUD.showError(withStatus: "Item Already Exist in your shelf.")
-                return
-            }
-        case false:
-            let item = realm.objects(Shelve.self).filter("Goodreads = %@", book.id!)
-            if !item.isEmpty {
-                //print("Item was found")
-                //alertUser(sender: self, "Item Already Exist in your shelf.")
-                SVProgressHUD.showError(withStatus: "Item Already Exist in your shelf.")
-                return
-            }
-        
-        }
-         MrPlannerService.sharedInstance.addShelfBookToDB(book:book ,title: book.title!, cat: (book.categories.first!) , pageNr: book!.pageCount, completion: { result in
+        MrPlannerService.sharedInstance.addShelfBookToDB(book:book ,title: book.title!, cat: (book.categories.first!) , pageNr: book!.pageCount, completion: { result, id in
             
             if result {
+                let realm = try! Realm()
+                let shelve = Shelve()
+                shelve.Book = self.book
+                if self.itemIsGoodread { shelve.GoodreadsID = self.book.id } else { shelve.GoogleID = self.book.id }
+                shelve.InternalID = "\(id)"
+                
+                try! realm.write {
+                    realm.add(shelve)
+                }
+                
                 SVProgressHUD.showSuccess(withStatus: "Done!")
+                self.addToShelfBtn.isEnabled = false
+                self.addToShelfBtn.setTitle("In Shelf", for: .normal)
             } else {
                 SVProgressHUD.showError(withStatus: "Error, Try Again Later")
                 
@@ -204,14 +214,6 @@ class BookDetailVC: UIViewController {
         
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
     private func checkSegue() {
         switch segueString {
         case "BookDetailVC":

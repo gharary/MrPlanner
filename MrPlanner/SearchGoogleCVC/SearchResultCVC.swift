@@ -216,6 +216,9 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
     
     }
 
+    // Add a searchTask property to your controller
+    var searchTask: DispatchWorkItem?
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "bookDetail" {
             if let nav = segue.destination as? UINavigationController, let vc = nav.topViewController as? BookDetailVC {
@@ -284,11 +287,28 @@ extension SearchResultCVC: UISearchBarDelegate {
             randomCatBook()
         }
     }
+    /*
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         updateSearchBar(searchText)
     }
-    
+    */
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        self.searchTask?.cancel()
+        
+        let task = DispatchWorkItem { [weak self] in
+                self?.updateSearchBar(searchText)
+        }
+        
+        self.searchTask = task
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.50, execute: task)
+        
+        
+    }
+        
     func updateSearchBar(_ searchText: String) {
         GoogleBookService.sharedInstance.searchGoogle(sender: self, searchText, completion: {(books) in
             self.searchData = books.filter { $0.pageCount != nil }

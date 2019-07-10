@@ -51,7 +51,7 @@ class MrPlannerService {
         }
         
     }
-    func addShelfBookToDB(book: Books,title: String, cat: String, pageNr: RealmOptional<Int>, completion: @escaping (Bool) -> ()) {
+    func addShelfBookToDB(book: Books,title: String, cat: String, pageNr: RealmOptional<Int>, completion: @escaping (Bool, Int) -> ()) {
         
    
         let user = defaults.string(forKey: "username") ?? "gharary@outlook.com"
@@ -82,6 +82,7 @@ class MrPlannerService {
                     let statusCode = response.response?.statusCode
                     if statusCode! >= 200 && statusCode! <= 300 {
                         let json = JSON(response.data!)
+                        /*
                         DispatchQueue.global(qos: .background).async {
                             let realm = try! Realm()
                             let shelve = Shelve()
@@ -93,9 +94,9 @@ class MrPlannerService {
                                 realm.add(shelve)
                             }
                         }
-                        
+                        */
                         SVProgressHUD.showSuccess(withStatus: "Done!")
-                        completion(true)
+                        completion(true,json["id"].int ?? 0)
                     } else {
                         print(response.result.debugDescription)
                     }

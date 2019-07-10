@@ -35,7 +35,6 @@ class BookSelectionVC: UIViewController {
     
     let searchController = UISearchController(searchResultsController: nil)
     
-    let BookCategories: [String] = ["Education","Fiction","Business","Design", "Growth", "Drama", "History", "Horror", "Art", "NonFiction", "Biography"]
     let baseURL = URL(string: "https://www.googleapis.com/books/v1/volumes")
     let defaults = UserDefaults.standard
     
@@ -47,8 +46,7 @@ class BookSelectionVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //print(BookSelectionVC.selectedData.count)
-        //BookSelectionVC.selectedData.sort(by: {$0 })
+        
         
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -93,32 +91,32 @@ class BookSelectionVC: UIViewController {
     
     private func submitToServer() {
         
-        let user = defaults.string(forKey: "username") ?? "info@mrplanner.org"
-        let password = defaults.string(forKey: "password") ?? "3ca068a53e4e834419ac3f85f985a07f"
+        let user = defaults.string(forKey: "username") ?? Bundle.main.localizedString(forKey: "testUserEmail", value: nil, table: "Secrets")
+        
+        let password = defaults.string(forKey: "password") ?? Bundle.main.localizedString(forKey: "testUserPass", value: nil, table: "Secrets")
+        
         let userID = defaults.string(forKey: "UserID") ?? "2"
+        
         let url = URL(string: "http://www.mrplanner.org/api/createProgram")
+        
         let credentialData = "\(user):\(password)".data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
+        
         let base64Credential = credentialData.base64EncodedString()
-        let header: HTTPHeaders = ["X-API-TOKEN" : Bundle.main.localizedString(forKey: "X-API-TOKEN", value: nil, table: "Secrets"),
+        
+        let header: HTTPHeaders = ["X-API-TOKEN" : Bundle.main.localizedString(forKey: "X-API-TOKEN", value: nil, table: ""),
                                    "Accept" : "application/json",
                                    "Authorization":"Basic \(base64Credential)"]
         
-        let jsonString = JSONStringify(value: weekSwiftyJSON as AnyObject, prettyPrinted: false)
-        let jsonstring = JSON(weekSwiftyJSON)
         
+        let json = JSON(weekJson)
         let param: Parameters = ["user_id":userID,
-                                 "lessons":lessonData,
-                                 "weeks":jsonString]
-        let paramJSON: Parameters = ["user_id":userID,
-                                  "lessons":lessonData,
-                                  "weeks":jsonstring]
+                                 "lessons":lessonDic,
+                                 "weeks":json]
         
-        Alamofire.request(url!, method: .post, parameters: paramJSON, headers: header)
+        Alamofire.request(url!, method: .post, parameters: param, headers: header)
             .responseJSON { response in
-                
                 let statusCode = response.response?.statusCode
                 if statusCode! >= 200 && statusCode! <= 300 {
-                    
                     switch response.result {
                     case .success:
                         
@@ -139,28 +137,32 @@ class BookSelectionVC: UIViewController {
     
     
     private var lessonData: [[String: Any]] = [[:]]
+    private var lessonDic = Dictionary<String,JSON>()
     
     private func getBookIDs(_ books: [String]) -> () {
-        
-        
-        
         let realm = try! Realm()
+        
         let shelve = realm.objects(Shelve.self).filter("GoogleID IN %@", books.self)
-        //let books = realm.objects(Books.self).filter("id IN %@", books.self)
         
         var bookIDs = [String]()
         lessonData.removeAll()
         for i in 0..<shelve.count {
             bookIDs.append(shelve[i].InternalID!)
-            lessonData.append( ["\( shelve[i].InternalID!)":["ch_1":"1-\(String(describing: shelve[i].Book!.pageCount.value!))"]])
+            let lessonSample = ["id":"\(shelve[i].InternalID!)","chapters":["pages":"1-\(String(describing: shelve[i].Book!.pageCount.value!))"]] as [String : Any]
+            lessonData.append(lessonSample)
+            
+            
+            //sampling using Dictionary
+            let lessonJson :JSON = ["id":"\(shelve[i].InternalID!)","chapters":["pages":"1-\(String(describing: shelve[i].Book!.pageCount.value!))"]]
+            
+            lessonDic.updateValue(lessonJson, forKey: "lessons")
+            
         }
-        
     }
     
     
-    private var weekJson :[AnyObject] = []
-    private var weekSwiftyJSON: Dictionary<String,Any> = [:]
     
+    private var weekJson :[[String:Any]] = []
     
     
     var startDate = Date()
@@ -170,8 +172,6 @@ class BookSelectionVC: UIViewController {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
-        let userCalendar = Calendar.current
-        let dailyComponents: Set<Calendar.Component> = [.hour, .minute,.second]
         let dateComponents : Set<Calendar.Component> = [.year,.month,.day]
         
         var w = 0
@@ -180,85 +180,55 @@ class BookSelectionVC: UIViewController {
         //each week
         for weeks in DateRange(calendar: Calendar.autoupdatingCurrent, startDate: startDate.add(component: .weekOfYear, value: -1), endDate: endDate, component: .weekOfYear, step: 1) {
             
-            var dayJson:[[String:Any]] = [[:]]
-            var dailyJSONDict: Dictionary<String, Any> = [:]
+            var dayJson:[[String:Any]] = []
             
             dayJson.removeAll()
             d = 0
+            //each day events
             for days in DateRange(calendar: Calendar.autoupdatingCurrent, startDate: weeks.startOfDay, endDate: weeks.startOfDay.add(component: .day, value: 7), component: .day, step: 1) {
                 
                 let dateFirst = Calendar.autoupdatingCurrent.dateComponents(dateComponents, from: days)
-                //print("Day of first date is :\(days.startOfDay)")
-                
                 let sameDays = BookSelectionVC.selectedData.filter {
                     let date =  Calendar.autoupdatingCurrent.dateComponents(dateComponents, from: $0.selectedTime.startDate)
                     return date.day == dateFirst.day
                 }
-                guard !sameDays.isEmpty else {
-                    dayJson.append(
-                        ["day_\(d)":
-                            ["date":"\(dateFirst.month!)-\(dateFirst.day!)-\(dateFirst.year!)",
-                                "hours":"null"]])
-                    d += 1
+                
+                let date = "\(dateFirst.month!)-\(dateFirst.day!)-\(dateFirst.year!)"
+                
+                guard !sameDays.isEmpty else {                        
                     
+                    let daySample = ["day": "\(d)", "date":date ,"hours":[]] as [String : Any]
+                    dayJson.append(daySample)
+                    d += 1
                     continue
                 }
-                var sameHourDict :Dictionary<String,Any> =  [:]
                 
-                for day in sameDays {
-                    let temp = userCalendar.dateComponents(dailyComponents, from: day.selectedTime.startDate)
-                    sameHourDict.updateValue("\(temp.hour!)", forKey: "hour_\(temp.hour!)")
-                }
-                let date = "\(dateFirst.month!)-\(dateFirst.day!)-\(dateFirst.year!)"
-                let dateParamJSON :Dictionary =  ["date":date]
+                let sameHourDict = calculateDailyHours(sameDays)
                 
-                let tempJSON = JSON(sameHourDict)
-                let oneDayDict: Dictionary = ["hours":tempJSON]
-                
-                
-                dailyJSONDict.updateValue([dateParamJSON,oneDayDict], forKey: "day_\(d)")
-                
-                
-                
-                
-                dayJson.append(
-                    ["day_\(d)":
-                        ["date":"\(date)",
-                            "hours":sameHourDict]])
-                
+                let daySample = ["day": "\(d)", "date":"\(date)","hours":sameHourDict] as [String : Any]
+                dayJson.append(daySample)
                 d += 1
             }
-            weekJson.append(["week_\(w)" as String,dayJson] as AnyObject)
-            
-            weekSwiftyJSON.updateValue(dailyJSONDict, forKey: "week_\(w)")
-            
-            
-            
+            let weekSample = ["week":"\(w)", "days":dayJson] as [String : Any]
+            weekJson.append(weekSample)
             w += 1
         }
     }
     
-    func JSONStringify(value: AnyObject,prettyPrinted:Bool = false) -> String{
+    func calculateDailyHours(_ dailyHours:[UserTimeTable]) -> [[String:Any]] {
         
-        let options = prettyPrinted ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization.WritingOptions(rawValue: 0)
+        var sameHourArr : [[String:Any]] = []
         
+        let dailyComponents: Set<Calendar.Component> = [.hour, .minute,.second]
+        let userCalendar = Calendar.current
+
+        for day in dailyHours {
+            let temp = userCalendar.dateComponents(dailyComponents, from: day.selectedTime.startDate)
         
-        if JSONSerialization.isValidJSONObject(value) {
-            
-            do{
-                let data = try JSONSerialization.data(withJSONObject: value, options: [])
-                if let string = String(data: data, encoding: String.Encoding.utf8) {
-                    return string as String
-                }
-            }catch {
-                
-                print("error")
-                //Access error here
-            }
-            
+            sameHourArr.append(["hour":"\(temp.hour!)"])
         }
-        return ""
         
+        return sameHourArr
     }
     
     @IBAction func returnBack(_ sender: UIBarButtonItem) {
