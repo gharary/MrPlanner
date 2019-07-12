@@ -103,41 +103,40 @@ class BookSelectionVC: UIViewController {
         
         let base64Credential = credentialData.base64EncodedString()
         
-        let header: HTTPHeaders = ["X-API-TOKEN" : Bundle.main.localizedString(forKey: "X-API-TOKEN", value: nil, table: ""),
-                                   "Accept" : "application/json",
+        let header: HTTPHeaders = ["X-API-TOKEN" : Bundle.main.localizedString(forKey: "X-API-TOKEN", value: nil, table: "Secrets"),
+                                   "Content-Type" : "application/json",
                                    "Authorization":"Basic \(base64Credential)"]
         
         
-        let json = JSON(weekJson)
-        let param: Parameters = ["user_id":userID,
-                                 "lessons":lessonDic,
-                                 "weeks":json]
+        let parameter: Parameters = ["user_id":userID,
+                                     "lessons": lessonData,
+                                     "weeks": weekJson
         
-        Alamofire.request(url!, method: .post, parameters: param, headers: header)
+                                    ]
+        Alamofire.request(url!, method: .post, parameters: parameter, encoding: JSONEncoding.default, headers: header).validate()
             .responseJSON { response in
-                let statusCode = response.response?.statusCode
-                if statusCode! >= 200 && statusCode! <= 300 {
-                    switch response.result {
-                    case .success:
+                switch response.result {
+                case .success(let value):
+                    let statusCode = response.response?.statusCode
+                    if statusCode! >= 200 && statusCode! <= 300 {
+                        let json = JSON(value)
+                        print("json result is:\(json)")
                         
-                        break
-                    case .failure(let error):
-                        print(error)
+                    } else {
+                        print(response.error?.localizedDescription as Any)
                         
                     }
-                } else {
-                    print(response.error?.localizedDescription as Any)
+                    break
+                case .failure(let error):
+                    print(error)
                     
                 }
-                
-                
         }
         
     }
     
     
     private var lessonData: [[String: Any]] = [[:]]
-    private var lessonDic = Dictionary<String,JSON>()
     
     private func getBookIDs(_ books: [String]) -> () {
         let realm = try! Realm()
@@ -148,19 +147,28 @@ class BookSelectionVC: UIViewController {
         lessonData.removeAll()
         for i in 0..<shelve.count {
             bookIDs.append(shelve[i].InternalID!)
-            let lessonSample = ["id":"\(shelve[i].InternalID!)","chapters":["pages":"1-\(String(describing: shelve[i].Book!.pageCount.value!))"]] as [String : Any]
+            let lessonSample = ["id":"\(shelve[i].InternalID!)","chapters":[["pages":"1-\(String(describing: shelve[i].Book!.pageCount.value!))"]]] as [String : Any]
             lessonData.append(lessonSample)
-            
-            
-            //sampling using Dictionary
-            let lessonJson :JSON = ["id":"\(shelve[i].InternalID!)","chapters":["pages":"1-\(String(describing: shelve[i].Book!.pageCount.value!))"]]
-            
-            lessonDic.updateValue(lessonJson, forKey: "lessons")
             
         }
     }
     
     
+    func toJSonString(data : Any) -> String {
+        
+        var jsonString = "";
+        
+        do {
+            
+            let jsonData = try JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
+            jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)! as String
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        return jsonString;
+    }
     
     private var weekJson :[[String:Any]] = []
     
@@ -378,3 +386,4 @@ extension Dictionary {
         }
     }
 }
+
