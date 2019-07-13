@@ -1,0 +1,492 @@
+{
+    "data": [
+        {
+            "week": "0",
+            "days": [
+                {
+                    "day": "0",
+                    "date": "2-23-2019",
+                    "hours": [
+                        {
+                            "hour": "15",
+                            "lesson": [
+                                {
+                                    "id": "3",
+                                    "pagesSum": 500,
+                                    "hardGrade": 2,
+                                    "name": "harry potter",
+                                    "sumHardCalPages": 1000,
+                                    "hourUnit": 8,
+                                    "pageForReading": 63
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "16",
+                            "lesson": [
+                                {
+                                    "id": "2",
+                                    "pagesSum": 700,
+                                    "hardGrade": 3,
+                                    "name": "book1",
+                                    "sumHardCalPages": 2100,
+                                    "hourUnit": 16,
+                                    "pageForReading": 44
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "17",
+                            "lesson": [
+                                {
+                                    "id": "2",
+                                    "pagesSum": 700,
+                                    "hardGrade": 3,
+                                    "name": "book1",
+                                    "sumHardCalPages": 2100,
+                                    "hourUnit": 16,
+                                    "pageForReading": 44
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "18",
+                            "lesson": [
+                                {
+                                    "id": "3",
+                                    "pagesSum": 500,
+                                    "hardGrade": 2,
+                                    "name": "harry potter",
+                                    "sumHardCalPages": 1000,
+                                    "hourUnit": 8,
+                                    "pageForReading": 63
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "18",
+                            "lesson": [
+                                {
+                                    "id": "3",
+                                    "pagesSum": 500,
+                                    "hardGrade": 2,
+                                    "name": "harry potter",
+                                    "sumHardCalPages": 1000,
+                                    "hourUnit": 8,
+                                    "pageForReading": 63
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "19",
+                            "lesson": [
+                                {
+                                    "id": "2",
+                                    "pagesSum": 700,
+                                    "hardGrade": 3,
+                                    "name": "book1",
+                                    "sumHardCalPages": 2100,
+                                    "hourUnit": 16,
+                                    "pageForReading": 44
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "20",
+                            "lesson": [
+                                {
+                                    "id": "2",
+                                    "pagesSum": 700,
+                                    "hardGrade": 3,
+                                    "name": "book1",
+                                    "sumHardCalPages": 2100,
+                                    "hourUnit": 16,
+                                    "pageForReading": 44
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "21",
+                            "lesson": [
+                                {
+                                    "id": "2",
+                                    "pagesSum": 700,
+                                    "hardGrade": 3,
+                                    "name": "book1",
+                                    "sumHardCalPages": 2100,
+                                    "hourUnit": 16,
+                                    "pageForReading": 44
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "day": "1",
+                    "date": "3-23-2019",
+                    "hours": [
+                        {
+                            "hour": "15",
+                            "lesson": [
+                                {
+                                    "id": "2",
+                                    "pagesSum": 700,
+                                    "hardGrade": 3,
+                                    "name": "book1",
+                                    "sumHardCalPages": 2100,
+                                    "hourUnit": 16,
+                                    "pageForReading": 44
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "16",
+                            "lesson": [
+                                {
+                                    "id": "3",
+                                    "pagesSum": 500,
+                                    "hardGrade": 2,
+                                    "name": "harry potter",
+                                    "sumHardCalPages": 1000,
+                                    "hourUnit": 8,
+                                    "pageForReading": 63
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "17",
+                            "lesson": [
+                                {
+                                    "id": "2",
+                                    "pagesSum": 700,
+                                    "hardGrade": 3,
+                                    "name": "book1",
+                                    "sumHardCalPages": 2100,
+                                    "hourUnit": 16,
+                                    "pageForReading": 44
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "18",
+                            "lesson": [
+                                {
+                                    "id": "2",
+                                    "pagesSum": 700,
+                                    "hardGrade": 3,
+                                    "name": "book1",
+                                    "sumHardCalPages": 2100,
+                                    "hourUnit": 16,
+                                    "pageForReading": 44
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "18",
+                            "lesson": [
+                                {
+                                    "id": "2",
+                                    "pagesSum": 700,
+                                    "hardGrade": 3,
+                                    "name": "book1",
+                                    "sumHardCalPages": 2100,
+                                    "hourUnit": 16,
+                                    "pageForReading": 44
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "19",
+                            "lesson": [
+                                {
+                                    "id": "3",
+                                    "pagesSum": 500,
+                                    "hardGrade": 2,
+                                    "name": "harry potter",
+                                    "sumHardCalPages": 1000,
+                                    "hourUnit": 8,
+                                    "pageForReading": 63
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "20",
+                            "lesson": [
+                                {
+                                    "id": "2",
+                                    "pagesSum": 700,
+                                    "hardGrade": 3,
+                                    "name": "book1",
+                                    "sumHardCalPages": 2100,
+                                    "hourUnit": 16,
+                                    "pageForReading": 44
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "21",
+                            "lesson": [
+                                {
+                                    "id": "2",
+                                    "pagesSum": 700,
+                                    "hardGrade": 3,
+                                    "name": "book1",
+                                    "sumHardCalPages": 2100,
+                                    "hourUnit": 16,
+                                    "pageForReading": 44
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "day": "2",
+                    "date": "3-23-2019",
+                    "hours": []
+                },
+                {
+                    "day": "3",
+                    "date": "4-23-2019",
+                    "hours": [
+                        {
+                            "hour": "15",
+                            "lesson": [
+                                {
+                                    "id": "2",
+                                    "pagesSum": 700,
+                                    "hardGrade": 3,
+                                    "name": "book1",
+                                    "sumHardCalPages": 2100,
+                                    "hourUnit": 16,
+                                    "pageForReading": 44
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "16",
+                            "lesson": [
+                                {
+                                    "id": "2",
+                                    "pagesSum": 700,
+                                    "hardGrade": 3,
+                                    "name": "book1",
+                                    "sumHardCalPages": 2100,
+                                    "hourUnit": 16,
+                                    "pageForReading": 44
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "17",
+                            "lesson": [
+                                {
+                                    "id": "2",
+                                    "pagesSum": 700,
+                                    "hardGrade": 3,
+                                    "name": "book1",
+                                    "sumHardCalPages": 2100,
+                                    "hourUnit": 16,
+                                    "pageForReading": 44
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "18",
+                            "lesson": [
+                                {
+                                    "id": "3",
+                                    "pagesSum": 500,
+                                    "hardGrade": 2,
+                                    "name": "harry potter",
+                                    "sumHardCalPages": 1000,
+                                    "hourUnit": 8,
+                                    "pageForReading": 63
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "18",
+                            "lesson": [
+                                {
+                                    "id": "3",
+                                    "pagesSum": 500,
+                                    "hardGrade": 2,
+                                    "name": "harry potter",
+                                    "sumHardCalPages": 1000,
+                                    "hourUnit": 8,
+                                    "pageForReading": 63
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "19",
+                            "lesson": [
+                                {
+                                    "id": "2",
+                                    "pagesSum": 700,
+                                    "hardGrade": 3,
+                                    "name": "book1",
+                                    "sumHardCalPages": 2100,
+                                    "hourUnit": 16,
+                                    "pageForReading": 44
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "20",
+                            "lesson": [
+                                {
+                                    "id": "3",
+                                    "pagesSum": 500,
+                                    "hardGrade": 2,
+                                    "name": "harry potter",
+                                    "sumHardCalPages": 1000,
+                                    "hourUnit": 8,
+                                    "pageForReading": 63
+                                }
+                            ]
+                        },
+                        {
+                            "hour": "21",
+                            "lesson": [
+                                {
+                                    "id": "2",
+                                    "pagesSum": 700,
+                                    "hardGrade": 3,
+                                    "name": "book1",
+                                    "sumHardCalPages": 2100,
+                                    "hourUnit": 16,
+                                    "pageForReading": 44
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            
+            "week":"1",
+            "days": [{
+                "day": "0",
+                "date": "2-23-2019",
+                "hours": [
+                    {
+                        "hour": "15",
+                        "lesson": [
+                            {
+                                "id": "3",
+                                "pagesSum": 500,
+                                "hardGrade": 2,
+                                "name": "harry potter",
+                                "sumHardCalPages": 1000,
+                                "hourUnit": 8,
+                                "pageForReading": 63
+                            }
+                        ]
+                    },
+                    {
+                        "hour": "16",
+                        "lesson": [
+                            {
+                                "id": "2",
+                                "pagesSum": 700,
+                                "hardGrade": 3,
+                                "name": "book1",
+                                "sumHardCalPages": 2100,
+                                "hourUnit": 16,
+                                "pageForReading": 44
+                            }
+                        ]
+                    },
+                    {
+                        "hour": "17",
+                        "lesson": [
+                            {
+                                "id": "2",
+                                "pagesSum": 700,
+                                "hardGrade": 3,
+                                "name": "book1",
+                                "sumHardCalPages": 2100,
+                                "hourUnit": 16,
+                                "pageForReading": 44
+                            }
+                        ]
+                    },
+                    {
+                        "hour": "18",
+                        "lesson": [
+                            {
+                                "id": "3",
+                                "pagesSum": 500,
+                                "hardGrade": 2,
+                                "name": "harry potter",
+                                "sumHardCalPages": 1000,
+                                "hourUnit": 8,
+                                "pageForReading": 63
+                            }
+                        ]
+                    },
+                    {
+                        "hour": "18",
+                        "lesson": [
+                            {
+                                "id": "3",
+                                "pagesSum": 500,
+                                "hardGrade": 2,
+                                "name": "harry potter",
+                                "sumHardCalPages": 1000,
+                                "hourUnit": 8,
+                                "pageForReading": 63
+                            }
+                        ]
+                    },
+                    {
+                        "hour": "19",
+                        "lesson": [
+                            {
+                                "id": "2",
+                                "pagesSum": 700,
+                                "hardGrade": 3,
+                                "name": "book1",
+                                "sumHardCalPages": 2100,
+                                "hourUnit": 16,
+                                "pageForReading": 44
+                            }
+                        ]
+                    },
+                    {
+                        "hour": "20",
+                        "lesson": [
+                            {
+                                "id": "2",
+                                "pagesSum": 700,
+                                "hardGrade": 3,
+                                "name": "book1",
+                                "sumHardCalPages": 2100,
+                                "hourUnit": 16,
+                                "pageForReading": 44
+                            }
+                        ]
+                    },
+                    {
+                        "hour": "21",
+                        "lesson": [
+                            {
+                                "id": "2",
+                                "pagesSum": 700,
+                                "hardGrade": 3,
+                                "name": "book1",
+                                "sumHardCalPages": 2100,
+                                "hourUnit": 16,
+                                "pageForReading": 44
+                            }
+                        ]
+                    }
+                ]
+            }
+            
+            
+            ]
+            
+        }
+    ]
+}

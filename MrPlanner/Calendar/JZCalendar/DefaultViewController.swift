@@ -72,6 +72,7 @@ class DefaultViewController: UIViewController {
             
             let nav = segue.destination as! UINavigationController
             let vc = nav.topViewController as! BookSelectionVC
+            
             vc.weekDuration = self.weekduration
             vc.startDate = beginDate
                 //Calendar.current.nextDate(after: beginDate ,matching: nextFirstWeekday,matchingPolicy: .nextTimePreservingSmallerComponents)!

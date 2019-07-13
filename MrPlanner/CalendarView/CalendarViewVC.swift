@@ -16,47 +16,30 @@ class CalendarViewVC: UIViewController {
     static var sharedInstance = CalendarViewVC()
     
     var events = [DefaultEvent]()
-    
     override func viewDidAppear(_ animated: Bool) {
         SVProgressHUD.dismiss()
-        
+        setupEvents()
+
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.dismiss()
-        setupEvents()
+        
+        
         
         
         setupBasic()
-        setupCalendar()
+        setupEvents()
+        //setupCalendar()
         
     }
     
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         JZWeekViewHelper.viewTransitionHandler(to: size, weekView: calendarWeekView)
     }
     
-    private func setupCalendar() {
-        calendarWeekView.baseDelegate = self
-        
-        //Basic Setup
-        let eventsByDate = JZWeekViewHelper.getIntraEventsByDate(originalEvents: events)
-        
-        calendarWeekView.setupCalendar(numOfDays: 7,
-                                       setDate: Date(),
-                                       allEvents: eventsByDate,
-                                       scrollType: .pageScroll,
-                                       firstDayOfWeek: .Monday,
-                                       currentTimelineType: .page,
-                                       visibleTime: Date(),
-                                       scrollableRange: (startDate: Date(), endDate: Date().add(component: .month, value: 1)))
-        //Optional
-        calendarWeekView.updateFlowLayout(JZWeekViewFlowLayout(hourGridDivision: JZHourGridDivision.noneDiv))
-        
-        
-        
-    }
     
     
     @IBAction func todayBtnTapped(_ sender: UIButton) {
@@ -94,16 +77,40 @@ extension CalendarViewVC: JZBaseViewDelegate {
     
     
     func setupEvents() {
-        events.removeAll()
+        self.events.removeAll()
         
+        SVProgressHUD.show(withStatus: "Loading Events...")
+        ProgramService.sharedInstance.geteventsData() { (eventList) in
+            self.events = eventList
+            self.calendarWeekView.baseDelegate = self
+            
+            //Basic Setup
+            let eventsByDate = JZWeekViewHelper.getIntraEventsByDate(originalEvents: eventList)
+            
+            self.calendarWeekView.setupCalendar(numOfDays: 7,
+                                           setDate: Date(),
+                                           allEvents: eventsByDate,
+                                           scrollType: .pageScroll,
+                                           firstDayOfWeek: .Monday,
+                                           currentTimelineType: .page,
+                                           visibleTime: Date())//, scrollableRange: (startDate: Date(), endDate: Date().add(component: .month, value: 1)))
+            //Optional
+            self.calendarWeekView.updateFlowLayout(JZWeekViewFlowLayout(hourGridDivision: JZHourGridDivision.noneDiv))
+            
+            
+            SVProgressHUD.showSuccess(withStatus: "Done!")
+        }
+            
+        
+        /*
         for date in DateRange(calendar: .autoupdatingCurrent,
                               startDate: Date(),//.add(component: .weekOfYear, value: -1),
                               endDate: Date().add(component: .day, value: 10),
                               component: .day,
                               step: 1) {
-                                events.append(contentsOf: genEvents(date))
+                                self.events.append(contentsOf: genEvents(date))
         }
-
+        */
         
     }
     

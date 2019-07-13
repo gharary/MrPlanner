@@ -45,15 +45,17 @@ class DefaultWeekView: JZBaseWeekView {
         if cell?.backgroundColor == UIColor.green {
             cell?.backgroundColor =  UIColor(hex: 0xEEF7FF)
             let event = getCurrentEvent(with: indexPath)!
-            BookSelectionVC.sharedInstance.getSelectedTime(event, add: false)
+            
+           ProgramService.sharedInstance.getSelectedTime(event, add: false)
             
             
         }
         else {
             cell?.backgroundColor = .green
             let event = getCurrentEvent(with: indexPath)!
-            //selectedData.append(UserTimeTable(selectedTime: event))
-            BookSelectionVC.sharedInstance.getSelectedTime(event, add: true)
+            
+            ProgramService.sharedInstance.getSelectedTime(event, add: true)
+            
             
         }
     }

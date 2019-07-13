@@ -18,10 +18,18 @@ class PlanOptionsVC: UIViewController {
     var weekDuration:Int = 0
     let datePicker = UIDatePicker()
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.planDurationWeek.selectRow(1, inComponent: 0, animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        
+        dateBeginTF.text = "\(formatter.string(from: Date()))"
         dateBeginTF.becomeFirstResponder()
+        
         planDurationWeek.delegate = self
         planDurationWeek.dataSource = self
         
@@ -36,6 +44,8 @@ class PlanOptionsVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showCalendar" {
+            ProgramService.sharedInstance.setDates(dateBeginTF.text!.isEmpty ? "" : dateBeginTF!.text!, weekduration: weekDuration)
+            
             let vc = segue.destination as! DefaultViewController
             
             vc.planBeginDate = dateBeginTF.text!.isEmpty ? "" : dateBeginTF!.text!
@@ -65,7 +75,8 @@ extension PlanOptionsVC: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(row)"
+        if row > 0 { return "\(row)" }
+        return ""
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

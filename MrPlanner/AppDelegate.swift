@@ -84,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             
         } else {
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyBoard.instantiateViewController(withIdentifier: "SplashVC")
+            let vc = storyBoard.instantiateViewController(withIdentifier: "Tabbar")
             self.window?.rootViewController = vc
             self.window?.makeKeyAndVisible()
         }

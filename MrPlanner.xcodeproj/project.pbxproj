@@ -149,6 +149,8 @@
 		5FE54D9222898D5C0096402A /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE54D9122898D5C0096402A /* Book.swift */; };
 		5FE54D9422898E190096402A /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE54D9322898E190096402A /* Author.swift */; };
 		5FE54D962289D8520096402A /* GoodreadsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE54D952289D8520096402A /* GoodreadsVC.swift */; };
+		5FEADFE022D90F9A006F6867 /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FEADFDF22D90F99006F6867 /* response.json */; };
+		5FEADFE222D9952C006F6867 /* ProgramService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEADFE122D9952C006F6867 /* ProgramService.swift */; };
 		5FF14D792250AA0300FF42A8 /* ProfileActivePlansTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF14D782250AA0300FF42A8 /* ProfileActivePlansTVC.swift */; };
 		5FF14D7B2250AE0500FF42A8 /* ActivePlansCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF14D7A2250AE0500FF42A8 /* ActivePlansCell.swift */; };
 		5FF26D57224A116500D23645 /* ReviewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF26D56224A116500D23645 /* ReviewTVC.swift */; };
@@ -336,6 +338,8 @@
 		5FE54D9122898D5C0096402A /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		5FE54D9322898E190096402A /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		5FE54D952289D8520096402A /* GoodreadsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodreadsVC.swift; sourceTree = "<group>"; };
+		5FEADFDF22D90F99006F6867 /* response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response.json; sourceTree = "<group>"; };
+		5FEADFE122D9952C006F6867 /* ProgramService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramService.swift; sourceTree = "<group>"; };
 		5FF14D782250AA0300FF42A8 /* ProfileActivePlansTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActivePlansTVC.swift; sourceTree = "<group>"; };
 		5FF14D7A2250AE0500FF42A8 /* ActivePlansCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivePlansCell.swift; sourceTree = "<group>"; };
 		5FF26D56224A116500D23645 /* ReviewTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTVC.swift; sourceTree = "<group>"; };
@@ -523,6 +527,7 @@
 			children = (
 				5F77761C2226F11700D1A7A7 /* MrPlanner.entitlements */,
 				5F7C214B22195CB5002FAEBF /* AppDelegate.swift */,
+				5FEADFDF22D90F99006F6867 /* response.json */,
 				5FB7E627223E2F9500A7B9CB /* init */,
 				5F5A7348223697860003F66E /* Fonts */,
 				5FB412A6222A7AF300B4A3E7 /* MainVC */,
@@ -686,6 +691,7 @@
 				5F36BDF3228F83860033EA5C /* ValidationErrorType.swift */,
 				5F5619AC22A1DFE3008D26AE /* MrPlannerConfig.swift */,
 				5FD63E0822A84EBA005EC503 /* UserTimeTable.swift */,
+				5FEADFE122D9952C006F6867 /* ProgramService.swift */,
 			);
 			path = init;
 			sourceTree = "<group>";
@@ -944,6 +950,7 @@
 				5FABC877223E9AB500E275BE /* SF-Pro-Text-LightItalic.otf in Resources */,
 				5FABC8BC223E9AE100E275BE /* SF-Compact-Display-Thin.otf in Resources */,
 				5F7C215122195CB5002FAEBF /* Main.storyboard in Resources */,
+				5FEADFE022D90F9A006F6867 /* response.json in Resources */,
 				5FABC882223E9AB600E275BE /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
 				5FABC884223E9AB600E275BE /* SF-Pro-Text-HeavyItalic.otf in Resources */,
 				5FABC887223E9AB600E275BE /* SF-Pro-Display-Regular.otf in Resources */,
@@ -1138,6 +1145,7 @@
 				5FE54D7C228421DF0096402A /* Slide.swift in Sources */,
 				5F5619AD22A1DFE3008D26AE /* MrPlannerConfig.swift in Sources */,
 				5F8F64D9227AD2DA00D86900 /* BookSelectionVC.swift in Sources */,
+				5FEADFE222D9952C006F6867 /* ProgramService.swift in Sources */,
 				5FF79B9922D1E6D9004CE637 /* Week.swift in Sources */,
 				5FE54D8C2288AA3A0096402A /* AuthStorageService.swift in Sources */,
 				5F14A6CF2242AC87008384D3 /* DetailVC.swift in Sources */,

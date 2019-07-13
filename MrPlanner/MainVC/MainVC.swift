@@ -11,7 +11,7 @@ import ImageSlideshow
 import Alamofire
 import AlamofireImage
 import Kingfisher
-
+import SwiftyJSON
 
 
 class MainVC: UIViewController{
@@ -25,8 +25,13 @@ class MainVC: UIViewController{
     
     override func viewDidLoad() {
         self.title = "Home"
+        
         loadImage()
     }
+    override func viewDidAppear(_ animated: Bool) {
+    }
+    
+        
     
     private func loadImage() {
         let image = UIImage(named: "schdule")
