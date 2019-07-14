@@ -89,31 +89,43 @@ class ShelfVC: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        let barItem = UIBarButtonItem(title: "LogOut", style: .done, target: self, action: #selector(importGoodreads(_:)))
         
         if GoodreadsService.sharedInstance.isLoggedIn == .LoggedIn {
-            importBtn.title = "Log Out"
+            self.navigationItem.rightBarButtonItem = barItem
         } else {
-            importBtn.title = "Import Goodreads"
+            barItem.title = "Import Goodreads"
+            self.navigationItem.rightBarButtonItem = barItem
+            
         }
         shelfToken?.invalidate()
     }
     
     
     @IBAction func importGoodreads(_ sender: UIBarButtonItem!) {
+        let uiBusy = UIActivityIndicatorView(style: .gray)
+        uiBusy.hidesWhenStopped = true
         
+        let barItem = UIBarButtonItem(title: "LogOut", style: .done, target: self, action: #selector(importGoodreads(_:)))
         switch sender.title {
         case "Import Goodreads":
+            uiBusy.startAnimating()
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: uiBusy)
             GoodreadsService.sharedInstance.loadBooks(sender: self, completion: { (book) in
                 
                 self.goodreadsBook = book
                 
                 self.collectionView.reloadData()
+                uiBusy.stopAnimating()
+                self.navigationItem.rightBarButtonItem = barItem
             })
             
-            sender.title = "LogOut"
+            
             break
         case "LogOut":
             GoodreadsService.sharedInstance.logoutOfGoodreadsAccount()
+            goodreadsBook = []
+            self.collectionView.reloadData()
             sender.title = "Import Goodreads"
             break
         default:

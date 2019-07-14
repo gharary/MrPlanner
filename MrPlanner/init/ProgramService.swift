@@ -15,6 +15,11 @@ import JZCalendarWeekView
 
 class ProgramService {
     
+    enum packageState: String {
+        case Available
+        case NotAvailable
+        case Finished
+    }
     
     static var sharedInstance = ProgramService()
     
@@ -151,6 +156,52 @@ class ProgramService {
         
     }
     
+    func checkPackageAvailable(completion: @escaping (Bool) -> ()) {
+        let user = defaults.string(forKey: "username") ?? Bundle.main.localizedString(forKey: "testUserEmail", value: nil, table: "Secrets")
+        
+        let password = defaults.string(forKey: "password") ?? Bundle.main.localizedString(forKey: "testUserPass", value: nil, table: "Secrets")
+        
+        //let userID = defaults.string(forKey: "UserID") ?? "2"
+        
+        let url = URL(string: "http://www.mrplanner.org/api/packages")
+        
+        let credentialData = "\(user):\(password)".data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
+        
+        let base64Credential = credentialData.base64EncodedString()
+        
+        let header: HTTPHeaders = ["X-API-TOKEN" : Bundle.main.localizedString(forKey: "X-API-TOKEN", value: nil, table: "Secrets"),
+                                   "Content-Type" : "application/json",
+                                   "Authorization":"Basic \(base64Credential)"]
+        
+        
+        Alamofire.request(url!, method: .get, headers: header).validate()
+            .responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    let statusCode = response.response?.statusCode
+                    if statusCode! >= 200 && statusCode! <= 300 {
+                        let json = JSON(value)
+                        let item = json["data",0,"number_programs"].intValue
+                        if item > 0 { completion(true) }
+                        
+                    } else {
+                        print(response.error?.localizedDescription as Any)
+                        completion(false)
+                    }
+                    break
+                case .failure(let error):
+                    completion(false)
+                    print(error)
+                    
+                }
+        }
+        
+        
+    
+        
+        
+    }
+    
     
     private func submitToServer(_ lessonData:[[String:Any]]) {
         
@@ -257,7 +308,7 @@ class ProgramService {
         var events = [DefaultEvent]()
         
         let formatter = DateFormatter()
-        let dateComponents : Set<Calendar.Component> = [.year,.month,.day]
+        //let dateComponents : Set<Calendar.Component> = [.year,.month,.day]
         formatter.dateFormat = "M-dd-yyyy H"
         
         for (_,subJson):(String, JSON) in json {

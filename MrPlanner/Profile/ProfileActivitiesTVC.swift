@@ -22,7 +22,23 @@ class ProfileActivitiesTVC: UIViewController, UITableViewDataSource, UITableView
 
     
     override func viewDidAppear(_ animated: Bool) {
-        generateRandomData()
+       let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        ProgramService.sharedInstance.geteventsData(completion: { (eventList) in
+            self.events = eventList.filter {
+                let dateItem =  formatter.string(from: $0.startDate)
+                let date = formatter.string(from: Date())
+                
+                
+                return dateItem == date
+            }
+            
+            self.tableView.reloadData()
+        })
+        if events.count == 0 {
+            generateRandomData()
+        }
     }
     private func generateRandomData() {
         
@@ -77,24 +93,26 @@ class ProfileActivitiesTVC: UIViewController, UITableViewDataSource, UITableView
         
         
         // Configure the cell...
-        
-        let i = Bool.random()
-        if i {
-            cell.accessoryType = .checkmark
-            cell.backgroundColor = UIColor(hexString: "66B311")
-        } else {
-            cell.backgroundColor = UIColor(hexString: "FF6B6B")
-            cell.accessoryType = .none
-            
-        }
-        
         cell.clockImg.image = UIImage(named: "time")
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         
+        let hour = dateFormatter.string(from: Date())
+        let hourDate = dateFormatter.date(from: hour) ?? Date()
+        
+        let cellHr = dateFormatter.string(from: events[indexPath.row].startDate)
+        let cellHour = dateFormatter.date(from: cellHr)!
+        
+        if hourDate > cellHour {
+            cell.backgroundColor = UIColor(hexString: "FF6B6B")
+            cell.accessoryType = .none
+        } else {
+            cell.accessoryType = .checkmark
+            cell.backgroundColor = UIColor(hexString: "66B311")
+        }
         cell.timeLbl.text = dateFormatter.string(from: events[indexPath.row].startDate) + "-" +  dateFormatter.string(from: events[indexPath.row].endDate)
         
-        cell.bookNameLbl.text = events[indexPath.row].title
+        cell.bookNameLbl.text = events[indexPath.row].title.trunc(length: 25)
         
         return cell
     }
@@ -120,5 +138,17 @@ extension UIColor {
             return nil
         }
         self.init(red: red, green: green, blue:  blue, alpha: alpha)
+    }
+}
+extension String {
+    /*
+     Truncates the string to the specified length number of characters and appends an optional trailing string if longer.
+     - Parameter length: Desired maximum lengths of a string
+     - Parameter trailing: A 'String' that will be appended after the truncation.
+     
+     - Returns: 'String' object.
+     */
+    func trunc(length: Int, trailing: String = "…") -> String {
+        return (self.count > length) ? self.prefix(length) + trailing : self
     }
 }

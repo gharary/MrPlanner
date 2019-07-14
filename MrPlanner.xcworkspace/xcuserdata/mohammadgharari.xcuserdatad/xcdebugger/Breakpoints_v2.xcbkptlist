@@ -409,12 +409,12 @@
                   moduleName = "MrPlanner"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mohammadgharari/Desktop/Desktop/iOS/MrPlanner/MrPlanner/init/OfflineViewController.swift"
-                  timestampString = "584724665.538413"
+                  timestampString = "584779354.976836"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "18"
                   endingLineNumber = "18"
-                  offsetFromSymbolStart = "123">
+                  offsetFromSymbolStart = "148">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -424,12 +424,12 @@
                   moduleName = "MrPlanner"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mohammadgharari/Desktop/Desktop/iOS/MrPlanner/MrPlanner/init/OfflineViewController.swift"
-                  timestampString = "584724665.540555"
+                  timestampString = "584779354.978821"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "19"
                   endingLineNumber = "19"
-                  offsetFromSymbolStart = "19">
+                  offsetFromSymbolStart = "60">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -601,11 +601,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MrPlanner/Profile/Shelf/ShelfVC.swift"
-            timestampString = "582574206.885362"
+            timestampString = "584779354.276301"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "importGoodreads(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -616,45 +616,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MrPlanner/Goodreads/GoodreadsService.swift"
-            timestampString = "582573420.3795871"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "loginToGoodreadsAccount(sender:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MrPlanner/Profile/Shelf/ShelfVC.swift"
-            timestampString = "582574206.885497"
+            timestampString = "584779354.2763931"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "importGoodreads(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MrPlanner/Goodreads/GoodreadsService.swift"
-            timestampString = "582573420.379711"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "logoutOfGoodreadsAccount()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -761,11 +729,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MrPlanner/init/ProgramService.swift"
-            timestampString = "584724665.0583479"
+            timestampString = "584779354.276507"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "getBookIDs(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -782,8 +750,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
             endingLineNumber = "76"
-            landmarkName = "NextBtnTapped(_:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -809,11 +777,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MrPlanner/init/ProgramService.swift"
-            timestampString = "584724665.0585279"
+            timestampString = "584779354.27658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
             landmarkName = "proceedProgramData(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -825,11 +793,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MrPlanner/init/ProgramService.swift"
-            timestampString = "584724665.058578"
+            timestampString = "584779354.276626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "getSelectedTime(_:add:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -841,43 +809,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MrPlanner/init/ProgramService.swift"
-            timestampString = "584724665.058628"
+            timestampString = "584779354.276669"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "getWeekTimes(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MrPlanner/init/ProgramService.swift"
-            timestampString = "584724665.058676"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "ProgramService"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MrPlanner/init/ProgramService.swift"
-            timestampString = "584724665.058718"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "getWeekTimes(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -889,11 +825,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MrPlanner/Calendar/PlanOptionsVC.swift"
-            timestampString = "584724665.058767"
+            timestampString = "584779354.276713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "pickerView(_:titleForRow:forComponent:)"
             landmarkType = "7">
             <Locations>
@@ -905,12 +841,12 @@
                   moduleName = "MrPlanner"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mohammadgharari/Desktop/Desktop/iOS/MrPlanner/MrPlanner/Calendar/PlanOptionsVC.swift"
-                  timestampString = "584724665.557568"
+                  timestampString = "584779354.98285"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "193">
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "200">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -920,14 +856,78 @@
                   moduleName = "MrPlanner"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mohammadgharari/Desktop/Desktop/iOS/MrPlanner/MrPlanner/Calendar/PlanOptionsVC.swift"
-                  timestampString = "584724665.560913"
+                  timestampString = "584779354.984277"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "217">
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "224">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MrPlanner/init/ProgramService.swift"
+            timestampString = "584779354.276756"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "checkPackageAvailable(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MrPlanner/Calendar/PlanOptionsVC.swift"
+            timestampString = "584779354.276798"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MrPlanner/Profile/Shelf/ShelfVC.swift"
+            timestampString = "584779354.276836"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "importGoodreads(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MrPlanner/Profile/ProfileActivitiesTVC.swift"
+            timestampString = "584779354.276877"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

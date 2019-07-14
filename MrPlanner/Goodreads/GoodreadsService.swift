@@ -22,6 +22,7 @@ extension Notification.Name {
     static var loginStateChanged: Notification.Name {
         return .init(rawValue: LoginState.LoggedIn.rawValue)
     }
+    
 }
 
 

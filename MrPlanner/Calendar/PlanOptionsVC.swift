@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 class PlanOptionsVC: UIViewController {
 
     
@@ -19,7 +19,36 @@ class PlanOptionsVC: UIViewController {
     let datePicker = UIDatePicker()
     
     override func viewWillAppear(_ animated: Bool) {
+        SVProgressHUD.dismiss()
         self.planDurationWeek.selectRow(1, inComponent: 0, animated: true)
+        ProgramService.sharedInstance.checkPackageAvailable(completion: { (result) in
+            
+            switch result {
+            case true:
+                
+                break
+            case false:
+                
+                self.noPackage()
+                break
+            }
+            
+        })
+        
+    }
+    
+    func noPackage() {
+        
+        let alert = UIAlertController(title: "Error", message: "You have no package available!! Visit MrPlanner.org", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default, handler: { _ in
+            self.dismiss(animated: true, completion: nil)
+        })
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+        
+        
+            
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
