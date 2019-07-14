@@ -190,7 +190,7 @@ class BookDetailVC: UIViewController {
             }
             return
         }
-        MrPlannerService.sharedInstance.addShelfBookToDB(book:book ,title: book.title!, cat: (book.categories.first!) , pageNr: book!.pageCount, completion: { result, id in
+        MrPlannerService.sharedInstance.addShelfBookToDB(sender: self, book:book ,title: book.title!, cat: (book.categories.first!) , pageNr: book!.pageCount, completion: { result, id in
             
             if result {
                 let realm = try! Realm()

@@ -51,13 +51,17 @@ class MrPlannerService {
         }
         
     }
-    func addShelfBookToDB(book: Books,title: String, cat: String, pageNr: RealmOptional<Int>, completion: @escaping (Bool, Int) -> ()) {
+    func addShelfBookToDB(sender: UIViewController, book: Books,title: String, cat: String, pageNr: RealmOptional<Int>, completion: @escaping (Bool, Int) -> ()) {
         
    
-        let user = defaults.string(forKey: "username") ?? "gharary@outlook.com"
-        let password = defaults.string(forKey: "password") ?? "753e2cf1ce208999015ef3671dc6056a"
+        guard isLoggedIn == .LoggedIn else {
+            loginToMrPlannerAccount(sender: sender, completion: nil)
+            return
+        }
+        let user = defaults.string(forKey: "username") ?? ""
+        let password = defaults.string(forKey: "password") ?? ""
         
-        let userID = defaults.string(forKey: "UserID") ?? "9"
+        let userID = defaults.string(forKey: "UserID") ?? ""
         let url = URL(string: "http://mrplanner.org/api/addBook/\(userID)")
         
         let credentialData = "\(user):\(password)".data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!

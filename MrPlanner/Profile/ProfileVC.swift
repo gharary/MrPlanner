@@ -18,6 +18,14 @@ class ProfileVC: UIViewController {
     
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        if MrPlannerService.sharedInstance.isLoggedIn == .LoggedOut {
+            MrPlannerService.sharedInstance.loginToMrPlannerAccount(sender: self, completion: {
+                
+                
+            })
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

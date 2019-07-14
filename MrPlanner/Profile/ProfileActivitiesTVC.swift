@@ -58,7 +58,7 @@ class ProfileActivitiesTVC: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
+        return 50
     }
 
     /*
@@ -70,6 +70,7 @@ class ProfileActivitiesTVC: UIViewController, UITableViewDataSource, UITableView
     */
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        /*
         switch editingStyle {
         case .insert:
             print("Complete")
@@ -82,10 +83,10 @@ class ProfileActivitiesTVC: UIViewController, UITableViewDataSource, UITableView
         @unknown default:
             print("Default")
         }
-        
+        */
     }
     func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return false
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -93,6 +94,10 @@ class ProfileActivitiesTVC: UIViewController, UITableViewDataSource, UITableView
         
         
         // Configure the cell...
+        cell.layer.cornerRadius = 10
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.borderWidth = 2
+        
         cell.clockImg.image = UIImage(named: "time")
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
@@ -105,9 +110,9 @@ class ProfileActivitiesTVC: UIViewController, UITableViewDataSource, UITableView
         
         if hourDate > cellHour {
             cell.backgroundColor = UIColor(hexString: "FF6B6B")
-            cell.accessoryType = .none
-        } else {
             cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
             cell.backgroundColor = UIColor(hexString: "66B311")
         }
         cell.timeLbl.text = dateFormatter.string(from: events[indexPath.row].startDate) + "-" +  dateFormatter.string(from: events[indexPath.row].endDate)

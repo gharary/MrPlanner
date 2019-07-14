@@ -9,6 +9,13 @@
 import UIKit
 import SVProgressHUD
 import RealmSwift
+import Alamofire
+
+
+enum insertPhoto {
+    case photoAlbum
+    case camera
+}
 
 class UpperVC: UIViewController {
 
@@ -21,6 +28,8 @@ class UpperVC: UIViewController {
     @IBOutlet weak var nameNidStack: UIStackView!
     @IBOutlet weak var bookCount: UILabel!
     
+    
+    var photoImage: UIImage?
     let defaults = UserDefaults.standard
     private var bookToken: NotificationToken?
     
@@ -55,10 +64,46 @@ class UpperVC: UIViewController {
         SVProgressHUD.showInfo(withStatus: "You have logged Out!")
     }
     
+    @IBAction func pictureBtnTapped(_ sender: UIButton) {
+        
+        let alert = UIAlertController(title: "Insert Photo", message: "", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { (action) in
+            self.loadImageFromSourec(fromSourceType: .photoLibrary)
+        }))
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler:  { (action) in
+            self.loadImageFromSourec(fromSourceType: .camera)
+            
+        
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {(action) in
+            
+            //self.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+        
+    }
+    
+    
+    private func loadImageFromSourec(fromSourceType sourceType:UIImagePickerController.SourceType) {
+        //Check if source type available
+        if UIImagePickerController.isSourceTypeAvailable(sourceType) {
+            let imagepicker = UIImagePickerController()
+            imagepicker.delegate = self
+            imagepicker.sourceType = sourceType
+            self.present(imagepicker, animated: true, completion: nil)
+        }
+        
+        
+    }
     
     
     private func setupUpper() {
         
+        if MrPlannerService.sharedInstance.isLoggedIn == .LoggedOut {
+            
+        }
         nameLbl.text = defaults.object(forKey: "username") as? String ?? defaults.object(forKey: "email") as? String
         idLbl.text = defaults.object(forKey: "UserID") as? String
         
@@ -82,6 +127,47 @@ class UpperVC: UIViewController {
         
     }
 
+    private func sendAvatarToServer(_ image: UIImage) {
+        
+        guard MrPlannerService.sharedInstance.isLoggedIn == .LoggedIn else {
+            MrPlannerService.sharedInstance.loginToMrPlannerAccount(sender: self) {
+                
+            }
+            return
+        }
+        let user = defaults.string(forKey: "username") ?? ""
+        let password = defaults.string(forKey: "password") ?? ""
+        
+        let userID = defaults.string(forKey: "UserID") ?? ""
+        let url = URL(string: "http://mrplanner.org/api/avatar/\(userID)/update")
+        
+        
+        let credentialData = "\(user):\(password)".data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
+        let base64Credential = credentialData.base64EncodedString()
+        
+        let header: HTTPHeaders = ["X-API-TOKEN" : Bundle.main.localizedString(forKey: "X-API-TOKEN", value: nil, table: "Secrets"),
+                                   "Accept" : "application/json",
+                                   "Authorization":"Basic \(base64Credential)"]
+        
+        
+        let param: Parameters = ["avatar":image.resizedTo100K()!]
+        
+        Alamofire.request(url!, method: .put, parameters: param, headers: header).validate()
+            .responseJSON { response in
+                
+                let statusCode = response.response?.statusCode
+                
+                if statusCode! >= 200 && statusCode! <= 300 {
+                    print(response.result.value!)
+                    
+                }
+                print(response.error?.localizedDescription)
+                
+                
+        }
+        
+        
+    }
     
     
     private func cornerRadius() {
@@ -145,6 +231,40 @@ class UpperVC: UIViewController {
     */
 
 }
+extension UIImage {
+    func resized(withPercentage percentage: CGFloat) -> UIImage? {
+        let canvasSize = CGSize(width: size.width * percentage, height: size.height * percentage)
+        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: canvasSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+    //let myThumb1 = myPicture.resized(withPercentage: 0.1)
+    //let myThumb2 = myPicture.resized(toWidth: 72.0)
+    func resized(toWidth width: CGFloat) -> UIImage? {
+        let canvasSize = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
+        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: canvasSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+    func resizedTo100K() -> UIImage? {
+        guard let imageData = self.pngData() else {return nil}
+        
+        var resizingImage = self
+        var imageSizeKB = Double(imageData.count) / 512.0
+        
+        while imageSizeKB > 512.0 {
+            guard let resizedImage = resizingImage.resized(withPercentage: 0.8), let imageData = resizingImage.pngData() else {return nil}
+            
+            resizingImage = resizedImage
+            imageSizeKB = Double(imageData.count) / 512.0
+            
+        }
+        return resizingImage
+    }
+}
+
 extension UIStackView {
     
     func addBackground(color: UIColor) {
@@ -155,6 +275,23 @@ extension UIStackView {
         subview.layer.cornerRadius = 10
         subview.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         insertSubview(subview, at: 0)
+    }
+    
+}
+extension UpperVC: UIPopoverPresentationControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.dismiss(animated: true, completion: nil)
+        let image = info[.originalImage] as! UIImage
+        photoImage? = image
+        profileImg.image = image.resizedTo100K()
+        sendAvatarToServer(image)
+        
+        
+    }
+    
+    func imaggePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject: AnyObject]) {
+        
     }
     
 }
