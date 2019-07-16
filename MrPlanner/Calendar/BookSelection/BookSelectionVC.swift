@@ -26,6 +26,7 @@ class BookSelectionVC: UIViewController {
     let spacing: CGFloat = 8.0
     let lineSpacing: CGFloat = 8.0
 
+    var sameWeek:Bool = false
     var weekDuration:Int = 0
     var startDate: Date = Date()
     var endDate = Date()
@@ -74,24 +75,20 @@ class BookSelectionVC: UIViewController {
         //Call ProgramService
        
         if !selectedBooks.isEmpty {
-            ProgramService.sharedInstance.sendDataToServer(selectedBooks: selectedBooks,startDate: startDate,endDate: endDate,weekDuration: weekDuration) {
-                
-                
-                
-            }
-            //self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-            //self.navigationController?.popToRootViewController(animated: true)
-            //dismissViewControllers()
-            var window : UIWindow?
-            UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: {
-                SVProgressHUD.showSuccess(withStatus: "Congratulation!")
-                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyBoard.instantiateViewController(withIdentifier: "SplashVC")
-                window?.rootViewController = vc
-                window?.makeKeyAndVisible()
-            })
             
+            ProgramService.sharedInstance.sendDataToServer(selectedBooks: selectedBooks,startDate: startDate,endDate: endDate,weekDuration: weekDuration,sameWeek: sameWeek) {
+                
+                    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyBoard.instantiateViewController(withIdentifier: "Tabbar")
+                    self.present(vc, animated: true, completion: {
+                        SVProgressHUD.showSuccess(withStatus: "Congratulation!")
+
+                    })
+                    
+            }
         }
+            
+        
     }
 
     func dismissViewControllers() {

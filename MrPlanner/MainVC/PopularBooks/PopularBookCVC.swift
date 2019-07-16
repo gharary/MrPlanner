@@ -91,7 +91,14 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return searchData.count
+        if searchData.count == 0 {
+            collectionView.setEmptyMessage("Loading Error, Try Again!")
+            return 0
+        } else {
+            collectionView.restore()
+            return searchData.count
+
+        }
         
     }
 

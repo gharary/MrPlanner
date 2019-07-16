@@ -284,9 +284,6 @@
                                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNG-jg-ILL">
                                                 <rect key="frame" x="0.0" y="0.0" width="89" height="27.5"/>
                                                 <state key="normal" image="book"/>
-                                                <connections>
-                                                    <segue destination="VWM-rc-Uw2" kind="show" id="h2K-ma-r9A"/>
-                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8tu-90-BYe">
                                                 <rect key="frame" x="0.0" y="35.5" width="89" height="26.5"/>

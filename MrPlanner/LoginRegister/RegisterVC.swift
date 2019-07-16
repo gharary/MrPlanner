@@ -32,10 +32,11 @@ class RegisterVC: UIViewController {
     
     
     let validator = Validator()
+    var firstLogin:Bool = false
     
     override func viewDidAppear(_ animated: Bool) {
         signupBtn.loadingIndicator(false)
-        goodreadsLoginBtn.loadingIndicator(false)
+        //goodreadsLoginBtn.loadingIndicator(false)
         
     }
     override func viewDidLoad() {
@@ -77,8 +78,8 @@ class RegisterVC: UIViewController {
     }
     func initBorder() {
         
-        googleLoginBtn.layer.cornerRadius = 20
-        goodreadsLoginBtn.layer.cornerRadius = 20
+        //googleLoginBtn.layer.cornerRadius = 20
+        //goodreadsLoginBtn.layer.cornerRadius = 20
         signupBtn.layer.cornerRadius = 20
         loginBtn.layer.cornerRadius = 5
         signupBtn.topAnchor.constraint(equalTo: emailTF.bottomAnchor, constant: 16).isActive = true
@@ -260,7 +261,8 @@ class RegisterVC: UIViewController {
         if segue.identifier == "showVerifyVC" {
             let vc = segue.destination as! EmailVerifyVC
             vc.email = emailTF.text!
-        
+            vc.firstLogin = firstLogin
+            
             
         }
     }

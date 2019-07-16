@@ -11,6 +11,7 @@ import RealmSwift
 import Kingfisher
 import SwiftyJSON
 import Foundation
+import JonContextMenu
 
 
 class ShelfVC: UIViewController {
@@ -36,6 +37,9 @@ class ShelfVC: UIViewController {
     private var shelf: Results<Shelve>?
     private var shelfToken: NotificationToken?
     private var goodreadsBook: [Book] = []
+    
+    let jonItems = [
+    JonItem(id: 2, title: "AddToShelve", icon: UIImage(named: "Shelf"), data: CGPoint())]
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,8 +78,8 @@ class ShelfVC: UIViewController {
         super.viewDidLoad()
         
         
-        //tableView.delegate = self
-        //tableView.dataSource = self
+        collectionView.registerCell(SearchResultCell.self)
+        
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -134,34 +138,80 @@ class ShelfVC: UIViewController {
         
         
     }
+  
     
-
-    @IBAction func backBtnTapped(_ sender:UIButton!) {
-        
-        self.dismiss(animated: true
-            , completion:   nil)
-    }
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            switch segmentControl.selectedSegmentIndex {
+            case 1:
+            
+            if segue.identifier == "showBookDetail"{
+                let vc = segue.destination as! BookDetailVC
+                let indexPath = collectionView.indexPathsForSelectedItems?.first
+            
+                
+                vc.goodreadBook = goodreadsBook[(indexPath?.row)!]
+                vc.itemIsGoodread = true
+                
+                
+                
+            }
+            break
+            default:
+                break
+        }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
-
+extension ShelfVC: JonContextMenuDelegate {
+    func menuOpened() {
+        
+    }
+    
+    func menuClosed() {
+        
+    }
+    
+    func menuItemWasSelected(item: JonItem) {
+       
+        
+    }
+    
+    func menuItemWasActivated(item: JonItem) {
+        
+    }
+    
+    func menuItemWasDeactivated(item: JonItem) {
+        
+    }
+    
+    
+}
 extension ShelfVC: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch segmentControl.selectedSegmentIndex {
         case 0:
-            return shelf?.count ?? 0
+            if shelf?.count == 0 {
+                collectionView.setEmptyMessage("No Books In Shelf!")
+                return 0
+            } else {
+                collectionView.restore()
+                return shelf!.count
+            }
             
         case 1:
-            return goodreadsBook.count
-            
+            if goodreadsBook.count == 0 {
+                collectionView.setEmptyMessage("No Books Loaded! Click 'Import' To Import From Your Goodreads")
+                return 0
+            } else {
+                collectionView.restore()
+                return goodreadsBook.count
+            }
             
         default:
             return 0
@@ -173,9 +223,20 @@ extension ShelfVC: UICollectionViewDataSource, UICollectionViewDelegate {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SearchResultCell
         
+        
+        let contextMenu = JonContextMenu().setItems(jonItems).setDelegate(self)
+            .setBackgroundColorTo(.orange)
+            .setItemsDefaultColorTo(.black)
+            .setItemsActiveColorTo(.white)
+            .setItemsTitleColorTo(.black)
+            
+            .build()
+        
+        
         switch segmentControl.selectedSegmentIndex {
         case 0:
             let book = shelf![indexPath.row]
+            
             cell.titleLbl.text = book.Book?.title
             cell.authorLbl.text = book.Book?.authors.first
             if !(book.Book?.image!.isEmpty)! {
@@ -183,6 +244,8 @@ extension ShelfVC: UICollectionViewDataSource, UICollectionViewDelegate {
                 cell.bookImage.kf.indicatorType = .activity
                 cell.bookImage.kf.setImage(with: url)
             }
+            
+ 
         case 1:
             
             let item = goodreadsBook[indexPath.row]
@@ -197,12 +260,29 @@ extension ShelfVC: UICollectionViewDataSource, UICollectionViewDelegate {
             break
         }
         
+        //cell.addGestureRecognizer(contextMenu)
         
         
         return cell
         
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            break
+            
+        case 1:
+            performSegue(withIdentifier: "showBookDetail", sender: self)
+            
+            
+        default:
+            break
+            
+        }
+        
+    }
     
     
 }
@@ -238,6 +318,20 @@ extension ShelfVC: UICollectionViewDelegateFlowLayout {
     }
     
 }
+
+extension UICollectionView {
+    
+    /// Register a cell in the CollectionView given an UICollectionViewCell Type
+    func registerCell<T:UICollectionViewCell>(_ cell:T.Type){
+        self.register(T.self, forCellWithReuseIdentifier: String(describing: T.self))
+        
+    }
+    // Returns a UICollectionViewCell for a given Class Type
+    func getCell<T:UICollectionViewCell>(_ indexPath: IndexPath, _ type:T.Type) -> T?{
+        return self.dequeueReusableCell(withReuseIdentifier: String(describing: T.self), for: indexPath) as? T
+    }
+}
+
 extension ShelfVC: UITableViewDelegate {
     
     

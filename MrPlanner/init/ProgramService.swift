@@ -12,6 +12,7 @@ import Alamofire
 import OAuthSwift
 import RealmSwift
 import JZCalendarWeekView
+import UserNotifications
 
 class ProgramService {
     
@@ -67,13 +68,13 @@ class ProgramService {
     
     //update Date begin and Date End
     
-    func setDates(_ dateBegin:String, weekduration:Int) {
+    func setDates(_ dateBegin:String, weekduration:Int, title:String) {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         startDate = dateBegin.isEmpty ? Date() : formatter.date(from: dateBegin)!
         endDate = startDate.add(component: .weekOfMonth, value: weekduration)
-        
+        programTitle = title
         
     }
     // Week Process Data
@@ -81,8 +82,9 @@ class ProgramService {
     var startDate = Date()
     var endDate = Date()
     var weekDuration : Int = 0
+    var programTitle:String = ""
     
-    func getWeekTimes(_ hours: [UserTimeTable]) -> Void {
+    func getWeekTimes(_ hours: [UserTimeTable], sameWeek:Bool) -> Void {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
@@ -108,11 +110,7 @@ class ProgramService {
                 }
                 
                 let date = "\(dateFirst.month!)-\(dateFirst.day!)-\(dateFirst.year!)"
-                
                 guard !sameDays.isEmpty else {
-                    
-                    let daySample = ["day": "\(d)", "date":date ,"hours":[]] as [String : Any]
-                    dayJson.append(daySample)
                     d += 1
                     continue
                 }
@@ -123,13 +121,46 @@ class ProgramService {
                 dayJson.append(daySample)
                 d += 1
             }
-            let weekSample = ["week":"\(w)", "days":dayJson] as [String : Any]
-            weekJson.append(weekSample)
-            w += 1
+            if dayJson.isEmpty && sameWeek && w < weekDuration {
+                let NewWeekData = calculateSameWeekData(sampleWeek: weekJson[w-1])
+                let weekSample: [String:Any] = ["week":w, "days":NewWeekData]
+                weekJson.append(weekSample)
+                w += 1
+                continue
+            }
+            if w < weekDuration {
+                let weekSample = ["week":"\(w)", "days":dayJson] as [String : Any]
+                weekJson.append(weekSample)
+                w += 1
+            }
         }
     }
     
-    
+    func calculateSameWeekData(sampleWeek:[String:Any]) -> [[String:Any]] {
+        var newData:[[String:Any]] = []
+        let days = sampleWeek["days"] as! [[String:Any]]
+        let dateComponents : Set<Calendar.Component> = [.year,.month,.day]
+        
+        for day in days {
+            let dayIndex = day["day"]
+            let hours = day["hours"]
+            let date = day["date"]
+            
+
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MM-dd-yyyy"
+            let datePlus = formatter.date(from: date as! String)?.add(component: .day, value: 7)
+            
+            let dateComp =  Calendar.autoupdatingCurrent.dateComponents(dateComponents, from: datePlus!)
+            
+            let dateString = "\(dateComp.month!)-\(dateComp.day!)-\(dateComp.year!)"
+            
+            let tempArr : [String : Any] = ["date":dateString, "day":dayIndex!, "hours":hours!]
+            newData.append(tempArr)
+            
+        }
+        return newData
+    }
     func calculateDailyHours(_ dailyHours:[UserTimeTable]) -> [[String:Any]] {
         
         var sameHourArr : [[String:Any]] = []
@@ -146,35 +177,39 @@ class ProgramService {
         return sameHourArr
     }
     
-    func sendDataToServer(selectedBooks: [String], startDate:Date, endDate:Date, weekDuration:Int, completion: @escaping () -> ()) {
+    func sendDataToServer(selectedBooks: [String], startDate:Date, endDate:Date, weekDuration:Int, sameWeek:Bool, completion: @escaping () -> ()) {
+        
+        self.weekDuration = weekDuration
+        self.startDate = startDate
+        self.endDate = endDate
         
         let lessonData = getBookIDs(selectedBooks)
-        getWeekTimes(ProgramService.selectedData)
-        
+        getWeekTimes(ProgramService.selectedData, sameWeek: sameWeek)
         submitToServer(lessonData)
+
+        completion()
+        
+        
+        
         
         
     }
     
-    func checkPackageAvailable(completion: @escaping (Bool) -> ()) {
-        let user = defaults.string(forKey: "username") ?? Bundle.main.localizedString(forKey: "testUserEmail", value: nil, table: "Secrets")
+    func checkPackageAvailable(sender: UIViewController ,completion: @escaping (Bool) -> ()) {
         
-        let password = defaults.string(forKey: "password") ?? Bundle.main.localizedString(forKey: "testUserPass", value: nil, table: "Secrets")
+        guard MrPlannerService.sharedInstance.isLoggedIn == .LoggedIn else {
+            
+            MrPlannerService.sharedInstance.loginToMrPlannerAccount(sender: sender, completion: {
+                self.checkPackageAvailable(sender: sender, completion: completion)
+            })
+            return
+        }
         
-        //let userID = defaults.string(forKey: "UserID") ?? "2"
+        let auth = getAuthentication()
         
         let url = URL(string: "http://www.mrplanner.org/api/packages")
         
-        let credentialData = "\(user):\(password)".data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-        
-        let base64Credential = credentialData.base64EncodedString()
-        
-        let header: HTTPHeaders = ["X-API-TOKEN" : Bundle.main.localizedString(forKey: "X-API-TOKEN", value: nil, table: "Secrets"),
-                                   "Content-Type" : "application/json",
-                                   "Authorization":"Basic \(base64Credential)"]
-        
-        
-        Alamofire.request(url!, method: .get, headers: header).validate()
+        Alamofire.request(url!, method: .get, headers: auth.header).validate()
             .responseJSON { response in
                 switch response.result {
                 case .success(let value):
@@ -201,17 +236,81 @@ class ProgramService {
         
         
     }
+
+    func getUserProgramList() {
+        
+        let auth = getAuthentication()
+        let url = URL(string: "http://mrplanner.org/api/user/\(auth.userID)/programs")
+        
+        Alamofire.request(url!, method: .get, headers: auth.header).validate()
+            .responseJSON { response in
+                
+                switch response.result {
+                case .success(let value):
+                    let sCode = response.response!.statusCode
+                    if sCode >= 200 && sCode <= 300 {
+                        let json = JSON(value)
+                        self.retrieveProgramList(json: json["data"])
+                    } else {
+                        print(response.error?.localizedDescription as Any)
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    
+                    
+                }
+        }
+        
+        
+    }
+    
+    private func retrieveProgramList(json:JSON) {
+        
+        var programIDs: [Int] = []
+        
+        let jsonArray = json.array!
+        
+        for item in jsonArray {
+            for (key,value) in item {
+                if key == "id" {
+                    programIDs.append(value.intValue)
+                }
+            }
+        }
+        
+        let auth = getAuthentication()
+        for id in programIDs {
+            let url = URL(string: "http://mrplanner.org/api/program/\(id)/details")
+            Alamofire.request(url!, method: .get, headers: auth.header).validate()
+                .responseJSON { response in
+                    switch response.result {
+                    case .success(let value):
+                        let sCode = response.response!.statusCode
+                        if sCode >= 200 && sCode <= 300 {
+                            let json = JSON(value)
+                            self.realDataEvents =  self.proceedProgramData(json["program"])
+                            
+                        } else {
+                            print(response.error?.localizedDescription as Any)
+                        }
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                        
+                        
+                    }
+                    
+            }
+        }
+        
+    }
     
     
-    private func submitToServer(_ lessonData:[[String:Any]]) {
+    func getAuthentication() -> (user:String, pass:String, userID:String, base64Credential:String, header:HTTPHeaders) {
+        let user = defaults.string(forKey: "username") ?? ""//Bundle.main.localizedString(forKey: "testUserEmail", value: nil, table: "Secrets")
         
-        let user = defaults.string(forKey: "username") ?? Bundle.main.localizedString(forKey: "testUserEmail", value: nil, table: "Secrets")
+        let password = defaults.string(forKey: "password") ?? ""//Bundle.main.localizedString(forKey: "testUserPass", value: nil, table: "Secrets")
         
-        let password = defaults.string(forKey: "password") ?? Bundle.main.localizedString(forKey: "testUserPass", value: nil, table: "Secrets")
-        
-        let userID = defaults.string(forKey: "UserID") ?? "2"
-        
-        let url = URL(string: "http://www.mrplanner.org/api/createProgram")
+        let userID = defaults.string(forKey: "UserID") ?? ""//2"
         
         let credentialData = "\(user):\(password)".data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
         
@@ -221,13 +320,22 @@ class ProgramService {
                                    "Content-Type" : "application/json",
                                    "Authorization":"Basic \(base64Credential)"]
         
+        return (user,password,userID, base64Credential, header)
         
-        let parameter: Parameters = ["user_id":userID,
+        
+        
+    }
+    private func submitToServer(_ lessonData:[[String:Any]]) {
+        
+        let auth = getAuthentication()
+        let url = URL(string: "http://www.mrplanner.org/api/createProgram")
+        
+        let parameter: Parameters = ["user_id":auth.userID,
                                      "lessons": lessonData,
                                      "weeks": weekJson
             
         ]
-        Alamofire.request(url!, method: .post, parameters: parameter, encoding: JSONEncoding.default, headers: header).validate()
+        Alamofire.request(url!, method: .post, parameters: parameter, encoding: JSONEncoding.default, headers: auth.header).validate()
             .responseJSON { response in
                 switch response.result {
                 case .success(let value):
@@ -235,7 +343,10 @@ class ProgramService {
                     if statusCode! >= 200 && statusCode! <= 300 {
                         let json = JSON(value)
                         print("json result is:\(json)")
+                        
                         self.parseJSON(json)
+                        self.savePlanAPI(json: json, value: value)
+                        
                     } else {
                         print(response.error?.localizedDescription as Any)
                         
@@ -262,7 +373,7 @@ class ProgramService {
                 
                 for fileURL in fileURLs {
                     if fileURL.pathExtension == "json" {
-                        try FileManager.default.removeItem(at: fileURL)
+                        //try FileManager.default.removeItem(at: fileURL)
                     }
                 }
                 
@@ -278,6 +389,38 @@ class ProgramService {
         
     }
     
+    private func savePlanAPI(json: JSON, value:Any) {
+        let auth = getAuthentication()
+        
+        let url = URL(string: "http://mrplanner.org/api/program/\(auth.userID)/save")
+        
+        let parameter: Parameters = ["status":"active",
+                                     "title": programTitle,
+                                     "program": value]
+        
+        
+        Alamofire.request(url!, method: .post, parameters: parameter, encoding: JSONEncoding.default, headers: auth.header).validate()
+            .responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    let statusCode = response.response?.statusCode
+                    if statusCode! >= 200 && statusCode! <= 300 {
+                        let json = JSON(value)
+                        print("json result is:\(json)")
+                        //self.parseJSON(json)
+                        //self.savePlanAPI(json: json)
+                        
+                    } else {
+                        print(response.error?.localizedDescription as Any)
+                        
+                    }
+                    break
+                case .failure(let error):
+                    print(error)
+                    
+                }
+        }
+    }
     
     func geteventsData(completion: @escaping ([DefaultEvent]) -> ()) {
         
@@ -302,7 +445,7 @@ class ProgramService {
 
     }
     
-    
+    let notificationCenter = UNUserNotificationCenter.current()
     func proceedProgramData(_ json: JSON) -> ([DefaultEvent]) {
         
         var events = [DefaultEvent]()
@@ -334,6 +477,24 @@ class ProgramService {
                                               startDate: date!,
                                               endDate: (date?.add(component: .hour, value: 1))!,
                                               page: subJson["lesson",0,"pageForReading"].stringValue)
+                    
+                    let content = UNMutableNotificationContent()
+                    
+                    content.title = "It's Reading Time!"//notificationType
+                    content.body = subJson["lesson",0,"name"].stringValue
+                    content.sound = UNNotificationSound.default
+                    content.badge = 1
+                    
+                    let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date!)
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+                    let identifier = "Local Notification"
+                    let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+                    
+                    notificationCenter.add(request) { (error) in
+                        if let error = error {
+                            print("Error \(error.localizedDescription)")
+                        }
+                    }
                     events.append(event)
                     
                     

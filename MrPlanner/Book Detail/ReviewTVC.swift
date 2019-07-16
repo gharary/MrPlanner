@@ -53,11 +53,12 @@ class ReviewTVC: UITableViewController, FloatyDelegate {
         // #warning Incomplete implementation, return the number of rows
         if noData {
             self.tableView.setEmptyMessage("No Data!")
+            return 0
         } else {
             self.tableView.restore()
         }
         
-        return 25
+        return 0
     }
 
     

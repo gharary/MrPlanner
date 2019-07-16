@@ -369,6 +369,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <segue destination="3R0-yO-0Aj" kind="relationship" relationship="viewControllers" id="dty-b1-RU0"/>
                         <segue destination="nwT-Yl-Mar" kind="relationship" relationship="viewControllers" id="u6M-58-lX9"/>
                         <segue destination="TWw-iV-xog" kind="relationship" relationship="viewControllers" id="HWb-c2-S98"/>
                         <segue destination="b7q-Fl-uBw" kind="relationship" relationship="viewControllers" id="p0c-26-6JI"/>
@@ -406,6 +407,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0s3-hb-IgV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2484" y="98"/>
+        </scene>
+        <!--Shelf-->
+        <scene sceneID="PK0-h1-JnW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Shelf" id="3R0-yO-0Aj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="LmN-Vr-8wP"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wL8-8O-8e3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-693" y="606"/>
         </scene>
         <!--Home-->
         <scene sceneID="7sP-fb-mum">

@@ -13,6 +13,7 @@ class PlanOptionsVC: UIViewController {
     
     @IBOutlet weak var planDurationWeek: UIPickerView!
     @IBOutlet weak var dateBeginTF: UITextField!
+    @IBOutlet weak var scheduleTitleTF: UITextField!
     
     
     var weekDuration:Int = 0
@@ -21,7 +22,7 @@ class PlanOptionsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         SVProgressHUD.dismiss()
         self.planDurationWeek.selectRow(1, inComponent: 0, animated: true)
-        ProgramService.sharedInstance.checkPackageAvailable(completion: { (result) in
+        ProgramService.sharedInstance.checkPackageAvailable(sender: self, completion: { (result) in
             
             switch result {
             case true:
@@ -57,7 +58,7 @@ class PlanOptionsVC: UIViewController {
         formatter.dateFormat = "yyyy/MM/dd"
         
         dateBeginTF.text = "\(formatter.string(from: Date()))"
-        dateBeginTF.becomeFirstResponder()
+        scheduleTitleTF.becomeFirstResponder()
         
         planDurationWeek.delegate = self
         planDurationWeek.dataSource = self
@@ -73,11 +74,11 @@ class PlanOptionsVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showCalendar" {
-            ProgramService.sharedInstance.setDates(dateBeginTF.text!.isEmpty ? "" : dateBeginTF!.text!, weekduration: weekDuration)
+            ProgramService.sharedInstance.setDates(dateBeginTF.text ?? "", weekduration: weekDuration, title: scheduleTitleTF.text ?? "")
             
             let vc = segue.destination as! DefaultViewController
             
-            vc.planBeginDate = dateBeginTF.text!.isEmpty ? "" : dateBeginTF!.text!
+            vc.planBeginDate = dateBeginTF.text ?? "" 
             vc.weekduration = weekDuration
                 
             

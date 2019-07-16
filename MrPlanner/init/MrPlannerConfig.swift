@@ -58,19 +58,10 @@ class MrPlannerService {
             loginToMrPlannerAccount(sender: sender, completion: nil)
             return
         }
-        let user = defaults.string(forKey: "username") ?? ""
-        let password = defaults.string(forKey: "password") ?? ""
+        let auth = getAuthentication()
         
-        let userID = defaults.string(forKey: "UserID") ?? ""
-        let url = URL(string: "http://mrplanner.org/api/addBook/\(userID)")
         
-        let credentialData = "\(user):\(password)".data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-        let base64Credential = credentialData.base64EncodedString()
-        
-        let header: HTTPHeaders = ["X-API-TOKEN" : Bundle.main.localizedString(forKey: "X-API-TOKEN", value: nil, table: "Secrets"),
-                                   "Accept" : "application/json",
-                                   "Authorization":"Basic \(base64Credential)"]
-        
+        let url = URL(string: "http://mrplanner.org/api/addBook/\(auth.userID)")
         
         let param: Parameters = ["name":title,
                                  "major":cat,
@@ -78,7 +69,7 @@ class MrPlannerService {
                                  "hard_grade":1]
         
         
-        Alamofire.request(url!, method: .post, parameters: param, headers: header)
+        Alamofire.request(url!, method: .post, parameters: param, encoding: JSONEncoding.default, headers: auth.header).validate()
             .responseString { response in
                 
                 switch response.result {
@@ -102,6 +93,7 @@ class MrPlannerService {
                         SVProgressHUD.showSuccess(withStatus: "Done!")
                         completion(true,json["id"].int ?? 0)
                     } else {
+                        
                         print(response.result.debugDescription)
                     }
                     
@@ -111,6 +103,28 @@ class MrPlannerService {
                 }
         }
     }
+    
+    func getAuthentication() -> (user:String, pass:String, userID:String, base64Credential:String, header:HTTPHeaders) {
+        let user = defaults.string(forKey: "username") ?? ""//Bundle.main.localizedString(forKey: "testUserEmail", value: nil, table: "Secrets")
+        
+        let password = defaults.string(forKey: "password") ?? ""//Bundle.main.localizedString(forKey: "testUserPass", value: nil, table: "Secrets")
+        
+        let userID = defaults.string(forKey: "UserID") ?? ""//2"
+        
+        let credentialData = "\(user):\(password)".data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
+        
+        let base64Credential = credentialData.base64EncodedString()
+        
+        let header: HTTPHeaders = ["X-API-TOKEN" : Bundle.main.localizedString(forKey: "X-API-TOKEN", value: nil, table: "Secrets"),
+                                   "Content-Type" : "application/json",
+                                   "Authorization":"Basic \(base64Credential)"]
+        
+        return (user,password,userID, base64Credential, header)
+        
+        
+        
+    }
+    
 }
 
 extension UIViewController {

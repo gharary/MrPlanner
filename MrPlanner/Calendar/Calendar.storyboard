@@ -13,6 +13,9 @@
         <array key="SF-Compact-Rounded-Medium.otf">
             <string>SFCompactRounded-Medium</string>
         </array>
+        <array key="SF-Pro-Display-Medium.otf">
+            <string>SFProDisplay-Medium</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Default View Controller-->
@@ -24,16 +27,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZHI-cy-vXc" customClass="DefaultWeekView" customModule="MrPlanner" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="128" width="414" height="734"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Same Selection For Next Weeks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5V-Ff-gPJ">
+                                <rect key="frame" x="20" y="92" width="232.5" height="32"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mj8-Q1-CG3">
+                                <rect key="frame" x="345" y="92.5" width="51" height="31"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="0.95715135340000002" green="0.94560986759999999" blue="0.91623795029999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ZHI-cy-vXc" firstAttribute="leading" secondItem="oyz-6d-QND" secondAttribute="leading" id="56Z-zC-wbF"/>
                             <constraint firstItem="oyz-6d-QND" firstAttribute="bottom" secondItem="ZHI-cy-vXc" secondAttribute="bottom" id="KEG-21-spr"/>
+                            <constraint firstItem="oyz-6d-QND" firstAttribute="trailing" secondItem="mj8-Q1-CG3" secondAttribute="trailing" constant="20" id="KnH-p1-hOk"/>
+                            <constraint firstItem="ZHI-cy-vXc" firstAttribute="top" secondItem="F5V-Ff-gPJ" secondAttribute="bottom" constant="4" id="LgK-xS-TSz"/>
+                            <constraint firstItem="mj8-Q1-CG3" firstAttribute="centerY" secondItem="F5V-Ff-gPJ" secondAttribute="centerY" id="ViW-4S-H2z"/>
                             <constraint firstItem="oyz-6d-QND" firstAttribute="trailing" secondItem="ZHI-cy-vXc" secondAttribute="trailing" id="Yit-Oa-3z8"/>
-                            <constraint firstItem="ZHI-cy-vXc" firstAttribute="top" secondItem="oyz-6d-QND" secondAttribute="top" id="dE2-nB-jAh"/>
+                            <constraint firstItem="F5V-Ff-gPJ" firstAttribute="leading" secondItem="oyz-6d-QND" secondAttribute="leading" constant="20" id="bAa-9e-DL5"/>
+                            <constraint firstItem="ZHI-cy-vXc" firstAttribute="top" secondItem="oyz-6d-QND" secondAttribute="top" constant="40" id="dE2-nB-jAh"/>
+                            <constraint firstItem="F5V-Ff-gPJ" firstAttribute="top" secondItem="oyz-6d-QND" secondAttribute="top" constant="4" id="jwB-vH-tlT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oyz-6d-QND"/>
                     </view>
@@ -46,11 +63,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="calendarWeekView" destination="ZHI-cy-vXc" id="7L8-eI-ZIu"/>
+                        <outlet property="sameWeeks" destination="mj8-Q1-CG3" id="1LZ-1e-ykk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YZZ-zL-igf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-114" y="-206"/>
+            <point key="canvasLocation" x="-114.49275362318842" y="-206.25"/>
         </scene>
         <!--‌BookSelection-->
         <scene sceneID="f2a-WV-9lc">
@@ -78,7 +96,7 @@
             </objects>
             <point key="canvasLocation" x="-1659" y="-206"/>
         </scene>
-        <!--Plan Options-->
+        <!--Add New Schedule-->
         <scene sceneID="KJm-qA-nOK">
             <objects>
                 <viewController id="6AC-Oq-Aij" customClass="PlanOptionsVC" customModule="MrPlanner" customModuleProvider="target" sceneMemberID="viewController">
@@ -87,24 +105,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Plan Duration (week)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ud2-kr-OO2">
-                                <rect key="frame" x="32" y="230" width="350" height="35"/>
+                                <rect key="frame" x="32" y="354" width="350" height="35"/>
                                 <fontDescription key="fontDescription" name="SFCompactRounded-Medium" family="SF Compact Rounded" pointSize="17"/>
-                                <color key="textColor" red="0.3294117647" green="0.38823529410000002" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plan's Starting Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hg-CW-x3T">
-                                <rect key="frame" x="32" y="120" width="350" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Start Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hg-CW-x3T">
+                                <rect key="frame" x="32" y="229" width="350" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="1mR-cw-VTS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactRounded-Medium" family="SF Compact Rounded" pointSize="17"/>
-                                <color key="textColor" red="0.3294117647" green="0.38823529410000002" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mo0-Kr-VdH">
-                                <rect key="frame" x="32" y="163" width="350" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVH-WW-taC">
+                                <rect key="frame" x="32" y="100" width="350" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="ipV-r5-v8Z"/>
+                                    <constraint firstAttribute="height" constant="35" id="5dS-ID-OuN"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="RlF-QQ-Jhm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFCompactRounded-Medium" family="SF Compact Rounded" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Your Desire Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mo0-Kr-VdH">
+                                <rect key="frame" x="32" y="272" width="350" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ipV-r5-v8Z"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -115,30 +143,45 @@
                                 </connections>
                             </textField>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Br-IF-n2v">
-                                <rect key="frame" x="47" y="273" width="320" height="216"/>
+                                <rect key="frame" x="47" y="397" width="320" height="216"/>
                             </pickerView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Schedule Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ViF-Ww-rBD">
+                                <rect key="frame" x="32" y="147" width="350" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="mVp-VR-nLp"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.62745098040000002" green="0.75294117650000003" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="7Br-IF-n2v" firstAttribute="centerX" secondItem="zaq-IX-gwU" secondAttribute="centerX" id="1MX-px-tQH"/>
+                            <constraint firstItem="vVH-WW-taC" firstAttribute="top" secondItem="a0F-q9-dIx" secondAttribute="top" constant="12" id="3fl-0Z-iqc"/>
                             <constraint firstItem="Mo0-Kr-VdH" firstAttribute="centerX" secondItem="zaq-IX-gwU" secondAttribute="centerX" id="4iP-Kh-hzC"/>
                             <constraint firstItem="ud2-kr-OO2" firstAttribute="centerX" secondItem="7hg-CW-x3T" secondAttribute="centerX" id="F8W-s9-BHY"/>
                             <constraint firstItem="ud2-kr-OO2" firstAttribute="height" secondItem="7hg-CW-x3T" secondAttribute="height" id="G3s-Ms-HWw"/>
                             <constraint firstItem="7hg-CW-x3T" firstAttribute="centerX" secondItem="zaq-IX-gwU" secondAttribute="centerX" id="GFE-Cb-EOS"/>
                             <constraint firstItem="7hg-CW-x3T" firstAttribute="leading" secondItem="a0F-q9-dIx" secondAttribute="leading" constant="32" id="TXT-kQ-mGR"/>
-                            <constraint firstItem="7hg-CW-x3T" firstAttribute="top" secondItem="a0F-q9-dIx" secondAttribute="top" constant="32" id="edf-Za-BRO"/>
+                            <constraint firstItem="ViF-Ww-rBD" firstAttribute="width" secondItem="vVH-WW-taC" secondAttribute="width" id="VXi-fi-MWG"/>
+                            <constraint firstItem="7hg-CW-x3T" firstAttribute="top" secondItem="ViF-Ww-rBD" secondAttribute="bottom" constant="32" id="a7A-ct-gtG"/>
                             <constraint firstItem="a0F-q9-dIx" firstAttribute="trailing" secondItem="7hg-CW-x3T" secondAttribute="trailing" constant="32" id="fgc-SK-kIU"/>
+                            <constraint firstItem="ViF-Ww-rBD" firstAttribute="centerX" secondItem="vVH-WW-taC" secondAttribute="centerX" id="iaQ-fH-fID"/>
                             <constraint firstItem="Mo0-Kr-VdH" firstAttribute="leading" secondItem="7hg-CW-x3T" secondAttribute="leading" id="kgJ-Jk-lP1"/>
                             <constraint firstItem="ud2-kr-OO2" firstAttribute="width" secondItem="7hg-CW-x3T" secondAttribute="width" id="mDE-IV-bCm"/>
                             <constraint firstItem="ud2-kr-OO2" firstAttribute="leading" secondItem="7hg-CW-x3T" secondAttribute="leading" id="ska-Hs-dPO"/>
                             <constraint firstItem="ud2-kr-OO2" firstAttribute="top" secondItem="Mo0-Kr-VdH" secondAttribute="bottom" constant="32" id="tif-Bc-iRj"/>
+                            <constraint firstItem="vVH-WW-taC" firstAttribute="leading" secondItem="a0F-q9-dIx" secondAttribute="leading" constant="32" id="uBQ-tH-tKe"/>
                             <constraint firstItem="7Br-IF-n2v" firstAttribute="top" secondItem="ud2-kr-OO2" secondAttribute="bottom" constant="8" id="vDg-Nh-q65"/>
+                            <constraint firstItem="ViF-Ww-rBD" firstAttribute="top" secondItem="vVH-WW-taC" secondAttribute="bottom" constant="12" id="va6-Gk-lMi"/>
                             <constraint firstItem="Mo0-Kr-VdH" firstAttribute="top" secondItem="7hg-CW-x3T" secondAttribute="bottom" constant="8" id="wrT-ll-mcV"/>
                             <constraint firstItem="ud2-kr-OO2" firstAttribute="trailing" secondItem="7hg-CW-x3T" secondAttribute="trailing" id="xvt-5g-aqx"/>
+                            <constraint firstItem="a0F-q9-dIx" firstAttribute="trailing" secondItem="vVH-WW-taC" secondAttribute="trailing" constant="32" id="yHn-TL-LbL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="a0F-q9-dIx"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Plan Options" id="SPl-g0-eVm">
+                    <navigationItem key="navigationItem" title="Add New Schedule" id="SPl-g0-eVm">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="yI1-9l-nR5">
                             <connections>
                                 <action selector="returnBack:" destination="6AC-Oq-Aij" id="JBu-2D-MCv"/>
@@ -153,6 +196,7 @@
                     <connections>
                         <outlet property="dateBeginTF" destination="Mo0-Kr-VdH" id="xW5-nj-Aql"/>
                         <outlet property="planDurationWeek" destination="7Br-IF-n2v" id="jJV-02-1g0"/>
+                        <outlet property="scheduleTitleTF" destination="ViF-Ww-rBD" id="afe-fX-O72"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HyZ-Ev-4pn" userLabel="First Responder" sceneMemberID="firstResponder"/>

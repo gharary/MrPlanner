@@ -61,8 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         //Showing Walkthrough View
         // this should be your initial view controller
-        defaults.set(true, forKey: "walkthroughSeen")
-        defaults.set(true, forKey: "Login")
+        //defaults.set(true, forKey: "walkthroughSeen")
+        //defaults.set(true, forKey: "Login")
         
         
         if !defaults.bool(forKey: "walkthroughSeen") {

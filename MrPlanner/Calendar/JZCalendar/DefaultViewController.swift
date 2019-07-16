@@ -13,6 +13,7 @@ class DefaultViewController: UIViewController {
     
     
     @IBOutlet weak var calendarWeekView: DefaultWeekView!
+    @IBOutlet weak var sameWeeks: UISwitch!
     
     let viewModel = DefaultViewModel()
     
@@ -25,11 +26,25 @@ class DefaultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sameWeeks.addTarget(self
+            , action: #selector(switchValueDidChange(_:)), for: .valueChanged)
+        
+        
         setupEvents()
         setupBasic()
         setupCalendarView()
     }
     
+    @objc func switchValueDidChange(_ sender: UISwitch) {
+        switch sender.isOn {
+        case true:
+            
+            break
+        case false:
+            
+            break
+        }
+    }
     // Support device orientation change
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         JZWeekViewHelper.viewTransitionHandler(to: size, weekView: calendarWeekView)
@@ -75,8 +90,10 @@ class DefaultViewController: UIViewController {
             
             vc.weekDuration = self.weekduration
             vc.startDate = beginDate
+            
                 //Calendar.current.nextDate(after: beginDate ,matching: nextFirstWeekday,matchingPolicy: .nextTimePreservingSmallerComponents)!
             vc.endDate = endDate
+            vc.sameWeek = sameWeeks.isOn
             
             
         }

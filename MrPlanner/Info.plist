@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We Need Access To Photo Album To Select A Profile Picture</string>
-	<key>NSCameraUsageDescription</key>
-	<string>We Need Access To Camera For Taking A Profile Picture</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -36,7 +32,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>6</string>
+	<string>8</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -44,12 +40,16 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>We Need Access To Camera For Taking A Profile Picture</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>We&apos;ll send you alerts about deals at the nearby library &amp; book shops.</string>
+	<string>We'll send you alerts about deals at the nearby library &amp; book shops.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We&apos;ll send you alerts about deals at the nearby library &amp; book shops.</string>
+	<string>We'll send you alerts about deals at the nearby library &amp; book shops.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We&apos;ll send you alerts about deals at the nearby library &amp; book shops.</string>
+	<string>We'll send you alerts about deals at the nearby library &amp; book shops.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We Need Access To Photo Album To Select A Profile Picture</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SF-Compact-Rounded-Regular.otf</string>

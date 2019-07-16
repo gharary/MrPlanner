@@ -10,7 +10,8 @@ import UIKit
 import SVProgressHUD
 import RealmSwift
 import Alamofire
-
+import Kingfisher
+import SwiftyJSON
 
 enum insertPhoto {
     case photoAlbum
@@ -34,9 +35,11 @@ class UpperVC: UIViewController {
     private var bookToken: NotificationToken?
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        fetchImage()
+        
         let realm = try! Realm()
         let books = realm.objects(Shelve.self)
         bookToken = books.observe { [weak self] _ in
@@ -54,14 +57,54 @@ class UpperVC: UIViewController {
         cornerRadius()
         // Do any additional setup after loading the view.
     }
+    
     @IBAction func logoutBtnTapped(_ sender: UIButton) {
         
+        if sender.titleLabel?.text == "LogIn" {
+            MrPlannerService.sharedInstance.loginToMrPlannerAccount(sender: self, completion: {
+                self.fetchImage()
+                ProgramService.sharedInstance.getUserProgramList()
+                sender.setTitle("Log Out", for: .normal)
+                if let imageURL = self.defaults.object(forKey: "avatar") {
+                    let url = URL(string: imageURL as! String)
+                    self.profileImg.kf.setImage(with: url, placeholder: UIImage(named: "DefaultProfile.png"))
+                    
+                    
+                    
+                }
+                self.nameLbl.text = self.defaults.object(forKey: "username") as? String
+                self.idLbl.text = self.defaults.object(forKey: "UserID") as? String
+                
+                
+                self.view.layoutIfNeeded()
+                self.view.layoutSubviews()
+                
+                
+            })
+        } else {
+            
+            
         MrPlannerService.sharedInstance.isLoggedIn = .LoggedOut
         defaults.removeObject(forKey: "username")
         defaults.removeObject(forKey: "password")
         defaults.removeObject(forKey: "UserID")
         defaults.set(false, forKey: "Login")
+        defaults.removeObject(forKey: "user_name")
+            
         SVProgressHUD.showInfo(withStatus: "You have logged Out!")
+        sender.setTitle("LogIn", for: .normal)
+        profileImg.image = UIImage(named: "DefaultProfile.png")
+        nameLbl.text = ""
+        idLbl.text = ""
+            MrPlannerService.sharedInstance.loginToMrPlannerAccount(sender: self, completion: { })
+        }
+        removeItemForDocument(itemName: "response", fileExtension: "json")
+        removeItemForDocument(itemName: "ProfilePNG", fileExtension: "png")
+        storeImageLocally(UIImage(named: "DefaultProfile")!, name: "ProfilePNG")
+        
+        
+        
+        
     }
     
     @IBAction func pictureBtnTapped(_ sender: UIButton) {
@@ -85,6 +128,21 @@ class UpperVC: UIViewController {
         
     }
     
+    func removeItemForDocument(itemName:String, fileExtension: String) {
+        let fileManager = FileManager.default
+        let NSDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
+        let NSUserDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+        let paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true)
+        guard let dirPath = paths.first else {
+            return
+        }
+        let filePath = "\(dirPath)/\(itemName).\(fileExtension)"
+        do {
+            try fileManager.removeItem(atPath: filePath)
+        } catch let error as NSError {
+            print(error.debugDescription)
+        }}
+    
     
     private func loadImageFromSourec(fromSourceType sourceType:UIImagePickerController.SourceType) {
         //Check if source type available
@@ -92,6 +150,8 @@ class UpperVC: UIViewController {
             let imagepicker = UIImagePickerController()
             imagepicker.delegate = self
             imagepicker.sourceType = sourceType
+            imagepicker.allowsEditing = true
+            
             self.present(imagepicker, animated: true, completion: nil)
         }
         
@@ -105,7 +165,7 @@ class UpperVC: UIViewController {
             
         }
         nameLbl.text = defaults.object(forKey: "username") as? String ?? defaults.object(forKey: "email") as? String
-        idLbl.text = defaults.object(forKey: "UserID") as? String
+        idLbl.text = defaults.object(forKey: "user_name") as? String
         
         
         
@@ -116,7 +176,7 @@ class UpperVC: UIViewController {
         
         //init profile image
         
-        profileImg.clipsToBounds = true
+        
         let shadow0 = UIView(frame: CGRect(x: 0, y: 0, width: 123, height: 123))
         shadow0.clipsToBounds = false
         shadow0.layer.shadowColor = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 0.50).cgColor
@@ -135,42 +195,116 @@ class UpperVC: UIViewController {
             }
             return
         }
-        let user = defaults.string(forKey: "username") ?? ""
-        let password = defaults.string(forKey: "password") ?? ""
         
-        let userID = defaults.string(forKey: "UserID") ?? ""
-        let url = URL(string: "http://mrplanner.org/api/avatar/\(userID)/update")
+        let auth = ProgramService.sharedInstance.getAuthentication()
         
         
-        let credentialData = "\(user):\(password)".data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-        let base64Credential = credentialData.base64EncodedString()
+        let url = URL(string: "http://mrplanner.org/api/avatar/\(auth.userID)/update")
+        
+        
         
         let header: HTTPHeaders = ["X-API-TOKEN" : Bundle.main.localizedString(forKey: "X-API-TOKEN", value: nil, table: "Secrets"),
-                                   "Accept" : "application/json",
-                                   "Authorization":"Basic \(base64Credential)"]
+                                   "Accept" : "multipart/form-data",
+                                   "Authorization":"Basic \(auth.base64Credential)"]
+
         
-        
-        let param: Parameters = ["avatar":image.resizedTo100K()!]
-        
-        Alamofire.request(url!, method: .put, parameters: param, headers: header).validate()
-            .responseJSON { response in
+        Alamofire.upload(multipartFormData: { (multipartForData) in
+            if let imageData = image.pngData() {
+                multipartForData.append(imageData, withName: "avatar", fileName: "file.png", mimeType: "image/png")
                 
-                let statusCode = response.response?.statusCode
-                
-                if statusCode! >= 200 && statusCode! <= 300 {
-                    print(response.result.value!)
-                    
+            }
+            
+        }, to: url!, method: .put, headers: header) { (result) in
+            switch result{
+            case .success(let upload, _, _):
+                upload.responseJSON { response in
+                    print("Succesfully uploaded")
+                    self.storeImageLocally(image, name: "ProfilePNG")
+                    if let err = response.error{
+                        print(err)
+                        return
+                    }
+                    //onCompletion?(nil)
                 }
-                print(response.error?.localizedDescription)
-                
-                
+            case .failure(let error):
+                print("Error in upload: \(error.localizedDescription)")
+                print(error)
+            }
         }
         
         
     }
     
     
+    private func storeImageLocally(_ image:UIImage, name:String) {
+        // Save imageData to filePath
+        
+        // Get access to shared instance of the file manager
+        let fileManager = FileManager.default
+        
+        // Get the URL for the users home directory
+        let documentsURL =  fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        // Get the document URL as a string
+        let documentPath = documentsURL.path
+        
+        // Create filePath URL by appending final path component (name of image)
+        let filePath = documentsURL.appendingPathComponent("\(name).png")
+        
+        
+        // Check for existing image data
+        do {
+            // Look through array of files in documentDirectory
+            let files = try fileManager.contentsOfDirectory(atPath: "\(documentPath)")
+            
+            for file in files {
+                // If we find existing image filePath delete it to make way for new imageData
+                if "\(documentPath)/\(file)" == filePath.path {
+                    try fileManager.removeItem(atPath: filePath.path)
+                }
+            }
+        } catch {
+            print("Could not add image from document directory: \(error)")
+        }
+        
+        
+        // Create imageData and write to filePath
+        do {
+            if let pngImageData = image.pngData() {
+                try pngImageData.write(to: filePath, options: .atomic)
+            }
+        } catch {
+            print("couldn't write image")
+        }
+        
+        
+    }
+    
+    private func fetchImage() {
+        
+        let fileManager = FileManager.default
+        
+        // Get the URL for the users home directory
+        let documentsURL =  fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        // Create filePath URL by appending final path component (name of image)
+        let filePath = documentsURL.appendingPathComponent("ProfilePNG.png")
+        
+        if fileManager.fileExists(atPath: filePath.path) {
+            if let contentsOfFilePath = UIImage(contentsOfFile: filePath.path) {
+                profileImg.image = contentsOfFilePath
+            }
+        }
+        
+        
+        
+        
+    }
     private func cornerRadius() {
+        //profileImg.layer.borderColor = UIColor.white.cgColor
+        profileImg.layer.borderWidth = 1
+        profileImg.clipsToBounds = true
+        //profileImg.layer.masksToBounds = false
         profileImg.layer.cornerRadius = profileImg.frame.height / 2
         
             
@@ -282,9 +416,9 @@ extension UpperVC: UIPopoverPresentationControllerDelegate, UIImagePickerControl
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         self.dismiss(animated: true, completion: nil)
-        let image = info[.originalImage] as! UIImage
+        let image = info[.editedImage] as! UIImage
         photoImage? = image
-        profileImg.image = image.resizedTo100K()
+        profileImg.image = image
         sendAvatarToServer(image)
         
         

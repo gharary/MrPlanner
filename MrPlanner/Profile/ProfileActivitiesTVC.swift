@@ -12,7 +12,11 @@ class ProfileActivitiesTVC: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     
-    var events = [DefaultEvent]()
+    var events = [DefaultEvent]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +41,7 @@ class ProfileActivitiesTVC: UIViewController, UITableViewDataSource, UITableView
             self.tableView.reloadData()
         })
         if events.count == 0 {
-            generateRandomData()
+            //generateRandomData()
         }
     }
     private func generateRandomData() {
@@ -54,7 +58,14 @@ class ProfileActivitiesTVC: UIViewController, UITableViewDataSource, UITableView
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return events.count
+        //return events.count
+        if events.count == 0 {
+            tableView.setEmptyMessage("No Reading Time Today!.")
+            return 0
+        } else {
+            tableView.restore()
+            return events.count
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -68,9 +79,9 @@ class ProfileActivitiesTVC: UIViewController, UITableViewDataSource, UITableView
         return rowAction
     }
     */
-    
+    /*
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        /*
+        
         switch editingStyle {
         case .insert:
             print("Complete")
@@ -83,8 +94,12 @@ class ProfileActivitiesTVC: UIViewController, UITableViewDataSource, UITableView
         @unknown default:
             print("Default")
         }
-        */
+ 
     }
+ 
+    */
+    
+    
     func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
         return false
     }

@@ -40,7 +40,7 @@
                                 </connections>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ave-uB-SgE">
-                                <rect key="frame" x="0.0" y="123" width="414" height="739"/>
+                                <rect key="frame" x="0.0" y="123" width="414" height="690"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MWQ-3X-l4t">
                                     <size key="itemSize" width="50" height="50"/>
@@ -114,11 +114,6 @@
                         <viewLayoutGuide key="safeArea" id="Yer-i1-XAC"/>
                     </view>
                     <navigationItem key="navigationItem" id="5pc-mN-3lG">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="Fvk-tZ-9gq">
-                            <connections>
-                                <action selector="backBtnTapped:" destination="Q17-Mp-Efo" id="H6q-EM-GJJ"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Import Goodreads" id="EGv-4a-Uc4">
                             <connections>
                                 <action selector="importGoodreads:" destination="Q17-Mp-Efo" id="pPd-Bl-E27"/>
@@ -129,17 +124,20 @@
                         <outlet property="collectionView" destination="ave-uB-SgE" id="ieg-32-Pnf"/>
                         <outlet property="importBtn" destination="EGv-4a-Uc4" id="whZ-gX-2Xt"/>
                         <outlet property="segmentControl" destination="RRV-HV-JdH" id="XGM-CS-S24"/>
+                        <segue destination="Glw-39-REL" kind="show" identifier="showBookDetail" id="QeW-YJ-x4X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oU6-29-uVL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3828" y="51.724137931034484"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Shelf-->
         <scene sceneID="zwF-9J-0KU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zmg-oq-ubq" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Shelf" image="Shelf" id="gHo-6G-d1b"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="53y-SP-h2j">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -153,5 +151,16 @@
             </objects>
             <point key="canvasLocation" x="2888.8000000000002" y="51.724137931034484"/>
         </scene>
+        <!--BookDetailVC-->
+        <scene sceneID="O7L-aa-cAY">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GoogleSearchCollectionResult" referencedIdentifier="BookDetailVC" id="Glw-39-REL" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LZL-Vh-BoL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4437" y="-61"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Shelf" width="38" height="32"/>
+    </resources>
 </document>

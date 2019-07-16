@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JonContextMenu
 
 class SearchResultCell: UICollectionViewCell {
     
@@ -34,9 +35,12 @@ class SearchResultCell: UICollectionViewCell {
         self.setCircularImageView()
     }
     
+    
     func setCircularImageView() {
-        self.bookImage.layer.cornerRadius = 5 // CGFloat(roundf(Float(self.imageView.frame.size.width / 2.0)))
+        self.bookImage.layer.cornerRadius = 5 
     }
+    
+    
 }
 
     

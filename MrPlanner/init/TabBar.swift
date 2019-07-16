@@ -12,7 +12,7 @@ import UIKit
 
 
 class CustomTabbarController: UITabBarController {
-    var indexPath: Int = 1
+    var indexPath: Int = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()

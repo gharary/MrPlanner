@@ -138,7 +138,7 @@ class BookDetailVC: UIViewController {
         bookTemp.publishDate = goodreadBook.PublishDate
         bookTemp.ISBN13 = goodreadBook.ISBN13
         bookTemp.ISBN10 = goodreadBook.ISBN10
-        bookTemp.pageCount.value = Int(goodreadBook.numPages)
+        bookTemp.pageCount.value = Int(goodreadBook.numPages) ?? 100
         bookTemp.categories.append("Goodreads")
         bookTemp.avgRating = RealmOptional<Double>(Double(goodreadBook.avgRating))
         bookTemp.ratingCount = RealmOptional<Int>(Int(goodreadBook.numPages))
@@ -177,19 +177,24 @@ class BookDetailVC: UIViewController {
     }
     
     @objc func returnBack(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+        if itemIsGoodread {
+            performSegueToReturnBack()
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     
     private func checkLoggin(sender: UIViewController, completion: @escaping () -> () ) {
         
-        
+    
         guard MrPlannerService.sharedInstance.isLoggedIn == .LoggedIn else {
             MrPlannerService.sharedInstance.loginToMrPlannerAccount(sender: sender) {
                 self.checkLoggin(sender: sender, completion: completion)
             }
             return
         }
+        
         MrPlannerService.sharedInstance.addShelfBookToDB(sender: self, book:book ,title: book.title!, cat: (book.categories.first!) , pageNr: book!.pageCount, completion: { result, id in
             
             if result {
@@ -211,6 +216,7 @@ class BookDetailVC: UIViewController {
                 
             }
         })
+        
         
         
     }

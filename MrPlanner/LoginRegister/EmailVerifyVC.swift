@@ -22,6 +22,9 @@ class EmailVerifyVC: UIViewController {
     
     var label: String = "Check Your Email for a Verification Code"
     var email: String = ""
+    var userID:Int = 0
+    
+    var firstLogin:Bool = false
     
     //Mark: - Lifecycle
     override func viewDidAppear(_ animated: Bool) {
@@ -46,12 +49,7 @@ class EmailVerifyVC: UIViewController {
         if verificationCode.hasValidCode() {
             submitButton.loadingIndicator(true)
             verifyCode(verificationCode.getVerificationCode())
-            
-            let alert = UIAlertController(title: "Success", message: "Code is \(verificationCode.getVerificationCode())", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .default) { (_) in
-                self.performSegue(withIdentifier: "ShowMain", sender: nil)
-            }
-            alert.addAction(okAction)
+ 
         }
     }
     
@@ -81,12 +79,28 @@ class EmailVerifyVC: UIViewController {
                         defaults.set(result["remember_token"].string, forKey: "password")
                         defaults.set(result["id"].int, forKey: "UserID")
                         defaults.set(true, forKey: "Login")
+                        defaults.set(result["avatar"].string ?? "", forKey: "avatar")
                         
-                        //MrPlannerAuthStorageService.saveAuthToken(self.email)
-                    //MrPlannerAuthStorageService.saveTokenSecret(result["remember_token"].string!)
-                        
+                        self.userID = result["id"].int ?? 0
                         MrPlannerService.sharedInstance.isLoggedIn = .LoggedIn
-                    self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+                        if !result["user_name"].stringValue.isEmpty {
+                            defaults.set(result["user_name"].stringValue, forKey: "user_name")
+                            if self.firstLogin {
+                                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                                let vc = storyBoard.instantiateViewController(withIdentifier: "Tabbar")
+                                self.present(vc, animated: true, completion: nil)
+                                
+                            } else {
+                                
+                            
+                                self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+                            }
+                        } else {
+                            self.segueToUsername()
+                            
+                            
+                        }
+                    
                         
                         
                     case .failure(let error):
@@ -102,12 +116,26 @@ class EmailVerifyVC: UIViewController {
                     }))
                     
                     self.present(alert, animated: true, completion: nil)
-                    print(response.error!.localizedDescription)
+                    //print(response.error!.localizedDescription)
                 }
                 
                 
         }
         
+    }
+    
+    func segueToUsername() {
+        performSegue(withIdentifier: "fillProfile", sender: (Any).self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fillProfile" {
+            let vc = segue.destination as! fillProfileVC
+            vc.UserID = userID
+            vc.email = self.email
+            vc.firstLogin = firstLogin
+            
+        }
     }
 
 

@@ -392,9 +392,9 @@
 		5F14A6CB2242AC49008384D3 /* Book Detail */ = {
 			isa = PBXGroup;
 			children = (
+				5FB7E628223E3B1B00A7B9CB /* BookDetailVC.swift */,
 				5F64F7BD224C999300265FF1 /* AddReviewVC.swift */,
 				5F14A6C9224238AE008384D3 /* TabbarMultipleChild.swift */,
-				5FB7E628223E3B1B00A7B9CB /* BookDetailVC.swift */,
 				5F14A6CC2242AC72008384D3 /* IntroductionVC.swift */,
 				5F14A6CE2242AC87008384D3 /* DetailVC.swift */,
 				5FF26D56224A116500D23645 /* ReviewTVC.swift */,
@@ -460,12 +460,12 @@
 			isa = PBXGroup;
 			children = (
 				5F64F7BF224F499A00265FF1 /* Profile.storyboard */,
+				5F64F7C2224F4D2400265FF1 /* ProfileVC.swift */,
 				5FFB9E582250E7B300473A5E /* ProfileActivitiesCell.swift */,
 				5FFB9E562250E65F00473A5E /* ProfileActivitiesTVC.swift */,
 				5FF14D7A2250AE0500FF42A8 /* ActivePlansCell.swift */,
 				5FF14D782250AA0300FF42A8 /* ProfileActivePlansTVC.swift */,
 				5F64F7C4224F5C3C00265FF1 /* UpperVC.swift */,
-				5F64F7C2224F4D2400265FF1 /* ProfileVC.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";

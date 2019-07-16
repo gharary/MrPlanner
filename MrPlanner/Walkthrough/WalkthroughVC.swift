@@ -16,11 +16,11 @@ class WalkthroughVC: UIViewController {
     @IBOutlet weak var skipBtn: UIButton!
     
     var slides:[Slide] = [];
-
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        defaults.set(true, forKey: "walkthroughSeen")
         
         scrollView.delegate = self
         
@@ -53,8 +53,14 @@ class WalkthroughVC: UIViewController {
         } else {
          */
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "RegisterVC")
+            let vc = storyboard.instantiateViewController(withIdentifier: "RegisterVC") as! RegisterVC
+            vc.firstLogin = true
+        
+            
+        
+        
             self.present(vc, animated: true, completion: nil)
+        
         //}
       
     }
