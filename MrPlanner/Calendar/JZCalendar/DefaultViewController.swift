@@ -124,7 +124,7 @@ extension DefaultViewController: JZBaseViewDelegate {
     func setupEvents() {
         fullGridEvents.removeAll()
         let calendar = Calendar.current
-        let today = Date().add(component: .day, value: 1)
+        //let today = Date().add(component: .day, value: 1)
        
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"

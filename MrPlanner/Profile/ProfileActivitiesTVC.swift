@@ -60,7 +60,7 @@ class ProfileActivitiesTVC: UIViewController, UITableViewDataSource, UITableView
         // #warning Incomplete implementation, return the number of rows
         //return events.count
         if events.count == 0 {
-            tableView.setEmptyMessage("No Reading Time Today!.")
+            tableView.setEmptyMessage("No Reading Time Today. Have Fun :)")
             return 0
         } else {
             tableView.restore()

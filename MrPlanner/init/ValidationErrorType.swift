@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import Validator
 
-struct ValidationError: Error {
+struct EmailValidationError: ValidationError {
     
     public let message: String
     
-    public init(message m: String) {
-        message = m
+    public init(_ message: String) {
+        self.message = message
     }
 }
+

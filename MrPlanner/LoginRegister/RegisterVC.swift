@@ -11,6 +11,7 @@ import SwiftValidator
 import Validator
 import Alamofire
 
+
 class RegisterVC: UIViewController {
 
     @IBOutlet weak var googleLoginBtn:UIButton!
@@ -55,8 +56,11 @@ class RegisterVC: UIViewController {
     func emailFieldValidator() {
         
         var rules = ValidationRuleSet<String>()
-        let emailPattern = EmailValidationPattern.simple
-        let emailRule = ValidationRulePattern(pattern: emailPattern, error: ValidationError(message: ":("))
+        
+        let emailRule = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: EmailValidationError(""))
+        
+        
+        
         rules.add(rule: emailRule)
         emailTF.validationRules = rules
         emailTF.validationHandler = { result in

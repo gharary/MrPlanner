@@ -60,17 +60,19 @@ class GoodreadsService {
         
         if authToken.isEmpty || authSecret.isEmpty {
             let _ = oauthswift.authorize(
-                withCallbackURL: URL(string: "MrPlanner://oauth-callback/goodreads")!,
-                success: { credential, response, parameters in
+                withCallbackURL: URL(string: "MrPlanner://oauth-callback/goodreads")!) {result in
+                    switch result {
+                    case .success(let (credential, response, parameters)):
                         AuthStorageService.saveAuthToken(credential.oauthToken)
                         AuthStorageService.saveTokenSecret(credential.oauthTokenSecret)
                         self.isLoggedIn = .LoggedIn
                     self.loginToUser(oauthswift, completion: completion)
-            },
-                failure: { error in
-                    print("Error Error: \(error.localizedDescription)", terminator: "")
-            })
+                    case .failure(let error):
+                        print("OAuth Error: \(error.localizedDescription)")
+                    }
+            }
         }
+
         else {
             oauthswift.client.credential.oauthToken = authToken
             oauthswift.client.credential.oauthTokenSecret = authSecret
@@ -92,8 +94,9 @@ class GoodreadsService {
     func loginToUser(_ oauthswift: OAuth1Swift, completion: (() -> ())?) {
         
         let _ = oauthswift.client.get(
-            "https://www.goodreads.com/api/auth_user",
-            success: { response in
+        "https://www.goodreads.com/api/auth_user") { result in
+            switch result {
+            case .success(let response):
                 let xml = try! XML.parse(response.string!)
                 guard let id = xml["GoodreadsResponse", "user"].attributes["id"] else {
                     return
@@ -101,9 +104,10 @@ class GoodreadsService {
                 self.id = id
                 
                 completion?()
-        }, failure: { error in
-            print(error)
-        })
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     
