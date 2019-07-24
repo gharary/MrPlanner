@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import UserNotifications
-import FirebaseMessaging
 import OneSignal
 import AVFoundation
 import IQKeyboardManagerSwift
@@ -19,7 +18,7 @@ import RealmSwift
 //import FBSDKCoreKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
@@ -109,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         
         
-        Messaging.messaging().delegate = self
+        //Messaging.messaging().delegate = self
         
         //Register OneSignal
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]

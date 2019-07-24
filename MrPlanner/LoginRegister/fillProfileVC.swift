@@ -89,12 +89,10 @@ class fillProfileVC: UIViewController {
                             
                         } else {
                             defaults.set(self.usernameTF.text, forKey: "user_name")
-                            if self.firstLogin {
-                                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-                                let vc = storyBoard.instantiateViewController(withIdentifier: "Tabbar")
-                                self.present(vc, animated: true, completion: nil)
-                                
-                            } else { self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil) }
+                            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                            let vc = storyBoard.instantiateViewController(withIdentifier: "Tabbar")
+                            self.present(vc, animated: true, completion: nil)
+                            
                         }
                         break
                         

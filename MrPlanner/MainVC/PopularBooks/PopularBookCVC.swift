@@ -12,7 +12,7 @@ import SwiftyJSON
 import Kingfisher
 import JonContextMenu
 import SVProgressHUD
-
+import LoadingShimmer
 
 private let reuseIdentifier = "bookCell"
 
@@ -58,7 +58,8 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         //SVProgressHUD.setContainerView(MainVC)
-        //SVProgressHUD.showProgress(0.1)
+        //SVProgressHUD.show()
+        //LoadingShimmer.startCovering(collectionView)
     }
     override func viewWillDisappear(_ animated: Bool) {
         SVProgressHUD.dismiss()
@@ -114,7 +115,7 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
         cell.authorLbl.textColor = UIColor(red: 0.85, green: 0.86, blue: 0.89, alpha: 1)
         */
         
-        SVProgressHUD.showProgress(1)
+        //SVProgressHUD.showProgress(1)
         
         cell.titleLbl.text = searchData[indexPath.row].title
         cell.authorLbl.text = searchData[indexPath.row].authors.first
@@ -135,7 +136,7 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
                      JonItem(id: 2, title: "Twitter"  , icon: UIImage(named:"twitter")),
                      JonItem(id: 3, title: "Facebook" , icon: UIImage(named:"facebook")),
                      JonItem(id: 4, title: "Instagram", icon: UIImage(named:"instagram"))]
-        let contextMenu = JonContextMenu().setItems(items)
+        _ = JonContextMenu().setItems(items)
             
             .setBackgroundColorTo(.orange)
             .setItemsDefaultColorTo(.black)
@@ -146,8 +147,9 @@ class PopularBookCVC: UICollectionViewController, JonContextMenuDelegate {
             .setDelegate(self)
             .build()
         
-        self.view.addGestureRecognizer(contextMenu)
+        //self.view.addGestureRecognizer(contextMenu)
         SVProgressHUD.dismiss()
+        //LoadingShimmer.stopCovering(collectionView)
         return cell
     }
     

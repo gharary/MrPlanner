@@ -33,6 +33,7 @@ class EventNewCell: UICollectionViewCell {
         layer.shadowOpacity = 0
         pageLabel.font = UIFont.systemFont(ofSize: 9)
         titleLabel.font = UIFont.systemFont(ofSize: 11, weight: .medium)
+        titleLabel.text = titleLabel.text?.trunc(length: 15)
         self.backgroundColor = UIColor(hex: 0xEEF7FF)
         //borderView.backgroundColor = UIColor(hex: 0x0899FF)
     }

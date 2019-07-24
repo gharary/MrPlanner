@@ -40,7 +40,7 @@ class PlanOptionsVC: UIViewController {
     
     func noPackage() {
         
-        let alert = UIAlertController(title: "Error", message: "You have no package available!! Visit MrPlanner.org", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error", message: "You have no package available!! \n Please Visit MrPlanner.org", preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default, handler: { _ in
             self.dismiss(animated: true, completion: nil)
         })

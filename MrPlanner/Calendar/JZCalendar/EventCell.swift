@@ -35,6 +35,7 @@ class EventCell: UICollectionViewCell {
         locationLabel.font = UIFont.systemFont(ofSize: 12)
         titleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         self.backgroundColor = UIColor(hex: 0xEEF7FF)
+        //titleLabel.text = titleLabel.text?.trunc(length: 12)
         //borderView.backgroundColor = UIColor(hex: 0x0899FF)
     }
     

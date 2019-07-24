@@ -13,7 +13,6 @@ import AlamofireImage
 import Kingfisher
 import SwiftyJSON
 
-
 class MainVC: UIViewController{
 
     @IBOutlet weak var slideShow: ImageSlideshow!
@@ -27,6 +26,8 @@ class MainVC: UIViewController{
         self.title = "Home"
         
         loadImage()
+        //Crashlytics.sharedInstance().crash()
+        
     }
     override func viewDidAppear(_ animated: Bool) {
     }
@@ -38,11 +39,11 @@ class MainVC: UIViewController{
         //slideShow.setImageInputs(Placeholder(image))
         
         slideShow.setImageInputs([
-            ImageSource(image: image!),
-            AlamofireSource(urlString: "https://images.unsplash.com/photo-1432679963831-2dab49187847?w=1080", placeholder: image)!,
-            KingfisherSource(urlString: "https://images.unsplash.com/photo-1432679963831-2dab49187847?w=1080")!
+            ImageSource(image: image!)])//,
+            //AlamofireSource(urlString: "https://images.unsplash.com/photo-1432679963831-2dab49187847?w=1080", placeholder: image)!,
+            //KingfisherSource(urlString: "https://images.unsplash.com/photo-1432679963831-2dab49187847?w=1080")!
             
-            ])
+            //])
         
         slideShow.slideshowInterval = 3
         slideShow.pageIndicatorPosition = .init(horizontal: .center, vertical: .bottom)

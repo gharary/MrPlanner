@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftValidator
 import Validator
 import Alamofire
 
@@ -32,7 +31,6 @@ class RegisterVC: UIViewController {
     
     
     
-    let validator = Validator()
     var firstLogin:Bool = false
     
     override func viewDidAppear(_ animated: Bool) {
@@ -128,6 +126,7 @@ class RegisterVC: UIViewController {
             
             self.view.layoutIfNeeded()
             self.passTF.isHidden = true
+            
             emailTF.validateOnInputChange(enabled: true)
             UIView.animate(withDuration: 0.35, animations: {
                 self.stackView.layoutIfNeeded()
@@ -252,7 +251,7 @@ class RegisterVC: UIViewController {
                     }
                 } else {
                     self.signupBtn.loadingIndicator(false)
-                    self.alertUser(sender: self, response.error!.localizedDescription)
+                    self.alertUser(sender: self, "Error in Connecting To Server!")
                     
                 }
                 

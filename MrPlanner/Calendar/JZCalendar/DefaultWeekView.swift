@@ -30,6 +30,7 @@ class DefaultWeekView: JZBaseWeekView {
             return cell
         }
         
+        //cell.titleLabel.text = cell.titleLabel.text?.trunc(length: 12)
         cell.backgroundColor = .green
         
         return cell

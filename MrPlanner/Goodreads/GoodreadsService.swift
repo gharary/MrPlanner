@@ -62,7 +62,7 @@ class GoodreadsService {
             let _ = oauthswift.authorize(
                 withCallbackURL: URL(string: "MrPlanner://oauth-callback/goodreads")!) {result in
                     switch result {
-                    case .success(let (credential, response, parameters)):
+                    case .success(let (credential, _, _)):
                         AuthStorageService.saveAuthToken(credential.oauthToken)
                         AuthStorageService.saveTokenSecret(credential.oauthTokenSecret)
                         self.isLoggedIn = .LoggedIn

@@ -207,7 +207,7 @@ class ProgramService {
         
         let auth = getAuthentication()
         
-        let url = URL(string: "http://www.mrplanner.org/api/packages")
+        let url = URL(string: "http://mrplanner.org/api/leftOverDayPrograms/\(auth.userID)")
         
         Alamofire.request(url!, method: .get, headers: auth.header).validate()
             .responseJSON { response in
@@ -216,13 +216,14 @@ class ProgramService {
                     let statusCode = response.response?.statusCode
                     if statusCode! >= 200 && statusCode! <= 300 {
                         let json = JSON(value)
-                        let item = json["data",0,"number_programs"].intValue
+                        let item = json["programs"].intValue
                         if item > 0 { completion(true) }
                         
                     } else {
                         print(response.error?.localizedDescription as Any)
                         completion(false)
                     }
+                    completion(false)
                     break
                 case .failure(let error):
                     completion(false)

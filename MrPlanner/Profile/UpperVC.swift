@@ -214,7 +214,7 @@ class UpperVC: UIViewController {
                 
             }
             
-        }, to: url!, method: .put, headers: header) { (result) in
+        }, to: url!, method: .post, headers: header) { (result) in
             switch result{
             case .success(let upload, _, _):
                 upload.responseJSON { response in

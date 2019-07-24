@@ -12,6 +12,7 @@ import Kingfisher
 import SwiftyJSON
 import Foundation
 import JonContextMenu
+import Crashlytics
 
 
 class ShelfVC: UIViewController {
@@ -107,6 +108,8 @@ class ShelfVC: UIViewController {
     
     
     @IBAction func importGoodreads(_ sender: UIBarButtonItem!) {
+        //Crashlytics.sharedInstance().crash()
+        
         let uiBusy = UIActivityIndicatorView(style: .gray)
         uiBusy.hidesWhenStopped = true
         
@@ -224,7 +227,7 @@ extension ShelfVC: UICollectionViewDataSource, UICollectionViewDelegate {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SearchResultCell
         
         
-        let contextMenu = JonContextMenu().setItems(jonItems).setDelegate(self)
+        _ = JonContextMenu().setItems(jonItems).setDelegate(self)
             .setBackgroundColorTo(.orange)
             .setItemsDefaultColorTo(.black)
             .setItemsActiveColorTo(.white)

@@ -196,7 +196,7 @@ extension LeadersBooksVC: JonContextMenuDelegate {
     
     
     private func checkUserLogin(sender: UIViewController, completion: @escaping () -> ()) {
-        let realm = try! Realm()
+        //let realm = try! Realm()
         
         guard MrPlannerService.sharedInstance.isLoggedIn == .LoggedIn else {
             MrPlannerService.sharedInstance.loginToMrPlannerAccount(sender: self) {

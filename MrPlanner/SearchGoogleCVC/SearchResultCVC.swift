@@ -205,7 +205,7 @@ class SearchResultCVC: UICollectionViewController, UIGestureRecognizerDelegate,J
             .setDelegate(self)
             .build()
         
-        self.view.addGestureRecognizer(contextMenu)
+        //self.view.addGestureRecognizer(contextMenu)
         cell.titleLbl.textColor = UIColor(red: 0.33, green: 0.39, blue: 0.47, alpha: 1)
         //cell.authorLbl.textColor = UIColor(red: 0.85, green: 0.86, blue: 0.89, alpha: 1)
         SVProgressHUD.dismiss(withDelay: 0.5)

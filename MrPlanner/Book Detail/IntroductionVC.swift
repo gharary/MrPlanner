@@ -10,7 +10,6 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import SVProgressHUD
-import PKHUD
 
 class IntroductionVC: UIViewController {
     

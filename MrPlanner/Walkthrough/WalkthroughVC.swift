@@ -69,30 +69,30 @@ class WalkthroughVC: UIViewController {
         
         let slide1:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide1.imageView.image = UIImage(named: "1")
-        slide1.labelTitle.text = "Book Reading"
-        slide1.labelDesc.text = "Leaders are Readers!!!"
+        slide1.labelTitle.text = "Leaders Are Readers"
+        slide1.labelDesc.text = "Today a reader, tomorrow a leader."
         
         
         let slide2: Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide2.imageView.image = UIImage(named: "2")
-        slide2.labelTitle.text = "Reading Library"
-        slide2.labelDesc.text = "Reading in a library in a must for readers!!"
+        slide2.labelTitle.text = "A Reader As A Friend"
+        slide2.labelDesc.text = "Never trust anyone who has not brought a book with them."
         
         let slide3: Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide3.imageView.image = UIImage(named: "3")
-        slide3.labelTitle.text = "How Others reads"
-        slide3.labelDesc.text = "Reading more living more!!"
+        slide3.labelTitle.text = "How Others Reads"
+        slide3.labelDesc.text = "You can never get a cup of tea large enough or a book long enough to suit me."
         
         
         let slide4: Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide4.imageView.image = UIImage(named: "4")
-        slide4.labelTitle.text = "Plan your goal for 2019"
-        slide4.labelDesc.text = "Plan 2019 for reading the latest and your favourite books in this year."
+        slide4.labelTitle.text = "George R.R. Martin:"
+        slide4.labelDesc.text = "A reader lives a thousand lives before he dies . . . The man who never reads lives only one."
         
         let slide5: Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide5.imageView.image = UIImage(named: "5")
-        slide5.labelTitle.text = "Reading Makes you Grow"
-        slide5.labelDesc.text = "Plan 2019 for reading the latest and your favourite books in this year."
+        slide5.labelTitle.text = "Ready To Plan Your Reading?"
+        slide5.labelDesc.text = "Whatever you had planned for 2019, add more fifty books to it within the help of MrPlanner, it is going to worth it to try."
         
         return [slide1, slide2, slide3, slide4, slide5]
         

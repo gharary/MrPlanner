@@ -76,7 +76,8 @@ class EmailVerifyVC: UIViewController {
                         let result = JSON(response.result.value!)
                     
                         defaults.set(self.email, forKey: "username")
-                        defaults.set(result["remember_token"].string, forKey: "password")
+                        let pass = result["remember_token"].stringValue.isEmpty ? result["password"].stringValue : result["remember_token"].stringValue
+                        defaults.set(pass, forKey: "password")
                         defaults.set(result["id"].int, forKey: "UserID")
                         defaults.set(true, forKey: "Login")
                         defaults.set(result["avatar"].string ?? "", forKey: "avatar")
@@ -85,16 +86,10 @@ class EmailVerifyVC: UIViewController {
                         MrPlannerService.sharedInstance.isLoggedIn = .LoggedIn
                         if !result["user_name"].stringValue.isEmpty {
                             defaults.set(result["user_name"].stringValue, forKey: "user_name")
-                            if self.firstLogin {
-                                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-                                let vc = storyBoard.instantiateViewController(withIdentifier: "Tabbar")
-                                self.present(vc, animated: true, completion: nil)
-                                
-                            } else {
-                                
+                            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                            let vc = storyBoard.instantiateViewController(withIdentifier: "Tabbar")
+                            self.present(vc, animated: true, completion: nil)
                             
-                                self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
-                            }
                         } else {
                             self.segueToUsername()
                             

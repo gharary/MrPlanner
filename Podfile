@@ -33,6 +33,10 @@ target 'MrPlanner' do
   pod 'Buglife'
   pod 'RealmSwift'
   #pod 'FacebookSDK'
+  pod 'LoadingShimmer'
+  pod 'Fabric', '~> 1.10.2'
+  pod 'Crashlytics', '~> 3.13.4'
+
 end
 
 target 'OneSignalNotificationServiceExtension' do
