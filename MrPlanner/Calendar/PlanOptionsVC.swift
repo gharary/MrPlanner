@@ -21,17 +21,24 @@ class PlanOptionsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         SVProgressHUD.dismiss()
+        ProgramService.sharedInstance.clearSelectedData()
+        
         self.planDurationWeek.selectRow(1, inComponent: 0, animated: true)
         ProgramService.sharedInstance.checkPackageAvailable(sender: self, completion: { (result) in
             
             switch result {
-            case true:
-                
-                break
-            case false:
-                
+            case 0:
                 self.noPackage()
                 break
+            case -2:
+                self.serverError()
+                break
+            case -1:
+                self.serverError()
+                break
+                
+            default: break
+                
             }
             
         })
@@ -49,6 +56,16 @@ class PlanOptionsVC: UIViewController {
         
         
             
+        
+    }
+    
+    func serverError() {
+        let alert = UIAlertController(title: "Error", message: "Error On Connecting To Server. \n Please Try Again Later!", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default, handler: { _ in
+            self.dismiss(animated: true, completion: nil)
+        })
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
         
     }
     override func viewDidLoad() {

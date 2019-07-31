@@ -24,6 +24,8 @@ class WalkthroughVC: UIViewController {
         
         scrollView.delegate = self
         
+        GoodreadsService.sharedInstance.logoutOfGoodreadsAccount()
+        
         slides = createSlides()
         setupSlideScrollViews(slides: slides)
         

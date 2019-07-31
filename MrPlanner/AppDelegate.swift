@@ -64,6 +64,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         //defaults.set(true, forKey: "Login")
         
         
+        
+        
+        
+        
         if !defaults.bool(forKey: "walkthroughSeen") {
                 // create page view controller and display
             //let storyboard = UIStoryboard(name: "FirstView", bundle: nil)

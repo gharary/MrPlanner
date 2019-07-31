@@ -66,6 +66,11 @@ class ProgramService {
         
     }
     
+    func clearSelectedData() {
+        
+        ProgramService.selectedData.removeAll()
+        
+    }
     //update Date begin and Date End
     
     func setDates(_ dateBegin:String, weekduration:Int, title:String) {
@@ -195,7 +200,7 @@ class ProgramService {
         
     }
     
-    func checkPackageAvailable(sender: UIViewController ,completion: @escaping (Bool) -> ()) {
+    func checkPackageAvailable(sender: UIViewController ,completion: @escaping (Int) -> ()) {
         
         guard MrPlannerService.sharedInstance.isLoggedIn == .LoggedIn else {
             
@@ -217,17 +222,19 @@ class ProgramService {
                     if statusCode! >= 200 && statusCode! <= 300 {
                         let json = JSON(value)
                         let item = json["programs"].intValue
-                        if item > 0 { completion(true) }
+                        completion(item)
+                        //if item > 0 { completion(item) } else { completion(0) }
                         
                     } else {
                         print(response.error?.localizedDescription as Any)
-                        completion(false)
+                        completion(-1)
                     }
-                    completion(false)
+                    
                     break
                 case .failure(let error):
-                    completion(false)
                     print(error)
+                    completion(-2)
+                    
                     
                 }
         }
