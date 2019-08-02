@@ -465,16 +465,16 @@ class ProgramService {
         for (_,subJson):(String, JSON) in json {
             // Do something you want
             //each week
-            print("Week Data is: \(subJson)")
+            //print("Week Data is: \(subJson)")
             
             for (_,subJson):(String, JSON) in subJson["days"] {
                 //each day
-                print("Daily Data is: \(subJson)")
+                //print("Daily Data is: \(subJson)")
                 let dateDay = subJson["date"].string!
                 
                 for (_,subJson):(String,JSON) in subJson["hours"] {
                     //each Hour
-                    print("Hour Data is: \(subJson)")
+                    //print("Hour Data is: \(subJson)")
                     //let dateCom = Calendar.autoupdatingCurrent.dateComponents(dateComponents, from: dateDay)
                     
                     let date = formatter.date(from: "\(dateDay) \(subJson["hour"].string!)")

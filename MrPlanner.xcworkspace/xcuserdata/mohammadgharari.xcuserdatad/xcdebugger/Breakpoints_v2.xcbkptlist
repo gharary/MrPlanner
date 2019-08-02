@@ -409,7 +409,7 @@
                   moduleName = "MrPlanner"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mohammadgharari/Desktop/Desktop/iOS/MrPlanner/MrPlanner/init/OfflineViewController.swift"
-                  timestampString = "586241607.062669"
+                  timestampString = "586374278.4060791"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "18"
@@ -424,7 +424,7 @@
                   moduleName = "MrPlanner"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mohammadgharari/Desktop/Desktop/iOS/MrPlanner/MrPlanner/init/OfflineViewController.swift"
-                  timestampString = "586241607.064443"
+                  timestampString = "586374278.407836"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "19"
@@ -713,7 +713,7 @@
                   moduleName = "MrPlanner"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mohammadgharari/Desktop/Desktop/iOS/MrPlanner/MrPlanner/Calendar/PlanOptionsVC.swift"
-                  timestampString = "586241607.069391"
+                  timestampString = "586374278.4128881"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "125"
@@ -728,7 +728,7 @@
                   moduleName = "MrPlanner"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mohammadgharari/Desktop/Desktop/iOS/MrPlanner/MrPlanner/Calendar/PlanOptionsVC.swift"
-                  timestampString = "586241607.071177"
+                  timestampString = "586374278.414322"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "125"
@@ -782,8 +782,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "158"
             endingLineNumber = "158"
-            landmarkName = "prepare(for:sender:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -879,22 +879,6 @@
             startingLineNumber = "81"
             endingLineNumber = "81"
             landmarkName = "NextBtnTapped(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MrPlanner/init/ProgramService.swift"
-            timestampString = "585914303.026832"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "getWeekTimes(_:sameWeek:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1077,144 +1061,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MrPlanner/init/ProgramService.swift"
-            timestampString = "585914303.0279779"
+            timestampString = "586374278.249022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
-            landmarkName = "checkPackageAvailable(sender:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MrPlanner/init/ProgramService.swift"
-            timestampString = "585914303.028037"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
-            landmarkName = "checkPackageAvailable(sender:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MrPlanner/init/ProgramService.swift"
-            timestampString = "585914303.02809"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
-            landmarkName = "checkPackageAvailable(sender:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in MrPlanner.ProgramService.checkPackageAvailable(sender: __C.UIViewController, completion: (Swift.Int) -&gt; ()) -&gt; ()"
-                  moduleName = "MrPlanner"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mohammadgharari/Desktop/Desktop/iOS/MrPlanner/MrPlanner/init/ProgramService.swift"
-                  timestampString = "585894381.962705"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "215"
-                  endingLineNumber = "215"
-                  offsetFromSymbolStart = "172">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in MrPlanner.ProgramService.checkPackageAvailable(sender: __C.UIViewController, completion: (Swift.Int) -&gt; ()) -&gt; ()"
-                  moduleName = "MrPlanner"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mohammadgharari/Desktop/Desktop/iOS/MrPlanner/MrPlanner/init/ProgramService.swift"
-                  timestampString = "585894381.964159"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "215"
-                  endingLineNumber = "215"
-                  offsetFromSymbolStart = "192">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MrPlanner/init/ProgramService.swift"
-            timestampString = "585914303.028192"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "getWeekTimes(_:sameWeek:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MrPlanner/init/ProgramService.swift"
-            timestampString = "585914303.028255"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
-            landmarkName = "submitToServer(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MrPlanner/init/ProgramService.swift"
-            timestampString = "585914303.028301"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "350"
-            endingLineNumber = "350"
-            landmarkName = "submitToServer(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MrPlanner/init/ProgramService.swift"
-            timestampString = "585914303.028361"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "363"
-            endingLineNumber = "363"
-            landmarkName = "submitToServer(_:)"
+            startingLineNumber = "497"
+            endingLineNumber = "497"
+            landmarkName = "proceedProgramData(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
